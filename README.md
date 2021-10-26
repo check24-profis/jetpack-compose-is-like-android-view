@@ -1,7 +1,7 @@
 
 # Java is like Kotlin
 
-Page: https://github.com/kibotu/jetpack-compose-is-like-android-xml
+Page: https://kibotu.github.io/jetpack-compose-is-like-android-xml/
 
 
 Inspired by [swift-is-like-kotlin](http://nilhcem.github.io/swift-is-like-kotlin/)
