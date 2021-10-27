@@ -1,7 +1,6 @@
+# Jetpack Compose is like Android XML
 
-# Java is like Kotlin
-
-Page: https://kibotu.github.io/jetpack-compose-is-like-android-xml/
+Github Page: https://kibotu.github.io/jetpack-compose-is-like-android-xml/
 
 
 Inspired by [swift-is-like-kotlin](http://nilhcem.github.io/swift-is-like-kotlin/)
@@ -13,7 +12,7 @@ yarn
 yarn build
 ```
 
-HTML is generated from `cirru/index.cirru`.
+HTML is generated from [index.cirru](index.cirru).
 Read that file, and you would know what's happening.
 
 ### License

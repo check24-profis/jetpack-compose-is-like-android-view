@@ -2,7 +2,7 @@ doctype
 
 html
   head
-    title "Java is like Kotlin"
+    title "Jetpack Compose is like Android XML"
     meta (:charset utf-8)
     link (:rel icon)
       :href http://logo.cirru.org/cirru-32x32.png
