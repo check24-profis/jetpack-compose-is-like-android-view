@@ -27,7 +27,6 @@ html
       .case (.name "Plain Text") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/TextView.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/TextView.xml)
-      .case (.name "Plain Text") $ .pair
       .case (.name "Password") $ .pair
       .case (.name "Password (Numeric)") $ .pair
       .case (.name "E-Mail") $ .pair
@@ -99,3 +98,6 @@ html
 
     .section
       .title "Events"
+
+    .section
+      .title "Material Theme"
