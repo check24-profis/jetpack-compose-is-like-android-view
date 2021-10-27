@@ -25,16 +25,16 @@ jobs:
         uses: actions/checkout@v2
 
       # https://github.com/marketplace/actions/github-action-for-yarn
-      - name: install
+      - name: Yarn Install
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install # will run `yarn install` command
-      - name: build
+      - name: Yarn Build
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build # will run `yarn build` command
 
-      - name: Deploy
+      - name: Deploy to Github Page
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
