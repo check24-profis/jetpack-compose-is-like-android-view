@@ -56,6 +56,8 @@ html
     .section
       .title "List"
       .case (.name "List with different Views") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/ListWithDifferentViews.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/ListWithDifferentViews.xml)
       .case (.name "Grid") $ .pair
       .case (.name "Staggered") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/StaggeredVerticalGrid.kt)
