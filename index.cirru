@@ -74,7 +74,11 @@ html
       .title "Container"
       .case (.name "Spinner") $ .pair
       .case (.name "Horizontal Scrolling") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/HorizontalScrolling.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/HorizontalScrolling.xml)
       .case (.name "Vertical Scrolling") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/VerticalScrolling.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/VerticalScrolling.xml)
       .case (.name "ViewPager") $ .pair
       .case (.name "Card") $ .pair
       .case (.name "AppBarLayout") $ .pair
