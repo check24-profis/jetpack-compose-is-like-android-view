@@ -1,10 +1,10 @@
 sealed class ExampleListItems {
 
-    data class TitleItemData(
+    data class TitleItem(
         val title: String
     ) : ExampleListItems()
 
-    data class ContentItemData(
+    data class ContentItem(
         val title: String,
         val body: String
     ) : ExampleListItems()
@@ -13,12 +13,12 @@ sealed class ExampleListItems {
 
 
 @Composable
-fun ItemList(listOfExampleItems: List<ExampleListItems>) {
+fun ExampleItemsListView(listOfExampleItems: List<ExampleListItems>) {
     LazyColumn {
         items(listOfExampleItems) { item ->
             when (item) {
-                is ExampleListItems.TitleItemData -> TitleItem(item = item)
-                is ExampleListItems.ContentItemData -> ContentItem(item = item)
+                is ExampleListItems.TitleItem -> TitleItemView(item = item)
+                is ExampleListItems.ContentItem -> ContentItemView(item = item)
             }
         }
     }
@@ -26,7 +26,7 @@ fun ItemList(listOfExampleItems: List<ExampleListItems>) {
 
 
 @Composable
-fun TitleItem(item: ExampleListItems.TitleItemData) {
+fun TitleItemView(item: ExampleListItems.TitleItem) {
     Row(
         modifier = Modifier
             .background(color = Color.LightGray)
@@ -38,7 +38,7 @@ fun TitleItem(item: ExampleListItems.TitleItemData) {
 
 
 @Composable
-fun ContentItem(item: ExampleListItems.ContentItemData) {
+fun ContentItemView(item: ExampleListItems.ContentItem) {
     Row(
         modifier = Modifier
             .background(color = Color.Cyan)
