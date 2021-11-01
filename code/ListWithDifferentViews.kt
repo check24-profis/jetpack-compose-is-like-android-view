@@ -13,7 +13,7 @@ sealed class ExampleListItems {
 
 
 @Composable
-fun ExampleItemsListView(listOfExampleItems: List<ExampleListItems>) {
+fun ExampleItemsListView(listOfExampleItems: List&lt;ExampleListItems&gt;) {
     LazyColumn {
         items(listOfExampleItems) { item ->
             when (item) {
@@ -44,7 +44,7 @@ fun ContentItemView(item: ExampleListItems.ContentItem) {
             .background(color = Color.Cyan)
             .padding(all = 20.dp)
     ) {
-        Column() {
+        Column {
             Text(text = item.title, fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.padding(vertical = 8.dp))
             Text(text = item.body, fontWeight = FontWeight.ExtraLight)
