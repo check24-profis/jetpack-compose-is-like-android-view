@@ -1,5 +1,5 @@
 @Composable
-fun Password() {
+fun NumberPassword() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
         value = text,
