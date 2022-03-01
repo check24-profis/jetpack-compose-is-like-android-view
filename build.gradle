@@ -1,0 +1,27 @@
+apply from: "demo/buildSrc/sdk_versions.gradle"
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath : "com.android.tools.build:gradle:7.1.2"
+        classpath : "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+        classpath : "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.6.10-1.0.2"
+        classpath : "org.jetbrains.kotlin:kotlin-serialization:1.6.10"
+    }
+}
+
+allprojects {
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
