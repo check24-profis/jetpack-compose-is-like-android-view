@@ -1,0 +1,25 @@
+ext {
+    // Tools and SDK
+    BUILD_TOOLS_VERSION = "31.0.0" // "32.0.0"
+    COMPILE_SDK_VERSION = 31 // 32
+    TARGET_SDK_VERSION = 31
+    MIN_SDK_VERSION = 23
+    KOTLIN_VERSION = "1.6.10"
+    // https://developer.android.com/jetpack/androidx/releases/compose#versions
+    // Compose to Kotlin Compatibility Map
+    // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+    KOTLIN_COMPILER_EXTENSION_VERSION = "1.1.0"
+
+    isLocal = project.rootProject.file('local.properties').exists()
+    isCi = !isLocal
+
+    println()
+    println "Injected variables - SDK"
+    println "Build Tools: $BUILD_TOOLS_VERSION"
+    println "Compile SDK: $COMPILE_SDK_VERSION"
+    println "Target SDK: $TARGET_SDK_VERSION"
+    println "Min SDK: $MIN_SDK_VERSION"
+    println "Kotlin: $KOTLIN_VERSION"
+    println "Compose Compiler: $KOTLIN_COMPILER_EXTENSION_VERSION"
+    println()
+}

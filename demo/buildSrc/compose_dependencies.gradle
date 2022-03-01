@@ -1,0 +1,51 @@
+ext {
+
+    composeModuleLibs = [
+
+            // https://github.com/skydoves/Landscapist
+            landscapist                     : "com.github.skydoves:landscapist-glide:1.4.4",
+
+            // https://google.github.io/accompanist/
+            accompanistSwiperefresh         : "com.google.accompanist:accompanist-swiperefresh:0.20.3",
+            accompanistPager                : "com.google.accompanist:accompanist-pager:0.20.3",
+            accompanistPagerIndicators      : "com.google.accompanist:accompanist-pager-indicators:0.20.3",
+
+            // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+            // https://developer.android.com/jetpack/compose
+            // https://developer.android.com/jetpack/compose/setup
+            composeUi                       : 'androidx.compose.ui:ui:1.0.5',
+            // Tooling support (Previews, etc.)
+            composeUiTooling                : 'androidx.compose.ui:ui-tooling:1.0.5',
+            // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+            composeFoundation               : 'androidx.compose.foundation:foundation:1.0.5',
+            // Material Design
+            composeMaterial                 : 'androidx.compose.material:material:1.0.5',
+            // Material design icons
+            composeMaterialIconsCore        : 'androidx.compose.material:material-icons-core:1.0.5',
+            composeMaterialIconsExtended    : 'androidx.compose.material:material-icons-extended:1.0.5',
+            // compose viewbinding
+            composeViewBinding              : "androidx.compose.ui:ui-viewbinding:1.0.5",
+            // Integration with activities
+            composeActivitycompose          : 'androidx.activity:activity-compose:1.4.0',
+            // Integration with ViewModels
+            composeLifecycleViewmodelCompose: 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1',
+            // Integration with observables
+            composeRuntimeLivedata          : 'androidx.compose.runtime:runtime-livedata:1.0.5',
+            // constraint layouts
+            composeConstraintLayout         : "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02",
+    ]
+}
+
+dependencies {
+
+    composeModuleLibs.each {
+        implementation it.value
+    }
+}
+
+configurations.all {
+
+    (composeModuleLibs).each {
+        resolutionStrategy.force it.value
+    }
+}
