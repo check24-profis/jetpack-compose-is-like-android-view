@@ -9,6 +9,7 @@ fun PasswordVisibilityToggle() {
         onValueChange = {
             text = it
         },
+        maxLines = 1,
         modifier = Modifier
             .wrapContentWidth()
             .wrapContentHeight(),

@@ -1,11 +1,12 @@
 @Composable
-fun NumberPassword() {
+fun Password() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
         value = text,
         onValueChange = {
             text = it
         },
+        maxLines = 1,
         label = {
             Text(text = "Your Label")
         },
@@ -13,7 +14,7 @@ fun NumberPassword() {
             Text(text = "Your Placeholder/Hint")
         },
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.NumberPassword
+            keyboardType = KeyboardType.Password
         ),
         visualTransformation = PasswordVisualTransformation()
     )
