@@ -13,18 +13,24 @@ fun PasswordVisibilityToggle() {
             .wrapContentWidth()
             .wrapContentHeight(),
         label = { Text(text = "Your Label") },
-        placeholder = {Text(text = "Your Placeholder/Hint")},
+        placeholder = { Text(text = "Your Placeholder/Hint") },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
+        visualTransformation = if (passwordVisibility) {
+            VisualTransformation.None
+        } else {
+            PasswordVisualTransformation()
+        },
         trailingIcon = {
-            val image = if (passwordVisibility)
+            val image = if (passwordVisibility) {
                 Icons.Filled.Visibility
-            else Icons.Filled.VisibilityOff
+            } else {
+                Icons.Filled.VisibilityOff
+            }
 
             IconButton(onClick = {
                 passwordVisibility = !passwordVisibility
             }) {
-                Icon(imageVector  = image, "")
+                Icon(imageVector = image, "")
             }
         }
     )
