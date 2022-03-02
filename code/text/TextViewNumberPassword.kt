@@ -6,6 +6,8 @@ fun NumberPassword() {
         onValueChange = {
             text = it
         },
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
         label = {
             Text(text = "Your Label")
         },
