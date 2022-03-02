@@ -77,6 +77,8 @@ html
     .section
       .title "Layouts"
       .case (.name "Constraints") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutContent.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/ConstraintLayoutContent.xml)
       .case (.name "Helper (Group)") $ .pair
       .case (.name "Helper (Barrier)") $ .pair
       .case (.name "Helper (Flow)") $ .pair
