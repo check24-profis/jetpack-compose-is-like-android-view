@@ -9,7 +9,6 @@ fun PasswordVisibilityToggle() {
         onValueChange = {
             text = it
         },
-        overflow = TextOverflow.Ellipsis,
         maxLines = 1,
         modifier = Modifier
             .wrapContentWidth()
