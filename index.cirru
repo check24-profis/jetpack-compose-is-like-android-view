@@ -33,6 +33,9 @@ html
       .case (.name "Password (Numeric)") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewNumberPassword.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewNumberPassword.xml)
+      .case (.name "Password With Visibility Toggle") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewPasswordVisibility.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewPasswordVisibility.xml)
       .case (.name "E-Mail") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewEmail.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewEmail.xml)
