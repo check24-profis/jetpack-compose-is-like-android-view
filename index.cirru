@@ -25,14 +25,14 @@ html
     .section
       .title Text
       .case (.name "Plain Text") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/TextView.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/TextView.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextView.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextView.xml)
       .case (.name "Password") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/TextViewPassword.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/TextViewPassword.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewPassword.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewPassword.xml)
       .case (.name "Password (Numeric)") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/TextViewNumberPassword.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/TextViewNumberPassword.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewNumberPassword.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewNumberPassword.xml)
       .case (.name "E-Mail") $ .pair
       .case (.name "Phone") $ .pair
       .case (.name "Postal Address") $ .pair
