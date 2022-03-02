@@ -1,14 +1,13 @@
 &lt;com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/etPasswordLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:passwordToggleEnabled="true">
+    app:placeholderText="Your Placeholder"&gt;
 
     &lt;com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Your Hint"
+        android:hint="Your Label"
+        android:text="012345678900"
         android:maxLines="1"
-        android:inputType="textPassword"/&gt;
-&lt;com.google.android.material.textfield.TextInputLayout&gt;
+        android:inputType="phone" /&gt;
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;
