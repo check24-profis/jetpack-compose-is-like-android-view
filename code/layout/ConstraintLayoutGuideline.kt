@@ -2,7 +2,7 @@
 fun ConstraintLayoutGuidelineVertical() {
     ConstraintLayout {
 
-        val button = createRefs()
+        val (button) = createRefs()
         val guideline = createGuidelineFromStart(100.dp)
 
         Button(
