@@ -82,6 +82,13 @@ html
       .case (.name "Helper (Group)") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutGroup.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/Group.xml)
+      .case (.name "Helper (Guideline Vertical)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutGuideline.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/Guideline.xml)
+      .case (.name "Helper (Guideline Horizontal)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutGuidelineHorizontal.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/GuidelineHorizontal.xml)
+
       .case (.name "Helper (Barrier)") $ .pair
       .case (.name "Helper (Flow)") $ .pair
       .case (.name "Helper (Layer)") $ .pair
