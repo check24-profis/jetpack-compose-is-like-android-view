@@ -84,6 +84,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutGuideline.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/Guideline.xml)
       .case (.name "Helper (Barrier)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutBarrier.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/Barrier.xml)
       .case (.name "Helper (Flow)") $ .pair
       .case (.name "Helper (Layer)") $ .pair
       .case (.name "FrameLayout") $ .pair
