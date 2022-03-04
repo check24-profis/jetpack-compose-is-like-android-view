@@ -18,6 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
+import de.check24.demo.features.email.AndroidUIEmailActivity
+import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -77,6 +79,13 @@ private fun Menu() {
                 composeActivity = ComposableNumericPasswordActivity::class.java,
                 androidUIActivity = AndroidUINumericPasswordActivity::class.java,
                 headline = "Password (Numeric)"
+            )
+        }
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableEmailActivity::class.java,
+                androidUIActivity = AndroidUIEmailActivity::class.java,
+                headline = "Email"
             )
         }
     }

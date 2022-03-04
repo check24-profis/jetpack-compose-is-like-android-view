@@ -1,5 +1,5 @@
 @Composable
-fun Password() {
+fun Email() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
         value = text,
@@ -14,7 +14,8 @@ fun Password() {
             Text(text = "Your Placeholder/Hint")
         },
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Email
+            keyboardType = KeyboardType.Email,
+            imeAction = ImeAction.Done
         )
     )
 }
