@@ -11,7 +11,7 @@ fun PasswordVisibilityToggle() {
         },
         maxLines = 1,
         modifier = Modifier
-            .wrapContentWidth()
+            .requiredWidth(250.dp)
             .wrapContentHeight(),
         label = { Text(text = "Your Label") },
         placeholder = { Text(text = "Your Placeholder/Hint") },

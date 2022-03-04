@@ -13,24 +13,24 @@ ext {
             // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
             // https://developer.android.com/jetpack/compose
             // https://developer.android.com/jetpack/compose/setup
-            composeUi                       : 'androidx.compose.ui:ui:1.0.5',
+            composeUi                       : 'androidx.compose.ui:ui:1.1.0',
             // Tooling support (Previews, etc.)
-            composeUiTooling                : 'androidx.compose.ui:ui-tooling:1.0.5',
+            composeUiTooling                : 'androidx.compose.ui:ui-tooling:1.1.0',
             // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-            composeFoundation               : 'androidx.compose.foundation:foundation:1.0.5',
+            composeFoundation               : 'androidx.compose.foundation:foundation:1.1.0',
             // Material Design
-            composeMaterial                 : 'androidx.compose.material:material:1.0.5',
+            composeMaterial                 : 'androidx.compose.material:material:1.1.0',
             // Material design icons
-            composeMaterialIconsCore        : 'androidx.compose.material:material-icons-core:1.0.5',
-            composeMaterialIconsExtended    : 'androidx.compose.material:material-icons-extended:1.0.5',
+            composeMaterialIconsCore        : 'androidx.compose.material:material-icons-core:1.1.0',
+            composeMaterialIconsExtended    : 'androidx.compose.material:material-icons-extended:1.1.0',
             // compose viewbinding
-            composeViewBinding              : "androidx.compose.ui:ui-viewbinding:1.0.5",
+            composeViewBinding              : "androidx.compose.ui:ui-viewbinding:1.1.0",
             // Integration with activities
             composeActivitycompose          : 'androidx.activity:activity-compose:1.4.0',
             // Integration with ViewModels
             composeLifecycleViewmodelCompose: 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1',
             // Integration with observables
-            composeRuntimeLivedata          : 'androidx.compose.runtime:runtime-livedata:1.0.5',
+            composeRuntimeLivedata          : 'androidx.compose.runtime:runtime-livedata:1.1.0',
             // constraint layouts
             composeConstraintLayout         : "androidx.constraintlayout:constraintlayout-compose:1.0.0-rc02",
     ]
