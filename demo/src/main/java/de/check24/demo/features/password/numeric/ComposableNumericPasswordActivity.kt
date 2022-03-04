@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -15,6 +14,8 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import de.check24.demo.ui.theme.DemoTheme
 
 class ComposableNumericPasswordActivity : ComponentActivity() {
@@ -69,4 +70,12 @@ fun NumberPassword() {
         ),
         visualTransformation = PasswordVisualTransformation()
     )
+}
+
+@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
+@Composable
+private fun PasswordPreview() {
+    DemoTheme {
+        NumberPassword()
+    }
 }
