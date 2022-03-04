@@ -47,7 +47,9 @@ fun Password() {
         onValueChange = {
             text = it
         },
-        modifier = Modifier.requiredWidth(250.dp).wrapContentHeight(),
+        modifier = Modifier
+            .requiredWidth(250.dp)
+            .wrapContentHeight(),
         maxLines = 1,
         label = {
             Text(text = "Your Label")
