@@ -18,7 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
-import de.check24.demo.features.text.TextActivity
+import de.check24.demo.features.text.AndroidUITextActivity
+import de.check24.demo.features.text.ComposableTextActivity
 import de.check24.demo.ui.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,9 +45,9 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
-                composeActivity = TextActivity::class.java,
-                androidUIActivity = TextActivity::class.java,
-                headline = "PlainText"
+                composeActivity = ComposableTextActivity::class.java,
+                androidUIActivity = AndroidUITextActivity::class.java,
+                headline = "Plain Text"
             )
         }
     }
@@ -54,9 +55,9 @@ private fun Menu() {
 }
 
 @Composable
-private fun <T : Activity> CompareUIItem(
+private fun <T, P : Activity> CompareUIItem(
     composeActivity: Class<T>,
-    androidUIActivity: Class<T>,
+    androidUIActivity: Class<P>,
     headline: String
 ) {
     val activity = LocalContext.current.findActivity()
@@ -114,6 +115,6 @@ private fun DefaultPreview() {
 private fun GenericItemPreview() {
 
     DemoTheme {
-        CompareUIItem(TextActivity::class.java, TextActivity::class.java, "Test")
+        CompareUIItem(ComposableTextActivity::class.java, ComposableTextActivity::class.java, "Test")
     }
 }
