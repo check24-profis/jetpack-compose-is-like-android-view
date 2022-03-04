@@ -4,4 +4,12 @@
     <style name="Theme.Demo" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
     </style>
+
+
+    <!-- Use in root layout or activity of material components! -->
+
+    <style name="DemoMaterial" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
+
 </resources>

@@ -18,6 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
+import de.check24.demo.features.password.AndroidUIPasswordActivity
+import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.text.AndroidUITextActivity
 import de.check24.demo.features.text.ComposableTextActivity
 import de.check24.demo.ui.theme.DemoTheme
@@ -50,8 +52,16 @@ private fun Menu() {
                 headline = "Plain Text"
             )
         }
-    }
 
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposablePasswordActivity::class.java,
+                androidUIActivity = AndroidUIPasswordActivity::class.java,
+                headline = "Password"
+            )
+        }
+    }
 }
 
 @Composable
