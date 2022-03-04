@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
+import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
+import de.check24.demo.features.password.numeric.ComposableNumericPasswordActivity
 import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityToggleActivity
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -68,6 +70,13 @@ private fun Menu() {
                 composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
                 androidUIActivity = AndroidUIPasswordVisibilityToggleActivity::class.java,
                 headline = "Password with visibility toggle"
+            )
+        }
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableNumericPasswordActivity::class.java,
+                androidUIActivity = AndroidUINumericPasswordActivity::class.java,
+                headline = "Password (Numeric)"
             )
         }
     }

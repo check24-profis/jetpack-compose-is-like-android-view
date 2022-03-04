@@ -15,7 +15,10 @@ fun PasswordVisibilityToggle() {
             .wrapContentHeight(),
         label = { Text(text = "Your Label") },
         placeholder = { Text(text = "Your Placeholder/Hint") },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
+        ),
         visualTransformation = if (passwordVisibility) {
             VisualTransformation.None
         } else {

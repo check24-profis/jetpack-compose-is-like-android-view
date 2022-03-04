@@ -12,6 +12,9 @@ fun PhoneNumber() {
             .wrapContentHeight(),
         label = { Text(text = "Your Label") },
         placeholder = { Text(text = "Your Placeholder/Hint") },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Phone,
+            imeAction = ImeAction.Done
+        ),
     )
 }

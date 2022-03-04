@@ -14,7 +14,8 @@ fun NumberPassword() {
             Text(text = "Your Placeholder/Hint")
         },
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.NumberPassword
+            keyboardType = KeyboardType.NumberPassword,
+            imeAction = ImeAction.Done
         ),
         visualTransformation = PasswordVisualTransformation()
     )
