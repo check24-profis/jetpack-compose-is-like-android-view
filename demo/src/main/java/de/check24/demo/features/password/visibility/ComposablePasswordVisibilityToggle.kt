@@ -17,6 +17,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
+import de.check24.demo.features.password.Password
 import de.check24.demo.ui.theme.DemoTheme
 
 class ComposablePasswordVisibilityToggle : ComponentActivity() {
@@ -38,7 +41,7 @@ class ComposablePasswordVisibilityToggle : ComponentActivity() {
 }
 
 @Composable
-fun PasswordVisibilityToggle() {
+private fun PasswordVisibilityToggle() {
 
     var text by remember { mutableStateOf(TextFieldValue("")) }
     var passwordVisibility by remember { mutableStateOf(false) }
@@ -74,4 +77,12 @@ fun PasswordVisibilityToggle() {
             }
         }
     )
+}
+
+@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
+@Composable
+private fun PasswordPreview() {
+    DemoTheme {
+        PasswordVisibilityToggle()
+    }
 }
