@@ -1,5 +1,5 @@
 #!/usr/bin/env coffee
-project = 'jetpack-compose-is-like-android-xml'
+project = 'jetpack-compose-is-like-android-view'
 
 require 'shelljs/make'
 path = require 'path'
@@ -11,7 +11,7 @@ cirru = (data) ->
   mission.cirruHtml
     file: 'index.cirru'
     from: 'cirru/'
-    to: '../jetpack-compose-is-like-android-xml/'
+    to: '../jetpack-compose-is-like-android-view/'
     extname: '.html'
     data: data
 

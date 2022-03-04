@@ -17,7 +17,7 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/kibotu/jetpack-compose-is-like-android-xml.git"
+    "url": "https://github.com/kibotu/jetpack-compose-is-like-android-view.git"
   },
   "keywords": [
     "kotlin",
@@ -27,7 +27,7 @@
     "xml"
   ],
   "bugs": {
-    "url": "https://github.com/kibotu/jetpack-compose-is-like-android-xml/issues"
+    "url": "https://github.com/kibotu/jetpack-compose-is-like-android-view/issues"
   },
-  "homepage": "https://github.com/kibotu/jetpack-compose-is-like-android-xml"
+  "homepage": "https://github.com/kibotu/jetpack-compose-is-like-android-view"
 }

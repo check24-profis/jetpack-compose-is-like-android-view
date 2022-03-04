@@ -17,10 +17,10 @@ html
 
   body
     a (:target _blank)
-      :href https://github.com/kibotu/jetpack-compose-is-like-android-xml
-      img#fork-me (:src http://kibotu.github.io/jetpack-compose-is-like-android-xml/fork-me.png)
+      :href https://github.com/kibotu/jetpack-compose-is-like-android-view
+      img#fork-me (:src http://kibotu.github.io/jetpack-compose-is-like-android-view/fork-me.png)
     #note
-      = "Jetpack Compose is like Android-XML"
+      = "Jetpack Compose is like AndroidView"
 
     .section
       .title Text
