@@ -1,4 +1,4 @@
-@Composable
+Composable
 fun Password() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
@@ -6,6 +6,9 @@ fun Password() {
         onValueChange = {
             text = it
         },
+        modifier = Modifier
+            .requiredWidth(250.dp)
+            .wrapContentHeight(),
         maxLines = 1,
         label = {
             Text(text = "Your Label")
