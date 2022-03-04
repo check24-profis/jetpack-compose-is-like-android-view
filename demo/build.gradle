@@ -27,7 +27,7 @@ android {
             minifyEnabled false
             crunchPngs false
             shrinkResources false
-            zipAlignEnabled true
+            zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
         }
