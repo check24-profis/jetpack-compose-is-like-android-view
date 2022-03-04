@@ -40,7 +40,7 @@ class ComposablePasswordActivity : ComponentActivity() {
 }
 
 @Composable
-fun Password() {
+private fun Password() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     TextField(
         value = text,
