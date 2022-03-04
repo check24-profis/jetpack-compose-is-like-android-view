@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -45,11 +46,11 @@ private fun Menu() {
     Column {
 
         Row {
-            Text(text = "Text", modifier = Modifier
-                .clickable {
-                    activity.startActivity(Intent(activity, TextActivity::class.java))
-                }
-            )
+
+            Button(onClick = { activity.startActivity(Intent(activity, TextActivity::class.java))}) {
+
+            }
+            Text(text = "Plain TextView")
         }
 
         Row {

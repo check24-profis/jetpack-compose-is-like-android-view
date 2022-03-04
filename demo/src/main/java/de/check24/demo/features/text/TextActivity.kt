@@ -4,11 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import de.check24.demo.ui.theme.DemoTheme
@@ -23,7 +28,7 @@ class TextActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    TextView()
                 }
             }
         }
@@ -31,14 +36,22 @@ class TextActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun TextView() {
+    Text(
+        text = "Hello World",
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
+        modifier = Modifier
+            .wrapContentHeight()
+            .wrapContentWidth(),
+        style = TextStyle(background = Color(0xFF4a8fff))
+    )
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     DemoTheme {
-        Greeting("Android")
+        TextView()
     }
 }
