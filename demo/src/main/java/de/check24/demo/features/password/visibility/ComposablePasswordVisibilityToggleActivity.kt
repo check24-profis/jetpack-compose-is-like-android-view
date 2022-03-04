@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -19,10 +19,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import de.check24.demo.features.password.Password
+import androidx.compose.ui.unit.dp
 import de.check24.demo.ui.theme.DemoTheme
 
-class ComposablePasswordVisibilityToggle : ComponentActivity() {
+class ComposablePasswordVisibilityToggleActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,6 @@ class ComposablePasswordVisibilityToggle : ComponentActivity() {
                 }
             }
         }
-
     }
 }
 
@@ -53,7 +52,7 @@ private fun PasswordVisibilityToggle() {
         },
         maxLines = 1,
         modifier = Modifier
-            .wrapContentWidth()
+            .requiredWidth(250.dp)
             .wrapContentHeight(),
         label = { Text(text = "Your Label") },
         placeholder = { Text(text = "Your Placeholder/Hint") },

@@ -31,7 +31,8 @@
 
         <activity
             android:name=".features.text.AndroidUITextActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/DemoMaterial"/>
 
         <!-- Plain Password -->
 
@@ -42,6 +43,17 @@
 
         <activity
             android:name=".features.password.ComposablePasswordActivity"
+            android:exported="false" />
+
+        <!-- Password with visibility toggle -->
+
+        <activity
+            android:name=".features.password.visibility.AndroidUIPasswordVisibilityToggleActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial"/>
+
+        <activity
+            android:name=".features.password.visibility.ComposablePasswordVisibilityToggleActivity"
             android:exported="false" />
 
     </application>
