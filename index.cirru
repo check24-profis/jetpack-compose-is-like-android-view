@@ -57,6 +57,8 @@ html
     .section
       .title "Button"
       .case (.name "Image Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/ImageButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/ImageButton.xml)
       .case (.name "Chip Group") $ .pair
       .case (.name "Chip") $ .pair
       .case (.name "Check Box") $ .pair

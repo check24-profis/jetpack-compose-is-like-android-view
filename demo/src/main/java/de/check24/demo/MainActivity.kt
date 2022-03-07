@@ -30,7 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.date.AndroidUIDateActivity
 import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -135,6 +137,14 @@ private fun Menu() {
                 composeActivity = ComposableDateActivity::class.java,
                 androidUIActivity = AndroidUIDateActivity::class.java,
                 headline = "Date")
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableImageButtonActivity::class.java,
+                androidUIActivity = AndroidUIImageButtonActivity::class.java,
+                headline = "ImageButton"
+            )
         }
 
         Row {

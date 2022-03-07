@@ -88,6 +88,17 @@
             android:name=".features.email.ComposableEmailActivity"
             android:exported="false" />
 
+        <!-- Barrier -->
+
+        <activity
+            android:name=".features.constraintlayout.barrier.AndroidUIBarrierActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.barrier.ComposableBarrierActivity"
+            android:exported="false" />
+
         <!-- CheckBox -->
 
         <activity
@@ -99,17 +110,16 @@
             android:name=".features.button.ComposableCheckBoxActivity"
             android:exported="false" />
 
-        <!-- Date -->
+        <!-- ImageButton -->
 
         <activity
-            android:name=".features.date.AndroidUIDateActivity"
+            android:name=".features.button.AndroidUIImageButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.date.ComposableDateActivity"
-            android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:name=".features.button.ComposableImageButtonActivity"
+            android:exported="false" />
 
     </application>
 
