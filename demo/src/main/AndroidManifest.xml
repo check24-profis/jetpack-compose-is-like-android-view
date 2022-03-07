@@ -121,6 +121,18 @@
             android:name=".features.button.ComposableImageButtonActivity"
             android:exported="false" />
 
+        <!-- Switch -->
+
+        <activity
+            android:name=".features.switch.AndroidUISwitchActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.switch.ComposableSwitchActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
     </application>
 
 </manifest>

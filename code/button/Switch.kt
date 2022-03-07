@@ -1,6 +1,6 @@
 @Composable
 private fun SwitchComposable() {
-    val checkedState = remember { mutableStateOf(true) }
+    val checkedState = remember { mutableStateOf(false) }
     Switch(
         checked = checkedState.value,
         onCheckedChange = { checkedState.value = it }
