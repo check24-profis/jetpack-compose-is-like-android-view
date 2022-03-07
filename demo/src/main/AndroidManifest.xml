@@ -110,6 +110,28 @@
             android:name=".features.button.ComposableCheckBoxActivity"
             android:exported="false" />
 
+        <!-- GuidelineVertical -->
+
+        <activity
+            android:name=".features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.guideline.ComposableVerticalGuidelineActivity"
+            android:exported="false" />
+
+        <!-- Guideline Horizontal -->
+
+        <activity
+            android:name=".features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity"
+            android:exported="false" />
+
         <!-- ImageButton -->
 
         <activity
@@ -130,6 +152,18 @@
 
         <activity
             android:name=".features.switch.ComposableSwitchActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <!-- Date -->
+
+        <activity
+            android:name=".features.date.AndroidUIDateActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.date.ComposableDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 

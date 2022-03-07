@@ -50,7 +50,7 @@ class ComposableBarrierActivity : ComponentActivity() {
 }
 
 @Composable
-fun ConstraintLayoutBarrier() {
+private fun ConstraintLayoutBarrier() {
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
     ) {

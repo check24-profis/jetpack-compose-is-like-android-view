@@ -33,8 +33,14 @@ import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
+import de.check24.demo.features.date.AndroidUIDateActivity
+import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
+import de.check24.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity
+import de.check24.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
+import de.check24.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
+import de.check24.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
@@ -134,6 +140,13 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
+                composeActivity = ComposableDateActivity::class.java,
+                androidUIActivity = AndroidUIDateActivity::class.java,
+                headline = "Date")
+        }
+
+        Row {
+            CompareUIItem(
                 composeActivity = ComposableImageButtonActivity::class.java,
                 androidUIActivity = AndroidUIImageButtonActivity::class.java,
                 headline = "ImageButton"
@@ -153,6 +166,22 @@ private fun Menu() {
                 composeActivity = ComposableSwitchActivity::class.java,
                 androidUIActivity = AndroidUISwitchActivity::class.java,
                 headline = "Switch"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableVerticalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIVerticalGuidelineActivity::class.java,
+                headline = "Guideline Vertical"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableHorizontalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
+                headline = "Guideline Horizontal"
             )
         }
     }
