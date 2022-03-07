@@ -3,7 +3,6 @@ package de.check24.demo.features.switch
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -22,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import de.check24.demo.features.constraintlayout.barrier.ConstraintLayoutBarrier
 import de.check24.demo.ui.theme.DemoTheme
 
 class ComposableSwitchActivity : ComponentActivity() {
