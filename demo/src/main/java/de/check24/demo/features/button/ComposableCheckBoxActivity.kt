@@ -53,7 +53,7 @@ private fun CheckBox() {
         checked = checked,
         onCheckedChange = {
             checked = it
-        },
+        }
     )
 }
 
