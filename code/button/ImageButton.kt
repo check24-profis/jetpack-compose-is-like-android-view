@@ -1,11 +1,12 @@
 @Composable
 private fun ImageButton() {
-    Button(
+    IconButton(
         onClick = { [...] },
     ) {
-        Icon(
-            imageVector = Icons.Rounded.Star,
-            contentDescription = "Image of Button"
+        Image(
+            painter = painterResource(id = R.drawable.c24logo),
+            contentDescription = "Image of Button",
+            modifier = Modifier.size(40.dp)
         )
     }
 }
