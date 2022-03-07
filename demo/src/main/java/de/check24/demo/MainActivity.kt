@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.date.AndroidUIDateActivity
+import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
