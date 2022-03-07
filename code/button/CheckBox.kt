@@ -1,5 +1,5 @@
 @Composable
-private fun CheckBox() {
+fun CheckBox() {
     var checked by remember { mutableStateOf(true) }
     Checkbox(
         checked = checked,

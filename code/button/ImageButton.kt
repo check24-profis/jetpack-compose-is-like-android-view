@@ -1,12 +1,15 @@
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun ImageButton() {
+fun ImageButton() {
     IconButton(
         onClick = { [...] },
+        modifier = Modifier.size(240.dp)
+
     ) {
         Image(
             painter = painterResource(id = R.drawable.c24logo),
             contentDescription = "Image of Button",
-            modifier = Modifier.size(40.dp)
+            modifier = Modifier.size(80.dp)
         )
     }
 }
