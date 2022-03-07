@@ -42,7 +42,6 @@ class ComposableCheckBoxActivity : ComponentActivity() {
                 }
             }
         }
-        actionBar?.title = "CheckBox"
     }
 }
 

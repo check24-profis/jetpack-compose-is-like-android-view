@@ -13,11 +13,4 @@ class AndroidUICheckBoxActivity : AppCompatActivity() {
         setContentView(R.layout.checkbox)
         supportActionBar?.title = "CheckBox"
     }
-
-    fun onCheckBoxClicked(view: View) {
-        if (view !is CheckBox) return
-
-        val snackbar = Snackbar.make(view, "Checked state is ${view.isChecked}", 250)
-        snackbar.show()
-    }
 }
