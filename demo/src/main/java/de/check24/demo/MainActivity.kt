@@ -24,6 +24,8 @@ import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivit
 import de.check24.demo.features.password.numeric.ComposableNumericPasswordActivity
 import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityToggleActivity
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
+import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
+import de.check24.demo.features.phone.ComposablePhoneTextActivity
 import de.check24.demo.features.text.AndroidUITextActivity
 import de.check24.demo.features.text.ComposableTextActivity
 import de.check24.demo.ui.theme.DemoTheme
@@ -77,6 +79,14 @@ private fun Menu() {
                 composeActivity = ComposableNumericPasswordActivity::class.java,
                 androidUIActivity = AndroidUINumericPasswordActivity::class.java,
                 headline = "Password (Numeric)"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposablePhoneTextActivity::class.java,
+                androidUIActivity = AndroidUIPhoneTextActivity::class.java,
+                headline = "Phone Number"
             )
         }
     }

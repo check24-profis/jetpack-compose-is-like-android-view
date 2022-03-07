@@ -1,13 +1,16 @@
 &lt;com.google.android.material.textfield.TextInputLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:hint="Your Label"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     app:placeholderText="Your Placeholder"&gt;
 
     &lt;com.google.android.material.textfield.TextInputEditText
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Your Label"
-        android:text="012345678900"
-        android:maxLines="1"
-        android:inputType="phone" /&gt;
+        android:inputType="phone"
+        android:maxLines="1" /&gt;
 &lt;/com.google.android.material.textfield.TextInputLayout&gt;

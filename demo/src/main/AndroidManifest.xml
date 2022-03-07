@@ -55,7 +55,7 @@
             android:name=".features.password.visibility.ComposablePasswordVisibilityToggleActivity"
             android:exported="false" />
 
-        <!-- Password numeric-->
+        <!-- Password numeric -->
 
         <activity
             android:name=".features.password.numeric.AndroidUINumericPasswordActivity"
@@ -64,6 +64,17 @@
 
         <activity
             android:name=".features.password.numeric.ComposableNumericPasswordActivity"
+            android:exported="false" />
+
+        <!-- Phone Number -->
+
+        <activity
+            android:name=".features.phone.AndroidUIPhoneTextActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.phone.ComposablePhoneTextActivity"
             android:exported="false" />
 
     </application>
