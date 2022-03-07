@@ -6,14 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -24,8 +23,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.google.android.material.datepicker.MaterialDatePicker
 import de.check24.demo.ui.theme.DemoTheme
-import java.text.SimpleDateFormat
-import java.util.*
 
 class ComposableDateActivity : AppCompatActivity() {
 
@@ -33,52 +30,29 @@ class ComposableDateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DemoTheme {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = {
-                                Text(text = "Date")
-                            })
-                    }, content = {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Date()
-                        }
-                    }
-                )
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    Date()
+                }
             }
         }
+        supportActionBar?.title = "Date"
     }
 }
 
 @Composable
-private fun Date() {
+fun Date() {
 
     var datePicked: String? by remember {
         mutableStateOf(null)
     }
 
-    val updatedDate = { date: Long? ->
-        datePicked = dateFormatter(date)
+    val updatedDate = { date: String? ->
+        datePicked = date
     }
 
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-    ) {
-        DatePickerView(datePicked, updatedDate)
-    }
-
-}
-
-@Composable
-fun DatePickerView(
-    datePicked: String?,
-    updatedDate: (date: Long?) -> Unit,
-) {
     val activity = LocalContext.current as AppCompatActivity
 
     Box(
@@ -126,30 +100,19 @@ fun DatePickerView(
                     },
                 tint = MaterialTheme.colors.onSurface
             )
-
         }
     }
 }
 
 private fun showDatePicker(
     activity: AppCompatActivity,
-    updatedDate: (Long?) -> Unit
+    updatedDate: (String?) -> Unit
 ) {
     val picker = MaterialDatePicker.Builder.datePicker().build()
     picker.show(activity.supportFragmentManager, picker.toString())
     picker.addOnPositiveButtonClickListener {
-        updatedDate(it)
+        updatedDate(picker.headerText)
     }
-}
-
-fun dateFormatter(milliseconds: Long?): String? {
-    milliseconds?.let {
-        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.US)
-        val calendar: Calendar = Calendar.getInstance()
-        calendar.timeInMillis = it
-        return formatter.format(calendar.time)
-    }
-    return null
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
