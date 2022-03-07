@@ -99,6 +99,17 @@
             android:name=".features.button.ComposableCheckBoxActivity"
             android:exported="false" />
 
+        <!-- ImageButton -->
+
+        <activity
+            android:name=".features.button.AndroidUIImageButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.ComposableImageButtonActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
