@@ -45,9 +45,7 @@ class ComposableDateActivity : AppCompatActivity() {
 @Composable
 fun Date() {
 
-    var datePicked: String? by remember {
-        mutableStateOf(null)
-    }
+    var datePicked: String? = ""
 
     val updatedDate = { date: String? ->
         datePicked = date
