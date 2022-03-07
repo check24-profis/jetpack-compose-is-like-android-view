@@ -110,17 +110,16 @@
             android:name=".features.button.ComposableCheckBoxActivity"
             android:exported="false" />
 
-        <!-- Switch -->
+        <!-- ImageButton -->
 
         <activity
-            android:name=".features.switch.AndroidUISwitchActivity"
+            android:name=".features.button.AndroidUIImageButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.switch.ComposableSwitchActivity"
-            android:exported="false"
-            android:theme="@style/DemoMaterial" />
+            android:name=".features.button.ComposableImageButtonActivity"
+            android:exported="false" />
 
     </application>
 
