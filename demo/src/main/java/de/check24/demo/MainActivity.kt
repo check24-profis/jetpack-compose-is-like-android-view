@@ -90,6 +90,7 @@ private fun Menu() {
                 headline = "Password with visibility toggle"
             )
         }
+
         Row {
             CompareUIItem(
                 composeActivity = ComposableNumericPasswordActivity::class.java,
