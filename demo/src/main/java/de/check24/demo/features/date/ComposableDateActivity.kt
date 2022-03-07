@@ -5,14 +5,23 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -45,9 +54,10 @@ class ComposableDateActivity : AppCompatActivity() {
 @Composable
 fun Date() {
 
-    var datePicked: String? = ""
+    var datePicked: String by remember {
+        mutableStateOf("Date")}
 
-    val updatedDate = { date: String? ->
+    val updatedDate = { date: String ->
         datePicked = date
     }
 
@@ -55,7 +65,6 @@ fun Date() {
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
             .wrapContentSize(Alignment.TopStart)
             .padding(top = 10.dp)
             .border(0.5.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.5f))
@@ -104,7 +113,7 @@ fun Date() {
 
 private fun showDatePicker(
     activity: AppCompatActivity,
-    updatedDate: (String?) -> Unit
+    updatedDate: (String) -> Unit
 ) {
     val picker = MaterialDatePicker.Builder.datePicker().build()
     picker.show(activity.supportFragmentManager, picker.toString())
