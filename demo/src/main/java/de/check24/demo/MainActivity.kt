@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
+import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
@@ -111,6 +113,14 @@ private fun Menu() {
                 composeActivity = ComposablePhoneTextActivity::class.java,
                 androidUIActivity = AndroidUIPhoneTextActivity::class.java,
                 headline = "Phone Number"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableCheckBoxActivity::class.java,
+                androidUIActivity = AndroidUICheckBoxActivity::class.java,
+                headline = "CheckBox"
             )
         }
 
