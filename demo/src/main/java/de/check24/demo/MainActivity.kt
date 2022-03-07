@@ -30,7 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
@@ -125,6 +127,14 @@ private fun Menu() {
                 composeActivity = ComposableCheckBoxActivity::class.java,
                 androidUIActivity = AndroidUICheckBoxActivity::class.java,
                 headline = "CheckBox"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableImageButtonActivity::class.java,
+                androidUIActivity = AndroidUIImageButtonActivity::class.java,
+                headline = "ImageButton"
             )
         }
 
