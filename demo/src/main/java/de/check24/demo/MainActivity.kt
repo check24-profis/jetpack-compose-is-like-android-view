@@ -27,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
+import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
@@ -73,7 +75,6 @@ private fun Menu() {
             )
         }
 
-
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordActivity::class.java,
@@ -81,6 +82,7 @@ private fun Menu() {
                 headline = "Password"
             )
         }
+
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
@@ -88,6 +90,7 @@ private fun Menu() {
                 headline = "Password with visibility toggle"
             )
         }
+
         Row {
             CompareUIItem(
                 composeActivity = ComposableNumericPasswordActivity::class.java,
@@ -109,6 +112,14 @@ private fun Menu() {
                 composeActivity = ComposablePhoneTextActivity::class.java,
                 androidUIActivity = AndroidUIPhoneTextActivity::class.java,
                 headline = "Phone Number"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableCheckBoxActivity::class.java,
+                androidUIActivity = AndroidUICheckBoxActivity::class.java,
+                headline = "CheckBox"
             )
         }
     }
