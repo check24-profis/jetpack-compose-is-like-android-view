@@ -103,7 +103,7 @@ private fun PasswordVisibilityToggle() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun PasswordPreview() {
+private fun TogglePasswordPreview() {
     DemoTheme {
         PasswordVisibilityToggle()
     }

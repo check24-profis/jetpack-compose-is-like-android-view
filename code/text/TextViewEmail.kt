@@ -24,6 +24,7 @@ fun Email() {
             keyboardType = KeyboardType.Email,
             imeAction = ImeAction.Done
         ),
-        keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()} )
+        keyboardActions = KeyboardActions(
+            onDone = {keyboardController?.hide()} )
     )
 }
