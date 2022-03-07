@@ -33,6 +33,10 @@ import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
+import de.check24.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity
+import de.check24.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
+import de.check24.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
+import de.check24.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
@@ -133,6 +137,22 @@ private fun Menu() {
                 composeActivity = ComposableBarrierActivity::class.java,
                 androidUIActivity = AndroidUIBarrierActivity::class.java,
                 headline = "Constraint Layout (Barrier)"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableVerticalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIVerticalGuidelineActivity::class.java,
+                headline = "Guideline Vertical"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableHorizontalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
+                headline = "Guideline Horizontal"
             )
         }
     }
