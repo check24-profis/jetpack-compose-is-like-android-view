@@ -77,6 +77,17 @@
             android:name=".features.phone.ComposablePhoneTextActivity"
             android:exported="false" />
 
+        <!-- Email-->
+
+        <activity
+            android:name=".features.email.AndroidUIEmailActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.email.ComposableEmailActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,6 +45,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Add [CompareUIItem] for every section here
+ */
 @Composable
 private fun Menu() {
     Column {
@@ -92,6 +93,13 @@ private fun Menu() {
     }
 }
 
+/**
+ * UI Item to display a new compare section between Jetpack Compose and AndroidUI
+ *
+ * @param composeActivity the activity which handles the composable
+ * @param androidUIActivity the activity which handles the AndroidUI implementation
+ * @param headline a title for this section
+ */
 @Composable
 private fun <T, P : Activity> CompareUIItem(
     composeActivity: Class<T>,
@@ -152,6 +160,10 @@ private fun MenuPreview() {
 @Composable
 private fun GenericItemPreview() {
     DemoTheme {
-        CompareUIItem(ComposableTextActivity::class.java, ComposableTextActivity::class.java, "Test")
+        CompareUIItem(
+            ComposableTextActivity::class.java,
+            AndroidUITextActivity::class.java,
+            "Test"
+        )
     }
 }
