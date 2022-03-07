@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -20,7 +21,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -62,9 +65,11 @@ class ComposablePasswordActivity : ComponentActivity() {
 }
 
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun Password() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
+    val keyboardController = LocalSoftwareKeyboardController.current
     TextField(
         value = text,
         onValueChange = {
@@ -84,6 +89,8 @@ private fun Password() {
             keyboardType = KeyboardType.Password,
             imeAction = ImeAction.Done
         ),
+        keyboardActions = KeyboardActions(
+            onDone = { keyboardController?.hide() }),
         visualTransformation = PasswordVisualTransformation()
     )
 }

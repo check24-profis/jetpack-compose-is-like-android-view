@@ -1,6 +1,8 @@
-Composable
-fun Password() {
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+private fun Password() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
+    val keyboardController = LocalSoftwareKeyboardController.current
     TextField(
         value = text,
         onValueChange = {
@@ -17,8 +19,11 @@ fun Password() {
             Text(text = "Your Placeholder/Hint")
         },
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
         ),
+        keyboardActions = KeyboardActions(
+            onDone = { keyboardController?.hide() }),
         visualTransformation = PasswordVisualTransformation()
     )
 }

@@ -1,6 +1,8 @@
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun NumberPassword() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
+    val keyboardController = LocalSoftwareKeyboardController.current
     TextField(
         value = text,
         onValueChange = {
@@ -17,6 +19,8 @@ fun NumberPassword() {
             keyboardType = KeyboardType.NumberPassword,
             imeAction = ImeAction.Done
         ),
+        keyboardActions = KeyboardActions(
+            onDone = { keyboardController?.hide() }),
         visualTransformation = PasswordVisualTransformation()
     )
 }
