@@ -51,6 +51,8 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.demo.features.switch.AndroidUISwitchActivity
+import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
 import de.check24.demo.features.text.ComposableTextActivity
 import de.check24.demo.ui.theme.DemoTheme
@@ -156,6 +158,14 @@ private fun Menu() {
                 composeActivity = ComposableBarrierActivity::class.java,
                 androidUIActivity = AndroidUIBarrierActivity::class.java,
                 headline = "Constraint Layout (Barrier)"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableSwitchActivity::class.java,
+                androidUIActivity = AndroidUISwitchActivity::class.java,
+                headline = "Switch"
             )
         }
 
