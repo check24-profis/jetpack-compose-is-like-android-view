@@ -53,7 +53,7 @@ class ComposableImageButtonActivity : ComponentActivity() {
 @Composable
 private fun ImageButton() {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {},
     ) {
         Icon(
             imageVector = Icons.Rounded.Star,
