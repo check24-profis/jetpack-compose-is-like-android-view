@@ -36,14 +36,14 @@ class ComposableTextActivity : ComponentActivity() {
                         topBar = {
                             TopAppBar(
                                 title = {
-                                    Text(text = "TextView")
+                                    Text(text = "Text View")
                                 })
                         }, content = {
                             Box(
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center
                             ) {
-                                TextView()
+                                Text()
                             }
                         }
                     )
@@ -54,7 +54,7 @@ class ComposableTextActivity : ComponentActivity() {
 }
 
 @Composable
-private fun TextView() {
+private fun Text() {
     Text(
         text = "Hello World",
         maxLines = 1,
@@ -68,8 +68,8 @@ private fun TextView() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun DefaultPreview() {
+private fun TextPreview() {
     DemoTheme {
-        TextView()
+        Text()
     }
 }
