@@ -1,0 +1,18 @@
+class YourClass : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        textViewDate = findViewById(R.id.TextViewDate)
+        textViewDate.setOnClickListener {
+        showDatePicker()
+        }
+    }
+
+    private fun showDatePicker() {
+    val materialDatePicker = MaterialDatePicker.Builder.datePicker()
+    .build()
+
+    materialDatePicker.addOnPositiveButtonClickListener {
+    textViewDate.text = materialDatePicker.headerText
+    }
+    materialDatePicker.show(supportFragmentManager, "TAG")
+    }
+}

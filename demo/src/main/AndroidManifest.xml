@@ -121,6 +121,18 @@
             android:name=".features.button.ComposableImageButtonActivity"
             android:exported="false" />
 
+        <!-- Date -->
+
+        <activity
+            android:name=".features.date.AndroidUIDateActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.date.ComposableDateActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
     </application>
 
 </manifest>
