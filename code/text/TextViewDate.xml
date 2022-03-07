@@ -1,4 +1,4 @@
-class YourClass : AppCompatActivity() {
+class YourActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         textViewDate = findViewById(R.id.TextViewDate)
         textViewDate.setOnClickListener {
