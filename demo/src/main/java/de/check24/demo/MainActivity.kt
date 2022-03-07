@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -29,6 +31,8 @@ import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
+import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
@@ -65,7 +69,9 @@ class MainActivity : ComponentActivity() {
  */
 @Composable
 private fun Menu() {
-    Column {
+    Column(
+        modifier = Modifier.verticalScroll(rememberScrollState())
+    ) {
 
         Row {
             CompareUIItem(
@@ -75,6 +81,7 @@ private fun Menu() {
             )
         }
 
+
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordActivity::class.java,
@@ -82,7 +89,6 @@ private fun Menu() {
                 headline = "Password"
             )
         }
-
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
@@ -90,7 +96,6 @@ private fun Menu() {
                 headline = "Password with visibility toggle"
             )
         }
-
         Row {
             CompareUIItem(
                 composeActivity = ComposableNumericPasswordActivity::class.java,
@@ -120,6 +125,14 @@ private fun Menu() {
                 composeActivity = ComposableCheckBoxActivity::class.java,
                 androidUIActivity = AndroidUICheckBoxActivity::class.java,
                 headline = "CheckBox"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableBarrierActivity::class.java,
+                androidUIActivity = AndroidUIBarrierActivity::class.java,
+                headline = "Constraint Layout (Barrier)"
             )
         }
     }
