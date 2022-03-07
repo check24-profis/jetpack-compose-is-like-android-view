@@ -5,6 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
+import de.check24.demo.features.email.AndroidUIEmailActivity
+import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -80,6 +93,14 @@ private fun Menu() {
                 composeActivity = ComposableNumericPasswordActivity::class.java,
                 androidUIActivity = AndroidUINumericPasswordActivity::class.java,
                 headline = "Password (Numeric)"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableEmailActivity::class.java,
+                androidUIActivity = AndroidUIEmailActivity::class.java,
+                headline = "Email"
             )
         }
 
