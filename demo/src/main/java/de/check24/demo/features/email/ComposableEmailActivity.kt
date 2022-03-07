@@ -1,4 +1,4 @@
-package de.check24.demo.features.password
+package de.check24.demo.features.email
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -26,14 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.check24.demo.ui.theme.DemoTheme
 
-class ComposablePasswordActivity : ComponentActivity() {
+class ComposableEmailActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,29 +46,31 @@ class ComposablePasswordActivity : ComponentActivity() {
                         topBar = {
                             TopAppBar(
                                 title = {
-                                    Text(text = "Password")
+                                    Text(text = "Email")
                                 })
                         }, content = {
                             Box(
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Password()
+                                Email()
                             }
                         }
                     )
                 }
             }
         }
+
     }
 }
 
-
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-private fun Password() {
+fun Email() {
+
     var text by remember { mutableStateOf(TextFieldValue("")) }
     val keyboardController = LocalSoftwareKeyboardController.current
+
     TextField(
         value = text,
         onValueChange = {
@@ -86,19 +87,17 @@ private fun Password() {
             Text(text = "Your Placeholder/Hint")
         },
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password,
+            keyboardType = KeyboardType.Email,
             imeAction = ImeAction.Done
         ),
-        keyboardActions = KeyboardActions(
-            onDone = { keyboardController?.hide() }),
-        visualTransformation = PasswordVisualTransformation()
+        keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()} )
     )
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun PasswordPreview() {
+private fun EmailPreview() {
     DemoTheme {
-        Password()
+        Email()
     }
 }

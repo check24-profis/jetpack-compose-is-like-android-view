@@ -55,17 +55,60 @@
             android:name=".features.password.visibility.ComposablePasswordVisibilityToggleActivity"
             android:exported="false" />
 
-        <!-- Date -->
+        <!-- Password numeric -->
 
         <activity
-            android:name=".features.date.AndroidUIDateActivity"
+            android:name=".features.password.numeric.AndroidUINumericPasswordActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.date.ComposableDateActivity"
+            android:name=".features.password.numeric.ComposableNumericPasswordActivity"
+            android:exported="false" />
+
+        <!-- Phone Number -->
+
+        <activity
+            android:name=".features.phone.AndroidUIPhoneTextActivity"
             android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.phone.ComposablePhoneTextActivity"
+            android:exported="false" />
+
+        <!-- Email-->
+
+        <activity
+            android:name=".features.email.AndroidUIEmailActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.email.ComposableEmailActivity"
+            android:exported="false" />
+
+        <!-- Barrier -->
+
+        <activity
+            android:name=".features.constraintlayout.barrier.AndroidUIBarrierActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.barrier.ComposableBarrierActivity"
+            android:exported="false" />
+
+        <!-- CheckBox -->
+
+        <activity
+            android:name=".features.button.AndroidUICheckBoxActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.ComposableCheckBoxActivity"
+            android:exported="false" />
 
     </application>
 
