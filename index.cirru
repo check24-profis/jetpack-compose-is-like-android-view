@@ -58,6 +58,8 @@ html
       .case (.name "Chip Group") $ .pair
       .case (.name "Chip") $ .pair
       .case (.name "Check Box") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/CheckBox.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/CheckBox.xml)
       .case (.name "Radio Group") $ .pair
       .case (.name "Radio Button") $ .pair
       .case (.name "Toggle Button") $ .pair
