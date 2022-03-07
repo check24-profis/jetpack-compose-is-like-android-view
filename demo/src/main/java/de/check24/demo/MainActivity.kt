@@ -18,6 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
+import de.check24.demo.features.date.AndroidUIDateActivity
+import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityToggleActivity
@@ -55,7 +57,6 @@ private fun Menu() {
             )
         }
 
-
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordActivity::class.java,
@@ -63,12 +64,20 @@ private fun Menu() {
                 headline = "Password"
             )
         }
+
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
                 androidUIActivity = AndroidUIPasswordVisibilityToggleActivity::class.java,
                 headline = "Password with visibility toggle"
             )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableDateActivity::class.java,
+                androidUIActivity = AndroidUIDateActivity::class.java,
+                headline = "Date")
         }
     }
 }
@@ -133,6 +142,10 @@ private fun MenuPreview() {
 @Composable
 private fun GenericItemPreview() {
     DemoTheme {
-        CompareUIItem(ComposableTextActivity::class.java, ComposableTextActivity::class.java, "Test")
+        CompareUIItem(
+            ComposableTextActivity::class.java,
+            ComposableTextActivity::class.java,
+            "Test"
+        )
     }
 }

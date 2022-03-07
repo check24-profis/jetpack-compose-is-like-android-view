@@ -46,6 +46,8 @@ html
       .case (.name "Multiline Text") $ .pair
       .case (.name "Time") $ .pair
       .case (.name "Date") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewDate.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewDate.xml)
       .case (.name "Number") $ .pair
       .case (.name "Number (Signed)") $ .pair
       .case (.name "Number (Decimal)") $ .pair
