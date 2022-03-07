@@ -1,6 +1,7 @@
 package de.check24.demo.features.button
 
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.rounded.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import de.check24.demo.ui.theme.DemoTheme
 
 class ComposableImageButtonActivity : ComponentActivity() {
@@ -59,5 +61,13 @@ private fun ImageButton() {
             imageVector = Icons.Rounded.Star,
             contentDescription = "Image of Button"
         )
+    }
+}
+
+@Preview
+@Composable
+private fun ImageButtonPreview() {
+    DemoTheme {
+        ImageButton()
     }
 }
