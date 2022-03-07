@@ -1,12 +1,12 @@
-package de.check24.demo.features.password
+package de.check24.demo.features.phone
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -26,14 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import de.check24.demo.ui.theme.DemoTheme
 
-class ComposablePasswordActivity : ComponentActivity() {
+class ComposablePhoneTextActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,14 +45,14 @@ class ComposablePasswordActivity : ComponentActivity() {
                         topBar = {
                             TopAppBar(
                                 title = {
-                                    Text(text = "Password")
+                                    Text(text = "Phone Number")
                                 })
                         }, content = {
                             Box(
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Password()
+                                PhoneNumber()
                             }
                         }
                     )
@@ -64,10 +62,9 @@ class ComposablePasswordActivity : ComponentActivity() {
     }
 }
 
-
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-private fun Password() {
+private fun PhoneNumber() {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     val keyboardController = LocalSoftwareKeyboardController.current
     TextField(
@@ -75,30 +72,25 @@ private fun Password() {
         onValueChange = {
             text = it
         },
-        modifier = Modifier
-            .requiredWidth(250.dp)
-            .wrapContentHeight(),
         maxLines = 1,
-        label = {
-            Text(text = "Your Label")
-        },
-        placeholder = {
-            Text(text = "Your Placeholder/Hint")
-        },
+        modifier = Modifier
+            .wrapContentWidth()
+            .wrapContentHeight(),
+        label = { Text(text = "Your Label") },
+        placeholder = { Text(text = "Your Placeholder/Hint") },
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password,
+            keyboardType = KeyboardType.Phone,
             imeAction = ImeAction.Done
         ),
         keyboardActions = KeyboardActions(
-            onDone = { keyboardController?.hide() }),
-        visualTransformation = PasswordVisualTransformation()
+            onDone = { keyboardController?.hide() })
     )
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun PasswordPreview() {
+private fun DefaultPreview() {
     DemoTheme {
-        Password()
+        PhoneNumber()
     }
 }

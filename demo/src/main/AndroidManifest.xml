@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.check24.demo">
 
     <application
@@ -32,14 +31,14 @@
         <activity
             android:name=".features.text.AndroidUITextActivity"
             android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:theme="@style/DemoMaterial" />
 
         <!-- Plain Password -->
 
         <activity
             android:name=".features.password.AndroidUIPasswordActivity"
             android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:theme="@style/DemoMaterial" />
 
         <activity
             android:name=".features.password.ComposablePasswordActivity"
@@ -50,10 +49,43 @@
         <activity
             android:name=".features.password.visibility.AndroidUIPasswordVisibilityToggleActivity"
             android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:theme="@style/DemoMaterial" />
 
         <activity
             android:name=".features.password.visibility.ComposablePasswordVisibilityToggleActivity"
+            android:exported="false" />
+
+        <!-- Password numeric -->
+
+        <activity
+            android:name=".features.password.numeric.AndroidUINumericPasswordActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.password.numeric.ComposableNumericPasswordActivity"
+            android:exported="false" />
+
+        <!-- Phone Number -->
+
+        <activity
+            android:name=".features.phone.AndroidUIPhoneTextActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.phone.ComposablePhoneTextActivity"
+            android:exported="false" />
+
+        <!-- Email-->
+
+        <activity
+            android:name=".features.email.AndroidUIEmailActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.email.ComposableEmailActivity"
             android:exported="false" />
 
     </application>
