@@ -1,6 +1,8 @@
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun PhoneNumber() {
     var text by remember { mutableStateOf(TextFieldValue("012345678900")) }
+    val keyboardController = LocalSoftwareKeyboardController.current
     TextField(
         value = text,
         onValueChange = {
@@ -16,5 +18,7 @@ fun PhoneNumber() {
             keyboardType = KeyboardType.Phone,
             imeAction = ImeAction.Done
         ),
+        keyboardActions = KeyboardActions(
+            onDone = { keyboardController?.hide() })
     )
 }
