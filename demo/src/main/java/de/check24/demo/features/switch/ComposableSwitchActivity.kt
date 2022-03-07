@@ -57,7 +57,7 @@ private fun Switch() {
     Column(
         modifier = Modifier.fillMaxWidth().fillMaxHeight(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Arrangement.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val checkedState = remember { mutableStateOf(false) }
         Switch(
