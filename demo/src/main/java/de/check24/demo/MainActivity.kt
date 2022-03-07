@@ -5,8 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
+import de.check24.demo.features.email.AndroidUIEmailActivity
+import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -45,6 +56,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Add [CompareUIItem] for every section here
+ */
 @Composable
 private fun Menu() {
     Column {
@@ -79,9 +93,23 @@ private fun Menu() {
                 headline = "Password (Numeric)"
             )
         }
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableEmailActivity::class.java,
+                androidUIActivity = AndroidUIEmailActivity::class.java,
+                headline = "Email"
+            )
+        }
     }
 }
 
+/**
+ * UI Item to display a new compare section between Jetpack Compose and AndroidUI
+ *
+ * @param composeActivity the activity which handles the composable
+ * @param androidUIActivity the activity which handles the AndroidUI implementation
+ * @param headline a title for this section
+ */
 @Composable
 private fun <T, P : Activity> CompareUIItem(
     composeActivity: Class<T>,
@@ -142,6 +170,10 @@ private fun MenuPreview() {
 @Composable
 private fun GenericItemPreview() {
     DemoTheme {
-        CompareUIItem(ComposableTextActivity::class.java, ComposableTextActivity::class.java, "Test")
+        CompareUIItem(
+            ComposableTextActivity::class.java,
+            AndroidUITextActivity::class.java,
+            "Test"
+        )
     }
 }
