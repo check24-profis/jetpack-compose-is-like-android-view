@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import de.check24.demo.R
 
 class AndroidUICheckBoxActivity : AppCompatActivity() {
@@ -16,5 +17,7 @@ class AndroidUICheckBoxActivity : AppCompatActivity() {
     fun onCheckBoxClicked(view: View) {
         if (view !is CheckBox) return
 
+        val snackbar = Snackbar.make(view, "Checked state is ${view.isChecked}", 250)
+        snackbar.show()
     }
 }
