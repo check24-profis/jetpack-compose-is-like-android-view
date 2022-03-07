@@ -82,7 +82,7 @@ fun Date() {
             val (label, iconView) = createRefs()
 
             Text(
-                text = datePicked ?: "Date Picker",
+                text = datePicked,
                 color = MaterialTheme.colors.onSurface,
                 modifier = Modifier
                     .fillMaxWidth()

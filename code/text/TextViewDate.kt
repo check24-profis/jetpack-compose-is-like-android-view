@@ -1,11 +1,10 @@
 @Composable
 fun Date() {
 
-    var datePicked: String? by remember {
-        mutableStateOf(null)
-    }
+    var datePicked: String by remember {
+        mutableStateOf("Date")}
 
-    val updatedDate = { date: String? ->
+    val updatedDate = { date: String ->
         datePicked = date
     }
 
@@ -13,7 +12,6 @@ fun Date() {
 
     Box(
         modifier = Modifier
-            .fillMaxSize()
             .wrapContentSize(Alignment.TopStart)
             .padding(top = 10.dp)
             .border(0.5.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.5f))
@@ -31,7 +29,7 @@ fun Date() {
             val (label, iconView) = createRefs()
 
             Text(
-                text = datePicked ?: "Date Picker",
+                text = datePicked,
                 color = MaterialTheme.colors.onSurface,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -62,7 +60,7 @@ fun Date() {
 
 private fun showDatePicker(
     activity: AppCompatActivity,
-    updatedDate: (String?) -> Unit
+    updatedDate: (String) -> Unit
 ) {
     val picker = MaterialDatePicker.Builder.datePicker().build()
     picker.show(activity.supportFragmentManager, picker.toString())
