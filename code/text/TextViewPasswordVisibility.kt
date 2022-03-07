@@ -1,8 +1,10 @@
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun PasswordVisibilityToggle() {
+private fun PasswordVisibilityToggle() {
 
     var text by remember { mutableStateOf(TextFieldValue("")) }
     var passwordVisibility by remember { mutableStateOf(false) }
+    val keyboardController = LocalSoftwareKeyboardController.current
 
     TextField(
         value = text,
@@ -15,7 +17,12 @@ fun PasswordVisibilityToggle() {
             .wrapContentHeight(),
         label = { Text(text = "Your Label") },
         placeholder = { Text(text = "Your Placeholder/Hint") },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password,
+            imeAction = ImeAction.Done
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = { keyboardController?.hide() }),
         visualTransformation = if (passwordVisibility) {
             VisualTransformation.None
         } else {

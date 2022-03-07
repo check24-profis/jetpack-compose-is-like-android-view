@@ -18,12 +18,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
-import de.check24.demo.features.date.AndroidUIDateActivity
-import de.check24.demo.features.date.ComposableDateActivity
+import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.email.AndroidUIEmailActivity
+import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
+import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
+import de.check24.demo.features.password.numeric.ComposableNumericPasswordActivity
 import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityToggleActivity
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
+import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
+import de.check24.demo.features.phone.ComposablePhoneTextActivity
 import de.check24.demo.features.text.AndroidUITextActivity
 import de.check24.demo.features.text.ComposableTextActivity
 import de.check24.demo.ui.theme.DemoTheme
@@ -45,6 +51,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Add [CompareUIItem] for every section here
+ */
 @Composable
 private fun Menu() {
     Column {
@@ -75,6 +84,38 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
+                composeActivity = ComposableNumericPasswordActivity::class.java,
+                androidUIActivity = AndroidUINumericPasswordActivity::class.java,
+                headline = "Password (Numeric)"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableEmailActivity::class.java,
+                androidUIActivity = AndroidUIEmailActivity::class.java,
+                headline = "Email"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposablePhoneTextActivity::class.java,
+                androidUIActivity = AndroidUIPhoneTextActivity::class.java,
+                headline = "Phone Number"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableCheckBoxActivity::class.java,
+                androidUIActivity = AndroidUICheckBoxActivity::class.java,
+                headline = "CheckBox"
+            )
+        }
+
+        Row {
+            CompareUIItem(
                 composeActivity = ComposableDateActivity::class.java,
                 androidUIActivity = AndroidUIDateActivity::class.java,
                 headline = "Date")
@@ -82,6 +123,13 @@ private fun Menu() {
     }
 }
 
+/**
+ * UI Item to display a new compare section between Jetpack Compose and AndroidUI
+ *
+ * @param composeActivity the activity which handles the composable
+ * @param androidUIActivity the activity which handles the AndroidUI implementation
+ * @param headline a title for this section
+ */
 @Composable
 private fun <T, P : Activity> CompareUIItem(
     composeActivity: Class<T>,
@@ -144,7 +192,7 @@ private fun GenericItemPreview() {
     DemoTheme {
         CompareUIItem(
             ComposableTextActivity::class.java,
-            ComposableTextActivity::class.java,
+            AndroidUITextActivity::class.java,
             "Test"
         )
     }
