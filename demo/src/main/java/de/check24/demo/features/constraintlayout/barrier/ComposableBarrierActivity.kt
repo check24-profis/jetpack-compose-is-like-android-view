@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -29,21 +27,16 @@ class ComposableBarrierActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DemoTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Scaffold(
-                        topBar = {
-                            TopAppBar(
-                                title = {
-                                    Text(text = "Constraint Layout (Barrier)")
-                                })
-                        }, content = {
-                            ConstraintLayoutBarrier()
-                        }
-                    )
-                }
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(text = "Constraint Layout (Barrier)")
+                            })
+                    }, content = {
+                        ConstraintLayoutBarrier()
+                    }
+                )
             }
         }
     }
@@ -66,7 +59,7 @@ private fun ConstraintLayoutBarrier() {
                 }
                 .height(200.dp)
                 .wrapContentWidth()
-                    // background color to see why button is aligned the way it is
+                // background color to see why button is aligned the way it is
                 .background(color = Color.Cyan)
         )
 
