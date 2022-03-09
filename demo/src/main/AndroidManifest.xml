@@ -178,6 +178,17 @@
             android:name=".features.constraintlayout.ComposableConstraintLayoutActivity"
             android:exported="false" />
 
+        <!-- Google Maps -->
+
+        <activity
+            android:name=".features.custom.AndroidUIGoogleMapActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.custom.ComposableGoogleMapActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

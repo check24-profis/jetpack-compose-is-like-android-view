@@ -38,6 +38,8 @@ import de.check24.demo.features.constraintlayout.guideline.AndroidUIHorizontalGu
 import de.check24.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
+import de.check24.demo.features.custom.AndroidUIGoogleMapActivity
+import de.check24.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.demo.features.date.AndroidUIDateActivity
 import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
@@ -185,6 +187,14 @@ private fun Menu() {
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
                 androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
                 headline = "Guideline Horizontal"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableGoogleMapActivity::class.java,
+                androidUIActivity = AndroidUIGoogleMapActivity::class.java,
+                headline = "Google Maps"
             )
         }
     }
