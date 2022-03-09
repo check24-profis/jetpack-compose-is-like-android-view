@@ -8,15 +8,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,14 +32,16 @@ import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.button.ComposableFloatingActionButton
 import de.check24.demo.features.button.ComposableImageButtonActivity
-import de.check24.demo.features.date.AndroidUIDateActivity
-import de.check24.demo.features.date.ComposableDateActivity
+import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
+import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
 import de.check24.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity
 import de.check24.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
+import de.check24.demo.features.date.AndroidUIDateActivity
+import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
@@ -65,12 +64,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DemoTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Menu()
-                }
+                Menu()
             }
         }
     }
@@ -84,6 +78,8 @@ private fun Menu() {
     Column(
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
+
+        // region Text
 
         Row {
             CompareUIItem(
@@ -134,6 +130,18 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
+                composeActivity = ComposableDateActivity::class.java,
+                androidUIActivity = AndroidUIDateActivity::class.java,
+                headline = "Date"
+            )
+        }
+
+        // endregion
+
+        // region Button
+
+        Row {
+            CompareUIItem(
                 composeActivity = ComposableCheckBoxActivity::class.java,
                 androidUIActivity = AndroidUICheckBoxActivity::class.java,
                 headline = "CheckBox"
@@ -158,17 +166,29 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
-                composeActivity = ComposableBarrierActivity::class.java,
-                androidUIActivity = AndroidUIBarrierActivity::class.java,
-                headline = "Constraint Layout (Barrier)"
+                composeActivity = ComposableSwitchActivity::class.java,
+                androidUIActivity = AndroidUISwitchActivity::class.java,
+                headline = "Switch"
+            )
+        }
+
+        // endregion
+
+        // region Layout
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableConstraintLayoutActivity::class.java,
+                androidUIActivity = AndroidUIConstraintLayoutActivity::class.java,
+                headline = "Constraint Layout"
             )
         }
 
         Row {
             CompareUIItem(
-                composeActivity = ComposableSwitchActivity::class.java,
-                androidUIActivity = AndroidUISwitchActivity::class.java,
-                headline = "Switch"
+                composeActivity = ComposableBarrierActivity::class.java,
+                androidUIActivity = AndroidUIBarrierActivity::class.java,
+                headline = "Constraint Layout (Barrier)"
             )
         }
 
@@ -195,6 +215,8 @@ private fun Menu() {
                 headline = "Floating Action Button"
             )
         }
+
+        // endregion
     }
 }
 
