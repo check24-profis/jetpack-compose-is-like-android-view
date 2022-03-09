@@ -1,6 +1,18 @@
 &lt;ImageButton
     android:id="@+id/imageButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:background="?selectableItemBackgroundBorderless"
     android:contentDescription="@string/example_image_button"
     android:onClick="onImageButtonClick"/&gt;
+
+
+// In activity
+val imageView = findViewById<android.widget.ImageButton>(R.id.imageButton)
+
+Glide
+    .with(this)
+    .load(R.drawable.c24logo)
+    .fitCenter()
+    .into(imageView)
+
