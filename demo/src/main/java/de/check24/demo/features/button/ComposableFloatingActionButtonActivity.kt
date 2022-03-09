@@ -33,14 +33,21 @@ class ComposableFloatingActionButtonActivity : ComponentActivity() {
             DemoTheme {
                 Scaffold(
                     floatingActionButton = {
-                        FloatingActionButton(onClick = {}) {
-                            Icon(Icons.Filled.Add, "Floating Action Button")
+                        FloatingActionButton(
+                            onClick = {}
+                        ) {
+                            Icon(
+                                Icons.Filled.Add,
+                                "Floating Action Button"
+                            )
                         }
                     },
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Floating Action Button")
+                                Text(
+                                    text = "Floating Action Button"
+                                )
                             }
                         )
                     }, content = {
@@ -99,9 +106,18 @@ private fun FloatingActionButtonExample() {
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
             },
-            text = { Text(text = "Extended FAB with Icon") },
+            text = {
+                Text(
+                    text = "Extended FAB with Icon"
+                )
+            },
             onClick = { /*your code*/ },
-            icon = { Icon(Icons.Filled.Add, contentDescription = "Floating Action Button") }
+            icon = {
+                Icon(
+                    Icons.Filled.Add,
+                    contentDescription = "Floating Action Button"
+                )
+            }
         )
 
         ExtendedFloatingActionButton(
@@ -110,7 +126,11 @@ private fun FloatingActionButtonExample() {
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
             },
-            text = { Text(text = "Extended FAB") },
+            text = {
+                Text(
+                    text = "Extended FAB"
+                )
+            },
             onClick = { /*your code*/ }
         )
 

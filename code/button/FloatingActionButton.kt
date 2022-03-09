@@ -2,7 +2,7 @@
 private fun FloatingActionButton() {
 
     FloatingActionButton()
-        onClick = { /*your code*/ }
+    onClick = { /*your code*/ }
     ) {
         Icon(
             Icons.Rounded.Add,
@@ -12,12 +12,14 @@ private fun FloatingActionButton() {
 
 /* Or you can use an Extended Floating Action Button */
 
-    @Composable
-    private fun FloatingActionButton() {
-
-        ExtendedFloatingActionButton(
-            text = { Text(text = "Extended FAB with Icon") },
-            onClick = { /*your code*/ },
-            icon = { Icon(Icons.Filled.Add, contentDescription = "Floating Action Button") }
+    FloatingActionButton(
+        modifier = Modifier.constrainAs(RectangleFAB) { },
+        onClick = { /*your code*/ },
+        shape = RectangleShape
+    ) {
+        Icon(
+            Icons.Rounded.Add,
+            contentDescription = "Floating ActionButton"
         )
     }
+}
