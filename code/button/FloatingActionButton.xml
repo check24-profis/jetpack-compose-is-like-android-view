@@ -1,0 +1,6 @@
+&lt;com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/floatingActionButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_baseline_date_range"
+    android:contentDescription="FloatingActionButton" /&gt;

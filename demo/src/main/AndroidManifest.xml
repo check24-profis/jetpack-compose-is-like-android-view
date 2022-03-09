@@ -167,6 +167,18 @@
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
+        <!-- Floating Action Button -->
+
+        <activity
+            android:name=".features.button.AndroidUIFloatingActionButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.ComposableFloatingActionButton"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
     </application>
 
 </manifest>
