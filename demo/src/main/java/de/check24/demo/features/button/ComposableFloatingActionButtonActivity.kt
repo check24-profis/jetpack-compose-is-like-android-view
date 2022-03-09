@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import de.check24.demo.ui.theme.DemoTheme
 
-class ComposableFloatingActionButton : ComponentActivity() {
+class ComposableFloatingActionButtonActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
