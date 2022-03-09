@@ -129,8 +129,6 @@ private fun FloatingActionButtonExample() {
                 Text(text = "Custom FAB")
             }
         }
-
-
     }
 }
 
