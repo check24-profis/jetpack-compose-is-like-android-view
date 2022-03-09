@@ -50,7 +50,8 @@ class ComposableFloatingActionButton : ComponentActivity() {
                         ) {
                             FloatingActionButtonExample()
                         }
-                    })
+                    }
+                )
             }
         }
     }
