@@ -1,4 +1,0 @@
-&lt;androidx.constraintlayout.widget.Group
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:constraint_referenced_ids="your_id1, your_id2" /&gt;

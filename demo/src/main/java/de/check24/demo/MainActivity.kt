@@ -77,6 +77,8 @@ private fun Menu() {
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
 
+        // region Text
+
         Row {
             CompareUIItem(
                 composeActivity = ComposableTextActivity::class.java,
@@ -125,17 +127,21 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
-                composeActivity = ComposableCheckBoxActivity::class.java,
-                androidUIActivity = AndroidUICheckBoxActivity::class.java,
-                headline = "CheckBox"
-            )
-        }
-
-        Row {
-            CompareUIItem(
                 composeActivity = ComposableDateActivity::class.java,
                 androidUIActivity = AndroidUIDateActivity::class.java,
                 headline = "Date"
+            )
+        }
+
+        // endregion
+
+        // region Button
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableCheckBoxActivity::class.java,
+                androidUIActivity = AndroidUICheckBoxActivity::class.java,
+                headline = "CheckBox"
             )
         }
 
@@ -154,6 +160,10 @@ private fun Menu() {
                 headline = "Switch"
             )
         }
+
+        // endregion
+
+        // region Layout
 
         Row {
             CompareUIItem(
@@ -186,6 +196,8 @@ private fun Menu() {
                 headline = "Guideline Horizontal"
             )
         }
+
+        // endregion
     }
 }
 
