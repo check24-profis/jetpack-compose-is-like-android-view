@@ -7,7 +7,7 @@ import de.check24.demo.R
 class AndroidUIFloatingActionButtonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.floatingactionbutton)
+        setContentView(R.layout.floating_action_button)
         supportActionBar?.title = "Floating Action Button"
     }
 }
