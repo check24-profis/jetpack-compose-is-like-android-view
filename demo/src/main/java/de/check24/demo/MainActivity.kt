@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         var compareItems = mutableListOf<CompareItem>()
-        addItems(compareItems)
+        addItemsToList(compareItems)
 
         setContent {
             DemoTheme {
@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun addItems(compareItems: MutableList<CompareItem>) {
+    private fun addItemsToList(compareItems: MutableList<CompareItem>) {
 
         // region Text
 
