@@ -27,8 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.button.ComposableFloatingActionButton
 import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
@@ -94,6 +96,7 @@ private fun Menu() {
                 headline = "Password"
             )
         }
+
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
@@ -147,6 +150,14 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
+                composeActivity = ComposableDateActivity::class.java,
+                androidUIActivity = AndroidUIDateActivity::class.java,
+                headline = "Date"
+            )
+        }
+
+        Row {
+            CompareUIItem(
                 composeActivity = ComposableImageButtonActivity::class.java,
                 androidUIActivity = AndroidUIImageButtonActivity::class.java,
                 headline = "ImageButton"
@@ -194,6 +205,14 @@ private fun Menu() {
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
                 androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
                 headline = "Guideline Horizontal"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableFloatingActionButton::class.java,
+                androidUIActivity = AndroidUIFloatingActionButtonActivity::class.java,
+                headline = "Floating Action Button"
             )
         }
 
