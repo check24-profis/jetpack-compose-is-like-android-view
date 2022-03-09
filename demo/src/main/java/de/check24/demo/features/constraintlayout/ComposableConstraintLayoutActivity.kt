@@ -95,7 +95,7 @@ private fun ConstraintLayoutExample() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun ConstraintLayoutBarrierPreview() {
+private fun ConstraintLayoutPreview() {
     DemoTheme {
         ConstraintLayoutExample()
     }
