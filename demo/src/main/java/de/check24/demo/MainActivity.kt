@@ -85,7 +85,6 @@ private fun Menu() {
             )
         }
 
-
         Row {
             CompareUIItem(
                 composeActivity = ComposablePasswordActivity::class.java,

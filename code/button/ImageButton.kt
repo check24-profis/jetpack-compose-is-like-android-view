@@ -1,11 +1,19 @@
 @Composable
-private fun ImageButton() {
+fun ImageButton(image: Any?) {
     Button(
-        onClick = { [...] },
+        onClick = {},
+        modifier = Modifier.size(100.dp),
+        shape = CircleShape,
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.White
+        ),
+        elevation = ButtonDefaults.elevation(0.dp, 0.dp)
     ) {
-        Icon(
-            imageVector = Icons.Rounded.Star,
-            contentDescription = "Image of Button"
+        GlideImage(
+            imageModel = image,
+            contentScale = ContentScale.FillWidth,
+            contentDescription = "Image of Button",
+            modifier = Modifier.fillMaxSize()
         )
     }
 }
