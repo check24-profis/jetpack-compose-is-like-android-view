@@ -32,6 +32,11 @@ class ComposableFloatingActionButton : ComponentActivity() {
         setContent {
             DemoTheme {
                 Scaffold(
+                    floatingActionButton = {
+                        FloatingActionButton(onClick = {}) {
+                            Icon(Icons.Filled.Add, "Floating Action Button")
+                        }
+                    },
                     topBar = {
                         TopAppBar(
                             title = {
@@ -54,80 +59,71 @@ class ComposableFloatingActionButton : ComponentActivity() {
 @Composable
 private fun FloatingActionButtonExample() {
 
+    ConstraintLayout(modifier = Modifier.fillMaxSize()) {
 
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(onClick = {}) {
-                Icon(Icons.Filled.Add, "Floating Action Button")
-            }
-        }) {
+        val (iconFAB, RectangleFAB, ExtendedFABWithIcon, ExtendedFAB, customFAB) = createRefs()
 
-        ConstraintLayout(modifier = Modifier.fillMaxSize()) {
-
-            val (iconFAB, RectangleFAB, ExtendedFABWithIcon, ExtendedFAB, customFAB) = createRefs()
-
-            FloatingActionButton(
-                modifier = Modifier.constrainAs(iconFAB) {
-                    top.linkTo(parent.top, margin = 40.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-                onClick = { /*your code*/ }
-            ) {
-                Icon(
-                    Icons.Rounded.Add,
-                    contentDescription = "Floating ActionButton"
-                )
-            }
-
-            FloatingActionButton(
-                modifier = Modifier.constrainAs(RectangleFAB) {
-                    top.linkTo(iconFAB.bottom, margin = 40.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-                onClick = { /*your code*/ },
-                shape = RectangleShape
-            ) {
-                Icon(
-                    Icons.Rounded.Add,
-                    contentDescription = "Floating ActionButton"
-                )
-            }
-
-            ExtendedFloatingActionButton(
-                modifier = Modifier.constrainAs(ExtendedFABWithIcon) {
-                    top.linkTo(RectangleFAB.bottom, margin = 40.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-                text = { Text(text = "Extended FAB with Icon") },
-                onClick = { /*your code*/ },
-                icon = { Icon(Icons.Filled.Add, contentDescription = "Floating Action Button") }
+        FloatingActionButton(
+            modifier = Modifier.constrainAs(iconFAB) {
+                top.linkTo(parent.top, margin = 40.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            },
+            onClick = { /*your code*/ }
+        ) {
+            Icon(
+                Icons.Rounded.Add,
+                contentDescription = "Floating ActionButton"
             )
+        }
 
-            ExtendedFloatingActionButton(
-                modifier = Modifier.constrainAs(ExtendedFAB) {
-                    top.linkTo(ExtendedFABWithIcon.bottom, margin = 40.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-                text = { Text(text = "Extended FAB") },
-                onClick = { /*your code*/ }
+        FloatingActionButton(
+            modifier = Modifier.constrainAs(RectangleFAB) {
+                top.linkTo(iconFAB.bottom, margin = 40.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            },
+            onClick = { /*your code*/ },
+            shape = RectangleShape
+        ) {
+            Icon(
+                Icons.Rounded.Add,
+                contentDescription = "Floating ActionButton"
             )
+        }
 
-            FloatingActionButton(
-                modifier = Modifier.constrainAs(customFAB) {
-                    top.linkTo(ExtendedFAB.bottom, margin = 40.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                },
-                onClick = { /*your code*/ },
-                backgroundColor = Color.DarkGray,
-                contentColor = Color.White
-            ) {
-                Text(text = "Custom FAB")
-            }
+        ExtendedFloatingActionButton(
+            modifier = Modifier.constrainAs(ExtendedFABWithIcon) {
+                top.linkTo(RectangleFAB.bottom, margin = 40.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            },
+            text = { Text(text = "Extended FAB with Icon") },
+            onClick = { /*your code*/ },
+            icon = { Icon(Icons.Filled.Add, contentDescription = "Floating Action Button") }
+        )
+
+        ExtendedFloatingActionButton(
+            modifier = Modifier.constrainAs(ExtendedFAB) {
+                top.linkTo(ExtendedFABWithIcon.bottom, margin = 40.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            },
+            text = { Text(text = "Extended FAB") },
+            onClick = { /*your code*/ }
+        )
+
+        FloatingActionButton(
+            modifier = Modifier.constrainAs(customFAB) {
+                top.linkTo(ExtendedFAB.bottom, margin = 40.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            },
+            onClick = { /*your code*/ },
+            backgroundColor = Color.DarkGray,
+            contentColor = Color.White
+        ) {
+            Text(text = "Custom FAB")
         }
     }
 }
