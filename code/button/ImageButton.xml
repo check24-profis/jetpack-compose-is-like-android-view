@@ -10,3 +10,14 @@
     app:layout_constraintTop_toTopOf="parent"
     app:srcCompat="@drawable/c24logo"
     android:onClick="onImageButtonClick"/&gt;
+
+
+// In activity
+val imageView = findViewById<android.widget.ImageButton>(R.id.imageButton)
+
+Glide
+    .with(this)
+    .load(R.drawable.c24logo)
+    .fitCenter()
+    .into(imageView)
+
