@@ -3,11 +3,8 @@ package de.check24.demo.features.constraintlayout.guideline
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -24,21 +21,16 @@ class ComposableVerticalGuidelineActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DemoTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Scaffold(
-                        topBar = {
-                            TopAppBar(
-                                title = {
-                                    Text(text = "Guideline Vertical")
-                                })
-                        }, content = {
-                            ConstraintLayoutGuidelineVertical()
-                        }
-                    )
-                }
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(text = "Guideline Vertical")
+                            })
+                    }, content = {
+                        ConstraintLayoutGuidelineVertical()
+                    }
+                )
             }
         }
     }

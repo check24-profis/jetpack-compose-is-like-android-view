@@ -179,6 +179,17 @@
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
+        <!-- Constraint Layout -->
+
+        <activity
+            android:name=".features.constraintlayout.AndroidUIConstraintLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.ComposableConstraintLayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
