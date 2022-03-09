@@ -78,50 +78,50 @@ class MainActivity : ComponentActivity() {
 
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableTextActivity(),
-                androidUIActivity = AndroidUITextActivity(),
+                composeActivity = ComposableTextActivity::class.java,
+                androidUIActivity = AndroidUITextActivity::class.java,
                 headline = "Text"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableEmailActivity(),
-                androidUIActivity = AndroidUIEmailActivity(),
+                composeActivity = ComposableEmailActivity::class.java,
+                androidUIActivity = AndroidUIEmailActivity::class.java,
                 headline = "Email"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposablePhoneTextActivity(),
-                androidUIActivity = AndroidUIPhoneTextActivity(),
+                composeActivity = ComposablePhoneTextActivity::class.java,
+                androidUIActivity = AndroidUIPhoneTextActivity::class.java,
                 headline = "Phone"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposablePasswordActivity(),
-                androidUIActivity = AndroidUIPasswordActivity(),
+                composeActivity = ComposablePasswordActivity::class.java,
+                androidUIActivity = AndroidUIPasswordActivity::class.java,
                 headline = "Password"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposablePasswordVisibilityToggleActivity(),
-                androidUIActivity = AndroidUIPasswordVisibilityToggleActivity(),
+                composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
+                androidUIActivity = AndroidUIPasswordVisibilityToggleActivity::class.java,
                 headline = "Password with visibility toggle"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableNumericPasswordActivity(),
-                androidUIActivity = AndroidUINumericPasswordActivity(),
+                composeActivity = ComposableNumericPasswordActivity::class.java,
+                androidUIActivity = AndroidUINumericPasswordActivity::class.java,
                 headline = "Numeric Password"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableDateActivity(),
-                androidUIActivity = AndroidUIDateActivity(),
+                composeActivity = ComposableDateActivity::class.java,
+                androidUIActivity = AndroidUIDateActivity::class.java,
                 headline = "Date"
             )
         )
@@ -132,23 +132,23 @@ class MainActivity : ComponentActivity() {
 
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableCheckBoxActivity(),
-                androidUIActivity = AndroidUICheckBoxActivity(),
+                composeActivity = ComposableCheckBoxActivity::class.java,
+                androidUIActivity = AndroidUICheckBoxActivity::class.java,
                 headline = "CheckBox"
             )
         )
 
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableImageButtonActivity(),
-                androidUIActivity = AndroidUIImageButtonActivity(),
+                composeActivity = ComposableImageButtonActivity::class.java,
+                androidUIActivity = AndroidUIImageButtonActivity::class.java,
                 headline = "ImageButton"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableSwitchActivity(),
-                androidUIActivity = AndroidUISwitchActivity(),
+                composeActivity = ComposableSwitchActivity::class.java,
+                androidUIActivity = AndroidUISwitchActivity::class.java,
                 headline = "Switch"
             )
         )
@@ -159,31 +159,31 @@ class MainActivity : ComponentActivity() {
 
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableConstraintLayoutActivity(),
-                androidUIActivity = AndroidUIConstraintLayoutActivity(),
+                composeActivity = ComposableConstraintLayoutActivity::class.java,
+                androidUIActivity = AndroidUIConstraintLayoutActivity::class.java,
                 headline = "Constraint Layout"
             )
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableBarrierActivity(),
-                androidUIActivity = AndroidUIBarrierActivity(),
+                composeActivity = ComposableBarrierActivity::class.java,
+                androidUIActivity = AndroidUIBarrierActivity::class.java,
                 headline = "Constraint Layout (Barrier)"
             )
         )
 
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableVerticalGuidelineActivity(),
-                androidUIActivity = AndroidUIVerticalGuidelineActivity(),
+                composeActivity = ComposableVerticalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIVerticalGuidelineActivity::class.java,
                 headline = "Guideline Vertical"
             )
         )
 
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableHorizontalGuidelineActivity(),
-                androidUIActivity = AndroidUIHorizontalGuidelineActivity(),
+                composeActivity = ComposableHorizontalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
                 headline = "Guideline Horizontal"
             )
         )
@@ -218,8 +218,8 @@ private fun Menu(items: List<CompareItem>) {
  */
 @Composable
 private fun CompareUIItem(
-    composeActivity: Activity,
-    androidUIActivity: Activity,
+    composeActivity: Class<out Activity>,
+    androidUIActivity: Class<out Activity>,
     headline: String
 ) {
     val activity = LocalContext.current.findActivity()
@@ -242,7 +242,7 @@ private fun CompareUIItem(
                 activity?.startActivity(
                     Intent(
                         activity,
-                        composeActivity::class.java
+                        composeActivity
                     )
                 )
             }) { Text(text = "Compose") }
@@ -252,7 +252,7 @@ private fun CompareUIItem(
                 activity?.startActivity(
                     Intent(
                         activity,
-                        androidUIActivity::class.java
+                        androidUIActivity
                     )
                 )
             }) { Text(text = "Android UI") }
@@ -277,8 +277,8 @@ private fun MenuPreview() {
 private fun GenericItemPreview() {
     DemoTheme {
         CompareUIItem(
-            ComposableTextActivity(),
-            AndroidUITextActivity(),
+            ComposableTextActivity::class.java,
+            AndroidUITextActivity::class.java,
             "Test"
         )
     }
