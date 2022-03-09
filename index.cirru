@@ -71,6 +71,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Switch.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/Switch.xml)
       .case (.name "Floating Action Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/FloatingActionButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/FloatingActionButton.xml)
 
     .section
       .title "List"
