@@ -51,6 +51,8 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.demo.features.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -142,7 +144,8 @@ private fun Menu() {
             CompareUIItem(
                 composeActivity = ComposableDateActivity::class.java,
                 androidUIActivity = AndroidUIDateActivity::class.java,
-                headline = "Date")
+                headline = "Date"
+            )
         }
 
         Row {
@@ -182,6 +185,14 @@ private fun Menu() {
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
                 androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
                 headline = "Guideline Horizontal"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableRadioGroupActivity::class.java,
+                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
+                headline = "Radio Group"
             )
         }
     }
