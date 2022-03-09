@@ -30,6 +30,8 @@ import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
+import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
+import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.demo.features.constraintlayout.barrier.ComposableBarrierActivity
 import de.check24.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity
@@ -148,17 +150,25 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
-                composeActivity = ComposableBarrierActivity::class.java,
-                androidUIActivity = AndroidUIBarrierActivity::class.java,
-                headline = "Constraint Layout (Barrier)"
+                composeActivity = ComposableSwitchActivity::class.java,
+                androidUIActivity = AndroidUISwitchActivity::class.java,
+                headline = "Switch"
             )
         }
 
         Row {
             CompareUIItem(
-                composeActivity = ComposableSwitchActivity::class.java,
-                androidUIActivity = AndroidUISwitchActivity::class.java,
-                headline = "Switch"
+                composeActivity = ComposableConstraintLayoutActivity::class.java,
+                androidUIActivity = AndroidUIConstraintLayoutActivity::class.java,
+                headline = "Constraint Layout"
+            )
+        }
+
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableBarrierActivity::class.java,
+                androidUIActivity = AndroidUIBarrierActivity::class.java,
+                headline = "Constraint Layout (Barrier)"
             )
         }
 
