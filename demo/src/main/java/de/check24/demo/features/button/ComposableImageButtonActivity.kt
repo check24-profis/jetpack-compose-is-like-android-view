@@ -4,13 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.IconButton
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -57,18 +56,21 @@ class ComposableImageButtonActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun ImageButton() {
-    IconButton(
+    Button(
         onClick = {},
-        modifier = Modifier.size(240.dp)
-
+        modifier = Modifier.size(80.dp),
+        shape = CircleShape,
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.White
+        ),
+        elevation = ButtonDefaults.elevation(0.dp, 0.dp)
     ) {
         Image(
             painter = painterResource(id = R.drawable.c24logo),
             contentDescription = "Image of Button",
-            modifier = Modifier.size(80.dp)
+            modifier = Modifier.fillMaxSize()
         )
     }
 }
