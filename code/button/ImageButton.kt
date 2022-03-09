@@ -1,5 +1,5 @@
 @Composable
-private fun ImageButton(image: Any?) {
+fun ImageButton(image: Any?) {
     Button(
         onClick = {},
         modifier = Modifier.size(100.dp),
