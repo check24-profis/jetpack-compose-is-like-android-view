@@ -172,8 +172,6 @@ private fun Menu() {
             )
         }
 
-
-
         Row {
             CompareUIItem(
                 composeActivity = ComposableVerticalGuidelineActivity::class.java,
