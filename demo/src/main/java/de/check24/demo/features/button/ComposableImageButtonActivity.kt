@@ -11,8 +11,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
@@ -31,26 +31,21 @@ class ComposableImageButtonActivity : ComponentActivity() {
 
         setContent {
             DemoTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Scaffold(
-                        topBar = {
-                            TopAppBar(
-                                title = {
-                                    Text(text = "ImageButton")
-                                })
-                        }, content = {
-                            Box(
-                                modifier = Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                ImageButton()
-                            }
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(text = "ImageButton")
+                            })
+                    }, content = {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            ImageButton()
                         }
-                    )
-                }
+                    }
+                )
             }
         }
     }
