@@ -30,7 +30,7 @@ import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
-import de.check24.demo.features.button.ComposableFloatingActionButton
+import de.check24.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
@@ -72,7 +72,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
 
     private fun addItemsToList(compareItems: MutableList<CompareItem>) {
 
@@ -154,11 +153,13 @@ class MainActivity : ComponentActivity() {
                 headline = "Switch"
             )
         )
-        compareItems.add(CompareItem(
-            composeActivity = ComposableFloatingActionButton::class.java,
-            androidUIActivity = AndroidUIFloatingActionButtonActivity::class.java,
-            headline = "Floating Action Button"
-        ))
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableFloatingActionButtonActivity::class.java,
+                androidUIActivity = AndroidUIFloatingActionButtonActivity::class.java,
+                headline = "Floating Action Button"
+            )
+        )
 
         // endregion
 
@@ -198,6 +199,7 @@ class MainActivity : ComponentActivity() {
         // endregion
     }
 }
+
 
 /**
  * Add [CompareUIItem] for every section here
