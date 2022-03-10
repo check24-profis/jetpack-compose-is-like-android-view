@@ -140,7 +140,6 @@ class MainActivity : ComponentActivity() {
                 headline = "CheckBox"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableImageButtonActivity::class.java,
@@ -163,13 +162,13 @@ class MainActivity : ComponentActivity() {
             )
         )
 
-        Row {
-            CompareUIItem(
+        compareItems.add  (
+            CompareItem(
                 composeActivity = ComposableRadioGroupActivity::class.java,
                 androidUIActivity = AndroidUIRadioGroupActivity::class.java,
                 headline = "Radio Group"
             )
-        }
+        )
         // endregion
 
         // region layout
