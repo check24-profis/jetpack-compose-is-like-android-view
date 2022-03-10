@@ -189,6 +189,17 @@
             android:name=".features.list.differentviews.ComposableListWithDifferentViewsActivity"
             android:exported="false" />
 
+        <!-- Floating Action Button -->
+
+        <activity
+            android:name=".features.button.AndroidUIFloatingActionButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.ComposableFloatingActionButtonActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

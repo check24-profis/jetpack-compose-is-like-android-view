@@ -13,5 +13,12 @@
         <item name="colorPrimary">@color/purple_500</item>
     </style>
 
+    <style name="FloatingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/FABRectangleStyle</item>
+    </style>
+    
+    <style name="FABRectangleStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">0%</item>
+    </style>
 
 </resources>

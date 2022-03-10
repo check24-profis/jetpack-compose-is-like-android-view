@@ -27,8 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
@@ -60,11 +62,10 @@ import de.check24.demo.ui.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var compareItems = mutableListOf<CompareItem>()
+        val compareItems = mutableListOf<CompareItem>()
         addItemsToList(compareItems)
 
         setContent {
@@ -154,6 +155,13 @@ class MainActivity : ComponentActivity() {
                 headline = "Switch"
             )
         )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableFloatingActionButtonActivity::class.java,
+                androidUIActivity = AndroidUIFloatingActionButtonActivity::class.java,
+                headline = "Floating Action Button"
+            )
+        )
 
         // endregion
 
@@ -202,6 +210,7 @@ class MainActivity : ComponentActivity() {
         // endregion
     }
 }
+
 
 /**
  * Add [CompareUIItem] for every section here
