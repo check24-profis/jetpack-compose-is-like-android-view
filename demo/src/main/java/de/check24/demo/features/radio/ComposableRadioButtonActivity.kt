@@ -3,6 +3,7 @@ package de.check24.demo.features.radio
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -59,10 +60,16 @@ private fun RadioButtonExample() {
 
             RadioButton(
                 selected = observer.value,
-                onClick = { observer.value = true }
+                onClick = { observer.value = !observer.value }
             )
 
-            Text(text = "I am a Radio Button")
+            Text(
+                text = "I am a Radio Button",
+                modifier = Modifier
+                    .clickable {
+                        observer.value = !observer.value
+                    }
+            )
         }
     }
 }

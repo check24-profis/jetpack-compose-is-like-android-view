@@ -4,9 +4,15 @@ fun RadioButtonExample() {
 
     RadioButton(
         selected = observer.value,
-        onClick = { observer.value = true }
+        onClick = { observer.value = !observer.value }
     )
 
-    Text(text = "I am a Radio Button")
+    Text(
+        text = "I am a Radio Button",
+        modifier = Modifier
+            .clickable {
+                observer.value = !observer.value
+            }
+    )
 }
 
