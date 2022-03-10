@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var compareItems = mutableListOf<CompareItem>()
+        val compareItems = mutableListOf<CompareItem>()
         addItemsToList(compareItems)
 
         setContent {
@@ -179,7 +179,6 @@ class MainActivity : ComponentActivity() {
                 headline = "Constraint Layout (Barrier)"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableVerticalGuidelineActivity::class.java,
@@ -187,7 +186,6 @@ class MainActivity : ComponentActivity() {
                 headline = "Guideline Vertical"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
