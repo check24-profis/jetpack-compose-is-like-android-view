@@ -25,8 +25,6 @@ class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
             ExampleListItems.ContentItem("I am a title", "I am body"),
             ExampleListItems.TitleItem("I am a title")
         )
-
-
         adapter?.submitList(exampleList)
     }
 }
