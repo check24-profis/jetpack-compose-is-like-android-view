@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Layout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -64,20 +65,21 @@ private fun RadioGroup() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        stringList.forEach { stringList ->
+        stringList.forEach { item ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
-                RadioButton(selected = rememberObserver.value == stringList,
+                RadioButton(selected = rememberObserver.value == item,
                     onClick = {
-                        rememberObserver.value = stringList
+                        rememberObserver.value = item
                     }
                 )
                 Text(
-                    text = stringList,
+                    text = item,
+                    modifier = Modifier.clickable { rememberObserver.value = item }
                 )
             }
         }

@@ -17,20 +17,21 @@ fun RadioGroup() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        stringList.forEach { stringList ->
+        stringList.forEach { item ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
-                RadioButton(selected = rememberObserver.value == stringList,
+                RadioButton(selected = rememberObserver.value == item,
                     onClick = {
-                        rememberObserver.value = stringList
+                        rememberObserver.value = item
                     }
                 )
                 Text(
-                    text = stringList,
+                    text = item,
+                    modifier = Modifier.clickable { rememberObserver.value = item }
                 )
             }
         }
