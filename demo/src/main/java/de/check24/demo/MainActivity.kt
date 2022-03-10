@@ -52,7 +52,9 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.demo.features.radio.AndroidUIRadioButtonActivity
 import de.check24.demo.features.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.radio.ComposableRadioButtonActivity
 import de.check24.demo.features.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
@@ -161,7 +163,13 @@ class MainActivity : ComponentActivity() {
                 headline = "Floating Action Button"
             )
         )
-
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableRadioButtonActivity::class.java,
+                androidUIActivity = AndroidUIRadioButtonActivity::class.java,
+                headline = "Radio Button"
+            )
+        )
         compareItems.add  (
             CompareItem(
                 composeActivity = ComposableRadioGroupActivity::class.java,

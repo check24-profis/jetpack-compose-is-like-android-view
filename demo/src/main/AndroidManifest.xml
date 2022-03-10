@@ -167,6 +167,17 @@
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
+        <!-- Radio Button -->
+
+        <activity
+            android:name=".features.radio.AndroidUIRadioButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.radio.ComposableRadioButtonActivity"
+            android:exported="false" />
+
         <!-- Radio Group -->
 
         <activity

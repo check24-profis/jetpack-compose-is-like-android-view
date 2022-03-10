@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.RadioButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -20,10 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import de.check24.demo.ui.theme.DemoTheme
 
-class ComposableRadioGroupActivity : ComponentActivity() {
+class ComposableRadioButtonActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +34,7 @@ class ComposableRadioGroupActivity : ComponentActivity() {
                                 Text(text = "Radio Group")
                             })
                     }, content = {
-                        RadioGroup()
+                        RadioButtonExample()
                     }
                 )
             }
@@ -45,48 +43,34 @@ class ComposableRadioGroupActivity : ComponentActivity() {
 }
 
 @Composable
-private fun RadioGroup() {
-
-    val stringList = listOf(
-        "First Radio Button",
-        "Second Radio Button",
-        "Third Radio Button"
-    )
-
-    val rememberObserver = remember {
-        mutableStateOf("")
-    }
+private fun RadioButtonExample() {
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Center
     ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
 
-        stringList.forEach { stringList ->
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-            ) {
-                RadioButton(selected = rememberObserver.value == stringList,
-                    onClick = {
-                        rememberObserver.value = stringList
-                    }
-                )
-                Text(
-                    text = stringList,
-                )
-            }
+            val observer = remember { mutableStateOf("") }
+
+            RadioButton(
+                selected = observer.value == "clicked",
+                onClick = { observer.value = "clicked" }
+            )
+
+            Text(text = "I am a Radio Button")
         }
     }
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun RadioGroupPreview() {
+private fun RadioButtonPreview() {
     DemoTheme {
-        RadioGroup()
+        RadioButtonExample()
     }
 }

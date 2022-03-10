@@ -68,6 +68,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioGroup.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioGroup.xml)
       .case (.name "Radio Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioButton.xml)
       .case (.name "Toggle Button") $ .pair
       .case (.name "Switch") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Switch.kt)
