@@ -201,6 +201,17 @@
             android:name=".features.constraintlayout.ComposableConstraintLayoutActivity"
             android:exported="false" />
 
+        <!-- List with different Views -->
+
+        <activity
+            android:name=".features.list.differentviews.AndroidUIListWithDifferentViewsActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.list.differentviews.ComposableListWithDifferentViewsActivity"
+            android:exported="false" />
+
         <!-- Floating Action Button -->
 
         <activity
