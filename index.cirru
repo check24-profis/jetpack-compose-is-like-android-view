@@ -65,6 +65,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/CheckBox.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/CheckBox.xml)
       .case (.name "Radio Group") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioGroup.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioGroup.xml)
       .case (.name "Radio Button") $ .pair
       .case (.name "Toggle Button") $ .pair
       .case (.name "Switch") $ .pair
