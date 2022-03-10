@@ -11,7 +11,6 @@ sealed class ExampleListItems {
 
 }
 
-
 @Composable
 fun ExampleItemsListView(listOfExampleItems: List&lt;ExampleListItems&gt;) {
     LazyColumn {
@@ -24,7 +23,6 @@ fun ExampleItemsListView(listOfExampleItems: List&lt;ExampleListItems&gt;) {
     }
 }
 
-
 @Composable
 fun TitleItemView(item: ExampleListItems.TitleItem) {
     Row(
@@ -35,7 +33,6 @@ fun TitleItemView(item: ExampleListItems.TitleItem) {
         Text(text = item.title, fontWeight = FontWeight.Bold)
     }
 }
-
 
 @Composable
 fun ContentItemView(item: ExampleListItems.ContentItem) {

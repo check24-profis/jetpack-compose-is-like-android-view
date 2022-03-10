@@ -42,6 +42,8 @@ import de.check24.demo.features.date.AndroidUIDateActivity
 import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
+import de.check24.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
+import de.check24.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -171,7 +173,6 @@ class MainActivity : ComponentActivity() {
                 headline = "Constraint Layout (Barrier)"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableVerticalGuidelineActivity::class.java,
@@ -179,7 +180,6 @@ class MainActivity : ComponentActivity() {
                 headline = "Guideline Vertical"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
@@ -188,6 +188,17 @@ class MainActivity : ComponentActivity() {
             )
         )
 
+        // endregion
+
+        // region List
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableListWithDifferentViewsActivity::class.java,
+                androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
+                headline = "List with different Views"
+            )
+        )
         // endregion
     }
 }

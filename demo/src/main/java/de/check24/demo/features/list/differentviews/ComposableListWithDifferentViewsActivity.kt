@@ -46,7 +46,7 @@ class ComposableListWithDifferentViewsActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Password")
+                                Text(text = "Different View List")
                             })
                     }, content = {
                         Box(
