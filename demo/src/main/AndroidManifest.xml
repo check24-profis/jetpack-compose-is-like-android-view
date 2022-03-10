@@ -198,7 +198,7 @@
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.button.ComposableFloatingActionButton"
+            android:name=".features.button.ComposableFloatingActionButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 

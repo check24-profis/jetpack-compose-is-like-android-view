@@ -30,7 +30,7 @@ import de.check24.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
-import de.check24.demo.features.button.ComposableFloatingActionButton
+import de.check24.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
@@ -174,6 +174,13 @@ private fun Menu() {
             )
         }
 
+        Row {
+            CompareUIItem(
+                composeActivity = ComposableRadioGroupActivity::class.java,
+                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
+                headline = "Radio Group"
+            )
+        }
         // endregion
 
         // region Layout
@@ -212,17 +219,9 @@ private fun Menu() {
 
         Row {
             CompareUIItem(
-                composeActivity = ComposableFloatingActionButton::class.java,
+                composeActivity = ComposableFloatingActionButtonActivity::class.java,
                 androidUIActivity = AndroidUIFloatingActionButtonActivity::class.java,
                 headline = "Floating Action Button"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableRadioGroupActivity::class.java,
-                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
-                headline = "Radio Group"
             )
         }
 
