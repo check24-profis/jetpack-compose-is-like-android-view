@@ -167,6 +167,18 @@
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
+        <!-- Radio Group -->
+
+        <activity
+            android:name=".features.radio.AndroidUIRadioGroupActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.radio.ComposableRadioGroupActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
         <!-- Constraint Layout -->
 
         <activity

@@ -1,0 +1,23 @@
+&lt;RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"&gt;
+
+    &lt;RadioButton
+        android:id="@+id/first_radio_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="First Radio Button"/&gt;
+
+    &lt;RadioButton
+        android:id="@+id/second_radio_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Second Radio Button"/&gt;
+
+    &lt;RadioButton
+        android:id="@+id/third_radio_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Third Radio Button"/&gt;
+
+&lt;/RadioGroup&gt;

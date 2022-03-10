@@ -52,6 +52,8 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.demo.features.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -138,7 +140,6 @@ class MainActivity : ComponentActivity() {
                 headline = "CheckBox"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableImageButtonActivity::class.java,
@@ -161,6 +162,13 @@ class MainActivity : ComponentActivity() {
             )
         )
 
+        compareItems.add  (
+            CompareItem(
+                composeActivity = ComposableRadioGroupActivity::class.java,
+                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
+                headline = "Radio Group"
+            )
+        )
         // endregion
 
         // region layout
