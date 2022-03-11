@@ -1,8 +1,13 @@
 package de.check24.demo.features.bar
 
+import android.graphics.drawable.Icon
+import android.media.Image
 import android.os.Bundle
+import android.provider.ContactsContract
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
@@ -17,14 +22,29 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Save
-import androidx.compose.material.icons.filled.Upload
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import de.check24.demo.R
+import de.check24.demo.features.bar.screens.DownloadScreen
+import de.check24.demo.features.bar.screens.FavoriteScreen
+import de.check24.demo.features.bar.screens.FloatingActionButtonScreen
 import de.check24.demo.ui.theme.DemoTheme
 
 class ComposableBottomAppBarActivity : ComponentActivity() {
@@ -38,10 +58,115 @@ class ComposableBottomAppBarActivity : ComponentActivity() {
     }
 }
 
+sealed class BottomBarScreen(
+    val route: String,
+    val title: String,
+    val icon: ImageVector
+) {
+    object Favorite : BottomBarScreen(
+        route = "favorite",
+        title = "Favorite",
+        icon = Icons.Default.Favorite
+    )
+
+    object Download : BottomBarScreen(
+        route = "download",
+        title = "Download",
+        icon = Icons.Default.Download
+    )
+
+    object FloatingActionButton : BottomBarScreen(
+        route = "fab",
+        title = "FloatingActionButton",
+        icon = Icons.Default.Add
+    )
+}
+
+@Composable
+fun BottomNavGraph(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = BottomBarScreen.Favorite.route
+    ) {
+        composable(route = BottomBarScreen.Favorite.route) {
+            FavoriteScreen()
+        }
+        composable(route = BottomBarScreen.Download.route) {
+            DownloadScreen()
+        }
+        composable(route = BottomBarScreen.FloatingActionButton.route) {
+            FloatingActionButtonScreen()
+        }
+    }
+}
+
 @Composable
 private fun BottomAppBarExample() {
 
-    val selectedItem = remember {
+    val navController = rememberNavController()
+
+    val screens = listOf(
+        BottomBarScreen.Favorite,
+        BottomBarScreen.Download
+    )
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "BottomAppBar")
+                }
+            )
+        },
+        bottomBar = {
+            BottomAppBar() {
+                BottomNavigation() {
+                    screens.forEach { screen ->
+                        BottomNavigationItem(
+                            label = { Text(text = screen.title) },
+                            icon = {
+                                Icon(
+                                    imageVector = screen.icon,
+                                    contentDescription = "Navigation Icon"
+                                )
+                            },
+                            selected = currentDestination?.hierarchy?.any {
+                                it.route == screen.route
+                            } == true,
+                            onClick = { navController.navigate(screen.route) },
+                            alwaysShowLabel = false
+                        )
+                    }
+                }
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true,
+        floatingActionButton = {
+            FloatingActionButton(
+                shape = CircleShape,
+                onClick = { navController.navigate(BottomBarScreen.FloatingActionButton.route)}
+            ) {
+                Icon(
+                    Icons.Filled.Add,
+                    "Floating Action Button"
+                )
+            }
+        },
+    ) {
+        BottomNavGraph(navController = navController)
+    }
+
+    /*val items = listOf(
+        Screen.Favorites,
+        Screen.Downloads
+    )*/
+
+
+    /*val selectedItem = remember {
         mutableStateOf("")
     }
 
@@ -75,43 +200,10 @@ private fun BottomAppBarExample() {
                         )
 
                         BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Save,
-                                    "saving icon"
-                                )
-                            },
-                            label = { Text(text = "Save") },
-                            selected = selectedItem.value == "save",
-                            onClick = {
-                                selectedItem.value = "save"
-                            },
-                            alwaysShowLabel = false
-                        )
-
-                        BottomNavigationItem(
                             selected = false,
                             onClick = { },
                             icon = {},
                             enabled = false
-                        )
-
-                        BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Upload,
-                                    "uploading icon"
-                                )
-                            },
-
-                            label = {
-                                Text(text = "Upload")
-                            },
-                            selected = selectedItem.value == "upload",
-                            onClick = {
-                                selectedItem.value = "upload"
-                            },
-                            alwaysShowLabel = false
                         )
 
                         BottomNavigationItem(
@@ -151,8 +243,8 @@ private fun BottomAppBarExample() {
                 )
             }
         },
-        content = {}
-    )
+        content = {},
+    )*/
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)

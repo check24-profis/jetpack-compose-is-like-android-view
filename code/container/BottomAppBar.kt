@@ -35,43 +35,10 @@ fun BottomAppBarExample() {
                         )
 
                         BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Save,
-                                    "saving icon"
-                                )
-                            },
-                            label = { Text(text = "Save") },
-                            selected = selectedItem.value == "save",
-                            onClick = {
-                                selectedItem.value = "save"
-                            },
-                            alwaysShowLabel = false
-                        )
-
-                        BottomNavigationItem(
                             selected = false,
                             onClick = { },
                             icon = {},
                             enabled = false
-                        )
-
-                        BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Upload,
-                                    "uploading icon"
-                                )
-                            },
-
-                            label = {
-                                Text(text = "Upload")
-                            },
-                            selected = selectedItem.value == "upload",
-                            onClick = {
-                                selectedItem.value = "upload"
-                            },
-                            alwaysShowLabel = false
                         )
 
                         BottomNavigationItem(

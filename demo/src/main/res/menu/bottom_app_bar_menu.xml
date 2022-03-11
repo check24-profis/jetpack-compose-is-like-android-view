@@ -7,18 +7,8 @@
         android:title="Favorite" />
 
     <item
-        android:id="@+id/save"
-        android:icon="@drawable/ic_baseline_save_24"
-        android:title="Save" />
-
-    <item
         android:enabled="false"
         android:title="spacer" />
-
-    <item
-        android:id="@+id/upload"
-        android:icon="@drawable/ic_baseline_cloud_upload_24"
-        android:title="Upload" />
 
     <item
         android:id="@+id/download"
