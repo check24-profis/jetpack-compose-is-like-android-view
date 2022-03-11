@@ -3,6 +3,7 @@ package de.check24.demo.features.bar
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -22,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,10 +55,9 @@ private fun BottomAppBarExample() {
         },
         bottomBar = {
             BottomAppBar(
+                cutoutShape = CircleShape,
                 content = {
                     BottomNavigation(
-                        modifier = Modifier,
-                        elevation = 22.dp
                     ) {
                         BottomNavigationItem(
                             icon = {
@@ -83,6 +84,13 @@ private fun BottomAppBarExample() {
                         )
 
                         BottomNavigationItem(
+                            selected = false,
+                            onClick = { },
+                            icon = {},
+                            enabled = false
+                        )
+
+                        BottomNavigationItem(
                             icon = {
                                 Icon(Icons.Filled.Upload, "")
                             },
@@ -100,7 +108,13 @@ private fun BottomAppBarExample() {
                             icon = {
                                 Icon(Icons.Filled.Download, "")
                             },
-                            label = { Text(text = "Download") },
+                            label = {
+                                Text(
+                                    text = "Download",
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            },
                             selected = selectedItem.value == "download",
                             onClick = {
                                 selectedItem.value = "download"
@@ -115,6 +129,7 @@ private fun BottomAppBarExample() {
         isFloatingActionButtonDocked = true,
         floatingActionButton = {
             FloatingActionButton(
+                shape = CircleShape,
                 onClick = {}
             ) {
                 Icon(
