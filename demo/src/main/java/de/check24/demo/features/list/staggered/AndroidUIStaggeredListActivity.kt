@@ -30,4 +30,10 @@ class AndroidUIStaggeredListActivity : AppCompatActivity() {
         }
        return colorList
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+        adapter = null
+    }
 }
