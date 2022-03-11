@@ -7,21 +7,28 @@ fun StaggeredGrid(){
                 modifier = Modifier.padding(4.dp)
             ) {
                 (1..100).forEach {
-                    Card(
-                        modifier = Modifier.height((100..250).random().dp).padding(5.dp),
-                        shape = RoundedCornerShape(15.dp),
-                        elevation = 5.dp
-                    ){
-                        Box(
-                            modifier = Modifier
-                                .width(120.dp)
-                                .fillMaxSize()
-                                .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
-                        )
-                    }
+                  GridItem()
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun GridItem() {
+    Card(
+        modifier = Modifier
+            .height((100..250).random().dp)
+            .padding(5.dp),
+        shape = RoundedCornerShape(15.dp),
+        elevation = 5.dp
+    ) {
+        Box(
+            modifier = Modifier
+                .width(120.dp)
+                .fillMaxSize()
+                .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
+        )
     }
 }
 

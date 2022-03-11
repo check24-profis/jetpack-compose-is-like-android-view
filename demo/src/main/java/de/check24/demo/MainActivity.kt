@@ -32,6 +32,10 @@ import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
+import de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity
+import de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.button.radio.ComposableRadioButtonActivity
+import de.check24.demo.features.button.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -46,6 +50,8 @@ import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
 import de.check24.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
+import de.check24.demo.features.list.staggered.AndroidUIStaggeredListActivity
+import de.check24.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -54,11 +60,6 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
-import de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity
-import de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity
-import de.check24.demo.features.button.radio.ComposableRadioButtonActivity
-import de.check24.demo.features.button.radio.ComposableRadioGroupActivity
-import de.check24.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -173,7 +174,7 @@ class MainActivity : ComponentActivity() {
                 headline = "Radio Button"
             )
         )
-        compareItems.add  (
+        compareItems.add(
             CompareItem(
                 composeActivity = ComposableRadioGroupActivity::class.java,
                 androidUIActivity = AndroidUIRadioGroupActivity::class.java,
@@ -227,7 +228,7 @@ class MainActivity : ComponentActivity() {
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableStaggeredListActivity::class.java,
-                androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
+                androidUIActivity = AndroidUIStaggeredListActivity::class.java,
                 headline = "Staggered Grid"
             )
         )

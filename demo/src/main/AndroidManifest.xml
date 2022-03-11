@@ -225,6 +225,10 @@
 
         <!-- Staggered Grid -->
 
+        <activity
+            android:name=".features.list.staggered.AndroidUIStaggeredListActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
 
         <activity
             android:name=".features.list.staggered.ComposableStaggeredListActivity"
