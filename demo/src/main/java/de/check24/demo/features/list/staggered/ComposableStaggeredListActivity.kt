@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -106,7 +105,7 @@ private fun StaggeredVerticalGrid(
         val itemConstraints = constraints.copy(maxWidth = columnWidth)
 
         // track each column's height
-        val colHeights = IntArray(columns) { 0 }
+        val colHeights = MutableList(columns) { 0 }
         val placeables = measurables.map { measurable ->
             val column = shortestColumn(colHeights)
             val placeable = measurable.measure(itemConstraints)
@@ -122,7 +121,7 @@ private fun StaggeredVerticalGrid(
             height = height
         ) {
             // save the y coordinate for each column
-            val colY = IntArray(columns) { 0 }
+            val colY = MutableList(columns) { 0 }
             placeables.forEach { placeable ->
                 val column = shortestColumn(colY)
                 placeable.place(
@@ -136,7 +135,7 @@ private fun StaggeredVerticalGrid(
     }
 }
 
-private fun shortestColumn(colHeights: IntArray): Int {
+private fun shortestColumn(colHeights: MutableList<Int>): Int {
     var minHeight = Int.MAX_VALUE
     var column = 0
     colHeights.forEachIndexed { index, height ->
