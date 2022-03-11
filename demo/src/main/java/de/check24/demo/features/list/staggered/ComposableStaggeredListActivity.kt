@@ -79,7 +79,6 @@ private fun GridItem() {
     ) {
         Box(
             modifier = Modifier
-                .width(120.dp)
                 .fillMaxSize()
                 .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
         )
