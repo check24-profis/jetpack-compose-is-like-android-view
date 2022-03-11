@@ -1,45 +1,5 @@
-package de.check24.demo.features.bar
-
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.BottomAppBar
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.FabPosition
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Download
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Save
-import androidx.compose.material.icons.filled.Upload
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import de.check24.demo.ui.theme.DemoTheme
-
-class ComposableBottomAppBarActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            DemoTheme {
-                BottomAppBarExample()
-            }
-        }
-    }
-}
-
 @Composable
-private fun BottomAppBarExample() {
+fun BottomAppBarExample() {
 
     val selectedItem = remember {
         mutableStateOf("")
@@ -153,12 +113,4 @@ private fun BottomAppBarExample() {
         },
         content = {}
     )
-}
-
-@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
-@Composable
-private fun BottomAppBarPreview() {
-    DemoTheme {
-        BottomAppBarPreview()
-    }
 }
