@@ -65,7 +65,11 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/CheckBox.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/CheckBox.xml)
       .case (.name "Radio Group") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioGroup.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioGroup.xml)
       .case (.name "Radio Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioButton.xml)
       .case (.name "Toggle Button") $ .pair
       .case (.name "Switch") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Switch.kt)
@@ -77,8 +81,8 @@ html
     .section
       .title "List"
       .case (.name "List with different Views") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/ListWithDifferentViews.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/ListWithDifferentViews.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/list/ListWithDifferentViews.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/list/ListWithDifferentViews.xml)
       .case (.name "Grid") $ .pair
       .case (.name "Staggered") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/StaggeredVerticalGrid.kt)

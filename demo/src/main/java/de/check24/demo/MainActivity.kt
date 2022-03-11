@@ -46,6 +46,8 @@ import de.check24.demo.features.date.AndroidUIDateActivity
 import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
+import de.check24.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
+import de.check24.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -54,6 +56,10 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.demo.features.radio.AndroidUIRadioButtonActivity
+import de.check24.demo.features.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.radio.ComposableRadioButtonActivity
+import de.check24.demo.features.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -140,7 +146,6 @@ class MainActivity : ComponentActivity() {
                 headline = "CheckBox"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableImageButtonActivity::class.java,
@@ -162,7 +167,20 @@ class MainActivity : ComponentActivity() {
                 headline = "Floating Action Button"
             )
         )
-
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableRadioButtonActivity::class.java,
+                androidUIActivity = AndroidUIRadioButtonActivity::class.java,
+                headline = "Radio Button"
+            )
+        )
+        compareItems.add  (
+            CompareItem(
+                composeActivity = ComposableRadioGroupActivity::class.java,
+                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
+                headline = "Radio Group"
+            )
+        )
         // endregion
 
         // region layout
@@ -196,6 +214,17 @@ class MainActivity : ComponentActivity() {
             )
         )
 
+        // endregion
+
+        // region List
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableListWithDifferentViewsActivity::class.java,
+                androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
+                headline = "List with different Views"
+            )
+        )
         // endregion
 
         // region container
