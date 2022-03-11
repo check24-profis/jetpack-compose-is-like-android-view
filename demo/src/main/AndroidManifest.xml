@@ -170,23 +170,23 @@
         <!-- Radio Button -->
 
         <activity
-            android:name=".features.radio.AndroidUIRadioButtonActivity"
+            android:name="de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.radio.ComposableRadioButtonActivity"
+            android:name="de.check24.demo.features.button.radio.ComposableRadioButtonActivity"
             android:exported="false" />
 
         <!-- Radio Group -->
 
         <activity
-            android:name=".features.radio.AndroidUIRadioGroupActivity"
+            android:name="de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.radio.ComposableRadioGroupActivity"
+            android:name="de.check24.demo.features.button.radio.ComposableRadioGroupActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
@@ -221,6 +221,13 @@
 
         <activity
             android:name=".features.button.ComposableFloatingActionButtonActivity"
+            android:exported="false" />
+
+        <!-- Staggered Grid -->
+
+
+        <activity
+            android:name=".features.list.staggered.ComposableStaggeredListActivity"
             android:exported="false" />
 
     </application>

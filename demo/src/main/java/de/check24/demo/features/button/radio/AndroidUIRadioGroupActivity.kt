@@ -1,4 +1,4 @@
-package de.check24.demo.features.radio
+package de.check24.demo.features.button.radio
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

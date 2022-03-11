@@ -54,10 +54,11 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
-import de.check24.demo.features.radio.AndroidUIRadioButtonActivity
-import de.check24.demo.features.radio.AndroidUIRadioGroupActivity
-import de.check24.demo.features.radio.ComposableRadioButtonActivity
-import de.check24.demo.features.radio.ComposableRadioGroupActivity
+import de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity
+import de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.button.radio.ComposableRadioButtonActivity
+import de.check24.demo.features.button.radio.ComposableRadioGroupActivity
+import de.check24.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -221,6 +222,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableListWithDifferentViewsActivity::class.java,
                 androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
                 headline = "List with different Views"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableStaggeredListActivity::class.java,
+                androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
+                headline = "Staggered Grid"
             )
         )
         // endregion
