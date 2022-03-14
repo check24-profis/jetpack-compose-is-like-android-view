@@ -61,7 +61,7 @@ class ComposableListWithDifferentViewsActivity : ComponentActivity() {
 }
 
 @Composable
-fun ExampleItemsListView(listOfExampleItems: List<ExampleListItems>) {
+private fun ExampleItemsListView(listOfExampleItems: List<ExampleListItems>) {
 
     LazyColumn {
         items(listOfExampleItems) { item ->
@@ -74,7 +74,7 @@ fun ExampleItemsListView(listOfExampleItems: List<ExampleListItems>) {
 }
 
 @Composable
-fun TitleItemView(item: ExampleListItems.TitleItem) {
+private fun TitleItemView(item: ExampleListItems.TitleItem) {
 
     Row(
         modifier = Modifier
@@ -90,7 +90,7 @@ fun TitleItemView(item: ExampleListItems.TitleItem) {
 
 
 @Composable
-fun ContentItemView(item: ExampleListItems.ContentItem) {
+private fun ContentItemView(item: ExampleListItems.ContentItem) {
 
     Row(
         modifier = Modifier

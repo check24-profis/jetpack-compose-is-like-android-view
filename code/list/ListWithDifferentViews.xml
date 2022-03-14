@@ -99,10 +99,10 @@ class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
         binding?.recyclerViewList?.adapter = adapter
 
         val exampleList = mutableListOf(
-        ExampleListItems.TitleItem("I am a title"),
-        ExampleListItems.TitleItem("I am a title"),
-        ExampleListItems.ContentItem("I am a title", "I am body"),
-        ExampleListItems.TitleItem("I am a title")
+            ExampleListItems.TitleItem("I am a title"),
+            ExampleListItems.TitleItem("I am a title"),
+            ExampleListItems.ContentItem("I am a title", "I am body"),
+            ExampleListItems.TitleItem("I am a title")
         )
 
         adapter?.submitList(exampleList)

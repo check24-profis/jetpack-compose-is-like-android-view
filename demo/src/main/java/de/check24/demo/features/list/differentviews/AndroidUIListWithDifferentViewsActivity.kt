@@ -27,4 +27,10 @@ class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
         )
         adapter?.submitList(exampleList)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+        adapter = null
+    }
 }

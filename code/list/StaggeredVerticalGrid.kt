@@ -1,5 +1,5 @@
 @Composable
-fun StaggeredGrid(){
+private fun StaggeredGrid() {
     LazyColumn {
         item {
             StaggeredVerticalGrid(
@@ -7,18 +7,7 @@ fun StaggeredGrid(){
                 modifier = Modifier.padding(4.dp)
             ) {
                 (1..100).forEach {
-                    Card(
-                        modifier = Modifier.height((100..250).random().dp).padding(5.dp),
-                        shape = RoundedCornerShape(15.dp),
-                        elevation = 5.dp
-                    ){
-                        Box(
-                            modifier = Modifier
-                                .width(120.dp)
-                                .fillMaxSize()
-                                .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
-                        )
-                    }
+                    GridItem()
                 }
             }
         }
@@ -26,7 +15,24 @@ fun StaggeredGrid(){
 }
 
 @Composable
-fun StaggeredVerticalGrid(
+private fun GridItem() {
+    Card(
+        modifier = Modifier
+            .height((100..250).random().dp)
+            .padding(5.dp),
+        shape = RoundedCornerShape(15.dp),
+        elevation = 5.dp
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
+        )
+    }
+}
+
+@Composable
+private fun StaggeredVerticalGrid(
     modifier: Modifier = Modifier,
     maxColumnWidth: Dp,
     content: @Composable () -> Unit
@@ -38,10 +44,15 @@ fun StaggeredVerticalGrid(
         check(constraints.hasBoundedWidth) {
             "Unbounded width not supported"
         }
+        // get how many columns fit on screen
         val columns = ceil(constraints.maxWidth / maxColumnWidth.toPx()).toInt()
+
+        // get how wide every column can be
         val columnWidth = constraints.maxWidth / columns
         val itemConstraints = constraints.copy(maxWidth = columnWidth)
-        val colHeights = IntArray(columns) { 0 } // track each column's height
+
+        // track each column's height
+        val colHeights = MutableList(columns) { 0 }
         val placeables = measurables.map { measurable ->
             val column = shortestColumn(colHeights)
             val placeable = measurable.measure(itemConstraints)
@@ -49,16 +60,19 @@ fun StaggeredVerticalGrid(
             placeable
         }
 
-        val height = colHeights.maxOrNull()?.coerceIn(constraints.minHeight, constraints.maxHeight)
+        val height = colHeights.maxOrNull()
+            ?.coerceIn(constraints.minHeight, constraints.maxHeight)
             ?: constraints.minHeight
         layout(
             width = constraints.maxWidth,
             height = height
         ) {
-            val colY = IntArray(columns) { 0 }
+            // save the y coordinate for each column
+            val colY = MutableList(columns) { 0 }
             placeables.forEach { placeable ->
                 val column = shortestColumn(colY)
                 placeable.place(
+                    // calculate the x coordinate of each element
                     x = columnWidth * column,
                     y = colY[column]
                 )
@@ -68,7 +82,7 @@ fun StaggeredVerticalGrid(
     }
 }
 
-private fun shortestColumn(colHeights: IntArray): Int {
+private fun shortestColumn(colHeights: MutableList<Int>): Int {
     var minHeight = Int.MAX_VALUE
     var column = 0
     colHeights.forEachIndexed { index, height ->
