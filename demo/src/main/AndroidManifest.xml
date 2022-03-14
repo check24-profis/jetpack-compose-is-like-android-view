@@ -167,6 +167,29 @@
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
+        <!-- Radio Button -->
+
+        <activity
+            android:name="de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name="de.check24.demo.features.button.radio.ComposableRadioButtonActivity"
+            android:exported="false" />
+
+        <!-- Radio Group -->
+
+        <activity
+            android:name="de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name="de.check24.demo.features.button.radio.ComposableRadioGroupActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
         <!-- Constraint Layout -->
 
         <activity
@@ -178,6 +201,17 @@
             android:name=".features.constraintlayout.ComposableConstraintLayoutActivity"
             android:exported="false" />
 
+        <!-- List with different Views -->
+
+        <activity
+            android:name=".features.list.differentviews.AndroidUIListWithDifferentViewsActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.list.differentviews.ComposableListWithDifferentViewsActivity"
+            android:exported="false" />
+
         <!-- Floating Action Button -->
 
         <activity
@@ -187,6 +221,17 @@
 
         <activity
             android:name=".features.button.ComposableFloatingActionButtonActivity"
+            android:exported="false" />
+
+        <!-- Staggered Grid -->
+
+        <activity
+            android:name=".features.list.staggered.AndroidUIStaggeredListActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.list.staggered.ComposableStaggeredListActivity"
             android:exported="false" />
 
     </application>

@@ -1,0 +1,87 @@
+&lt;androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/staggered_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shared_colorBackground"
+    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+    app:spanCount="3"/&gt;
+
+// Define Layout for single item
+
+&lt;androidx.cardview.widget.CardView
+    android:id="@+id/color_card"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"/&gt;
+
+// Write Custom Adapter
+
+class StaggeredAdapter :
+    ListAdapter&lt;Int, StaggeredAdapter.ColorViewHolder&gt;(StaggeredDiffUtilCallback) {
+
+    object StaggeredDiffUtilCallback : DiffUtil.ItemCallback&lt;Int&gt;() {
+
+        override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean =
+            oldItem.hashCode() == newItem.hashCode()
+
+        override fun areContentsTheSame(oldItem: Int, newItem: Int): Boolean =
+            oldItem == newItem
+    }
+
+    class ColorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorViewHolder =
+        ColorViewHolder(
+            ColorItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ).root
+        )
+
+    override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
+        val color = getItem(position)
+        val binding = ColorItemBinding.bind(holder.itemView)
+
+        with(binding) {
+            colorCard.setCardBackgroundColor(color)
+            colorCard.updateLayoutParams {
+                width = 120.dp
+                height = Random.nextInt(100, 250).dp
+            }
+        }
+    }
+
+    // Extension function to get dp from Int
+
+    val Int.dp get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+}
+
+// Set adapter in Activity or Fragment
+
+class AndroidUIStaggeredListActivity : AppCompatActivity() {
+
+    private var binding: StaggeredRecyclerViewBinding? = null
+    private var adapter : StaggeredAdapter? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = StaggeredRecyclerViewBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
+
+        adapter = StaggeredAdapter()
+        binding?.staggeredRecyclerView?.adapter = adapter
+        adapter?.submitList(createColorList())
+        supportActionBar?.title = "Staggered List"
+    }
+
+    private fun createColorList(): MutableList&lt;Int&gt; {
+        val colorList = mutableListOf&lt;Int&gt;()
+        (1..100).forEach {
+            colorList.add(Color.argb(255, Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
+        }
+        return colorList 
+    } 
+}

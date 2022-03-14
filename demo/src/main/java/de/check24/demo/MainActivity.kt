@@ -32,6 +32,10 @@ import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
 import de.check24.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
+import de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity
+import de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.button.radio.ComposableRadioButtonActivity
+import de.check24.demo.features.button.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -44,6 +48,10 @@ import de.check24.demo.features.date.AndroidUIDateActivity
 import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
+import de.check24.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
+import de.check24.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
+import de.check24.demo.features.list.staggered.AndroidUIStaggeredListActivity
+import de.check24.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -138,7 +146,6 @@ class MainActivity : ComponentActivity() {
                 headline = "CheckBox"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableImageButtonActivity::class.java,
@@ -160,7 +167,20 @@ class MainActivity : ComponentActivity() {
                 headline = "Floating Action Button"
             )
         )
-
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableRadioButtonActivity::class.java,
+                androidUIActivity = AndroidUIRadioButtonActivity::class.java,
+                headline = "Radio Button"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableRadioGroupActivity::class.java,
+                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
+                headline = "Radio Group"
+            )
+        )
         // endregion
 
         // region layout
@@ -194,6 +214,24 @@ class MainActivity : ComponentActivity() {
             )
         )
 
+        // endregion
+
+        // region List
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableListWithDifferentViewsActivity::class.java,
+                androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
+                headline = "List with different Views"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableStaggeredListActivity::class.java,
+                androidUIActivity = AndroidUIStaggeredListActivity::class.java,
+                headline = "Staggered Grid"
+            )
+        )
         // endregion
     }
 }
