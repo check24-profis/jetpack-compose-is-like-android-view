@@ -32,9 +32,12 @@ class ComposableRadioButtonActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Radio Group")
+                                Text(
+                                    text = "Radio Group"
+                                )
                             })
-                    }, content = {
+                    },
+                    content = {
                         RadioButtonExample()
                     }
                 )

@@ -35,9 +35,12 @@ class ComposableStaggeredListActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Staggered Grid")
+                                Text(
+                                    text = "Staggered Grid"
+                                )
                             })
-                    }, content = {
+                    },
+                    content = {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
