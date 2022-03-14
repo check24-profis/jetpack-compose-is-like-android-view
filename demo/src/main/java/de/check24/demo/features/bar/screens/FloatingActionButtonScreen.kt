@@ -18,7 +18,7 @@ fun FloatingActionButtonScreen () {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "FloatingActionButton Screen",
+            text = "FloatingActionButton screen",
             Modifier.background(Color.Gray)
         )
     }

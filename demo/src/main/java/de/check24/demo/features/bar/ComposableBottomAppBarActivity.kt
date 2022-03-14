@@ -122,7 +122,7 @@ private fun BottomAppBarExample() {
             )
         },
         bottomBar = {
-            BottomAppBar() {
+            BottomAppBar(cutoutShape = CircleShape) {
                 BottomNavigation() {
                     screens.forEach { screen ->
                         BottomNavigationItem(
@@ -133,9 +133,7 @@ private fun BottomAppBarExample() {
                                     contentDescription = "Navigation Icon"
                                 )
                             },
-                            selected = currentDestination?.hierarchy?.any {
-                                it.route == screen.route
-                            } == true,
+                            selected = currentDestination?.route == screen.route,
                             onClick = { navController.navigate(screen.route) },
                             alwaysShowLabel = false
                         )
@@ -148,7 +146,7 @@ private fun BottomAppBarExample() {
         floatingActionButton = {
             FloatingActionButton(
                 shape = CircleShape,
-                onClick = { navController.navigate(BottomBarScreen.FloatingActionButton.route)}
+                onClick = { navController.navigate(BottomBarScreen.FloatingActionButton.route) }
             ) {
                 Icon(
                     Icons.Filled.Add,

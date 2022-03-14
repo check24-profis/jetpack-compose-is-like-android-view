@@ -18,7 +18,7 @@ fun FavoriteScreen() {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "You don't have any favorites",
+            text = "Favorites screen",
             Modifier.background(Color.Gray)
         )
     }

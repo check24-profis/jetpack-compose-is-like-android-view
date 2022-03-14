@@ -18,7 +18,7 @@ fun DownloadScreen() {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "You don't have any downloads",
+            text = "Downloads screen",
             Modifier.background(Color.Gray)
         )
     }
