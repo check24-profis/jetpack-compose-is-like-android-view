@@ -226,6 +226,19 @@ class MainActivity : ComponentActivity() {
             )
         )
         // endregion
+
+        // region custom
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGoogleMapActivity::class.java,
+                androidUIActivity = AndroidUIGoogleMapActivity::class.java,
+                headline = "Google Maps"
+            )
+        )
+
+        // endregion
+
     }
 }
 
@@ -242,14 +255,6 @@ private fun Menu(items: List<CompareItem>) {
                 composeActivity = item.composeActivity,
                 androidUIActivity = item.androidUIActivity,
                 headline = item.headline
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableGoogleMapActivity::class.java,
-                androidUIActivity = AndroidUIGoogleMapActivity::class.java,
-                headline = "Google Maps"
             )
         }
     }

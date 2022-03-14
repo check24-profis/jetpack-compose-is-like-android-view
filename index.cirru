@@ -129,6 +129,8 @@ html
     .section
       .title "Custom"
       .case (.name "Map") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/custom/GoogleMaps.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/custom/GoogleMaps.xml)
 
     .section
       .title "Modifier"

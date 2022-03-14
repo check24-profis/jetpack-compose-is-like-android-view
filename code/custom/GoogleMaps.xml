@@ -1,0 +1,17 @@
+&lt;fragment xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.custom.AndroidUIGoogleMapActivity" /&gt;
+
+// In activity
+val mapFragment: SupportMapFragment? = supportFragmentManager
+    .findFragmentById(R.id.map) as SupportMapFragment?
+
+ mapFragment?.getMapAsync {
+    val c24Berlin = LatLng(52.51119997328961, 13.404559796099809)
+    val zoom = 17F
+
+    it.moveCamera(CameraUpdateFactory.newLatLngZoom(c24Berlin, zoom))
+}

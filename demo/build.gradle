@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION
@@ -30,6 +31,10 @@ android {
             zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
+            def localRootProperties = new Properties()
+            localRootProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+            resValue("string", "google_maps_key", localRootProperties['apiKey'])
         }
         release {
             minifyEnabled true

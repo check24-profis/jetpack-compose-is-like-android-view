@@ -11,6 +11,9 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
 import de.check24.demo.ui.theme.DemoTheme
 
@@ -24,7 +27,7 @@ class ComposableGoogleMapActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Google Map")
+                                Text(text = "Google Maps")
                             })
                     }, content = {
                         Box(
@@ -38,12 +41,19 @@ class ComposableGoogleMapActivity : ComponentActivity() {
             }
         }
     }
-
 }
 
 @Composable
 private fun GoogleMapExample() {
+    val c24Berlin = LatLng(52.51119997328961, 13.404559796099809)
+    val zoom = 17F
+
     GoogleMap(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        cameraPositionState = CameraPositionState(
+            position = CameraPosition(c24Berlin, zoom, 0F, 0F)
+        )
     )
 }
+
+// Preview doesn't work. Probably because previews doesn't do api calls (?)
