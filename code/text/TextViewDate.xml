@@ -1,18 +1,26 @@
-class YourActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        textViewDate = findViewById(R.id.TextViewDate)
-        textViewDate.setOnClickListener {
-        showDatePicker()
-        }
+&lt;TextView
+    android:id="@+id/TextViewDate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Date"
+    app:drawableEndCompat="@drawable/ic_baseline_date_range" /&gt;
+
+//In Activity or Fragment
+
+    textViewDate = findViewById(R.id.TextViewDate)
+    textViewDate.setOnClickListener {
+      showDatePicker()
     }
 
     private fun showDatePicker() {
-    val materialDatePicker = MaterialDatePicker.Builder.datePicker()
-    .build()
+         val materialDatePicker = MaterialDatePicker
+                                  .Builder
+                                  .datePicker()
+                                  .build()
 
-    materialDatePicker.addOnPositiveButtonClickListener {
-    textViewDate.text = materialDatePicker.headerText
-    }
-    materialDatePicker.show(supportFragmentManager, "TAG")
+         materialDatePicker.addOnPositiveButtonClickListener {
+            textViewDate.text = materialDatePicker.headerText
+         }
+         materialDatePicker.show(supportFragmentManager, "TAG")
     }
 }

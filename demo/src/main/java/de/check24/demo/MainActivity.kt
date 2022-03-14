@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
@@ -27,8 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.demo.extensions.findActivity
 import de.check24.demo.features.button.AndroidUICheckBoxActivity
+import de.check24.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.demo.features.button.AndroidUIImageButtonActivity
 import de.check24.demo.features.button.ComposableCheckBoxActivity
+import de.check24.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.demo.features.button.ComposableImageButtonActivity
 import de.check24.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.demo.features.constraintlayout.ComposableConstraintLayoutActivity
@@ -44,6 +46,8 @@ import de.check24.demo.features.date.AndroidUIDateActivity
 import de.check24.demo.features.date.ComposableDateActivity
 import de.check24.demo.features.email.AndroidUIEmailActivity
 import de.check24.demo.features.email.ComposableEmailActivity
+import de.check24.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
+import de.check24.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.demo.features.password.AndroidUIPasswordActivity
 import de.check24.demo.features.password.ComposablePasswordActivity
 import de.check24.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -52,6 +56,10 @@ import de.check24.demo.features.password.visibility.AndroidUIPasswordVisibilityT
 import de.check24.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.demo.features.radio.AndroidUIRadioButtonActivity
+import de.check24.demo.features.radio.AndroidUIRadioGroupActivity
+import de.check24.demo.features.radio.ComposableRadioButtonActivity
+import de.check24.demo.features.radio.ComposableRadioGroupActivity
 import de.check24.demo.features.switch.AndroidUISwitchActivity
 import de.check24.demo.features.switch.ComposableSwitchActivity
 import de.check24.demo.features.text.AndroidUITextActivity
@@ -62,131 +70,178 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val compareItems = mutableListOf<CompareItem>()
+        addItemsToList(compareItems)
+
         setContent {
             DemoTheme {
-                Menu()
+                Menu(compareItems)
             }
         }
     }
+
+    private fun addItemsToList(compareItems: MutableList<CompareItem>) {
+
+        // region Text
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableTextActivity::class.java,
+                androidUIActivity = AndroidUITextActivity::class.java,
+                headline = "Text"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableEmailActivity::class.java,
+                androidUIActivity = AndroidUIEmailActivity::class.java,
+                headline = "Email"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposablePhoneTextActivity::class.java,
+                androidUIActivity = AndroidUIPhoneTextActivity::class.java,
+                headline = "Phone"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposablePasswordActivity::class.java,
+                androidUIActivity = AndroidUIPasswordActivity::class.java,
+                headline = "Password"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
+                androidUIActivity = AndroidUIPasswordVisibilityToggleActivity::class.java,
+                headline = "Password with visibility toggle"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableNumericPasswordActivity::class.java,
+                androidUIActivity = AndroidUINumericPasswordActivity::class.java,
+                headline = "Numeric Password"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableDateActivity::class.java,
+                androidUIActivity = AndroidUIDateActivity::class.java,
+                headline = "Date"
+            )
+        )
+
+        // endregion
+
+        // region Button
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableCheckBoxActivity::class.java,
+                androidUIActivity = AndroidUICheckBoxActivity::class.java,
+                headline = "CheckBox"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableImageButtonActivity::class.java,
+                androidUIActivity = AndroidUIImageButtonActivity::class.java,
+                headline = "ImageButton"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableSwitchActivity::class.java,
+                androidUIActivity = AndroidUISwitchActivity::class.java,
+                headline = "Switch"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableFloatingActionButtonActivity::class.java,
+                androidUIActivity = AndroidUIFloatingActionButtonActivity::class.java,
+                headline = "Floating Action Button"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableRadioButtonActivity::class.java,
+                androidUIActivity = AndroidUIRadioButtonActivity::class.java,
+                headline = "Radio Button"
+            )
+        )
+        compareItems.add  (
+            CompareItem(
+                composeActivity = ComposableRadioGroupActivity::class.java,
+                androidUIActivity = AndroidUIRadioGroupActivity::class.java,
+                headline = "Radio Group"
+            )
+        )
+        // endregion
+
+        // region layout
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableConstraintLayoutActivity::class.java,
+                androidUIActivity = AndroidUIConstraintLayoutActivity::class.java,
+                headline = "Constraint Layout"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableBarrierActivity::class.java,
+                androidUIActivity = AndroidUIBarrierActivity::class.java,
+                headline = "Constraint Layout (Barrier)"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableVerticalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIVerticalGuidelineActivity::class.java,
+                headline = "Guideline Vertical"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableHorizontalGuidelineActivity::class.java,
+                androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
+                headline = "Guideline Horizontal"
+            )
+        )
+
+        // endregion
+
+        // region List
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableListWithDifferentViewsActivity::class.java,
+                androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
+                headline = "List with different Views"
+            )
+        )
+        // endregion
+    }
 }
+
 
 /**
  * Add [CompareUIItem] for every section here
  */
 @Composable
-private fun Menu() {
-    Column(
-        modifier = Modifier.verticalScroll(rememberScrollState())
-    ) {
+private fun Menu(items: List<CompareItem>) {
+    LazyColumn {
 
-        Row {
+        items(items) { item ->
             CompareUIItem(
-                composeActivity = ComposableTextActivity::class.java,
-                androidUIActivity = AndroidUITextActivity::class.java,
-                headline = "Plain Text"
-            )
-        }
-
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposablePasswordActivity::class.java,
-                androidUIActivity = AndroidUIPasswordActivity::class.java,
-                headline = "Password"
-            )
-        }
-        Row {
-            CompareUIItem(
-                composeActivity = ComposablePasswordVisibilityToggleActivity::class.java,
-                androidUIActivity = AndroidUIPasswordVisibilityToggleActivity::class.java,
-                headline = "Password with visibility toggle"
-            )
-        }
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableNumericPasswordActivity::class.java,
-                androidUIActivity = AndroidUINumericPasswordActivity::class.java,
-                headline = "Password (Numeric)"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableEmailActivity::class.java,
-                androidUIActivity = AndroidUIEmailActivity::class.java,
-                headline = "Email"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposablePhoneTextActivity::class.java,
-                androidUIActivity = AndroidUIPhoneTextActivity::class.java,
-                headline = "Phone Number"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableCheckBoxActivity::class.java,
-                androidUIActivity = AndroidUICheckBoxActivity::class.java,
-                headline = "CheckBox"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableDateActivity::class.java,
-                androidUIActivity = AndroidUIDateActivity::class.java,
-                headline = "Date"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableImageButtonActivity::class.java,
-                androidUIActivity = AndroidUIImageButtonActivity::class.java,
-                headline = "ImageButton"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableSwitchActivity::class.java,
-                androidUIActivity = AndroidUISwitchActivity::class.java,
-                headline = "Switch"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableConstraintLayoutActivity::class.java,
-                androidUIActivity = AndroidUIConstraintLayoutActivity::class.java,
-                headline = "Constraint Layout"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableBarrierActivity::class.java,
-                androidUIActivity = AndroidUIBarrierActivity::class.java,
-                headline = "Constraint Layout (Barrier)"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableVerticalGuidelineActivity::class.java,
-                androidUIActivity = AndroidUIVerticalGuidelineActivity::class.java,
-                headline = "Guideline Vertical"
-            )
-        }
-
-        Row {
-            CompareUIItem(
-                composeActivity = ComposableHorizontalGuidelineActivity::class.java,
-                androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
-                headline = "Guideline Horizontal"
+                composeActivity = item.composeActivity,
+                androidUIActivity = item.androidUIActivity,
+                headline = item.headline
             )
         }
 
@@ -208,9 +263,9 @@ private fun Menu() {
  * @param headline a title for this section
  */
 @Composable
-private fun <T, P : Activity> CompareUIItem(
-    composeActivity: Class<T>,
-    androidUIActivity: Class<P>,
+private fun CompareUIItem(
+    composeActivity: Class<out Activity>,
+    androidUIActivity: Class<out Activity>,
     headline: String
 ) {
     val activity = LocalContext.current.findActivity()
@@ -259,7 +314,7 @@ private fun <T, P : Activity> CompareUIItem(
 @Composable
 private fun MenuPreview() {
     DemoTheme {
-        Menu()
+        Menu(emptyList())
     }
 }
 

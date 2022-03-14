@@ -1,0 +1,14 @@
+&lt;com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/floating_action_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_baseline_date_range"
+    android:contentDescription="FloatingActionButton" /&gt;
+
+/* Or you can use an Extended Floating Action Button */
+
+&lt;com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    android:id="@+id/extended_floating_action_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Extended FAB" /&gt;

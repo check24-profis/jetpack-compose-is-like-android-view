@@ -65,18 +65,24 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/CheckBox.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/CheckBox.xml)
       .case (.name "Radio Group") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioGroup.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioGroup.xml)
       .case (.name "Radio Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioButton.xml)
       .case (.name "Toggle Button") $ .pair
       .case (.name "Switch") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Switch.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/Switch.xml)
       .case (.name "Floating Action Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/FloatingActionButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/FloatingActionButton.xml)
 
     .section
       .title "List"
       .case (.name "List with different Views") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/ListWithDifferentViews.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/ListWithDifferentViews.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/list/ListWithDifferentViews.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/list/ListWithDifferentViews.xml)
       .case (.name "Grid") $ .pair
       .case (.name "Staggered") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/StaggeredVerticalGrid.kt)
@@ -87,9 +93,6 @@ html
       .case (.name "Constraints") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutContent.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/ConstraintLayoutContent.xml)
-      .case (.name "Helper (Group)") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutGroup.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/layout/Group.xml)
       .case (.name "Helper (Guideline Vertical)") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutGuideline.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/Guideline.xml)
