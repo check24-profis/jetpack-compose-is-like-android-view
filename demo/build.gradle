@@ -4,13 +4,14 @@ apply plugin: 'kotlinx-serialization'
 apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "de.check24.demo"
+        applicationId "de.check24.compose.demo"
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion TARGET_SDK_VERSION
         versionCode 1
@@ -126,6 +127,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation "com.google.maps.android:maps-compose:1.0.0"
+    implementation platform('com.google.firebase:firebase-bom:29.2.0')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

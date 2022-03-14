@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.check24.demo">
+    package="de.check24.compose.demo">
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="" />
 
         <activity
             android:name=".MainActivity"
@@ -176,23 +176,23 @@
         <!-- Radio Button -->
 
         <activity
-            android:name="de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity"
+            android:name=".features.button.radio.AndroidUIRadioButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.demo.features.button.radio.ComposableRadioButtonActivity"
+            android:name=".features.button.radio.ComposableRadioButtonActivity"
             android:exported="false" />
 
         <!-- Radio Group -->
 
         <activity
-            android:name="de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity"
+            android:name=".features.button.radio.AndroidUIRadioGroupActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.demo.features.button.radio.ComposableRadioGroupActivity"
+            android:name=".features.button.radio.ComposableRadioGroupActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
