@@ -31,9 +31,11 @@ import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
+import de.check24.compose.demo.features.button.AndroidUIToggleButtonActivity
 import de.check24.compose.demo.features.button.ComposableCheckBoxActivity
 import de.check24.compose.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.ComposableImageButtonActivity
+import de.check24.compose.demo.features.button.ComposableToggleButtonActivity
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
@@ -181,6 +183,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableRadioGroupActivity::class.java,
                 androidUIActivity = AndroidUIRadioGroupActivity::class.java,
                 headline = "Radio Group"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableToggleButtonActivity::class.java,
+                androidUIActivity = AndroidUIToggleButtonActivity::class.java,
+                headline = "Toggle Button"
             )
         )
         // endregion

@@ -245,6 +245,17 @@
             android:name=".features.bar.ComposableBottomAppBarActivity"
             android:exported="false" />
 
+        <!-- Toggle Button -->
+
+        <activity
+            android:name=".features.button.AndroidUIToggleButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.ComposableToggleButtonActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
