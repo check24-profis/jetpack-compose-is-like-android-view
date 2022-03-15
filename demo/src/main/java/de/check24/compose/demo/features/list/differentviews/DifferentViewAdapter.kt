@@ -1,23 +1,19 @@
-&lt;androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/shared_colorBackground"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/&gt;
+package de.check24.compose.demo.features.list.differentviews
 
-// Define a layout file for a singular item, one for each viewType
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import de.check24.compose.demo.databinding.ContentItemBinding
+import de.check24.compose.demo.databinding.TitleItemBinding
 
-// Define two constants similar to this
-
-    val CONTENT_TYPE = 0
-    val TITLE_TYPE = 1
-
-// Write Custom List Adapter
+val CONTENT_TYPE = 0
+val TITLE_TYPE = 1
 
 class DifferentViewAdapter :
     ListAdapter<ExampleListItems, RecyclerView.ViewHolder>(DifferentViewDiffCallback) {
-
-    // Handle the Animations of deleted, changed items
 
     object DifferentViewDiffCallback : DiffUtil.ItemCallback<ExampleListItems>() {
 
@@ -34,8 +30,6 @@ class DifferentViewAdapter :
             oldItem == newItem
     }
 
-    // Create the matching ViewHolder for the current viewType
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == TITLE_TYPE)
             TitleViewHolder(
@@ -45,12 +39,13 @@ class DifferentViewAdapter :
                 ).root
             )
         else ContentViewHolder(
-                ContentItemBinding.inflate(
-                    LayoutInflater
-                        .from(parent.context), parent, false
-                    ).root
-                )
-            )
+            ContentItemBinding.inflate(
+                LayoutInflater
+                    .from(parent.context),
+                parent,
+                false
+            ).root
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -70,8 +65,6 @@ class DifferentViewAdapter :
         }
     }
 
-    // Specify the viewType
-
     override fun getItemViewType(position: Int): Int {
         return if (getItem(position) is ExampleListItems.ContentItem) CONTENT_TYPE
         else TITLE_TYPE
@@ -81,31 +74,3 @@ class DifferentViewAdapter :
 
     class TitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
-
-// Set Adapter in Activity/Fragment and submit your data
-
-class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
-
-    var binding: RecyclerViewListBinding? = null
-    var adapter: DifferentViewAdapter? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        supportActionBar?.title = "Different View List"
-
-        binding = RecyclerViewListBinding.inflate(LayoutInflater.from(this), null, false)
-        setContentView(binding?.root)
-        adapter = DifferentViewAdapter()
-        binding?.recyclerViewList?.adapter = adapter
-
-        val exampleList = mutableListOf(
-            ExampleListItems.TitleItem("I am a title"),
-            ExampleListItems.TitleItem("I am a title"),
-            ExampleListItems.ContentItem("I am a title", "I am body"),
-            ExampleListItems.TitleItem("I am a title")
-        )
-
-        adapter?.submitList(exampleList)
-    }
-}
-
