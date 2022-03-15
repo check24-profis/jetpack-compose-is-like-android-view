@@ -44,6 +44,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewPhoneNumber.xml)
       .case (.name "Postal Address") $ .pair
       .case (.name "Multiline Text") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/MultilineText.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/MultilineText.xml)
       .case (.name "Time") $ .pair
       .case (.name "Date") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewDate.kt)

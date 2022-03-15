@@ -83,7 +83,8 @@ private fun Password() {
             imeAction = ImeAction.Done
         ),
         keyboardActions = KeyboardActions(
-            onDone = { keyboardController?.hide() }),
+            onDone = { keyboardController?.hide() }
+        ),
         visualTransformation = PasswordVisualTransformation()
     )
 }

@@ -1,0 +1,19 @@
+&lt;com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/editTextTextMultiLine"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:gravity="start|top"
+    android:hint="@string/your_label"
+    android:inputType="textMultiLine"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:placeholderText="Your Placeholder"&gt;
+
+    &lt;com.google.android.material.textfield.TextInputEditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" /&gt;
+
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;
