@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite" />
+
+    <item
+        android:enabled="false"
+        android:title="" />
+
+    <item
+        android:id="@+id/downloadFragment"
+        android:icon="@drawable/ic_baseline_cloud_download_24"
+        android:title="Download" />
+
+</menu>

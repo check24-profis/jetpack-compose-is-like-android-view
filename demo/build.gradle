@@ -10,7 +10,7 @@ android {
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "de.check24.demo"
+        applicationId "de.check24.compose.demo"
         minSdkVersion MIN_SDK_VERSION
         targetSdkVersion TARGET_SDK_VERSION
         versionCode 1
@@ -31,10 +31,6 @@ android {
             zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            def localRootProperties = new Properties()
-            localRootProperties.load(new FileInputStream(rootProject.file("local.properties")))
-
-            resValue("string", "google_maps_key", localRootProperties['apiKey'])
         }
         release {
             minifyEnabled true
@@ -119,6 +115,9 @@ apply from: "buildSrc/compose_dependencies.gradle"
 
 dependencies {
 
+    implementation "androidx.navigation:navigation-compose:2.4.1"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'com.google.android.material:material:1.6.0-alpha03'
@@ -126,6 +125,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation "com.google.maps.android:maps-compose:1.0.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-runtime-ktx:2.4.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

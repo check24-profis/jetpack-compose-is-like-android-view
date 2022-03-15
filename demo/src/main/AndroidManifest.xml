@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="de.check24.demo">
+    package="de.check24.compose.demo">
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="de.check24.compose.demo.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -31,213 +31,224 @@
         <!-- Plain Text View -->
 
         <activity
-            android:name=".features.text.ComposableTextActivity"
+            android:name="de.check24.compose.demo.features.text.ComposableTextActivity"
             android:exported="false" />
 
         <activity
-            android:name=".features.text.AndroidUITextActivity"
+            android:name="de.check24.compose.demo.features.text.AndroidUITextActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <!-- Plain Password -->
 
         <activity
-            android:name=".features.password.AndroidUIPasswordActivity"
+            android:name="de.check24.compose.demo.features.password.AndroidUIPasswordActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.password.ComposablePasswordActivity"
+            android:name="de.check24.compose.demo.features.password.ComposablePasswordActivity"
             android:exported="false" />
 
         <!-- Password with visibility toggle -->
 
         <activity
-            android:name=".features.password.visibility.AndroidUIPasswordVisibilityToggleActivity"
+            android:name="de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVisibilityToggleActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.password.visibility.ComposablePasswordVisibilityToggleActivity"
+            android:name="de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity"
             android:exported="false" />
 
         <!-- Password numeric -->
 
         <activity
-            android:name=".features.password.numeric.AndroidUINumericPasswordActivity"
+            android:name="de.check24.compose.demo.features.password.numeric.AndroidUINumericPasswordActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.password.numeric.ComposableNumericPasswordActivity"
+            android:name="de.check24.compose.demo.features.password.numeric.ComposableNumericPasswordActivity"
             android:exported="false" />
 
         <!-- Phone Number -->
 
         <activity
-            android:name=".features.phone.AndroidUIPhoneTextActivity"
+            android:name="de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.phone.ComposablePhoneTextActivity"
+            android:name="de.check24.compose.demo.features.phone.ComposablePhoneTextActivity"
             android:exported="false" />
 
         <!-- Email-->
 
         <activity
-            android:name=".features.email.AndroidUIEmailActivity"
+            android:name="de.check24.compose.demo.features.email.AndroidUIEmailActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.email.ComposableEmailActivity"
+            android:name="de.check24.compose.demo.features.email.ComposableEmailActivity"
             android:exported="false" />
 
         <!-- Barrier -->
 
         <activity
-            android:name=".features.constraintlayout.barrier.AndroidUIBarrierActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.constraintlayout.barrier.ComposableBarrierActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.barrier.ComposableBarrierActivity"
             android:exported="false" />
 
         <!-- CheckBox -->
 
         <activity
-            android:name=".features.button.AndroidUICheckBoxActivity"
+            android:name="de.check24.compose.demo.features.button.AndroidUICheckBoxActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.button.ComposableCheckBoxActivity"
+            android:name="de.check24.compose.demo.features.button.ComposableCheckBoxActivity"
             android:exported="false" />
 
         <!-- GuidelineVertical -->
 
         <activity
-            android:name=".features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.constraintlayout.guideline.ComposableVerticalGuidelineActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity"
             android:exported="false" />
 
         <!-- Guideline Horizontal -->
 
         <activity
-            android:name=".features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity"
             android:exported="false" />
 
         <!-- ImageButton -->
 
         <activity
-            android:name=".features.button.AndroidUIImageButtonActivity"
+            android:name="de.check24.compose.demo.features.button.AndroidUIImageButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.button.ComposableImageButtonActivity"
+            android:name="de.check24.compose.demo.features.button.ComposableImageButtonActivity"
             android:exported="false" />
 
         <!-- Switch -->
 
         <activity
-            android:name=".features.switch.AndroidUISwitchActivity"
+            android:name="de.check24.compose.demo.features.switch.AndroidUISwitchActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.switch.ComposableSwitchActivity"
+            android:name="de.check24.compose.demo.features.switch.ComposableSwitchActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <!-- Date -->
 
         <activity
-            android:name=".features.date.AndroidUIDateActivity"
+            android:name="de.check24.compose.demo.features.date.AndroidUIDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.date.ComposableDateActivity"
+            android:name="de.check24.compose.demo.features.date.ComposableDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <!-- Radio Button -->
 
         <activity
-            android:name="de.check24.demo.features.button.radio.AndroidUIRadioButtonActivity"
+            android:name="de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.demo.features.button.radio.ComposableRadioButtonActivity"
+            android:name="de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity"
             android:exported="false" />
 
         <!-- Radio Group -->
 
         <activity
-            android:name="de.check24.demo.features.button.radio.AndroidUIRadioGroupActivity"
+            android:name="de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.demo.features.button.radio.ComposableRadioGroupActivity"
+            android:name="de.check24.compose.demo.features.button.radio.ComposableRadioGroupActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <!-- Constraint Layout -->
 
         <activity
-            android:name=".features.constraintlayout.AndroidUIConstraintLayoutActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.constraintlayout.ComposableConstraintLayoutActivity"
+            android:name="de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity"
             android:exported="false" />
 
         <!-- List with different Views -->
 
         <activity
-            android:name=".features.list.differentviews.AndroidUIListWithDifferentViewsActivity"
+            android:name="de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.list.differentviews.ComposableListWithDifferentViewsActivity"
+            android:name="de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity"
             android:exported="false" />
 
         <!-- Floating Action Button -->
 
         <activity
-            android:name=".features.button.AndroidUIFloatingActionButtonActivity"
+            android:name="de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.button.ComposableFloatingActionButtonActivity"
+            android:name="de.check24.compose.demo.features.button.ComposableFloatingActionButtonActivity"
             android:exported="false" />
 
         <!-- Staggered Grid -->
 
         <activity
-            android:name=".features.list.staggered.AndroidUIStaggeredListActivity"
+            android:name="de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.list.staggered.ComposableStaggeredListActivity"
+            android:name="de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity"
+            android:exported="false" />
+
+        <!-- Bottom App Bar -->
+
+        <activity
+            android:name=".features.bar.AndroidUIBottomAppBarActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.bar.ComposableBottomAppBarActivity"
             android:exported="false" />
 
         <!-- Google Maps -->

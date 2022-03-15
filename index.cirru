@@ -111,15 +111,17 @@ html
       .title "Container"
       .case (.name "Spinner") $ .pair
       .case (.name "Horizontal Scrolling") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/HorizontalScrolling.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/HorizontalScrolling.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/HorizontalScrolling.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/HorizontalScrolling.xml)
       .case (.name "Vertical Scrolling") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/VerticalScrolling.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/VerticalScrolling.xml)
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/VerticalScrolling.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/VerticalScrolling.xml)
       .case (.name "ViewPager") $ .pair
       .case (.name "Card") $ .pair
       .case (.name "AppBarLayout") $ .pair
       .case (.name "BottomAppBar") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/BottomAppBar.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/BottomAppBar.xml)
       .case (.name "Toolbar") $ .pair
       .case (.name "TabLayout") $ .pair
       .case (.name "TabItem") $ .pair
