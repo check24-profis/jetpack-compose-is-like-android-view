@@ -1,30 +1,49 @@
-&lt;com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/floating_action_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:contentDescription="BottomAppBarWithFlyingActionButton"
-    android:src="@drawable/icon"
-    app:fabSize="auto"
-    app:layout_anchor="@id/bottom_app_bar" /&gt;
-
-&lt;com.google.android.material.bottomappbar.BottomAppBar
-    android:id="@+id/bottom_app_bar"
-    android:backgroundTint="@color/purple_500"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
-    app:fabAlignmentMode="center"&gt;
-
-&lt;com.google.android.material.bottomnavigation.BottomNavigationView
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginEnd="16dp"
-    app:itemIconTint="@color/white"
-    app:itemTextColor="@color/white"
-    android:background="@drawable/transparent_background"
-    app:menu="@menu/bottom_app_bar_menu" /&gt;
+    tools:context=".features.bar.AndroidUIBottomAppBarActivity"&gt;
 
-&lt;/com.google.android.material.bottomappbar.BottomAppBar&gt;
+    &lt;FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"&gt;
+    &lt;/FrameLayout&gt;
+
+    &lt;com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="BottomAppBarWithFloatingActionButton"
+        android:src="@drawable/ic_baseline_add_24"
+        app:fabSize="auto"
+        app:layout_anchor="@id/bottom_app_bar" /&gt;
+
+    &lt;com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        style="@style/DemoMaterial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/purple_500"
+        app:fabAlignmentMode="center"&gt;
+
+        &lt;com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/transparent_background"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:labelVisibilityMode="selected"
+            app:menu="@menu/bottom_app_bar_menu" /&gt;
+
+    &lt;/com.google.android.material.bottomappbar.BottomAppBar&gt;
+
+&lt;/androidx.coordinatorlayout.widget.CoordinatorLayout&gt;
 
     &lt;!-- and the menu items --&gt;
 
@@ -37,18 +56,7 @@
         android:title="Favorite" /&gt;
 
     &lt;item
-        android:id="@+id/save"
-        android:icon="@drawable/ic_baseline_save_24"
-        android:title="Save" /&gt;
-
-    &lt;item
-        android:enabled="false"
-        android:title="spacer" /&gt;
-
-    &lt;item
-        android:id="@+id/upload"
-        android:icon="@drawable/ic_baseline_cloud_upload_24"
-        android:title="Upload" /&gt;
+        android:enabled="false" /&gt;
 
     &lt;item
         android:id="@+id/download"

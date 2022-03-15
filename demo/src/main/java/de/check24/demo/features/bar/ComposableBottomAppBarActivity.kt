@@ -22,7 +22,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -89,8 +88,6 @@ private fun BottomAppBarExample() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -135,87 +132,6 @@ private fun BottomAppBarExample() {
     ) {
         BottomNavGraph(navController = navController)
     }
-
-
-    /*val selectedItem = remember {
-        mutableStateOf("")
-    }
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "BottomAppBar")
-                }
-            )
-        },
-        bottomBar = {
-            BottomAppBar(
-                cutoutShape = CircleShape,
-                content = {
-                    BottomNavigation(
-                    ) {
-                        BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Favorite,
-                                    "favorite icon"
-                                )
-                            },
-                            label = { Text(text = "Favorite") },
-                            selected = selectedItem.value == "favorite",
-                            onClick = {
-                                selectedItem.value = "favorite"
-                            },
-                            alwaysShowLabel = false
-                        )
-
-                        BottomNavigationItem(
-                            selected = false,
-                            onClick = { },
-                            icon = {},
-                            enabled = false
-                        )
-
-                        BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Download,
-                                    "download icon"
-                                )
-                            },
-                            label = {
-                                Text(
-                                    text = "Download",
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            },
-                            selected = selectedItem.value == "download",
-                            onClick = {
-                                selectedItem.value = "download"
-                            },
-                            alwaysShowLabel = false
-                        )
-                    }
-                }
-            )
-        },
-        floatingActionButtonPosition = FabPosition.Center,
-        isFloatingActionButtonDocked = true,
-        floatingActionButton = {
-            FloatingActionButton(
-                shape = CircleShape,
-                onClick = {}
-            ) {
-                Icon(
-                    Icons.Filled.Add,
-                    "Floating Action Button"
-                )
-            }
-        },
-        content = {},
-    )*/
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)

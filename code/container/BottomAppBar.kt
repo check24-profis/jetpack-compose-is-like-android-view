@@ -1,9 +1,15 @@
 @Composable
-fun BottomAppBarExample() {
+private fun BottomAppBarExample() {
 
-    val selectedItem = remember {
-        mutableStateOf("")
-    }
+    val navController = rememberNavController()
+
+    val screens = listOf(
+        BottomBarScreen.Favorite,
+        BottomBarScreen.Download
+    )
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
 
     Scaffold(
         topBar = {
@@ -14,63 +20,31 @@ fun BottomAppBarExample() {
             )
         },
         bottomBar = {
-            BottomAppBar(
-                cutoutShape = CircleShape,
-                content = {
-                    BottomNavigation(
-                    ) {
+            BottomAppBar(cutoutShape = CircleShape) {
+                BottomNavigation() {
+                    screens.forEach { screen ->
                         BottomNavigationItem(
+                            label = { Text(text = screen.title) },
                             icon = {
                                 Icon(
-                                    Icons.Filled.Favorite,
-                                    "favorite icon"
+                                    imageVector = screen.icon,
+                                    contentDescription = "Navigation Icon"
                                 )
                             },
-                            label = { Text(text = "Favorite") },
-                            selected = selectedItem.value == "favorite",
-                            onClick = {
-                                selectedItem.value = "favorite"
-                            },
-                            alwaysShowLabel = false
-                        )
-
-                        BottomNavigationItem(
-                            selected = false,
-                            onClick = { },
-                            icon = {},
-                            enabled = false
-                        )
-
-                        BottomNavigationItem(
-                            icon = {
-                                Icon(
-                                    Icons.Filled.Download,
-                                    "download icon"
-                                )
-                            },
-                            label = {
-                                Text(
-                                    text = "Download",
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            },
-                            selected = selectedItem.value == "download",
-                            onClick = {
-                                selectedItem.value = "download"
-                            },
+                            selected = currentDestination?.route == screen.route,
+                            onClick = { navController.navigate(screen.route) },
                             alwaysShowLabel = false
                         )
                     }
                 }
-            )
+            }
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         floatingActionButton = {
             FloatingActionButton(
                 shape = CircleShape,
-                onClick = {}
+                onClick = { /* your code */ }
             ) {
                 Icon(
                     Icons.Filled.Add,
@@ -78,6 +52,7 @@ fun BottomAppBarExample() {
                 )
             }
         },
-        content = {}
-    )
+    ) {
+        BottomNavGraph(navController = navController)
+    }
 }

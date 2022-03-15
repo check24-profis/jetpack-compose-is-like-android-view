@@ -44,7 +44,7 @@ class AndroidUIBottomAppBarActivity : AppCompatActivity() {
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, fragment)
-//            addToBackStack("Fragment")
+            addToBackStack("Fragment")
             commit()
         }
 }
