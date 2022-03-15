@@ -109,7 +109,10 @@ private fun BottomAppBarExample() {
                                 )
                             },
                             selected = currentDestination?.route == screen.route,
-                            onClick = { navController.navigate(screen.route) },
+                            onClick = {
+                                navController.navigate(screen.route)
+                                navController.popBackStack()
+                            },
                             alwaysShowLabel = false
                         )
                     }
