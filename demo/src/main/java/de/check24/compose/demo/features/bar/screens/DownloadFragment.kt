@@ -1,4 +1,4 @@
-package de.check24.demo.features.bar.screens
+package de.check24.compose.demo.features.bar.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

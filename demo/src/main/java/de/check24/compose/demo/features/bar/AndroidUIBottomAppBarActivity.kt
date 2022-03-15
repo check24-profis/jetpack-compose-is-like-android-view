@@ -1,4 +1,4 @@
-package de.check24.demo.features.bar
+package de.check24.compose.demo.features.bar
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import de.check24.demo.R
 import de.check24.demo.databinding.BottomAppBarBinding
-import de.check24.demo.features.bar.screens.DownloadFragment
-import de.check24.demo.features.bar.screens.FavoriteFragment
+import de.check24.compose.demo.features.bar.screens.DownloadFragment
+import de.check24.compose.demo.features.bar.screens.FavoriteFragment
 
 class AndroidUIBottomAppBarActivity : AppCompatActivity() {
 

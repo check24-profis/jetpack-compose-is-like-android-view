@@ -1,4 +1,4 @@
-package de.check24.demo.features.bar.screens
+package de.check24.compose.demo.features.bar.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,20 +12,20 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun FavoriteScreen() {
+fun DownloadScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "Favorites screen",
+            text = "Downloads screen",
             Modifier.background(Color.Gray)
         )
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
+@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-fun FavoriteScreenPreview() {
-    FavoriteScreen()
+fun DownloadScreenPreview() {
+    DownloadScreen()
 }

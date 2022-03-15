@@ -1,4 +1,4 @@
-package de.check24.demo.features.bar
+package de.check24.compose.demo.features.bar
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -27,9 +27,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import de.check24.demo.features.bar.screens.DownloadScreen
-import de.check24.demo.features.bar.screens.FavoriteScreen
-import de.check24.demo.ui.theme.DemoTheme
+import de.check24.compose.demo.features.bar.screens.DownloadScreen
+import de.check24.compose.demo.features.bar.screens.FavoriteScreen
+import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableBottomAppBarActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
