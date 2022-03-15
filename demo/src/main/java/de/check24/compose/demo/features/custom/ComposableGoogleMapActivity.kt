@@ -1,4 +1,4 @@
-package de.check24.demo.features.custom
+package de.check24.compose.demo.features.custom
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
-import de.check24.demo.ui.theme.DemoTheme
+import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableGoogleMapActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

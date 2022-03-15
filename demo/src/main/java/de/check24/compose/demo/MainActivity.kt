@@ -46,8 +46,8 @@ import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHori
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
-import de.check24.demo.features.custom.AndroidUIGoogleMapActivity
-import de.check24.demo.features.custom.ComposableGoogleMapActivity
+import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
+import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.compose.demo.features.date.AndroidUIDateActivity
 import de.check24.compose.demo.features.date.ComposableDateActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity

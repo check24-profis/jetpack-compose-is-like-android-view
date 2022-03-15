@@ -1,11 +1,11 @@
-package de.check24.demo.features.custom
+package de.check24.compose.demo.features.custom
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import de.check24.demo.R
+import de.check24.compose.demo.R
 
 
 class AndroidUIGoogleMapActivity : AppCompatActivity() {
