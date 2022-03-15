@@ -327,52 +327,13 @@ fun Date() {
 
     val activity = LocalContext.current as AppCompatActivity
 
-    Box(
+    Text(
+        text = datePicked,
+        color = MaterialTheme.colors.onSurface,
         modifier = Modifier
-            .wrapContentSize(Alignment.TopStart)
-            .padding(top = 10.dp)
-            .border(0.5.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.5f))
-            .clickable {
-                showDatePicker(activity, updatedDate)
-            }
-    ) {
-
-        ConstraintLayout(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-
-            val (label, iconView) = createRefs()
-
-            Text(
-                text = datePicked,
-                color = MaterialTheme.colors.onSurface,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .constrainAs(label) {
-                        top.linkTo(parent.top)
-                        bottom.linkTo(parent.bottom)
-                        start.linkTo(parent.start)
-                        end.linkTo(iconView.start)
-                        width = Dimension.fillToConstraints
-                    }
-            )
-
-            Icon(
-                imageVector = Icons.Default.DateRange,
-                contentDescription = null,
-                modifier = Modifier
-                    .size(20.dp, 20.dp)
-                    .constrainAs(iconView) {
-                        end.linkTo(parent.end)
-                        top.linkTo(parent.top)
-                        bottom.linkTo(parent.bottom)
-                    },
-                tint = MaterialTheme.colors.onSurface
-            )
-        }
-    }
+            .wrapContentSize()
+            .clickable { showDatePicker(activity, updatedDate) }
+    )
 }
 
 private fun showDatePicker(
@@ -386,8 +347,6 @@ private fun showDatePicker(
     }
 }</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
     android:id="@+id/TextViewDate"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:text="Date"
     app:drawableEndCompat="@drawable/ic_baseline_date_range" /&gt;
 
@@ -1152,4 +1111,126 @@ fun VerticalScrollBox() {
     android:layout_width="match_parent"
     android:layout_height="wrap_content"&gt;
     [...]
-&lt;/ScrollView&gt;</code></pre></div></div></div><div class="case"><div class="name">ViewPager</div><div class="pair"></div></div><div class="case"><div class="name">Card</div><div class="pair"></div></div><div class="case"><div class="name">AppBarLayout</div><div class="pair"></div></div><div class="case"><div class="name">BottomAppBar</div><div class="pair"></div></div><div class="case"><div class="name">Toolbar</div><div class="pair"></div></div><div class="case"><div class="name">TabLayout</div><div class="pair"></div></div><div class="case"><div class="name">TabItem</div><div class="pair"></div></div><div class="case"><div class="name">FragmentContainer</div><div class="pair"></div></div><div class="case"><div class="name">NavHost</div><div class="pair"></div></div></div><div class="section"><div class="title">Custom</div><div class="case"><div class="name">Map</div><div class="pair"></div></div></div><div class="section"><div class="title">Modifier</div></div><div class="section"><div class="title">Positioning</div></div><div class="section"><div class="title">States</div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div></div></body></html>
+&lt;/ScrollView&gt;</code></pre></div></div></div><div class="case"><div class="name">ViewPager</div><div class="pair"></div></div><div class="case"><div class="name">Card</div><div class="pair"></div></div><div class="case"><div class="name">AppBarLayout</div><div class="pair"></div></div><div class="case"><div class="name">BottomAppBar</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+private fun BottomAppBarExample() {
+
+    val screens = listOf(
+        BottomBarScreen.Favorite,
+        BottomBarScreen.Download
+    )
+
+    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "BottomAppBar")
+                }
+            )
+        },
+        bottomBar = {
+            BottomAppBar(cutoutShape = CircleShape) {
+                screens.forEach { screen ->
+                    BottomNavigationItem(
+                        label = { Text(text = screen.title) },
+                        icon = {
+                            Icon(
+                                imageVector = screen.icon,
+                                contentDescription = "Navigation Icon"
+                            )
+                        },
+                        selected = screen == currentScreen.value,
+                        onClick = {
+                            currentScreen.value = screen
+                        },
+                        alwaysShowLabel = false
+                    )
+                }
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true,
+        floatingActionButton = {
+            FloatingActionButton(
+                shape = CircleShape,
+                onClick = { /* your code */ }
+            ) {
+                Icon(
+                    Icons.Filled.Add,
+                    "Floating Action Button"
+                )
+            }
+        },
+    ) {
+        when (currentScreen.value) {
+            BottomBarScreen.Favorite -> FavoriteScreen()
+            BottomBarScreen.Download -> DownloadScreen()
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.bar.AndroidUIBottomAppBarActivity"&gt;
+
+    &lt;FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"&gt;
+    &lt;/FrameLayout&gt;
+
+    &lt;com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="BottomAppBarWithFloatingActionButton"
+        android:src="@drawable/ic_baseline_add_24"
+        app:fabSize="auto"
+        app:layout_anchor="@id/bottom_app_bar" /&gt;
+
+    &lt;com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        style="@style/DemoMaterial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/purple_500"
+        app:fabAlignmentMode="center"&gt;
+
+        &lt;com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/transparent_background"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:labelVisibilityMode="selected"
+            app:menu="@menu/bottom_app_bar_menu" /&gt;
+
+    &lt;/com.google.android.material.bottomappbar.BottomAppBar&gt;
+
+&lt;/androidx.coordinatorlayout.widget.CoordinatorLayout&gt;
+
+    &lt;!-- and the menu items --&gt;
+
+    &lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;item
+        android:id="@+id/favorite"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorite" /&gt;
+
+    &lt;item
+        android:enabled="false" /&gt;
+
+    &lt;item
+        android:id="@+id/download"
+        android:icon="@drawable/ic_baseline_cloud_download_24"
+        android:title="Download" /&gt;
+
+&lt;/menu&gt;</code></pre></div></div></div><div class="case"><div class="name">Toolbar</div><div class="pair"></div></div><div class="case"><div class="name">TabLayout</div><div class="pair"></div></div><div class="case"><div class="name">TabItem</div><div class="pair"></div></div><div class="case"><div class="name">FragmentContainer</div><div class="pair"></div></div><div class="case"><div class="name">NavHost</div><div class="pair"></div></div></div><div class="section"><div class="title">Custom</div><div class="case"><div class="name">Map</div><div class="pair"></div></div></div><div class="section"><div class="title">Modifier</div></div><div class="section"><div class="title">Positioning</div></div><div class="section"><div class="title">States</div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div></div></body></html>
