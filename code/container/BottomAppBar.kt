@@ -1,15 +1,14 @@
 @Composable
-fun BottomAppBarExample() {
+private fun BottomAppBarExample() {
 
     val screens = listOf(
         BottomBarScreen.Favorite,
         BottomBarScreen.Download
     )
 
-    val currentItem = remember { mutableStateOf<BottomBarScreen?>(null) }
+    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
 
     Scaffold(
-        content = {  },
         topBar = {
             TopAppBar(
                 title = {
@@ -28,9 +27,9 @@ fun BottomAppBarExample() {
                                 contentDescription = "Navigation Icon"
                             )
                         },
-                        selected = screen == currentItem.value,
+                        selected = screen == currentScreen.value,
                         onClick = {
-                            currentItem.value = screen
+                            currentScreen.value = screen
                         },
                         alwaysShowLabel = false
                     )
@@ -50,5 +49,10 @@ fun BottomAppBarExample() {
                 )
             }
         },
-    )
+    ) {
+        when (currentScreen.value) {
+            BottomBarScreen.Favorite -> FavoriteScreen()
+            BottomBarScreen.Download -> DownloadScreen()
+        }
+    }
 }
