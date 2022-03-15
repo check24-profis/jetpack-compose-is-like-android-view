@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import de.check24.compose.demo.theme.DemoTheme
 
 @Composable
 internal fun DownloadScreen() {
@@ -27,5 +28,7 @@ internal fun DownloadScreen() {
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
 private fun DownloadScreenPreview() {
-    DownloadScreen()
+    DemoTheme {
+        DownloadScreen()
+    }
 }

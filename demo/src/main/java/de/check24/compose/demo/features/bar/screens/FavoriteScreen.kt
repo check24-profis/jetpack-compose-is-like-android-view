@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import de.check24.compose.demo.theme.DemoTheme
 
 @Composable
 internal fun FavoriteScreen() {
@@ -27,5 +28,7 @@ internal fun FavoriteScreen() {
 @Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
 @Composable
 private fun FavoriteScreenPreview() {
-    FavoriteScreen()
+    DemoTheme {
+        FavoriteScreen()
+    }
 }

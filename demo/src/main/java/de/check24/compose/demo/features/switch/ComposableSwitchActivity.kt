@@ -55,8 +55,7 @@ private fun Switch() {
         val checkedState = remember { mutableStateOf(false) }
         Switch(
             checked = checkedState.value,
-            onCheckedChange = { checkedState.value = it
-            Log.w("", "lorem $it")}
+            onCheckedChange = { checkedState.value = it }
         )
     }
 }
