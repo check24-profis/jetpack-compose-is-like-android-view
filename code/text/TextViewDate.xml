@@ -1,7 +1,5 @@
 &lt;TextView
     android:id="@+id/TextViewDate"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:text="Date"
     app:drawableEndCompat="@drawable/ic_baseline_date_range" /&gt;
 
