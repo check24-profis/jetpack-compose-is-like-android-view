@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import de.check24.demo.R
+import de.check24.compose.demo.R
 
 class FavoriteFragment : Fragment() {
 
