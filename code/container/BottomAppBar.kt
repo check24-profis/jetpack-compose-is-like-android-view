@@ -1,17 +1,15 @@
 @Composable
-private fun BottomAppBarExample() {
-
-    val navController = rememberNavController()
+fun BottomAppBarExample() {
 
     val screens = listOf(
         BottomBarScreen.Favorite,
         BottomBarScreen.Download
     )
 
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
+    val currentItem = remember { mutableStateOf<BottomBarScreen?>(null) }
 
     Scaffold(
+        content = {  },
         topBar = {
             TopAppBar(
                 title = {
@@ -21,21 +19,21 @@ private fun BottomAppBarExample() {
         },
         bottomBar = {
             BottomAppBar(cutoutShape = CircleShape) {
-                BottomNavigation() {
-                    screens.forEach { screen ->
-                        BottomNavigationItem(
-                            label = { Text(text = screen.title) },
-                            icon = {
-                                Icon(
-                                    imageVector = screen.icon,
-                                    contentDescription = "Navigation Icon"
-                                )
-                            },
-                            selected = currentDestination?.route == screen.route,
-                            onClick = { navController.navigate(screen.route) },
-                            alwaysShowLabel = false
-                        )
-                    }
+                screens.forEach { screen ->
+                    BottomNavigationItem(
+                        label = { Text(text = screen.title) },
+                        icon = {
+                            Icon(
+                                imageVector = screen.icon,
+                                contentDescription = "Navigation Icon"
+                            )
+                        },
+                        selected = screen == currentItem.value,
+                        onClick = {
+                            currentItem.value = screen
+                        },
+                        alwaysShowLabel = false
+                    )
                 }
             }
         },
@@ -52,7 +50,5 @@ private fun BottomAppBarExample() {
                 )
             }
         },
-    ) {
-        BottomNavGraph(navController = navController)
-    }
+    )
 }
