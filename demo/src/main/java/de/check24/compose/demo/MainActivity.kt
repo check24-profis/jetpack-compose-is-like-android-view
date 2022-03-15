@@ -26,6 +26,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.compose.demo.extensions.findActivity
+import de.check24.compose.demo.features.bar.AndroidUIBottomAppBarActivity
+import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
@@ -232,6 +234,18 @@ class MainActivity : ComponentActivity() {
                 headline = "Staggered Grid"
             )
         )
+        // endregion
+
+        // region container
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableBottomAppBarActivity::class.java,
+                androidUIActivity = AndroidUIBottomAppBarActivity::class.java,
+                headline = "Bottom App Bar"
+            )
+        )
+
         // endregion
     }
 }

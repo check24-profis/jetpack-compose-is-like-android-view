@@ -234,6 +234,17 @@
             android:name="de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity"
             android:exported="false" />
 
+        <!-- Bottom App Bar -->
+
+        <activity
+            android:name=".features.bar.AndroidUIBottomAppBarActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.bar.ComposableBottomAppBarActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
