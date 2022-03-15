@@ -1,13 +1,8 @@
 package de.check24.demo.features.bar
 
-import android.graphics.drawable.Icon
-import android.media.Image
 import android.os.Bundle
-import android.provider.ContactsContract
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
@@ -24,27 +19,17 @@ import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import de.check24.demo.R
 import de.check24.demo.features.bar.screens.DownloadScreen
 import de.check24.demo.features.bar.screens.FavoriteScreen
-import de.check24.demo.features.bar.screens.FloatingActionButtonScreen
 import de.check24.demo.ui.theme.DemoTheme
 
 class ComposableBottomAppBarActivity : ComponentActivity() {
@@ -74,12 +59,6 @@ sealed class BottomBarScreen(
         title = "Download",
         icon = Icons.Default.Download
     )
-
-    object FloatingActionButton : BottomBarScreen(
-        route = "fab",
-        title = "FloatingActionButton",
-        icon = Icons.Default.Add
-    )
 }
 
 @Composable
@@ -93,9 +72,6 @@ fun BottomNavGraph(navController: NavHostController) {
         }
         composable(route = BottomBarScreen.Download.route) {
             DownloadScreen()
-        }
-        composable(route = BottomBarScreen.FloatingActionButton.route) {
-            FloatingActionButtonScreen()
         }
     }
 }
@@ -112,6 +88,8 @@ private fun BottomAppBarExample() {
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+
+
 
     Scaffold(
         topBar = {
@@ -146,7 +124,7 @@ private fun BottomAppBarExample() {
         floatingActionButton = {
             FloatingActionButton(
                 shape = CircleShape,
-                onClick = { navController.navigate(BottomBarScreen.FloatingActionButton.route) }
+                onClick = { /* your code */ }
             ) {
                 Icon(
                     Icons.Filled.Add,
@@ -157,11 +135,6 @@ private fun BottomAppBarExample() {
     ) {
         BottomNavGraph(navController = navController)
     }
-
-    /*val items = listOf(
-        Screen.Favorites,
-        Screen.Downloads
-    )*/
 
 
     /*val selectedItem = remember {
