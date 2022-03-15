@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun FavoriteScreen() {
+internal fun FavoriteScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -26,6 +26,6 @@ fun FavoriteScreen() {
 
 @Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
 @Composable
-fun FavoriteScreenPreview() {
+private fun FavoriteScreenPreview() {
     FavoriteScreen()
 }

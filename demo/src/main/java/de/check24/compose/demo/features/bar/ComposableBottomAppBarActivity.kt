@@ -22,6 +22,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import de.check24.compose.demo.features.bar.screens.DownloadScreen
+import de.check24.compose.demo.features.bar.screens.FavoriteScreen
 import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableBottomAppBarActivity : ComponentActivity() {
@@ -58,10 +60,9 @@ private fun BottomAppBarExample() {
         BottomBarScreen.Download
     )
 
-    val currentItem = remember { mutableStateOf<BottomBarScreen?>(null) }
+    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
 
     Scaffold(
-        content = { },
         topBar = {
             TopAppBar(
                 title = {
@@ -80,9 +81,9 @@ private fun BottomAppBarExample() {
                                 contentDescription = "Navigation Icon"
                             )
                         },
-                        selected = screen == currentItem.value,
+                        selected = screen == currentScreen.value,
                         onClick = {
-                            currentItem.value = screen
+                            currentScreen.value = screen
                         },
                         alwaysShowLabel = false
                     )
@@ -102,7 +103,12 @@ private fun BottomAppBarExample() {
                 )
             }
         },
-    )
+    ) {
+        when (currentScreen.value) {
+            BottomBarScreen.Favorite -> FavoriteScreen()
+            BottomBarScreen.Download -> DownloadScreen()
+        }
+    }
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)

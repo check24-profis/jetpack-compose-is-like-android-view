@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun DownloadScreen() {
+internal fun DownloadScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -26,6 +26,6 @@ fun DownloadScreen() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-fun DownloadScreenPreview() {
+private fun DownloadScreenPreview() {
     DownloadScreen()
 }
