@@ -30,10 +30,8 @@ class AndroidUITimeActivity : AppCompatActivity() {
             .build()
 
         materialTimePicker.addOnPositiveButtonClickListener {
-            binding.timePickerTextView.text = ""
             binding.timePickerTextView.text =
                 correctsTime(materialTimePicker.hour, materialTimePicker.minute)
-
         }
         materialTimePicker.show(supportFragmentManager, "TAG")
     }

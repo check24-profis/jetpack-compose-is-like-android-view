@@ -30,14 +30,6 @@ class ComposableTimeActivity : AppCompatActivity() {
         super.onPostCreate(savedInstanceState)
         setContent {
             DemoTheme {
-                /*Scaffold(
-                    topBar = {
-                        TopAppBar {
-                            Text(text = "Time")
-                        }
-                    },
-                    content = { TimeExample() }
-                )*/
                 TimeExample()
             }
         }
