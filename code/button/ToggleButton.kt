@@ -1,34 +1,8 @@
-/* right now there is no toggle button in compose */
+/* this is a custom build toggle button because*/
+/* there is no toggle button in compose right now */
 
 @Composable
-private fun ToggleButtonExample() {
-
-    val isToggleButtonChecked = remember {
-        mutableStateOf(false)
-    }
-
-    IconToggleButton(
-        modifier = Modifier.wrapContentSize(),
-        checked = isToggleButtonChecked.value,
-        onCheckedChange = { isToggleButtonChecked.value = !isToggleButtonChecked.value },
-    ) {
-        val color by animateColorAsState(
-            if (isToggleButtonChecked.value) {
-                Color.Green
-            } else Color.Red
-        )
-        Icon(
-            Icons.Filled.Check,
-            "ToggleButtinIcon",
-            tint = color
-        )
-    }
-}
-
-/* here is a custom build toggle button */
-
-@Composable
-private fun CustomToggleButton() {
+fun CustomToggleButton() {
 
     val buttonClicked: MutableState<Boolean> = remember {
         mutableStateOf(false)
