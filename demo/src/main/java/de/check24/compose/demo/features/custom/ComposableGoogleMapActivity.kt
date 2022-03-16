@@ -11,9 +11,10 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.rememberCameraPositionState
 import de.check24.compose.demo.theme.DemoTheme
@@ -59,4 +60,10 @@ private fun GoogleMapExample() {
     )
 }
 
-// Preview doesn't work. Probably because previews doesn't do api calls (?)
+@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
+@Composable
+private fun GoogleMapExamplePreview() {
+    DemoTheme {
+        GoogleMapExample()
+    }
+}
