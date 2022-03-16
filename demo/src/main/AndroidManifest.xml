@@ -245,6 +245,17 @@
             android:name=".features.bar.ComposableBottomAppBarActivity"
             android:exported="false" />
 
+        <!-- Multiline Text -->
+
+        <activity
+            android:name=".features.text.AndroidUIMultilineTextActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableMultilineTextActivity"
+            android:exported="false" />
+
         <!-- Toggle Button -->
 
         <activity
