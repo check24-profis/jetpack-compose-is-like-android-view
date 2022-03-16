@@ -17,13 +17,6 @@ class AndroidUITimeActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.title = "Time"
 
-
-/*        val calendar = Calendar.getInstance()
-        var hour = calendar.get(Calendar.HOUR_OF_DAY)
-        var minutes = calendar.get(Calendar.MINUTE)
-
-        var picker = TimePickerDialog()*/
-
         binding.timePickerTextView.setOnClickListener {
             showTimePicker()
         }
@@ -39,7 +32,7 @@ class AndroidUITimeActivity : AppCompatActivity() {
         materialTimePicker.addOnPositiveButtonClickListener {
             binding.timePickerTextView.text = ""
             binding.timePickerTextView.text =
-                "Time: ${correctsTime(materialTimePicker.hour, materialTimePicker.minute)}"
+                correctsTime(materialTimePicker.hour, materialTimePicker.minute)
 
         }
         materialTimePicker.show(supportFragmentManager, "TAG")
@@ -51,6 +44,6 @@ class AndroidUITimeActivity : AppCompatActivity() {
 
         if (hour < 10) stringHour = "0$stringHour"
         if (minute < 10) stringMinute = "0$stringMinute"
-        return "$stringHour:$stringMinute"
+        return "Time: $stringHour:$stringMinute"
     }
 }
