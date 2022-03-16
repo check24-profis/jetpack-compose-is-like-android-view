@@ -158,12 +158,12 @@
         <!-- Date -->
 
         <activity
-            android:name="de.check24.compose.demo.features.date.AndroidUIDateActivity"
+            android:name="de.check24.compose.demo.features.picker.AndroidUIDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.compose.demo.features.date.ComposableDateActivity"
+            android:name="de.check24.compose.demo.features.picker.ComposableDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
@@ -265,6 +265,17 @@
 
         <activity
             android:name=".features.button.ComposableToggleButtonActivity"
+            android:exported="false" />
+
+        <!-- Time -->
+
+        <activity
+            android:name=".features.picker.AndroidUITimeActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.picker.ComposableTimeActivity"
             android:exported="false" />
 
     </application>

@@ -48,8 +48,8 @@ import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHori
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
-import de.check24.compose.demo.features.date.AndroidUIDateActivity
-import de.check24.compose.demo.features.date.ComposableDateActivity
+import de.check24.compose.demo.features.picker.AndroidUIDateActivity
+import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
@@ -64,6 +64,8 @@ import de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVis
 import de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.compose.demo.features.picker.AndroidUITimeActivity
+import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
@@ -145,6 +147,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableDateActivity::class.java,
                 androidUIActivity = AndroidUIDateActivity::class.java,
                 headline = "Date"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableTimeActivity::class.java,
+                androidUIActivity = AndroidUITimeActivity::class.java,
+                headline = "Time"
             )
         )
 
