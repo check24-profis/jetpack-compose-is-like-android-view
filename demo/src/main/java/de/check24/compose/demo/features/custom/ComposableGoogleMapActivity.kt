@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
 import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.rememberCameraPositionState
 import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableGoogleMapActivity : ComponentActivity() {
@@ -48,11 +49,13 @@ private fun GoogleMapExample() {
     val c24Berlin = LatLng(52.51119997328961, 13.404559796099809)
     val zoom = 17F
 
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition(c24Berlin, zoom, 0F, 0F)
+    }
+
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
-        cameraPositionState = CameraPositionState(
-            position = CameraPosition(c24Berlin, zoom, 0F, 0F)
-        )
+        cameraPositionState = cameraPositionState
     )
 }
 
