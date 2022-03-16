@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import de.check24.compose.demo.theme.DemoTheme
 
@@ -64,7 +65,7 @@ private fun MultilineText() {
     )
 }
 
-@Preview
+@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
 private fun MultilineTextPreview() {
     DemoTheme {
