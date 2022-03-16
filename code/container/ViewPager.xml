@@ -1,0 +1,59 @@
+// View Pager
+
+&lt;androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/view_pager_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" /&gt;
+
+// Fragment(s) in View Pager
+
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="25dp"
+    android:elevation="10dp"
+    app:cardBackgroundColor="#FFCCCCCC"&gt;
+
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;TextView
+        android:id="@+id/view_pager_fragment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/example_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black" /&gt;
+
+    &lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+
+&lt;/androidx.cardview.widget.CardView&gt;
+
+// View Pager Adapter
+
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+    override fun getItemCount(): Int = 5
+
+    override fun createFragment(position: Int): Fragment = ViewPagerFragment(position)
+}
+
+// View Pager Fragment Implementation
+
+class ViewPagerFragment(val position: Int) : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val fragment = inflater.inflate(R.layout.view_pager_fragment, container)
+        val textView = fragment.findViewById&lt;TextView&gt;(R.id.view_pager_fragment_text)
+        textView.text = "this is page $position"
+
+        return fragment
+    }
+}

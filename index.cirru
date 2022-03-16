@@ -119,6 +119,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/VerticalScrolling.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/VerticalScrolling.xml)
       .case (.name "ViewPager") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/ViewPager.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/ViewPager.xml)
       .case (.name "Card") $ .pair
       .case (.name "AppBarLayout") $ .pair
       .case (.name "BottomAppBar") $ .pair
