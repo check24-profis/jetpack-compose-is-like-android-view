@@ -1,13 +1,26 @@
 package de.check24.compose.demo.features.spinner
 
 import android.os.Bundle
-import android.widget.Spinner
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import de.check24.compose.demo.theme.DemoTheme
@@ -36,7 +49,104 @@ class ComposableSpinnerActivity : ComponentActivity() {
 @Composable
 private fun SpinnerExample() {
 
+    val itemList = listOf(
+        "Berlin",
+        "Hamburg",
+        "Stuttgart",
+        "München",
+        "Düsseldorf",
+        "Osnabrück"
+    )
+
+    var expanded by remember { mutableStateOf(false) }
+    var cityname by remember { mutableStateOf("select a city") }
+
+/*    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center) {
+        Text(text = cityname, Modifier.clickable { expanded = !expanded })
+
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            itemList.forEach { city ->
+                DropdownMenuItem(
+                    onClick = {
+                        expanded = false
+                        cityname = city
+                    }
+                ) {
+                    Text(text = city)
+                }
+            }
+        }
+    }*/
+
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(text = cityname, Modifier.clickable { expanded = !expanded })
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                itemList.forEach { city ->
+
+                    DropdownMenuItem(
+                        onClick = {
+                            expanded = false
+                            cityname = city
+                        }
+                    ) {
+                        Text(text = city)
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+/*    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(
+            modifier = Modifier.clickable { expanded = !expanded },
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Text(text = cityname)
+
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                itemList.forEach { city ->
+                    DropdownMenuItem(
+                        onClick = {
+                            expanded = false
+                            cityname = city
+                        }
+                    ) {
+                        Text(text = city)
+                    }
+                }
+            }
+        }
+
+    }*/
+//}
 
 @Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
 @Composable
