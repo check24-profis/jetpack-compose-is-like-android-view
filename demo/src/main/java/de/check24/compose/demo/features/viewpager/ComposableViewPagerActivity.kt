@@ -3,6 +3,7 @@ package de.check24.compose.demo.features.viewpager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -33,15 +35,10 @@ class ComposableViewPagerActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Multiline Text")
+                                Text(text = "View Pager")
                             })
                     }, content = {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            ViewPagerExample()
-                        }
+                        ViewPagerExample()
                     }
                 )
             }
@@ -56,13 +53,13 @@ private fun ViewPagerExample() {
     HorizontalPager(count = 5) { page ->
         Card(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp),
-            elevation = 10.dp
+                .fillMaxSize()
+                .padding(20.dp),
+            elevation = 10.dp,
+            backgroundColor = Color.LightGray
         ) {
             Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.size(40.dp)
+                contentAlignment = Alignment.Center
             ) {
                 Text(text = "this is page $page")
             }
