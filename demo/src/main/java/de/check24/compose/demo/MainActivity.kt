@@ -68,6 +68,8 @@ import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
+import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
+import de.check24.compose.demo.features.viewpager.ComposableViewPagerActivity
 import de.check24.compose.demo.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -252,6 +254,14 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableBottomAppBarActivity::class.java,
                 androidUIActivity = AndroidUIBottomAppBarActivity::class.java,
                 headline = "Bottom App Bar"
+            )
+        )
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableViewPagerActivity::class.java,
+                androidUIActivity = AndroidUIViewPagerActivity::class.java,
+                headline = "View Pager"
             )
         )
 

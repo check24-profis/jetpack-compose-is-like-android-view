@@ -256,6 +256,17 @@
             android:name=".features.text.ComposableMultilineTextActivity"
             android:exported="false" />
 
+        <!-- View Pager -->
+
+        <activity
+            android:name=".features.viewpager.AndroidUIViewPagerActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.viewpager.ComposableViewPagerActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
