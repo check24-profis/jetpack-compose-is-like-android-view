@@ -315,7 +315,39 @@ fun PhoneNumber() {
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:maxLines="1" /&gt;
-&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Postal Address</div><div class="pair"></div></div><div class="case"><div class="name">Multiline Text</div><div class="pair"></div></div><div class="case"><div class="name">Time</div><div class="pair"></div></div><div class="case"><div class="name">Date</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Postal Address</div><div class="pair"></div></div><div class="case"><div class="name">Multiline Text</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun MultilineText() {
+    val text = remember { mutableStateOf("") }
+    TextField(
+        value = text.value,
+        onValueChange = {
+            text.value = it
+        },
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Text
+        ),
+        label = {
+            Text(text = "Label")
+        },
+        placeholder = {
+            Text(text = "Your Placeholder/Hint")
+        }
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/editTextTextMultiLine"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:gravity="start|top"
+    android:hint="@string/your_label"
+    android:inputType="textMultiLine"
+    app:placeholderText="Your Placeholder"&gt;
+
+    &lt;com.google.android.material.textfield.TextInputEditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" /&gt;
+
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Time</div><div class="pair"></div></div><div class="case"><div class="name">Date</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun Date() {
 
     var datePicked: String by remember {
