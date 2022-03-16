@@ -31,9 +31,11 @@ import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
+import de.check24.compose.demo.features.button.AndroidUIToggleButtonActivity
 import de.check24.compose.demo.features.button.ComposableCheckBoxActivity
 import de.check24.compose.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.ComposableImageButtonActivity
+import de.check24.compose.demo.features.button.ComposableToggleButtonActivity
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
@@ -66,7 +68,9 @@ import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
+import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
+import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.theme.DemoTheme
 
@@ -94,6 +98,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableTextActivity::class.java,
                 androidUIActivity = AndroidUITextActivity::class.java,
                 headline = "Text"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableMultilineTextActivity::class.java,
+                androidUIActivity = AndroidUIMultilineTextActivity::class.java,
+                headline = "Multiline Text"
             )
         )
         compareItems.add(
@@ -183,6 +194,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableRadioGroupActivity::class.java,
                 androidUIActivity = AndroidUIRadioGroupActivity::class.java,
                 headline = "Radio Group"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableToggleButtonActivity::class.java,
+                androidUIActivity = AndroidUIToggleButtonActivity::class.java,
+                headline = "Toggle Button"
             )
         )
         // endregion

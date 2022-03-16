@@ -44,6 +44,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewPhoneNumber.xml)
       .case (.name "Postal Address") $ .pair
       .case (.name "Multiline Text") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/MultilineText.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/MultilineText.xml)
       .case (.name "Time") $ .pair
       .case (.name "Date") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewDate.kt)
@@ -71,6 +73,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/RadioButton.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/RadioButton.xml)
       .case (.name "Toggle Button") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/ToggleButton.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/ToggleButton.xml)
       .case (.name "Switch") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Switch.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/Switch.xml)
