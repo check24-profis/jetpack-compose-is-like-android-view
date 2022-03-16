@@ -110,6 +110,8 @@ html
     .section
       .title "Container"
       .case (.name "Spinner") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/Spinner.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/Spinner.xml)
       .case (.name "Horizontal Scrolling") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/HorizontalScrolling.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/HorizontalScrolling.xml)

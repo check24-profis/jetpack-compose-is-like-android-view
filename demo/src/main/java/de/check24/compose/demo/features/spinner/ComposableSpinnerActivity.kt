@@ -11,9 +11,12 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -61,29 +64,6 @@ private fun SpinnerExample() {
     var expanded by remember { mutableStateOf(false) }
     var cityname by remember { mutableStateOf("select a city") }
 
-/*    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center) {
-        Text(text = cityname, Modifier.clickable { expanded = !expanded })
-
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false }
-        ) {
-            itemList.forEach { city ->
-                DropdownMenuItem(
-                    onClick = {
-                        expanded = false
-                        cityname = city
-                    }
-                ) {
-                    Text(text = city)
-                }
-            }
-        }
-    }*/
-
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -92,9 +72,9 @@ private fun SpinnerExample() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            horizontalArrangement = Arrangement.Center
         ) {
             Text(text = cityname, Modifier.clickable { expanded = !expanded })
+            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
@@ -114,39 +94,6 @@ private fun SpinnerExample() {
         }
     }
 }
-
-
-/*    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Row(
-            modifier = Modifier.clickable { expanded = !expanded },
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Text(text = cityname)
-
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                itemList.forEach { city ->
-                    DropdownMenuItem(
-                        onClick = {
-                            expanded = false
-                            cityname = city
-                        }
-                    ) {
-                        Text(text = city)
-                    }
-                }
-            }
-        }
-
-    }*/
-//}
 
 @Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
 @Composable
