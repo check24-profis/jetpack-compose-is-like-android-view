@@ -66,6 +66,8 @@ import de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVis
 import de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
+import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
@@ -267,9 +269,9 @@ class MainActivity : ComponentActivity() {
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableCardActivity::class.java,
-                androidUIActivity = AndroidUICardActivity::class.java,
-                headline = "Card"
+                composeActivity = ComposableSpinnerActivity::class.java,
+                androidUIActivity = AndroidUISpinnerActivity::class.java,
+                headline = "Spinner"
             )
         )
 
