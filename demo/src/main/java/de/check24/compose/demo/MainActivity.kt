@@ -66,8 +66,10 @@ import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
+import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
+import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.theme.DemoTheme
@@ -145,6 +147,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableDateActivity::class.java,
                 androidUIActivity = AndroidUIDateActivity::class.java,
                 headline = "Date"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableAutoCompleteActivity::class.java,
+                androidUIActivity = AndroidUIAutoCompleteActivity::class.java,
+                headline = "Auto Complete"
             )
         )
 
