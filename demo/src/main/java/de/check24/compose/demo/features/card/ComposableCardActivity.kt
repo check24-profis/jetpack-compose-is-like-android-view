@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Shapes
 import androidx.compose.material.Text
@@ -24,18 +26,19 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
-import de.check24.compose.demo.theme.Shapes
 
 class ComposableCardActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             DemoTheme {
                 Scaffold(
                     topBar = {
-                        TopAppBar {
-                            Text(text = "Card")
-                        }
+                        TopAppBar(
+                            title = {
+                                Text(text = "Card")
+                            })
                     },
                     content = {
                         CardExample()
@@ -48,8 +51,11 @@ class ComposableCardActivity : ComponentActivity() {
 
 @Composable
 private fun CardExample() {
+    val backgroundColor: Color = Color(red = 255, green = 251, blue = 225)
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor),
         Arrangement.Center
     ) {
 
@@ -62,7 +68,7 @@ private fun CardExample() {
 
         ) {
             Text(
-                text = "Card with Elevation and CircleShape",
+                text = "Card with elevation and circleShape",
                 modifier = Modifier.padding(15.dp)
             )
         }
@@ -87,7 +93,7 @@ private fun CardExample() {
             backgroundColor = Color.LightGray
         ) {
             Text(
-                text = "Card with color",
+                text = "Card with color and elevation",
                 modifier = Modifier.padding(15.dp)
             )
         }
@@ -103,6 +109,46 @@ private fun CardExample() {
                 text = "Card with a border",
                 modifier = Modifier.padding(15.dp)
             )
+        }
+
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
+            shape = RoundedCornerShape(
+                topEnd = 15.dp,
+                topStart = 0.dp,
+                bottomEnd = 0.dp,
+                bottomStart = 15.dp
+            )
+        ) {
+            Text(
+                text = "Card with two rounded corners",
+                modifier = Modifier.padding(15.dp)
+            )
+        }
+
+        val shapes = Shapes(
+            large = CutCornerShape(
+                topStart = 16.dp,
+                topEnd = 0.dp,
+                bottomEnd = 16.dp,
+                bottomStart = 0.dp
+            )
+        )
+        MaterialTheme(shapes = shapes){
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(15.dp),
+                elevation = 10.dp,
+                shape = MaterialTheme.shapes.large
+            ) {
+                Text(
+                    text = "Card with cut corners",
+                    modifier = Modifier.padding(15.dp)
+                )
+            }
         }
     }
 }
