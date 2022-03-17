@@ -1,0 +1,30 @@
+&lt;Spinner
+    android:id="@+id/spinner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" /&gt;
+
+&lt;!-- Spinner Data --&gt;
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;string-array name="spinner_array"&gt;
+        &lt;item&gt;Berlin&lt;/item&gt;
+        &lt;item&gt;Hamburg&lt;/item&gt;
+        &lt;item&gt;Stuttgart&lt;/item&gt;
+        &lt;item&gt;München&lt;/item&gt;
+        &lt;item&gt;Düsseldorf&lt;/item&gt;
+        &lt;item&gt;Osnabrück&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;
+
+&lt;!-- implementation in the activity--&gt;
+
+val spinner = binding.spinner
+ArrayAdapter.createFromResource(
+    this,
+    R.array.spinner_array,
+    R.layout.support_simple_spinner_dropdown_item
+).also { adapter ->
+    adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+    spinner.adapter = adapter
+}
