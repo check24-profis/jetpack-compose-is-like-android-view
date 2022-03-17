@@ -267,17 +267,6 @@
             android:name=".features.button.ComposableToggleButtonActivity"
             android:exported="false" />
 
-        <!-- Card -->
-
-        <activity
-            android:name=".features.card.AndroidUICardActivity"
-            android:exported="false"
-            android:theme="@style/DemoMaterial" />
-
-        <activity
-            android:name=".features.card.ComposableCardActivity"
-            android:exported="false" />
-
         <!-- Spinner -->
 
         <activity
