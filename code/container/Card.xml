@@ -73,3 +73,19 @@
         android:layout_height="wrap_content"
         android:text="Card with two cut corners" /&gt;
 &lt;/com.google.android.material.card.MaterialCardView&gt;
+
+&lt;!-- the styles--&gt;
+
+&lt;style name="ShapeAppearance.MyApp.MediumComponent.Cut" parent="ShapeAppearance.MaterialComponents.MediumComponent"&gt;
+    &lt;item name="cornerFamilyTopLeft">cut&lt;/item>
+    &lt;item name="cornerFamilyBottomRight">cut&lt;/item>
+    &lt;item name="cornerSizeTopLeft">20dp&lt;/item>
+    &lt;item name="cornerSizeBottomRight">20dp&lt;/item>
+&lt;/style>
+
+&lt;style name="ShapeAppearance.MyApp.MediumComponent.Rounded" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    &lt;item name="cornerFamilyTopRight">rounded&lt;/item>
+    &lt;item name="cornerFamilyBottomLeft">rounded&lt;/item>
+    &lt;item name="cornerSizeTopLeft">15dp&lt;/item>
+    &lt;item name="cornerSizeBottomRight">15dp&lt;/item>
+&lt;/style>
