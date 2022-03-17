@@ -1,0 +1,75 @@
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="50dp"
+    app:cardElevation="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with elevation and rounded corners" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
+
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with no elevation and rounded corners" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
+
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardBackgroundColor="@color/gray"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with color and elevation" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
+
+&lt;com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:strokeColor="@color/green"
+    app:strokeWidth="2dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with a border" /&gt;
+&lt;/com.google.android.material.card.MaterialCardView&gt;
+
+&lt;com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with two rounded corners" /&gt;
+&lt;/com.google.android.material.card.MaterialCardView&gt;
+
+&lt;com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with two cut corners" /&gt;
+&lt;/com.google.android.material.card.MaterialCardView&gt;
