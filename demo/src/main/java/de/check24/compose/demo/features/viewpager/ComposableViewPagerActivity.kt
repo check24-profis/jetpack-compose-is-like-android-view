@@ -65,7 +65,7 @@ private fun ViewPagerExample() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun MultilineTextPreview() {
+private fun ViewPagerPreview() {
     DemoTheme {
         ViewPagerExample()
     }
