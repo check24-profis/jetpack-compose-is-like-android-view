@@ -12,9 +12,8 @@ fun ViewPagerExample() {
             Box(
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "this is page $page")
+                Text(text = "This is page ${page + 1}")
             }
         }
-
     }
 }

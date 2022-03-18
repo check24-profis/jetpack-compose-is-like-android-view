@@ -3,13 +3,9 @@ package de.check24.compose.demo.features.viewpager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -36,7 +32,8 @@ class ComposableViewPagerActivity : ComponentActivity() {
                         TopAppBar(
                             title = {
                                 Text(text = "View Pager")
-                            })
+                            }
+                        )
                     }, content = {
                         ViewPagerExample()
                     }
@@ -44,7 +41,6 @@ class ComposableViewPagerActivity : ComponentActivity() {
             }
         }
     }
-
 }
 
 @OptIn(ExperimentalPagerApi::class)
@@ -61,10 +57,9 @@ private fun ViewPagerExample() {
             Box(
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "this is page $page")
+                Text(text = "This is page ${page + 1}")
             }
         }
-
     }
 }
 

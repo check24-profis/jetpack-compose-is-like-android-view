@@ -1,11 +1,11 @@
-// View Pager
+    &lt;-- View Pager --&gt;
 
 &lt;androidx.viewpager2.widget.ViewPager2
     android:id="@+id/view_pager_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" /&gt;
 
-// Fragment(s) in View Pager
+    &lt;-- Fragment(s) in View Pager --&gt;
 
 &lt;androidx.cardview.widget.CardView
     android:layout_width="match_parent"
@@ -33,7 +33,7 @@
 
 &lt;/androidx.cardview.widget.CardView&gt;
 
-// View Pager Adapter
+    &lt;-- View Pager Adapter --&gt;
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int = 5
@@ -41,7 +41,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
     override fun createFragment(position: Int): Fragment = ViewPagerFragment(position)
 }
 
-// View Pager Fragment Implementation
+    &lt;-- View Pager Fragment Implementation --&gt;
 
 class ViewPagerFragment(val position: Int) : Fragment() {
 
@@ -50,10 +50,8 @@ class ViewPagerFragment(val position: Int) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val fragment = inflater.inflate(R.layout.view_pager_fragment, container)
-        val textView = fragment.findViewById&lt;TextView&gt;(R.id.view_pager_fragment_text)
-        textView.text = "this is page $position"
-
-        return fragment
+        binding = ViewPagerFragmentBinding.inflate(inflater, container, false)
+        binding.viewPagerFragmentText.text = "This is page ${position + 1}"
+        return binding.root
     }
 }

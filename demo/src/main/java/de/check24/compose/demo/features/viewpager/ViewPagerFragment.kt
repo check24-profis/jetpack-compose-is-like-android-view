@@ -8,8 +8,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import de.check24.compose.demo.R
+import de.check24.compose.demo.databinding.ViewPagerBinding
+import de.check24.compose.demo.databinding.ViewPagerFragmentBinding
 
 internal class ViewPagerFragment(private val position: Int) : Fragment() {
+
+    private lateinit var binding: ViewPagerFragmentBinding
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -17,10 +21,8 @@ internal class ViewPagerFragment(private val position: Int) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val fragment = inflater.inflate(R.layout.view_pager_fragment, container)
-        val textView = fragment.findViewById<TextView>(R.id.view_pager_fragment_text)
-        textView.text = "this is page $position"
-
-        return fragment
+        binding = ViewPagerFragmentBinding.inflate(inflater, container, false)
+        binding.viewPagerFragmentText.text = "This is page ${position + 1}"
+        return binding.root
     }
 }

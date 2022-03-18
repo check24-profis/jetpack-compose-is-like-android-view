@@ -4,15 +4,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import de.check24.compose.demo.R
+import de.check24.compose.demo.databinding.ViewPagerBinding
 
 class AndroidUIViewPagerActivity : AppCompatActivity() {
+
+    private lateinit var binding : ViewPagerBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.view_pager)
+        binding = ViewPagerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.title = "View Pager"
 
-        val viewPager = findViewById<ViewPager2>(R.id.view_pager_view)
-        viewPager.adapter = ViewPagerAdapter(this)
+        binding.viewPagerView.adapter = ViewPagerAdapter(this)
     }
 }
 
