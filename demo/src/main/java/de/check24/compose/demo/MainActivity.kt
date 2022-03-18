@@ -40,6 +40,8 @@ import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivit
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioGroupActivity
+import de.check24.compose.demo.features.card.AndroidUICardActivity
+import de.check24.compose.demo.features.card.ComposableCardActivity
 import de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -64,6 +66,8 @@ import de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVis
 import de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
+import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
@@ -72,6 +76,8 @@ import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
+import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
+import de.check24.compose.demo.features.viewpager.ComposableViewPagerActivity
 import de.check24.compose.demo.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -270,6 +276,21 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableBottomAppBarActivity::class.java,
                 androidUIActivity = AndroidUIBottomAppBarActivity::class.java,
                 headline = "Bottom App Bar"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableSpinnerActivity::class.java,
+                androidUIActivity = AndroidUISpinnerActivity::class.java,
+                headline = "Spinner"
+            )
+        )
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableViewPagerActivity::class.java,
+                androidUIActivity = AndroidUIViewPagerActivity::class.java,
+                headline = "View Pager"
             )
         )
 

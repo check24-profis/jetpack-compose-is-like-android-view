@@ -267,6 +267,28 @@
             android:name=".features.button.ComposableToggleButtonActivity"
             android:exported="false" />
 
+        <!-- Spinner -->
+
+        <activity
+            android:name=".features.spinner.AndroidUISpinnerActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.spinner.ComposableSpinnerActivity"
+            android:exported="false" />
+
+        <!-- View Pager -->
+
+        <activity
+            android:name=".features.viewpager.AndroidUIViewPagerActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.viewpager.ComposableViewPagerActivity"
+            android:exported="false" />
+
         <!-- Auto Complete-->
 
         <activity
