@@ -74,6 +74,8 @@ import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
+import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
+import de.check24.compose.demo.features.viewpager.ComposableViewPagerActivity
 import de.check24.compose.demo.theme.DemoTheme
 
 class MainActivity : ComponentActivity() {
@@ -272,6 +274,14 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableSpinnerActivity::class.java,
                 androidUIActivity = AndroidUISpinnerActivity::class.java,
                 headline = "Spinner"
+            )
+        )
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableViewPagerActivity::class.java,
+                androidUIActivity = AndroidUIViewPagerActivity::class.java,
+                headline = "View Pager"
             )
         )
 
