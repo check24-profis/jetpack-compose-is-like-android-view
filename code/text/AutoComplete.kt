@@ -1,59 +1,5 @@
-package de.check24.compose.demo.features.text
-
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
-import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.text.TextRange
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.PopupProperties
-import de.check24.compose.demo.theme.DemoTheme
-
-class ComposableAutoCompleteActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            DemoTheme {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = {
-                                Text(text = "Auto Complete")
-                            }
-                        )
-                    }, content = {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            AutoCompleteExample()
-                        }
-                    }
-                )
-            }
-        }
-    }
-}
+/* This is NOT an official implementation!
+* Look if there is an official implementaion already*/
 
 @Composable
 private fun AutoCompleteExample() {
@@ -62,18 +8,6 @@ private fun AutoCompleteExample() {
         "Germany",
         "Spain",
         "France",
-        "Portugal",
-        "Netherlands",
-        "Belgium",
-        "Great Britain",
-        "Luxembourg",
-        "Switzerland",
-        "Austria",
-        "Italy",
-        "Poland",
-        "Slovakia",
-        "Czech Republic",
-        "Russia"
     )
 
     val dropDownOptions = remember { mutableStateOf(listOf("")) }
@@ -157,13 +91,5 @@ private fun TextFieldWithDropdown(
                 Text(text = text)
             }
         }
-    }
-}
-
-@Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
-@Composable
-private fun AutoCompletePreview() {
-    DemoTheme {
-        AutoCompleteExample()
     }
 }
