@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_array">
+        <item>Berlin</item>
+        <item>Hamburg</item>
+        <item>Stuttgart</item>
+        <item>München</item>
+        <item>Düsseldorf</item>
+        <item>Osnabrück</item>
+    </string-array>
+</resources>
