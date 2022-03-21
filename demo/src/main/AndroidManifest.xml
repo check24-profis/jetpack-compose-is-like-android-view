@@ -300,6 +300,17 @@
             android:name=".features.button.chip.ComposableChipActivity"
             android:exported="false" />
 
+        <!-- Auto Complete-->
+
+        <activity
+            android:name=".features.text.AndroidUIAutoCompleteActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableAutoCompleteActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
