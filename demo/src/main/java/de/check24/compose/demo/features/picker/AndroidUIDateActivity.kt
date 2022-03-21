@@ -1,4 +1,4 @@
-package de.check24.compose.demo.features.date
+package de.check24.compose.demo.features.picker
 
 import android.os.Bundle
 import android.widget.TextView

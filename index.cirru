@@ -47,6 +47,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/MultilineText.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/MultilineText.xml)
       .case (.name "Time") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/Time.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/Time.xml)
       .case (.name "Date") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewDate.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewDate.xml)
@@ -54,6 +56,8 @@ html
       .case (.name "Number (Signed)") $ .pair
       .case (.name "Number (Decimal)") $ .pair
       .case (.name "Auto Complete") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/AutoComplete.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/AutoComplete.xml)
       .case (.name "Text Input") $ .pair
 
     .section
@@ -62,7 +66,11 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/ImageButton.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/ImageButton.xml)
       .case (.name "Chip Group") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/ChipGroup.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/ChipGroup.xml)
       .case (.name "Chip") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Chip.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/Chip.xml)
       .case (.name "Check Box") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/CheckBox.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/CheckBox.xml)
@@ -126,6 +134,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/ViewPager.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/ViewPager.xml)
       .case (.name "Card") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/Card.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/Card.xml)
       .case (.name "AppBarLayout") $ .pair
       .case (.name "BottomAppBar") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/BottomAppBar.kt)

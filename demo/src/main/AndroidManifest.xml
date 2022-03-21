@@ -158,12 +158,12 @@
         <!-- Date -->
 
         <activity
-            android:name="de.check24.compose.demo.features.date.AndroidUIDateActivity"
+            android:name="de.check24.compose.demo.features.picker.AndroidUIDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.compose.demo.features.date.ComposableDateActivity"
+            android:name="de.check24.compose.demo.features.picker.ComposableDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
@@ -288,6 +288,51 @@
         <activity
             android:name=".features.viewpager.ComposableViewPagerActivity"
             android:exported="false" />
+
+        <!-- Chip -->
+
+        <activity
+            android:name=".features.button.chip.AndroidUIChipActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.chip.ComposableChipActivity"
+            android:exported="false" />
+
+        <!-- Chip Group -->
+
+        <activity
+            android:name=".features.button.chip.AndroidUIChipGroupActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.chip.ComposableChipGroupActivity"
+            android:exported="false" />
+
+        <!-- Auto Complete-->
+
+        <activity
+            android:name=".features.text.AndroidUIAutoCompleteActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableAutoCompleteActivity"
+            android:exported="false" />
+
+        <!-- Time -->
+
+        <activity
+            android:name=".features.picker.AndroidUITimeActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.picker.ComposableTimeActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial"/>
 
         <!-- Toolbar -->
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="auto_complete_array">
+        <item>Germany</item>
+        <item>Great Britain</item>
+        <item>France</item>
+        <item>Spain</item>
+        <item>Portugal</item>
+        <item>Switzerland</item>
+        <item>Austria</item>
+        <item>Denmark</item>
+        <item>Norway</item>
+        <item>Sweden</item>
+        <item>Poland</item>
+        <item>Italy</item>
+        <item>Luxembourg</item>
+        <item>Lichtenstein</item>
+        <item>Russia</item>
+        <item>Czech Republic</item>
+        <item>Slovakia</item>
+        <item>Lithuania</item>
+        <item>Finland</item>
+        <item>Ireland</item>
+        <item>Belgium</item>
+        <item>Netherlands</item>
+        <item>Iceland</item>
+        <item>Estonia</item>
+        <item>Latvia</item>
+        <item>Slovenia</item>
+        <item>Hungary</item>
+    </string-array>
+</resources>

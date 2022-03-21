@@ -38,6 +38,10 @@ import de.check24.compose.demo.features.button.ComposableCheckBoxActivity
 import de.check24.compose.demo.features.button.ComposableFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.ComposableImageButtonActivity
 import de.check24.compose.demo.features.button.ComposableToggleButtonActivity
+import de.check24.compose.demo.features.button.chip.AndroidUIChipActivity
+import de.check24.compose.demo.features.button.chip.AndroidUIChipGroupActivity
+import de.check24.compose.demo.features.button.chip.ComposableChipActivity
+import de.check24.compose.demo.features.button.chip.ComposableChipGroupActivity
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
@@ -50,8 +54,8 @@ import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHori
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
-import de.check24.compose.demo.features.date.AndroidUIDateActivity
-import de.check24.compose.demo.features.date.ComposableDateActivity
+import de.check24.compose.demo.features.picker.AndroidUIDateActivity
+import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
@@ -66,12 +70,16 @@ import de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVis
 import de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.compose.demo.features.picker.AndroidUITimeActivity
+import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
+import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
+import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
@@ -153,6 +161,20 @@ class MainActivity : ComponentActivity() {
                 headline = "Date"
             )
         )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableAutoCompleteActivity::class.java,
+                androidUIActivity = AndroidUIAutoCompleteActivity::class.java,
+                headline = "Auto Complete"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableTimeActivity::class.java,
+                androidUIActivity = AndroidUITimeActivity::class.java,
+                headline = "Time"
+            )
+        )
 
         // endregion
 
@@ -205,6 +227,20 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableToggleButtonActivity::class.java,
                 androidUIActivity = AndroidUIToggleButtonActivity::class.java,
                 headline = "Toggle Button"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableChipActivity::class.java,
+                androidUIActivity = AndroidUIChipActivity::class.java,
+                headline = "Chip"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableChipGroupActivity::class.java,
+                androidUIActivity = AndroidUIChipGroupActivity::class.java,
+                headline = "Chip Group"
             )
         )
         // endregion
