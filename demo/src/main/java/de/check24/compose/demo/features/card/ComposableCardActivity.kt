@@ -51,7 +51,7 @@ class ComposableCardActivity : ComponentActivity() {
 
 @Composable
 private fun CardExample() {
-    val backgroundColor: Color = Color(red = 255, green = 251, blue = 225)
+    val backgroundColor: Color = Color(red = 179, green = 156, blue = 230)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -89,7 +89,7 @@ private fun CardExample() {
                 .fillMaxWidth()
                 .padding(15.dp),
             elevation = 10.dp,
-            backgroundColor = Color.LightGray
+            backgroundColor = Color(134, 230, 147)
         ) {
             Text(
                 text = "Card with color and elevation",
@@ -102,7 +102,7 @@ private fun CardExample() {
                 .fillMaxWidth()
                 .padding(15.dp),
             elevation = 10.dp,
-            border = BorderStroke(1.dp, Color.Green)
+            border = BorderStroke(4.dp, Color(134, 230, 147))
         ) {
             Text(
                 text = "Card with a border",
@@ -119,10 +119,11 @@ private fun CardExample() {
                 topStart = 0.dp,
                 bottomEnd = 0.dp,
                 bottomStart = 15.dp
-            )
+            ),
+            border = BorderStroke(4.dp, Color(134, 230, 147))
         ) {
             Text(
-                text = "Card with two rounded corners",
+                text = "Card with two rounded corners and border",
                 modifier = Modifier.padding(15.dp)
             )
         }
@@ -141,10 +142,11 @@ private fun CardExample() {
                     .fillMaxWidth()
                     .padding(15.dp),
                 elevation = 10.dp,
-                shape = MaterialTheme.shapes.large
+                shape = MaterialTheme.shapes.large,
+                border = BorderStroke(4.dp, Color(134, 230, 147))
             ) {
                 Text(
-                    text = "Card with cut corners",
+                    text = "Card with cut corners and border",
                     modifier = Modifier.padding(15.dp)
                 )
             }

@@ -332,7 +332,7 @@
         <activity
             android:name=".features.picker.ComposableTimeActivity"
             android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:theme="@style/DemoMaterial" />
 
         <!-- Toolbar -->
 
@@ -343,6 +343,17 @@
 
         <activity
             android:name=".features.bar.ComposableToolbarActivity"
+            android:exported="false" />
+
+        <!-- Card -->
+
+        <activity
+            android:name=".features.card.AndroidUICardActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.card.ComposableCardActivity"
             android:exported="false" />
 
     </application>

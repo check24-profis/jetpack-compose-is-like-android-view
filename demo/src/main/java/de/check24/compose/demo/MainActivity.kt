@@ -46,6 +46,8 @@ import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivit
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioGroupActivity
+import de.check24.compose.demo.features.card.AndroidUICardActivity
+import de.check24.compose.demo.features.card.ComposableCardActivity
 import de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -324,6 +326,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableToolbarActivity::class.java,
                 androidUIActivity = AndroidUIToolbarActivity::class.java,
                 headline = "Toolbar"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableCardActivity::class.java,
+                androidUIActivity = AndroidUICardActivity::class.java,
+                headline = "Card"
             )
         )
 
