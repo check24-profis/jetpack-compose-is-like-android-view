@@ -54,6 +54,8 @@ html
       .case (.name "Number (Signed)") $ .pair
       .case (.name "Number (Decimal)") $ .pair
       .case (.name "Auto Complete") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/AutoComplete.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/AutoComplete.xml)
       .case (.name "Text Input") $ .pair
 
     .section
@@ -130,6 +132,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/ViewPager.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/ViewPager.xml)
       .case (.name "Card") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/Card.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/Card.xml)
       .case (.name "AppBarLayout") $ .pair
       .case (.name "BottomAppBar") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/BottomAppBar.kt)
