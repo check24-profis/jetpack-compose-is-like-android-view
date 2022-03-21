@@ -65,7 +65,6 @@ private fun CardExample() {
                 .padding(15.dp),
             elevation = 10.dp,
             shape = CircleShape
-
         ) {
             Text(
                 text = "Card with elevation and circleShape",
