@@ -1,0 +1,31 @@
+&lt;AutoCompleteTextView
+    android:id="@+id/auto_complete_text_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter a country in Europe" /&gt;
+
+&lt;!-- Code implementation --&gt;
+
+private lateinit var binding: AutoCompleteBinding
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = AutoCompleteBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    supportActionBar?.title = "Auto Complete"
+
+    val countriesList = resources.getStringArray(R.array.auto_complete_array)
+    val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countriesList)
+    binding.autoCompleteTextView.setAdapter(arrayAdapter)
+}
+
+&lt;!-- Data --&gt;
+
+&lt;resources&gt;
+    &lt;string-array name="auto_complete_array"&gt;
+        &lt;item&gt;Germany&lt;/item&gt;
+        &lt;item&gt;Great Britain&lt;/item&gt;
+        &lt;item&gt;France&lt;/item&gt;
+        &lt;item&gt;Spain&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;
