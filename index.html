@@ -347,7 +347,86 @@ fun MultilineText() {
         android:layout_width="250dp"
         android:layout_height="wrap_content" /&gt;
 
-&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Time</div><div class="pair"></div></div><div class="case"><div class="name">Date</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Time</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun TimeExample() {
+
+    var timePicked: String by remember {
+        mutableStateOf("Pick a Time")
+    }
+
+    val activity = LocalContext.current as AppCompatActivity
+
+    Text(
+        text = timePicked,
+        modifier = Modifier
+            .clickable {
+                showTimePicker(
+                    { time: String ->
+                        timePicked = time
+                    },
+                    activity
+                )
+            }
+    )
+}
+
+private fun showTimePicker(
+    time: (String) -> Unit,
+    activity: AppCompatActivity
+) {
+    val picker = MaterialTimePicker.Builder()
+        .setTimeFormat(TimeFormat.CLOCK_24H)
+        .build()
+
+    picker.show(activity.supportFragmentManager, picker.toString())
+
+    picker.addOnPositiveButtonClickListener {
+        time(
+            formatTime(
+                picker.hour,
+                picker.minute
+            )
+        )
+    }
+}
+
+private fun formatTime(hour: Int, minute: Int): String {
+    var stringHour = hour.toString()
+    var stringMinute = minute.toString()
+
+    if (hour < 10) stringHour = "0$stringHour"
+    if (minute < 10) stringMinute = "0$stringMinute"
+    return "Time: $stringHour:$stringMinute"
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
+    android:id="@+id/time_picker_text_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Pick a time" /&gt;
+
+    &lt;!-- code implementation --&gt;
+
+private fun showTimePicker() {
+
+    val materialTimePicker = MaterialTimePicker
+        .Builder()
+        .setTimeFormat(TimeFormat.CLOCK_24H)
+        .build()
+
+    materialTimePicker.addOnPositiveButtonClickListener {
+        binding.timePickerTextView.text =
+        formatTime(materialTimePicker.hour, materialTimePicker.minute)
+    }
+        materialTimePicker.show(supportFragmentManager, "TAG")
+}
+
+private fun formatTime(hour : Int, minute: Int) : String {
+        var stringHour = hour.toString()
+        var stringMinute = minute.toString()
+
+        if (hour < 10) stringHour = "0$stringHour"
+        if (minute < 10) stringMinute = "0$stringMinute"
+        return "Time: $stringHour:$stringMinute"
+}</code></pre></div></div></div><div class="case"><div class="name">Date</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun Date() {
 
     var datePicked: String by remember {
@@ -400,7 +479,131 @@ private fun showDatePicker(
          }
          materialDatePicker.show(supportFragmentManager, "TAG")
     }
-}</code></pre></div></div></div><div class="case"><div class="name">Number</div><div class="pair"></div></div><div class="case"><div class="name">Number (Signed)</div><div class="pair"></div></div><div class="case"><div class="name">Number (Decimal)</div><div class="pair"></div></div><div class="case"><div class="name">Auto Complete</div><div class="pair"></div></div><div class="case"><div class="name">Text Input</div><div class="pair"></div></div></div><div class="section"><div class="title">Button</div><div class="case"><div class="name">Image Button</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+}</code></pre></div></div></div><div class="case"><div class="name">Number</div><div class="pair"></div></div><div class="case"><div class="name">Number (Signed)</div><div class="pair"></div></div><div class="case"><div class="name">Number (Decimal)</div><div class="pair"></div></div><div class="case"><div class="name">Auto Complete</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* This is NOT an official implementation!
+* Look if there is an official implementaion already*/
+
+@Composable
+private fun AutoCompleteExample() {
+
+    val countriesList = listOf(
+        "Germany",
+        "Spain",
+        "France",
+    )
+
+    val dropDownOptions = remember { mutableStateOf(listOf("")) }
+    val textFieldValue = remember { mutableStateOf(TextFieldValue()) }
+    val dropDownExpanded = remember { mutableStateOf(false) }
+
+    fun onDropdownDismissRequest() {
+        dropDownExpanded.value = false
+    }
+
+    fun onValueChanged(value: TextFieldValue) {
+        dropDownExpanded.value = true
+        textFieldValue.value = value
+        dropDownOptions.value =
+            countriesList.filter { it.startsWith(value.text) && it != value.text }.take(3)
+    }
+
+    TextFieldWithDropdown(
+        value = textFieldValue.value,
+        setValue = ::onValueChanged,
+        onDismissRequest = ::onDropdownDismissRequest,
+        dropDownExpanded = dropDownExpanded.value,
+        list = dropDownOptions.value,
+    )
+}
+
+@Composable
+private fun TextFieldWithDropdown(
+    value: TextFieldValue,
+    setValue: (TextFieldValue) -> Unit,
+    onDismissRequest: () -> Unit,
+    dropDownExpanded: Boolean,
+    list: List<String>
+) {
+
+    TextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp)
+            .onFocusChanged { focusState ->
+                if (!focusState.isFocused)
+                    onDismissRequest()
+            },
+        value = value,
+        onValueChange = setValue,
+        label = { Text("Enter a country of Europe") },
+        colors = TextFieldDefaults.outlinedTextFieldColors()
+    )
+    DropdownMenu(
+        expanded = dropDownExpanded,
+        properties = PopupProperties(
+            focusable = false,
+            dismissOnBackPress = true,
+            dismissOnClickOutside = true
+        ),
+        onDismissRequest = onDismissRequest,
+    ) {
+        list.forEach { text ->
+            DropdownMenuItem(
+                modifier = Modifier.clickable(
+                    enabled = true,
+                    onClickLabel = text,
+                    null
+                ) {
+                    setValue(
+                        TextFieldValue(
+                            text,
+                            TextRange(text.length)
+                        )
+                    )
+                },
+                onClick = {
+                    setValue(
+                        TextFieldValue(
+                            text,
+                            TextRange(text.length)
+                        )
+                    )
+                }
+            ) {
+                Text(text = text)
+            }
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;AutoCompleteTextView
+    android:id="@+id/auto_complete_text_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter a country in Europe" /&gt;
+
+&lt;!-- Code implementation --&gt;
+
+private lateinit var binding: AutoCompleteBinding
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = AutoCompleteBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    supportActionBar?.title = "Auto Complete"
+
+    val countriesList = resources.getStringArray(R.array.auto_complete_array)
+    val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countriesList)
+    binding.autoCompleteTextView.setAdapter(arrayAdapter)
+}
+
+&lt;!-- Data --&gt;
+
+&lt;resources&gt;
+    &lt;string-array name="auto_complete_array"&gt;
+        &lt;item&gt;Germany&lt;/item&gt;
+        &lt;item&gt;Great Britain&lt;/item&gt;
+        &lt;item&gt;France&lt;/item&gt;
+        &lt;item&gt;Spain&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;</code></pre></div></div></div><div class="case"><div class="name">Text Input</div><div class="pair"></div></div></div><div class="section"><div class="title">Button</div><div class="case"><div class="name">Image Button</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun ImageButton(image: Any?) {
     Button(
         onClick = {},
@@ -436,7 +639,117 @@ Glide
     .fitCenter()
     .into(imageView)
 
-</code></pre></div></div></div><div class="case"><div class="name">Chip Group</div><div class="pair"></div></div><div class="case"><div class="name">Chip</div><div class="pair"></div></div><div class="case"><div class="name">Check Box</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+</code></pre></div></div></div><div class="case"><div class="name">Chip Group</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* At the time of the implementation there were no official implementation!
+* Look if there is an official implementaion already */
+
+@Composable
+fun ChipGroupExample() {
+
+    val list = listOf(
+        "Chip One",
+        [...]
+        "Chip Ten"
+    )
+
+    val selectedChip = remember {
+        mutableStateOf("")
+    }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        LazyRow(
+            modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            items(list) {
+
+                val color by animateColorAsState(
+                    if (selectedChip.value == it) {
+                        colorResource(id = R.color.purple_200)
+                    } else Color.LightGray
+                )
+
+                // through row we get a riddle effect over the Text with padding
+                Row(
+                    modifier = Modifier
+                        .background(color)
+                        .toggleable(
+                            value = false,
+                            onValueChange = { }
+                        )
+                        .clickable {
+                            selectedChip.value = it
+                        }
+                ) {
+                    Text(
+                        text = it,
+                        modifier = Modifier
+                            .padding(10.dp),
+                    )
+                }
+                // through this statement there is no spacer after the last element
+                if (it != list[list.size - 1])
+                    Spacer(modifier = Modifier.padding(10.dp))
+            }
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;HorizontalScrollView
+    android:id="@+id/horizontal_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"&gt;
+
+    &lt;com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleLine="true"
+        app:singleSelection="true"&gt;
+
+        &lt;com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chip One"
+            android:textAlignment="center" /&gt;
+
+        [...]
+
+        &lt;com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chip Ten"
+            android:textAlignment="center" /&gt;
+
+    &lt;/com.google.android.material.chip.ChipGroup&gt;
+
+&lt;/HorizontalScrollView&gt;</code></pre></div></div></div><div class="case"><div class="name">Chip</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* At the time of the implementation there were no official implementation!
+* Look if there is an official implementaion already*/
+
+// through row we get a riddle effect over the Text with padding
+Row(
+    modifier = Modifier
+        .background(Color.LightGray)
+        .toggleable(
+            value = false,
+            onValueChange = { }
+        )
+) {
+    Text(
+        text = "I'm a chip",
+        modifier = Modifier.padding(10.dp)
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.chip.Chip
+    android:id="@+id/chip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="I'm a chip"
+    android:enabled="true"
+    android:clickable="true"
+    android:focusable="true" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Check Box</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun CheckBox() {
     var checked by remember { mutableStateOf(true) }
     Checkbox(
@@ -530,7 +843,41 @@ fun RadioButtonExample() {
 </code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;RadioButton
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="I am a Radio Button"/&gt;</code></pre></div></div></div><div class="case"><div class="name">Toggle Button</div><div class="pair"></div></div><div class="case"><div class="name">Switch</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+    android:text="I am a Radio Button"/&gt;</code></pre></div></div></div><div class="case"><div class="name">Toggle Button</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* this is a custom build toggle button because*/
+/* there is no toggle button in compose right now */
+
+@Composable
+fun CustomToggleButton() {
+
+    val buttonClicked: MutableState<Boolean> = remember {
+        mutableStateOf(false)
+    }
+
+    val buttonText: String
+    val buttonTextColor: Color
+    val buttonBackgroundColor: Color
+
+    if (buttonClicked.value) {
+        buttonText = "On"
+        buttonTextColor = Color.Green
+        buttonBackgroundColor = Color.LightGray
+    } else {
+        buttonText = "Off"
+        buttonTextColor = Color.Red
+        buttonBackgroundColor = Color.Gray
+    }
+
+    Button(
+        onClick = { buttonClicked.value = !buttonClicked.value },
+        colors = ButtonDefaults.buttonColors(backgroundColor = buttonBackgroundColor)
+    ) {
+        Text(text = buttonText, color = buttonTextColor)
+    }
+}
+
+</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;ToggleButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Switch</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun Switch() {
     val checkedState = remember { mutableStateOf(false) }
     Switch(
@@ -1111,7 +1458,80 @@ fun ConstraintLayoutBarrier() {
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintTop_toBottomOf="@+id/barrier" /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"></div></div></div><div class="section"><div class="title">Container</div><div class="case"><div class="name">Spinner</div><div class="pair"></div></div><div class="case"><div class="name">Horizontal Scrolling</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"></div></div></div><div class="section"><div class="title">Container</div><div class="case"><div class="name">Spinner</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun SpinnerExample() {
+
+    val itemList = listOf(
+        "Berlin",
+        "Hamburg",
+        "Stuttgart",
+        "München",
+        "Düsseldorf",
+        "Osnabrück"
+    )
+
+    var expanded by remember { mutableStateOf(false) }
+    var cityname by remember { mutableStateOf("select a city") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Row(
+        ) {
+            Text(text = cityname, Modifier.clickable { expanded = !expanded })
+            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                itemList.forEach { city ->
+
+                    DropdownMenuItem(
+                        onClick = {
+                            expanded = false
+                            cityname = city
+                        }
+                    ) {
+                        Text(text = city)
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;Spinner
+    android:id="@+id/spinner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" /&gt;
+
+&lt;!-- Spinner Data --&gt;
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;string-array name="spinner_array"&gt;
+        &lt;item&gt;Berlin&lt;/item&gt;
+        &lt;item&gt;Hamburg&lt;/item&gt;
+        &lt;item&gt;Stuttgart&lt;/item&gt;
+        &lt;item&gt;München&lt;/item&gt;
+        &lt;item&gt;Düsseldorf&lt;/item&gt;
+        &lt;item&gt;Osnabrück&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/resources&gt;
+
+&lt;!-- implementation in the activity--&gt;
+
+val spinner = binding.spinner
+ArrayAdapter.createFromResource(
+    this,
+    R.array.spinner_array,
+    R.layout.support_simple_spinner_dropdown_item
+).also { adapter ->
+    adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+    spinner.adapter = adapter
+}</code></pre></div></div></div><div class="case"><div class="name">Horizontal Scrolling</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun HorizontalScrollBox() {
     val scrollState = rememberScrollState()
 
@@ -1143,7 +1563,246 @@ fun VerticalScrollBox() {
     android:layout_width="match_parent"
     android:layout_height="wrap_content"&gt;
     [...]
-&lt;/ScrollView&gt;</code></pre></div></div></div><div class="case"><div class="name">ViewPager</div><div class="pair"></div></div><div class="case"><div class="name">Card</div><div class="pair"></div></div><div class="case"><div class="name">AppBarLayout</div><div class="pair"></div></div><div class="case"><div class="name">BottomAppBar</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/ScrollView&gt;</code></pre></div></div></div><div class="case"><div class="name">ViewPager</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun ViewPagerExample() {
+    HorizontalPager(count = 5) { page ->
+        Card(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            elevation = 10.dp,
+            backgroundColor = Color.LightGray
+        ) {
+            Box(
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = "This is page ${page + 1}")
+            }
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;-- View Pager --&gt;
+
+&lt;androidx.viewpager2.widget.ViewPager2
+    android:id="@+id/view_pager_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" /&gt;
+
+    &lt;-- Fragment(s) in View Pager --&gt;
+
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="25dp"
+    android:elevation="10dp"
+    app:cardBackgroundColor="#FFCCCCCC"&gt;
+
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;TextView
+        android:id="@+id/view_pager_fragment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/example_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black" /&gt;
+
+    &lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+
+&lt;/androidx.cardview.widget.CardView&gt;
+
+    &lt;-- View Pager Adapter --&gt;
+
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+    override fun getItemCount(): Int = 5
+
+    override fun createFragment(position: Int): Fragment = ViewPagerFragment(position)
+}
+
+    &lt;-- View Pager Fragment Implementation --&gt;
+
+class ViewPagerFragment(val position: Int) : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ViewPagerFragmentBinding.inflate(inflater, container, false)
+        binding.viewPagerFragmentText.text = "This is page ${position + 1}"
+        return binding.root
+    }
+}</code></pre></div></div></div><div class="case"><div class="name">Card</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun CardExample() {
+
+    Card(
+        elevation = 10.dp,
+        shape = CircleShape
+    ) {
+        Text(
+            text = "Card with elevation and circleShape",
+            modifier = Modifier.padding(15.dp)
+        )
+    }
+
+    Card(
+        shape = RoundedCornerShape(5.dp)
+    ) {
+        Text(
+            text = "Card with rounded corners and no elevation",
+            modifier = Modifier.padding(15.dp)
+        )
+    }
+
+    Card(
+        elevation = 10.dp,
+        backgroundColor = Color.LightGray
+    ) {
+        Text(
+            text = "Card with color and elevation",
+            modifier = Modifier.padding(15.dp)
+        )
+    }
+
+    Card(
+        elevation = 10.dp,
+        border = BorderStroke(1.dp, Color.Green)
+    ) {
+        Text(
+            text = "Card with a border",
+            modifier = Modifier.padding(15.dp)
+        )
+    }
+
+    Card(
+        shape = RoundedCornerShape(
+            topEnd = 15.dp,
+            topStart = 0.dp,
+            bottomEnd = 0.dp,
+            bottomStart = 15.dp
+        )
+    ) {
+        Text(
+            text = "Card with two rounded corners",
+            modifier = Modifier.padding(15.dp)
+        )
+    }
+
+    val shapes = Shapes(
+        large = CutCornerShape(
+            topStart = 16.dp,
+            topEnd = 0.dp,
+            bottomEnd = 16.dp,
+            bottomStart = 0.dp
+        )
+    )
+    MaterialTheme(shapes = shapes){
+        Card(
+            elevation = 10.dp,
+            shape = MaterialTheme.shapes.large
+        ) {
+            Text(
+                text = "Card with cut corners",
+                modifier = Modifier.padding(15.dp)
+            )
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="50dp"
+    app:cardElevation="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with elevation and rounded corners" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
+
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with no elevation and rounded corners" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
+
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardBackgroundColor="@color/gray"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with color and elevation" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
+
+&lt;com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:strokeColor="@color/green"
+    app:strokeWidth="2dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with a border" /&gt;
+&lt;/com.google.android.material.card.MaterialCardView&gt;
+
+&lt;com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Rounded"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with two rounded corners" /&gt;
+&lt;/com.google.android.material.card.MaterialCardView&gt;
+
+&lt;com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:shapeAppearance="@style/ShapeAppearance.MyApp.MediumComponent.Cut"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card with two cut corners" /&gt;
+&lt;/com.google.android.material.card.MaterialCardView&gt;
+
+&lt;!-- the styles--&gt;
+
+&lt;style name="ShapeAppearance.MyApp.MediumComponent.Cut" parent="ShapeAppearance.MaterialComponents.MediumComponent"&gt;
+    &lt;item name="cornerFamilyTopLeft">cut&lt;/item>
+    &lt;item name="cornerFamilyBottomRight">cut&lt;/item>
+    &lt;item name="cornerSizeTopLeft">20dp&lt;/item>
+    &lt;item name="cornerSizeBottomRight">20dp&lt;/item>
+&lt;/style>
+
+&lt;style name="ShapeAppearance.MyApp.MediumComponent.Rounded" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+    &lt;item name="cornerFamilyTopRight">rounded&lt;/item>
+    &lt;item name="cornerFamilyBottomLeft">rounded&lt;/item>
+    &lt;item name="cornerSizeTopLeft">15dp&lt;/item>
+    &lt;item name="cornerSizeBottomRight">15dp&lt;/item>
+&lt;/style></code></pre></div></div></div><div class="case"><div class="name">AppBarLayout</div><div class="pair"></div></div><div class="case"><div class="name">BottomAppBar</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 private fun BottomAppBarExample() {
 
     val screens = listOf(
