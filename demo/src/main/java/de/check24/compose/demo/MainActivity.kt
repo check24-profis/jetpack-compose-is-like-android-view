@@ -27,7 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.compose.demo.extensions.findActivity
 import de.check24.compose.demo.features.bar.AndroidUIBottomAppBarActivity
+import de.check24.compose.demo.features.bar.AndroidUIToolbarActivity
 import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
+import de.check24.compose.demo.features.bar.ComposableToolbarActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
@@ -40,8 +42,6 @@ import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivit
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioGroupActivity
-import de.check24.compose.demo.features.card.AndroidUICardActivity
-import de.check24.compose.demo.features.card.ComposableCardActivity
 import de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -276,12 +276,18 @@ class MainActivity : ComponentActivity() {
                 headline = "Spinner"
             )
         )
-
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableViewPagerActivity::class.java,
                 androidUIActivity = AndroidUIViewPagerActivity::class.java,
                 headline = "View Pager"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableToolbarActivity::class.java,
+                androidUIActivity = AndroidUIToolbarActivity::class.java,
+                headline = "Toolbar"
             )
         )
 
