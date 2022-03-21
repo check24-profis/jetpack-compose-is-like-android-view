@@ -289,6 +289,17 @@
             android:name=".features.viewpager.ComposableViewPagerActivity"
             android:exported="false" />
 
+        <!-- chip -->
+
+        <activity
+            android:name=".features.button.chip.AndroidUIChipActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.chip.ComposableChipActivity"
+            android:exported="false" />
+
         <!-- Auto Complete-->
 
         <activity
