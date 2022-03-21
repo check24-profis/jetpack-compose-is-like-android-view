@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -63,14 +64,12 @@ private fun SpinnerExample() {
     var expanded by remember { mutableStateOf(false) }
     var cityname by remember { mutableStateOf("select a city") }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Row(
-        ) {
+        // The Row aligns text and icon
+        Row {
             Text(text = cityname, Modifier.clickable { expanded = !expanded })
             Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
             DropdownMenu(
