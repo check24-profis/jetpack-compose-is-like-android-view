@@ -1,0 +1,30 @@
+&lt;TextView
+    android:id="@+id/time_picker_text_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Pick a time" /&gt;
+
+    &lt;!-- code implementation --&gt;
+
+private fun showTimePicker() {
+
+    val materialTimePicker = MaterialTimePicker
+        .Builder()
+        .setTimeFormat(TimeFormat.CLOCK_24H)
+        .build()
+
+    materialTimePicker.addOnPositiveButtonClickListener {
+        binding.timePickerTextView.text =
+        formatTime(materialTimePicker.hour, materialTimePicker.minute)
+    }
+        materialTimePicker.show(supportFragmentManager, "TAG")
+}
+
+private fun formatTime(hour : Int, minute: Int) : String {
+        var stringHour = hour.toString()
+        var stringMinute = minute.toString()
+
+        if (hour < 10) stringHour = "0$stringHour"
+        if (minute < 10) stringMinute = "0$stringMinute"
+        return "Time: $stringHour:$stringMinute"
+}

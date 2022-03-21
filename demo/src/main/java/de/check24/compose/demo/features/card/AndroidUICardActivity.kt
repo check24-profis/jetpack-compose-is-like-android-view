@@ -1,14 +1,13 @@
-package de.check24.compose.demo.features.password
+package de.check24.compose.demo.features.card
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import de.check24.compose.demo.R
 
-class AndroidUIPasswordActivity : AppCompatActivity() {
-
+class AndroidUICardActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.password)
-        supportActionBar?.title = "Password"
+        setContentView(R.layout.card)
+        supportActionBar?.title = "Card"
     }
 }

@@ -164,12 +164,12 @@
         <!-- Date -->
 
         <activity
-            android:name="de.check24.compose.demo.features.date.AndroidUIDateActivity"
+            android:name="de.check24.compose.demo.features.picker.AndroidUIDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name="de.check24.compose.demo.features.date.ComposableDateActivity"
+            android:name="de.check24.compose.demo.features.picker.ComposableDateActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
@@ -250,6 +250,84 @@
         <activity
             android:name=".features.bar.ComposableBottomAppBarActivity"
             android:exported="false" />
+
+        <!-- Multiline Text -->
+
+        <activity
+            android:name=".features.text.AndroidUIMultilineTextActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableMultilineTextActivity"
+            android:exported="false" />
+
+        <!-- Toggle Button -->
+
+        <activity
+            android:name=".features.button.AndroidUIToggleButtonActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.ComposableToggleButtonActivity"
+            android:exported="false" />
+
+        <!-- Spinner -->
+
+        <activity
+            android:name=".features.spinner.AndroidUISpinnerActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.spinner.ComposableSpinnerActivity"
+            android:exported="false" />
+
+        <!-- View Pager -->
+
+        <activity
+            android:name=".features.viewpager.AndroidUIViewPagerActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.viewpager.ComposableViewPagerActivity"
+            android:exported="false" />
+
+        <!-- chip -->
+
+        <activity
+            android:name=".features.button.chip.AndroidUIChipActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.chip.ComposableChipActivity"
+            android:exported="false" />
+
+        <!-- Auto Complete-->
+
+        <activity
+            android:name=".features.text.AndroidUIAutoCompleteActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableAutoCompleteActivity"
+            android:exported="false" />
+
+        <!-- Time -->
+
+        <activity
+            android:name=".features.picker.AndroidUITimeActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.picker.ComposableTimeActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial"/>
 
         <!-- Google Maps -->
 
