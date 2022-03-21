@@ -289,7 +289,7 @@
             android:name=".features.viewpager.ComposableViewPagerActivity"
             android:exported="false" />
 
-        <!-- chip -->
+        <!-- Chip -->
 
         <activity
             android:name=".features.button.chip.AndroidUIChipActivity"
@@ -298,6 +298,17 @@
 
         <activity
             android:name=".features.button.chip.ComposableChipActivity"
+            android:exported="false" />
+
+        <!-- Chip Group -->
+
+        <activity
+            android:name=".features.button.chip.AndroidUIChipGroupActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.button.chip.ComposableChipGroupActivity"
             android:exported="false" />
 
     </application>

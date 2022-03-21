@@ -1,4 +1,13 @@
 package de.check24.compose.demo.features.button.chip
 
-class AndroidUIChipGroupActivity {
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import de.check24.compose.demo.R
+
+class AndroidUIChipGroupActivity : AppCompatActivity(){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.chip_group)
+        supportActionBar?.title= "Chip Group"
+    }
 }
