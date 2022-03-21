@@ -9,17 +9,23 @@ import de.check24.compose.demo.databinding.TimeBinding
 
 class AndroidUITimeActivity : AppCompatActivity() {
 
-    lateinit var binding: TimeBinding
+    var binding: TimeBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = TimeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        if (binding == null) throw Exception("Something with the initialization of the View went wrong")
+        setContentView(binding?.root)
         supportActionBar?.title = "Time"
 
-        binding.timePickerTextView.setOnClickListener {
+        binding?.timePickerTextView?.setOnClickListener {
             showTimePicker()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 
     @SuppressLint("SetTextI18n")
@@ -30,13 +36,13 @@ class AndroidUITimeActivity : AppCompatActivity() {
             .build()
 
         materialTimePicker.addOnPositiveButtonClickListener {
-            binding.timePickerTextView.text =
-                correctsTime(materialTimePicker.hour, materialTimePicker.minute)
+            binding?.timePickerTextView?.text =
+                formatTime(materialTimePicker.hour, materialTimePicker.minute)
         }
         materialTimePicker.show(supportFragmentManager, "TAG")
     }
 
-    private fun correctsTime(hour : Int, minute: Int) : String {
+    private fun formatTime(hour : Int, minute: Int) : String {
         var stringHour = hour.toString()
         var stringMinute = minute.toString()
 

@@ -1,20 +1,47 @@
-@SuppressLint("SetTextI18n")
-fun showTimePicker() {
+@Composable
+fun TimeExample() {
 
-    val materialTimePicker = MaterialTimePicker.Builder()
+    var timePicked: String by remember {
+        mutableStateOf("Pick a Time")
+    }
+
+    val activity = LocalContext.current as AppCompatActivity
+
+    Text(
+        text = timePicked,
+        modifier = Modifier
+            .clickable {
+                showTimePicker(
+                    { time: String ->
+                        timePicked = time
+                    },
+                    activity
+                )
+            }
+    )
+}
+
+private fun showTimePicker(
+    time: (String) -> Unit,
+    activity: AppCompatActivity
+) {
+    val picker = MaterialTimePicker.Builder()
         .setTimeFormat(TimeFormat.CLOCK_24H)
         .build()
 
-    materialTimePicker.addOnPositiveButtonClickListener {
-        binding.timePickerTextView.text = ""
-        binding.timePickerTextView.text =
-            correctsTime(materialTimePicker.hour, materialTimePicker.minute)
+    picker.show(activity.supportFragmentManager, picker.toString())
 
+    picker.addOnPositiveButtonClickListener {
+        time(
+            formatTime(
+                picker.hour,
+                picker.minute
+            )
+        )
     }
-    materialTimePicker.show(supportFragmentManager, "TAG")
 }
 
-private fun correctsTime(hour : Int, minute: Int) : String {
+private fun formatTime(hour: Int, minute: Int): String {
     var stringHour = hour.toString()
     var stringMinute = minute.toString()
 

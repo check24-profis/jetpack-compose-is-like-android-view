@@ -43,9 +43,6 @@ private fun TimeExample() {
     var timePicked: String by remember {
         mutableStateOf("Pick a Time")
     }
-    val updatedTime = { time: String ->
-        timePicked = time
-    }
 
     val activity = LocalContext.current as AppCompatActivity
 
@@ -58,7 +55,14 @@ private fun TimeExample() {
             Text(
                 text = timePicked,
                 modifier = Modifier
-                    .clickable { showTimePicker(updatedTime, activity) },
+                    .clickable {
+                        showTimePicker(
+                            { time: String ->
+                                timePicked = time
+                            },
+                            activity
+                        )
+                    },
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -78,7 +82,7 @@ private fun showTimePicker(
 
     picker.addOnPositiveButtonClickListener {
         time(
-            correctsTime(
+            formatTime(
                 picker.hour,
                 picker.minute
             )
@@ -86,7 +90,7 @@ private fun showTimePicker(
     }
 }
 
-private fun correctsTime(hour: Int, minute: Int): String {
+private fun formatTime(hour: Int, minute: Int): String {
     var stringHour = hour.toString()
     var stringMinute = minute.toString()
 
