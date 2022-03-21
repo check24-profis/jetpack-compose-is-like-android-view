@@ -66,6 +66,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/ImageButton.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/ImageButton.xml)
       .case (.name "Chip Group") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/button/ChipGroup.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/button/ChipGroup.xml)
       .case (.name "Chip") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/button/Chip.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/button/Chip.xml)
