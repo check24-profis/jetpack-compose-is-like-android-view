@@ -152,12 +152,21 @@ html
 
     .section
       .title "Modifier"
-      .case (.name "Padding") $ .pair
       .case (.name "Margin") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/modifier/margin.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/modifier/margin.xml)
       .case (.name "Size") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/modifier/size.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/modifier/size.xml)
       .case (.name "Clickable") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/modifier/clickable.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/modifier/clickable.xml)
       .case (.name "Shadow") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/modifier/shadow.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/modifier/shadow.xml)
       .case (.name "Background") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/modifier/background.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/modifier/background.xml)
 
     .section
       .title "Positioning"
