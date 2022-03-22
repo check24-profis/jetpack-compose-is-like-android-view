@@ -35,12 +35,18 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 ### How to apply Google Maps
 
-1. Put your Api key in the manifest (don't leak your key. Use secrets or add a resource xml to gitignore)
-2. Add following to secrets.gradle (project scope) and add to gitignore:
+For the following steps the files should already be entered to gitignore. But it doesn't hurt to double check.
+
+1. Put your Api key to demo/src/release/res/values/secrets.xml as a string resource.
+2. Add your keystore (add to gitignore).
+3. Add following to secrets.gradle (project scope):
 
 ext {
-    STORE_FILE = "Your KeystorePath"
-    STORE_PASSWORD = "Your Password"
+    STORE_FILE = "Your keystore path"
+    STORE_PASSWORD = "Your password"
     KEY_ALIAS = "Your key alias"
-    KEY_PASSWORD = "Your key password"
+    KEY_PASSWORD = "Your password"
 }
+
+4. Add google-services.json to demo.
+5. You should select the release build variant. 
