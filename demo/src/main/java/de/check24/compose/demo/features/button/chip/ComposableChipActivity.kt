@@ -3,6 +3,10 @@ package de.check24.compose.demo.features.button.chip
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.hoverable
@@ -23,12 +27,10 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddLocationAlt
 import androidx.compose.material.icons.filled.Cancel
-import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -76,12 +78,10 @@ private fun ChipExample() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ActionChip()
-//        Spacer(modifier = Modifier.padding(20.dp))
         OutlinedActionChip()
-
         ChipWithIcon()
-
         InputChip()
+        ChipWithToggleIcon()
     }
 }
 
@@ -200,7 +200,7 @@ fun ChipWithIcon(
 
 @Composable
 fun InputChip(name: String = "Input Chip") {
-    var isVisible by remember { mutableStateOf(true)}
+    var isVisible by remember { mutableStateOf(true) }
 
     if (isVisible) {
         Surface(
@@ -245,6 +245,54 @@ fun InputChip(name: String = "Input Chip") {
                         .width(18.dp)
                 )
             }
+        }
+    }
+}
+
+@Composable
+fun ChipWithToggleIcon(
+    name: String = "Chip With Icon",
+) {
+    var isSelected by remember { mutableStateOf(false) }
+
+    Surface(
+        modifier = Modifier.padding(4.dp),
+        shape = CircleShape,
+        color = if (isSelected) colorResource(id = R.color.gray_400) else colorResource(id = R.color.gray_300),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .height(32.dp)
+                .toggleable(
+                    value = isSelected,
+                    onValueChange = { isSelected = !isSelected }
+                )
+        ) {
+            AnimatedVisibility(
+                visible = isSelected,
+                enter = slideInHorizontally(),
+                exit = slideOutHorizontally()
+            ) {
+                Icon(
+                    Icons.Default.Check,
+                    "",
+                    modifier = Modifier
+                        .padding(start = 4.dp)
+                        .width(24.dp)
+                )
+            }
+            Text(
+                text = name,
+                color = if (isSelected) colorResource(id = R.color.gray_800) else colorResource(id = R.color.gray_700),
+                fontSize = 14.sp,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier
+                    .padding(
+                        start = 8.dp,
+                        end = 12.dp
+                    )
+            )
         }
     }
 }
