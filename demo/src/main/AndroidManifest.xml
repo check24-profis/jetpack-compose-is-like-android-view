@@ -332,7 +332,18 @@
         <activity
             android:name=".features.picker.ComposableTimeActivity"
             android:exported="false"
-            android:theme="@style/DemoMaterial"/>
+            android:theme="@style/DemoMaterial" />
+
+        <!-- Modifier -->
+
+        <activity
+            android:name=".features.modifier.ComposableModifierActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".features.modifier.AndroidUIModifierActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
 
     </application>
 

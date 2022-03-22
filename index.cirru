@@ -152,6 +152,12 @@ html
 
     .section
       .title "Modifier"
+      .case (.name "Padding") $ .pair
+      .case (.name "Margin") $ .pair
+      .case (.name "Size") $ .pair
+      .case (.name "Clickable") $ .pair
+      .case (.name "Shadow") $ .pair
+      .case (.name "Background") $ .pair
 
     .section
       .title "Positioning"
