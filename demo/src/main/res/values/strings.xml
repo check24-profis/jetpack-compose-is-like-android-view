@@ -7,4 +7,5 @@
     <string name="modifier1text">padding (red) and margin (blue)</string>
     <string name="modifier2text1">size: big</string>
     <string name="modifier2text2">size: small</string>
+    <string name="sample_text_clickable">Clicked 0x</string>
 </resources>

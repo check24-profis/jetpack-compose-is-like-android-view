@@ -65,6 +65,7 @@ private fun ModifierDemoScreen() {
         MarginDemo()
         Spacer(modifier = Modifier.size(20.dp))
         SizeDemo()
+        Spacer(modifier = Modifier.size(20.dp))
         ClickableDemo()
         Spacer(modifier = Modifier.size(20.dp))
 //        ShadowDemo()
@@ -131,8 +132,6 @@ private fun ClickableDemo() {
     Text(
         text = "Clicked ${count}x",
         modifier = Modifier
-            .padding(20.dp)
-            .background(Color.LightGray)
             .clickable {
                 count++
             }
