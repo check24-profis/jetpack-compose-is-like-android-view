@@ -1,4 +1,6 @@
-apply from: '../secrets.gradle'
+if (project.file('../secrets.gradle').exists()) {
+    apply from: '../secrets.gradle'
+}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlinx-serialization'
@@ -27,18 +29,18 @@ android {
     signingConfigs {
 
         debug {
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
+            if (project.hasProperty('STORE_FILE')) storeFile file(STORE_FILE)
+            if (project.hasProperty('STORE_PASSWORD')) storePassword STORE_PASSWORD
+            if (project.hasProperty('KEY_ALIAS')) keyAlias KEY_ALIAS
+            if (project.hasProperty('KEY_PASSWORD')) keyPassword KEY_PASSWORD
         }
 
         // test-release signing config so that release can be build
         release {
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
+            if (project.hasProperty('STORE_FILE')) storeFile file(STORE_FILE)
+            if (project.hasProperty('STORE_PASSWORD')) storePassword STORE_PASSWORD
+            if (project.hasProperty('KEY_ALIAS')) keyAlias KEY_ALIAS
+            if (project.hasProperty('KEY_PASSWORD')) keyPassword KEY_PASSWORD
         }
     }
 
