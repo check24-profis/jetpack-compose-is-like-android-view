@@ -294,3 +294,5 @@ gen-external-apklibs
 # End of https://www.toptal.com/developers/gitignore/api/macos,android,windows,jetbrains+all
 /fingerprint.sh
 /secrets.gradle
+
+!build/fork-me.png
