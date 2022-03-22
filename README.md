@@ -41,12 +41,14 @@ For the following steps the files should already be entered to gitignore. But it
 2. Add your keystore (add to gitignore).
 3. Add following to secrets.gradle (project scope):
 
+'''
 ext {
-    STORE_FILE = "Your keystore path"
-    STORE_PASSWORD = "Your password"
-    KEY_ALIAS = "Your key alias"
-    KEY_PASSWORD = "Your password"
+   STORE_FILE = "Your keystore path"
+   STORE_PASSWORD = "Your password"
+   KEY_ALIAS = "Your key alias"
+   KEY_PASSWORD = "Your password"
 }
-
+'''
+   
 4. Add google-services.json to demo.
 5. You should select the release build variant. 
