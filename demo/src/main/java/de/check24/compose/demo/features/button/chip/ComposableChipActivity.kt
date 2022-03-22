@@ -4,14 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.hoverable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
@@ -21,8 +23,12 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.AddLocationAlt
+import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Circle
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,12 +37,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import de.check24.compose.demo.R
 import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableChipActivity : ComponentActivity() {
@@ -65,17 +71,17 @@ class ComposableChipActivity : ComponentActivity() {
 private fun ChipExample() {
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(241, 255, 250)),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ActionChip()
 //        Spacer(modifier = Modifier.padding(20.dp))
-        ChipWithConstantIcon()
-//        Spacer(modifier = Modifier.padding(20.dp))
-        ChipWithInconstantIcon()
+        OutlinedActionChip()
+
+        ChipWithIcon()
+
+        InputChip()
     }
 }
 
@@ -88,9 +94,10 @@ fun ActionChip(
     Surface(
         modifier = Modifier.padding(4.dp),
         shape = CircleShape,
-        color = if (isSelected) MaterialTheme.colors.primary else Color(68, 44, 46),
+        color = if (isSelected) colorResource(id = R.color.purple_100) else colorResource(id = R.color.gray_300),
     ) {
         Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .height(32.dp)
                 .toggleable(
@@ -100,14 +107,11 @@ fun ActionChip(
         ) {
             Text(
                 text = name,
-                color = Color.Black,
+                color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(id = R.color.gray_700),
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
-                    .padding(
-                        horizontal = 12.dp,
-                        vertical = 6.dp
-                    )
+                    .padding(horizontal = 12.dp)
             )
         }
     }
@@ -115,16 +119,23 @@ fun ActionChip(
 
 @Composable
 fun OutlinedActionChip(
-    name: String = "Action Chip",
+    name: String = "Outlined Chip",
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
     Surface(
-        modifier = Modifier.padding(4.dp),
+        modifier = Modifier
+            .padding(4.dp)
+            .hoverable(interactionSource = MutableInteractionSource(), true),
         shape = CircleShape,
-        color = if (isSelected) MaterialTheme.colors.primary else Color.LightGray,
+        color = if (isSelected) colorResource(id = R.color.purple_100) else Color.White,
+        border = if (isSelected)
+            BorderStroke(width = 1.dp, colorResource(id = R.color.purple_200)) else {
+            BorderStroke(width = 1.dp, colorResource(id = R.color.gray_400))
+        }
     ) {
         Row(
+            verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .height(32.dp)
                 .toggleable(
@@ -134,13 +145,53 @@ fun OutlinedActionChip(
         ) {
             Text(
                 text = name,
-                color = Color.Black,
+                color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(id = R.color.gray_800),
+                fontSize = 14.sp,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun ChipWithIcon(
+    name: String = "Chip With Icon",
+) {
+    var isSelected by remember { mutableStateOf(false) }
+
+    Surface(
+        modifier = Modifier.padding(4.dp),
+        shape = CircleShape,
+        color = if (isSelected) colorResource(id = R.color.purple_100) else colorResource(id = R.color.gray_300),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .height(32.dp)
+                .toggleable(
+                    value = isSelected,
+                    onValueChange = { isSelected = !isSelected }
+                )
+        ) {
+            Icon(
+                Icons.Default.Circle,
+                "",
+                tint = if (isSelected) colorResource(id = R.color.green) else Color.Red,
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+                    .width(24.dp)
+            )
+            Text(
+                text = name,
+                color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(id = R.color.gray_700),
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
                     .padding(
-                        horizontal = 12.dp,
-                        vertical = 6.dp
+                        start = 4.dp,
+                        end = 12.dp
                     )
             )
         }
@@ -148,101 +199,55 @@ fun OutlinedActionChip(
 }
 
 @Composable
-fun ChipWithConstantIcon(name: String = "I am a Chip") {
-    var isSelected by remember { mutableStateOf(false) }
+fun InputChip(name: String = "Input Chip") {
+    var isVisible by remember { mutableStateOf(true)}
 
-    Surface(
-        modifier = Modifier.padding(4.dp),
-        shape = CircleShape,
-        color = if (isSelected) Color(69, 69, 69) else Color(241, 255, 250),
-        border = BorderStroke(width = 2.dp, Color(69, 69, 69))
-
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .toggleable(
-                    value = isSelected,
-                    onValueChange = { isSelected = !isSelected }
-                )
+    if (isVisible) {
+        Surface(
+            modifier = Modifier.padding(4.dp),
+            shape = CircleShape,
+            color = colorResource(id = R.color.gray_300),
         ) {
-            Text(
-                text = name,
-                style = MaterialTheme.typography.body2,
-                color = if (isSelected) Color.White else Color.Black,
-                modifier = Modifier.padding(
-                    start = 8.dp,
-                    top = 8.dp,
-                    bottom = 8.dp
-                )
-            )
-            Icon(
-                Icons.Filled.Add,
-                "",
-                tint = if (isSelected) Color.White else Color.Black,
-                modifier = Modifier.padding(
-                    end = 8.dp,
-                )
-            )
-        }
-    }
-}
-
-@Composable
-private fun ChipWithInconstantIcon(name: String = "I am a Chip") {
-    var isSelected by remember { mutableStateOf(false) }
-
-    Surface(
-        modifier = Modifier.padding(4.dp),
-        shape = CircleShape,
-        color = if (isSelected) Color(69, 69, 69) else Color(241, 255, 250),
-        border = BorderStroke(width = 2.dp, Color(69, 69, 69))
-
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .toggleable(
-                    value = isSelected,
-                    onValueChange = { isSelected = !isSelected }
-                )
-        ) {
-            Text(
-                text = name,
-                style = MaterialTheme.typography.body2,
-                color = if (isSelected) Color.White else Color.Black,
-                modifier = Modifier.padding(8.dp)
-            )
-            if (isSelected) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .height(32.dp)
+                    .toggleable(
+                        value = true,
+                        onValueChange = { }
+                    )
+            ) {
                 Icon(
-                    Icons.Filled.Check,
+                    Icons.Default.LocationOn,
                     "",
-                    tint = if (isSelected) Color.White else Color.Black,
-                    modifier = Modifier.padding(
-                        end = 8.dp,
-                    )
+                    tint = colorResource(id = R.color.gray_700),
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .width(24.dp)
+                )
+                Text(
+                    text = name,
+                    color = colorResource(id = R.color.gray_700),
+                    fontSize = 14.sp,
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+                Icon(
+                    Icons.Filled.Cancel,
+                    "",
+                    tint = colorResource(id = R.color.gray_700),
+                    modifier = Modifier
+                        .clickable { isVisible = !isVisible }
+                        .padding(
+                            start = 4.dp,
+                            end = 8.dp
+                        )
+                        .width(18.dp)
                 )
             }
         }
     }
 }
-
-/*@Composable
-private fun Chip() {
-    Row(
-        modifier = Modifier
-            .background(Color.LightGray)
-            .toggleable(
-                value = false,
-                onValueChange = { }
-            )
-    ) {
-        Text(
-            text = "I'm a chip",
-            modifier = Modifier.padding(10.dp)
-        )
-    }
-}*/
 
 @Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
 @Composable
