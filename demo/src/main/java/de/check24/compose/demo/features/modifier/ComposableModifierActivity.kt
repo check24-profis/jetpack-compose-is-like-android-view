@@ -25,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -68,9 +69,9 @@ private fun ModifierDemoScreen() {
         Spacer(modifier = Modifier.size(20.dp))
         ClickableDemo()
         Spacer(modifier = Modifier.size(20.dp))
-//        ShadowDemo()
+        ShadowDemo()
         Spacer(modifier = Modifier.size(20.dp))
-//        BackgroundDemo()
+        BackgroundDemo()
     }
 }
 
@@ -128,7 +129,9 @@ private fun SizeDemo() {
 
 @Composable
 private fun ClickableDemo() {
+
     var count by remember { mutableStateOf(0) }
+
     Text(
         text = "Clicked ${count}x",
         modifier = Modifier
@@ -140,12 +143,24 @@ private fun ClickableDemo() {
 
 @Composable
 private fun ShadowDemo() {
-    TODO("Not yet implemented")
+
+    Card(
+        modifier = Modifier
+            .shadow(elevation = 20.dp)
+    ) {
+        Text(
+            text = "shadow",
+            modifier = Modifier.padding(10.dp)
+        )
+    }
 }
 
 @Composable
 private fun BackgroundDemo() {
-    TODO("Not yet implemented")
+    Text(
+        text = "red background",
+        modifier = Modifier.background(Color.Red)
+    )
 }
 
 
