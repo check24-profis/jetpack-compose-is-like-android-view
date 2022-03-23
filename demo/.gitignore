@@ -1,2 +1,4 @@
 /build
+
 /src/release/res/values/secrets.xml
+/src/main/res/values/secrets.xml
