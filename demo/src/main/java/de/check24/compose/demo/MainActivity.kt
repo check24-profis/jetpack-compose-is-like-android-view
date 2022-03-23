@@ -44,8 +44,6 @@ import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivit
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioGroupActivity
-import de.check24.compose.demo.features.card.AndroidUICardActivity
-import de.check24.compose.demo.features.card.ComposableCardActivity
 import de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -54,8 +52,6 @@ import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHori
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
-import de.check24.compose.demo.features.picker.AndroidUIDateActivity
-import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
@@ -72,7 +68,9 @@ import de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVis
 import de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.compose.demo.features.picker.AndroidUIDateActivity
 import de.check24.compose.demo.features.picker.AndroidUITimeActivity
+import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
