@@ -56,6 +56,8 @@ import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHor
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
 import de.check24.compose.demo.features.picker.AndroidUIDateActivity
 import de.check24.compose.demo.features.picker.ComposableDateActivity
+import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
+import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
@@ -336,6 +338,19 @@ class MainActivity : ComponentActivity() {
         )
 
         // endregion
+
+        // region custom
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGoogleMapActivity::class.java,
+                androidUIActivity = AndroidUIGoogleMapActivity::class.java,
+                headline = "Google Maps"
+            )
+        )
+
+        // endregion
+
     }
 }
 
