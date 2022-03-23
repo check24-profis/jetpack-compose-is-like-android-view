@@ -117,7 +117,7 @@ fun ActionChip(
 }
 
 @Composable
-fun OutlinedActionChip(
+private fun OutlinedActionChip(
     name: String = "Outlined Chip",
 ) {
     var isSelected by remember { mutableStateOf(false) }
@@ -155,7 +155,7 @@ fun OutlinedActionChip(
 }
 
 @Composable
-fun ChipWithIcon(
+private fun ChipWithIcon(
     name: String = "Chip With Icon",
 ) {
     var isSelected by remember { mutableStateOf(false) }
@@ -198,7 +198,7 @@ fun ChipWithIcon(
 }
 
 @Composable
-fun InputChip(name: String = "Input Chip") {
+private fun InputChip(name: String = "Input Chip") {
     var isVisible by remember { mutableStateOf(true) }
 
     if (isVisible) {
@@ -249,7 +249,7 @@ fun InputChip(name: String = "Input Chip") {
 }
 
 @Composable
-fun ChipWithToggleIcon(
+private fun ChipWithToggleIcon(
     name: String = "Chip With toggleable Icon",
 ) {
     var isSelected by remember { mutableStateOf(false) }
@@ -298,7 +298,7 @@ fun ChipWithToggleIcon(
 
 @Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
 @Composable
-fun ChipPreview() {
+private fun ChipPreview() {
     DemoTheme {
         ChipExample()
     }
