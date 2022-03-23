@@ -58,8 +58,8 @@ import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDif
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
-import de.check24.compose.demo.features.navigation.AndroidUINavigationActivity
-import de.check24.compose.demo.features.navigation.ComposableNavigationActivity
+import de.check24.compose.demo.features.navigation.AndroidUINavHostActivity
+import de.check24.compose.demo.features.navigation.ComposableNavHostActivity
 import de.check24.compose.demo.features.password.AndroidUIPasswordActivity
 import de.check24.compose.demo.features.password.ComposablePasswordActivity
 import de.check24.compose.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -322,8 +322,8 @@ class MainActivity : ComponentActivity() {
         )
         compareItems.add(
             CompareItem(
-                composeActivity = ComposableNavigationActivity::class.java,
-                androidUIActivity = AndroidUINavigationActivity::class.java,
+                composeActivity = ComposableNavHostActivity::class.java,
+                androidUIActivity = AndroidUINavHostActivity::class.java,
                 headline = "NavHost"
             )
         )

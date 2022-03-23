@@ -1,0 +1,99 @@
+&lt;androidx.fragment.app.FragmentContainerView
+    android:id="@+id/nav_host_fragment"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:defaultNavHost="true"
+    app:layout_constraintBottom_toTopOf="@id/navigation_button_row"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:navGraph="@navigation/nav_host_navigation" /&gt;
+
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+android:id="@+id/navigation_button_row"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"&gt;
+
+&lt;Button
+    android:id="@+id/button_a"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/a"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/button_b"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;Button
+    android:id="@+id/button_b"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/b"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/button_c"
+    app:layout_constraintStart_toEndOf="@+id/button_a"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;Button
+    android:id="@+id/button_c"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/c"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/button_b"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+
+// navigation graph
+
+&lt;navigation xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/nav_host_navigation"
+app:startDestination="@id/fragment_a"&gt;
+
+&lt;fragment
+    android:id="@+id/fragment_a"
+    android:name="de.check24.compose.demo.features.navigation.fragments.FragmentA"
+    tools:layout="@layout/navigation_plain_text" /&gt;
+
+&lt;fragment
+    android:id="@+id/fragment_b"
+    android:name="de.check24.compose.demo.features.navigation.fragments.FragmentB"
+    tools:layout="@layout/navigation_plain_text" /&gt;
+
+&lt;fragment
+    android:id="@+id/fragment_c"
+    android:name="de.check24.compose.demo.features.navigation.fragments.FragmentC"
+    tools:layout="@layout/navigation_plain_text" /&gt;
+
+&lt;/navigation&gt;
+
+// in activity
+
+val navHostFragment =
+    supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
+val navController = navHostFragment.navController
+
+val buttonA = findViewById&lt;Button&gt;(R.id.button_a)
+val buttonB = findViewById&lt;Button&gt;(R.id.button_b)
+val buttonC = findViewById&lt;Button&gt;(R.id.button_c)
+
+buttonA.setOnClickListener {
+    navController.navigate(R.id.fragment_a)
+}
+
+buttonB.setOnClickListener {
+    navController.navigate(R.id.fragment_b)
+}
+
+buttonC.setOnClickListener {
+    navController.navigate(R.id.fragment_c)
+}

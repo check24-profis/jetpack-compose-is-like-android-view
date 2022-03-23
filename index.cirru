@@ -145,6 +145,8 @@ html
       .case (.name "TabItem") $ .pair
       .case (.name "FragmentContainer") $ .pair
       .case (.name "NavHost") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/NavHost.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/NavHost.xml)
 
     .section
       .title "Custom"
