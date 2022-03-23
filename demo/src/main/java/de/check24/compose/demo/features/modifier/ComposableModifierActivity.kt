@@ -163,7 +163,6 @@ private fun BackgroundDemo() {
     )
 }
 
-
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
 private fun DefaultPreview() {
