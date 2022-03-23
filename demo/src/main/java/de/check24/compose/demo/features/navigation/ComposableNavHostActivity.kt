@@ -22,7 +22,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.check24.compose.demo.theme.DemoTheme
 
-class ComposableNavigationActivity : ComponentActivity() {
+class ComposableNavHostActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
