@@ -199,6 +199,7 @@ private fun ChipWithIcon(
 
 @Composable
 private fun InputChip(name: String = "Input Chip") {
+
     var isVisible by remember { mutableStateOf(true) }
 
     if (isVisible) {

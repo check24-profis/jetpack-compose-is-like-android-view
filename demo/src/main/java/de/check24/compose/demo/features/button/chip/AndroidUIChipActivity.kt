@@ -7,7 +7,7 @@ import androidx.core.view.isVisible
 import de.check24.compose.demo.R
 import de.check24.compose.demo.databinding.ChipBinding
 
-// if ChipBinding says "no reference" just Build -> Clean Project
+// if ChipBinding says "no reference" just: Build -> Clean Project
 
 class AndroidUIChipActivity : AppCompatActivity() {
 
@@ -31,6 +31,5 @@ class AndroidUIChipActivity : AppCompatActivity() {
                 outlinedChip.setChipBackgroundColorResource(R.color.white)
             }
         }
-
     }
 }
