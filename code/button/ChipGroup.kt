@@ -1,56 +1,42 @@
-/* At the time of the implementation there were no official implementation!
-* Look if there is an official implementaion already */
-
 @Composable
-fun ChipGroupExample() {
+fun ChipGroupSingleSelectionExample(list: List<String> = listOf("I'm a list")) {
 
-    val list = listOf(
-        "Chip One",
-        [...]
-        "Chip Ten"
-    )
+    var selectedChip by remember { mutableStateOf("") }
 
-    val selectedChip = remember {
-        mutableStateOf("")
-    }
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
+    LazyRow(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(50.dp)
     ) {
-        LazyRow(
-            modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            items(list) {
+        items(list) {
 
-                val color by animateColorAsState(
-                    if (selectedChip.value == it) {
-                        colorResource(id = R.color.purple_200)
-                    } else Color.LightGray
-                )
-
-                // through row we get a riddle effect over the Text with padding
+            Surface(
+                modifier = Modifier.padding(4.dp),
+                shape = CircleShape,
+                color = if (selectedChip == it) {
+                    colorResource(id = R.color.purple_100)
+                } else colorResource(id = R.color.gray_300)
+            ) {
+                // through the Row we can align several items and have a nice ripple effect
                 Row(
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .background(color)
-                        .toggleable(
-                            value = false,
-                            onValueChange = { }
-                        )
-                        .clickable {
-                            selectedChip.value = it
-                        }
+                        .height(32.dp)
+                        .clickable { selectedChip = it }
                 ) {
+                    // here we can add our items, like texts and icons
                     Text(
                         text = it,
-                        modifier = Modifier
-                            .padding(10.dp),
+                        color = if (selectedChip == it) colorResource(id = R.color.purple_500) else colorResource(
+                            id = R.color.gray_700
+                        ),
+                        fontSize = 14.sp,
+                        style = MaterialTheme.typography.body2,
+                        modifier = Modifier.padding(horizontal = 12.dp)
                     )
                 }
-                // through this statement there is no spacer after the last element
-                if (it != list[list.size - 1])
-                    Spacer(modifier = Modifier.padding(10.dp))
             }
         }
     }

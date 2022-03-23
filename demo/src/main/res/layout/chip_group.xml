@@ -4,18 +4,129 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiSelection"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_scroll_view_multi_selection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <HorizontalScrollView
-        android:id="@+id/horizontal_scroll_view"
+        android:id="@+id/horizontal_scroll_view_multi_selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/textview_single_selection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_multi_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="false"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip One"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Two"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Three"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Four"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Five"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Six"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Seven"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Eight"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Nine"
+                android:textAlignment="center" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Ten"
+                android:textAlignment="center" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textview_single_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="SingleSelection"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_scroll_view_single_selection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_view_single_selection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
+            android:id="@+id/chip_group_single_selection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:singleLine="true"
@@ -90,6 +201,105 @@
                 android:text="Chip Ten"
                 android:textAlignment="center" />
 
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textview_filter_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="FilterSelection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_scroll_view_single_selection" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll_view_filter_selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_filter_selection">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_filter_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip One"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Two"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Three"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Four"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Five"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Six"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_seven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Seven"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_eight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Eight"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_nine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Nine"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_chip_ten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chip Ten"
+                app:closeIconEnabled="true" />
         </com.google.android.material.chip.ChipGroup>
 
     </HorizontalScrollView>
