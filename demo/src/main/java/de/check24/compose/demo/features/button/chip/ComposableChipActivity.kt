@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.BorderStroke
@@ -251,7 +250,7 @@ fun InputChip(name: String = "Input Chip") {
 
 @Composable
 fun ChipWithToggleIcon(
-    name: String = "Chip With Icon",
+    name: String = "Chip With toggleable Icon",
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
