@@ -57,38 +57,30 @@ class ComposableNavigationActivity : ComponentActivity() {
 private fun NavHostDemo() {
 
     val navController = rememberNavController()
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
 
+        val abc = listOf("A","B","C")
+
         NavHost(navController = navController, startDestination = "A") {
 
-            composable("A") {
-                Text(text = "A")
-            }
+            abc.forEach { letter ->
 
-            composable("B") {
-                Text(text = "B")
-            }
-
-            composable("C") {
-                Text(text = "C")
+                composable(letter) {
+                    Text(text = letter)
+                }
             }
         }
 
         Row {
 
-            Button(onClick = { navController.navigate("A") }) {
-                Text(text = "A")
-            }
-
-            Button(onClick = { navController.navigate("B") }) {
-                Text(text = "B")
-            }
-
-            Button(onClick = { navController.navigate("C") }) {
-                Text(text = "C")
+            abc.forEach { letter ->
+                Button(onClick = { navController.navigate(letter) }) {
+                    Text(text = letter)
+                }
             }
         }
     }
