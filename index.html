@@ -1924,4 +1924,167 @@ private fun BottomAppBarExample() {
         android:icon="@drawable/ic_baseline_cloud_download_24"
         android:title="Download" /&gt;
 
-&lt;/menu&gt;</code></pre></div></div></div><div class="case"><div class="name">Toolbar</div><div class="pair"></div></div><div class="case"><div class="name">TabLayout</div><div class="pair"></div></div><div class="case"><div class="name">TabItem</div><div class="pair"></div></div><div class="case"><div class="name">FragmentContainer</div><div class="pair"></div></div><div class="case"><div class="name">NavHost</div><div class="pair"></div></div></div><div class="section"><div class="title">Custom</div><div class="case"><div class="name">Map</div><div class="pair"></div></div></div><div class="section"><div class="title">Modifier</div></div><div class="section"><div class="title">Positioning</div></div><div class="section"><div class="title">States</div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div></div></body></html>
+&lt;/menu&gt;</code></pre></div></div></div><div class="case"><div class="name">Toolbar</div><div class="pair"></div></div><div class="case"><div class="name">TabLayout</div><div class="pair"></div></div><div class="case"><div class="name">TabItem</div><div class="pair"></div></div><div class="case"><div class="name">FragmentContainer</div><div class="pair"></div></div><div class="case"><div class="name">NavHost</div><div class="pair"></div></div></div><div class="section"><div class="title">Custom</div><div class="case"><div class="name">Map</div><div class="pair"></div></div></div><div class="section"><div class="title">Modifier</div><div class="case"><div class="name">Margin</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun MarginDemo() {
+
+    Card(backgroundColor = Color.Blue) {
+
+        Text(
+            text = "padding (red) and margin (blue)",
+            modifier = Modifier
+                .padding(
+                    horizontal = 50.dp,
+                    vertical = 20.dp
+                ) // Margin
+                .background(Color.Red)
+                .padding(20.dp) // Padding
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/blue"
+    app:cardCornerRadius="5dp"&gt;
+
+    &lt;TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="50dp"
+    android:layout_marginVertical="20dp"
+    android:background="@color/red"
+    android:padding="20dp"
+    android:text="@string/modifier1text"
+    android:textAlignment="center"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;/androidx.cardview.widget.CardView&gt;</code></pre></div></div></div><div class="case"><div class="name">Size</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun SizeDemo() {
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+
+        Card(
+            backgroundColor = Color.LightGray,
+            modifier = Modifier.size(70.dp),
+
+            ) {
+
+            Text(
+                text = "size: big"
+            )
+        }
+
+        Spacer(modifier = Modifier.size(20.dp))
+
+        Card(
+            backgroundColor = Color.LightGray,
+            modifier = Modifier.size(50.dp)
+        ) {
+
+            Text(
+                text = "size: small"
+            )
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"&gt;
+
+    &lt;androidx.cardview.widget.CardView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:cardBackgroundColor="@color/light_gray"
+        app:cardCornerRadius="5dp"&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modifier2text1" /&gt;
+
+    &lt;/androidx.cardview.widget.CardView&gt;
+
+    &lt;Space
+        android:layout_width="20dp"
+        android:layout_height="20dp" /&gt;
+
+    &lt;androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/light_gray"
+        app:cardCornerRadius="5dp"&gt;
+
+        &lt;TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/modifier2text2" /&gt;
+
+    &lt;/androidx.cardview.widget.CardView&gt;
+&lt;/LinearLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Clickable</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun ClickableDemo() {
+
+    var count by remember { mutableStateOf(0) }
+
+    Text(
+        text = "Clicked ${count}x",
+        modifier = Modifier
+            .clickable {
+                count++
+            }
+    )
+}
+</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
+    android:id="@+id/modifier_clickable"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:onClick="onTextClick"
+    android:text="@string/sample_text_clickable" /&gt;
+
+// in activity
+
+fun onTextClick(view: View) {
+    if (view.id != R.id.modifier_clickable) return
+
+    count++
+    (view as TextView).text = "Clicked ${count}x"
+}</code></pre></div></div></div><div class="case"><div class="name">Shadow</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun ShadowDemo() {
+
+    Card(
+        modifier = Modifier
+            .shadow(elevation = 20.dp)
+    ) {
+        Text(
+            text = "shadow",
+            modifier = Modifier.padding(10.dp)
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/shadow" /&gt;
+
+&lt;/androidx.cardview.widget.CardView&gt;</code></pre></div></div></div><div class="case"><div class="name">Background</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun BackgroundDemo() {
+    Text(
+        text = "red background",
+        modifier = Modifier.background(Color.Red)
+    )
+}
+</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/red"
+    android:text="@string/modifier_background" /&gt;</code></pre></div></div></div></div><div class="section"><div class="title">Positioning</div></div><div class="section"><div class="title">States</div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div></div></body></html>
