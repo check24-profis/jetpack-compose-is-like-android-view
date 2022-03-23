@@ -4,13 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/navigation_frame"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/navigation_button_row"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:navGraph="@navigation/nav_host_navigation" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigation_button_row"
@@ -21,35 +24,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <Button
-            android:id="@+id/buttonA"
+            android:id="@+id/button_a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/a"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/buttonB"
+            app:layout_constraintEnd_toStartOf="@id/button_b"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonB"
+            android:id="@+id/button_b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/b"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/buttonC"
-            app:layout_constraintStart_toEndOf="@+id/buttonA"
+            app:layout_constraintEnd_toStartOf="@id/button_c"
+            app:layout_constraintStart_toEndOf="@+id/button_a"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonC"
+            android:id="@+id/button_c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/c"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonB"
+            app:layout_constraintStart_toEndOf="@+id/button_b"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

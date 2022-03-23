@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_navigation"
+    app:startDestination="@id/fragment_a">
+
+    <fragment
+        android:id="@+id/fragment_a"
+        android:name="de.check24.compose.demo.features.navigation.fragments.FragmentA"
+        tools:layout="@layout/navigation_plain_text" />
+
+    <fragment
+        android:id="@+id/fragment_b"
+        android:name="de.check24.compose.demo.features.navigation.fragments.FragmentB"
+        tools:layout="@layout/navigation_plain_text" />
+
+    <fragment
+        android:id="@+id/fragment_c"
+        android:name="de.check24.compose.demo.features.navigation.fragments.FragmentC"
+        tools:layout="@layout/navigation_plain_text" />
+
+</navigation>
