@@ -59,7 +59,7 @@ class ComposableEmailActivity : ComponentActivity() {
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun Email() {
+private fun Email() {
 
     var text by remember { mutableStateOf(TextFieldValue("")) }
     val keyboardController = LocalSoftwareKeyboardController.current

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Demo">
 
+        <!-- For Google Maps - Key copied from portal -->
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/apiKey" />
+
         <activity
             android:name="de.check24.compose.demo.MainActivity"
             android:exported="true"
@@ -333,6 +339,28 @@
             android:name=".features.picker.ComposableTimeActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
+
+        <!-- Modifier -->
+
+        <activity
+            android:name=".features.modifier.ComposableModifierActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".features.modifier.AndroidUIModifierActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <!-- Google Maps -->
+
+        <activity
+            android:name="de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name="de.check24.compose.demo.features.custom.ComposableGoogleMapActivity"
+            android:exported="false" />
 
         <!-- Toolbar -->
 

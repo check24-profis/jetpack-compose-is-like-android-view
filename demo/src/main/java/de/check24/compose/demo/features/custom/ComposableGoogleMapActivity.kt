@@ -1,30 +1,25 @@
-package de.check24.compose.demo.features.button
+package de.check24.compose.demo.features.custom
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.skydoves.landscapist.glide.GlideImage
-import de.check24.compose.demo.R
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.rememberCameraPositionState
 import de.check24.compose.demo.theme.DemoTheme
 
-class ComposableImageButtonActivity : ComponentActivity() {
+class ComposableGoogleMapActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,14 +29,14 @@ class ComposableImageButtonActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "ImageButton")
+                                Text(text = "Google Maps")
                             })
                     }, content = {
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            ImageButton(R.drawable.c24logo)
+                            GoogleMapExample()
                         }
                     }
                 )
@@ -51,29 +46,24 @@ class ComposableImageButtonActivity : ComponentActivity() {
 }
 
 @Composable
-private fun ImageButton(image: Any?) {
-    Button(
-        onClick = {},
-        modifier = Modifier.size(100.dp),
-        shape = CircleShape,
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color.White
-        ),
-        elevation = ButtonDefaults.elevation(0.dp, 0.dp)
-    ) {
-        GlideImage(
-            imageModel = image,
-            contentScale = ContentScale.FillWidth,
-            contentDescription = "Image of Button",
-            modifier = Modifier.fillMaxSize()
-        )
+private fun GoogleMapExample() {
+    val c24Berlin = LatLng(52.51119997328961, 13.404559796099809)
+    val zoom = 17F
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition(c24Berlin, zoom, 0F, 0F)
     }
+
+    GoogleMap(
+        modifier = Modifier.fillMaxSize(),
+        cameraPositionState = cameraPositionState
+    )
 }
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun ImageButtonPreview() {
+private fun GoogleMapExamplePreview() {
     DemoTheme {
-        ImageButton(R.drawable.c24logo)
+        GoogleMapExample()
     }
 }

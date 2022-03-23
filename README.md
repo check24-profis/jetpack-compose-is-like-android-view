@@ -32,3 +32,23 @@ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEM
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </pre>
+
+### How to apply Google Maps
+
+For the following steps the files should already be entered to gitignore. But it doesn't hurt to double check.
+
+1. Put your Api key to demo/src/release/res/values/secrets.xml as a string resource.
+2. Add your keystore (add to gitignore).
+3. Add following to secrets.gradle (project scope):
+
+```groovy
+ext {
+   STORE_FILE = "Your keystore path"
+   STORE_PASSWORD = "Your password"
+   KEY_ALIAS = "Your key alias"
+   KEY_PASSWORD = "Your password"
+}
+```
+   
+4. Add google-services.json to demo.
+5. You should select the release build variant. 

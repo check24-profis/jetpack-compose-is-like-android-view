@@ -1,0 +1,17 @@
+&lt;TextView
+    android:id="@+id/modifier_clickable"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:onClick="onTextClick"
+    android:text="@string/sample_text_clickable" /&gt;
+
+// in activity
+
+fun onTextClick(view: View) {
+    if (view.id != R.id.modifier_clickable) return
+
+    count++
+    (view as TextView).text = "Clicked ${count}x"
+}

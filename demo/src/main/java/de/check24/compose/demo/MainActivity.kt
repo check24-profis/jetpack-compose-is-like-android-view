@@ -58,12 +58,16 @@ import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHor
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
 import de.check24.compose.demo.features.picker.AndroidUIDateActivity
 import de.check24.compose.demo.features.picker.ComposableDateActivity
+import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
+import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
+import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
+import de.check24.compose.demo.features.modifier.ComposableModifierActivity
 import de.check24.compose.demo.features.password.AndroidUIPasswordActivity
 import de.check24.compose.demo.features.password.ComposablePasswordActivity
 import de.check24.compose.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -337,6 +341,31 @@ class MainActivity : ComponentActivity() {
         )
 
         // endregion
+
+        // region modifier
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableModifierActivity::class.java,
+                androidUIActivity = AndroidUIModifierActivity::class.java,
+                headline = "Modifier"
+            )
+        )
+
+        // endregion
+
+        // region custom
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGoogleMapActivity::class.java,
+                androidUIActivity = AndroidUIGoogleMapActivity::class.java,
+                headline = "Google Maps"
+            )
+        )
+
+        // endregion
+
     }
 }
 
