@@ -62,6 +62,8 @@ import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDif
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
+import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
+import de.check24.compose.demo.features.modifier.ComposableModifierActivity
 import de.check24.compose.demo.features.password.AndroidUIPasswordActivity
 import de.check24.compose.demo.features.password.ComposablePasswordActivity
 import de.check24.compose.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -318,6 +320,18 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableViewPagerActivity::class.java,
                 androidUIActivity = AndroidUIViewPagerActivity::class.java,
                 headline = "View Pager"
+            )
+        )
+
+        // endregion
+
+        // region modifier
+
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableModifierActivity::class.java,
+                androidUIActivity = AndroidUIModifierActivity::class.java,
+                headline = "Modifier"
             )
         )
 

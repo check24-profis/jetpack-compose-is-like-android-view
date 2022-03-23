@@ -1,0 +1,12 @@
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/shadow" /&gt;
+
+&lt;/androidx.cardview.widget.CardView&gt;
