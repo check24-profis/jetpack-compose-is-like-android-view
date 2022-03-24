@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
@@ -24,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
+import kotlin.math.min
 
 class ComposableGridActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,10 +54,19 @@ class ComposableGridActivity : ComponentActivity() {
 @Composable
 private fun GridExample() {
 
-    val colorList = listOf(Color.Red, Color.Black, Color(0xFFBB86FC), Color(0xFF3700B3))
+    val colorList = listOf(
+        Color.Red,
+        Color.Black,
+        Color(0xFFBB86FC),
+        Color(0xFF3700B3),
+        Color.Cyan,
+        Color.Magenta,
+        Color.LightGray,
+        Color.Green
+    )
 
-    Grid(columnCount = 2, rowCount = 2) {
-        (0..3).forEach {
+    Grid(columnCount = 2, rowCount = 4) {
+        (0..7).forEach {
             Card(
                 modifier = Modifier.size(100.dp),
                 backgroundColor = colorList[it],
@@ -84,13 +92,13 @@ private fun Grid(
         val placeableHeights = placeables.map { it.height }
 
         val widths = getWidths(columnCount, placeableWidths)
-        val heights = getHeights(rowCount, placeableHeights)
+        val heights = getHeights(columnCount, rowCount, placeableHeights)
 
         val layoutWidth = widths.sum()
         val layoutHeight = heights.sum()
 
         val xPositions = List(columnCount) {
-            var result = -layoutWidth/2
+            var result = -layoutWidth / 2
             for (i in 0..it) {
                 result += widths[i]
             }
@@ -98,7 +106,7 @@ private fun Grid(
         }
 
         val yPositions = List(rowCount) {
-            var result = -layoutHeight/2
+            var result = -layoutHeight / 2
             for (i in 0..it) {
                 result += heights[i]
             }
@@ -109,8 +117,8 @@ private fun Grid(
 
         placeables.forEachIndexed { index, placeable ->
             positions[placeable] = IntOffset(
-                xPositions[index % columnCount],
-                yPositions[index / rowCount]
+                x = xPositions[index % columnCount],
+                y = yPositions[index % rowCount]
             )
         }
 
@@ -144,15 +152,16 @@ private fun getWidths(
 }
 
 private fun getHeights(
+    columnCount: Int,
     rowCount: Int,
     heights: List<Int>,
 ): List<Int> {
 
     val result = mutableListOf<Int>()
 
-    for (i in heights.indices step rowCount) {
+    for (i in heights.indices step columnCount) {
         var max = 0
-        for (j in i until i+rowCount) {
+        for (j in i until min(i + rowCount, heights.size - 1)) {
             if (max < heights[j]) max = heights[j]
         }
         result.add(max)
@@ -163,7 +172,7 @@ private fun getHeights(
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun DefaultPreview() {
+private fun GridExamplePreview() {
     DemoTheme {
         GridExample()
     }
