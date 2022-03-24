@@ -35,4 +35,8 @@
         <item name="cornerSizeBottomRight">15dp</item>
     </style>
 
+    <style name="ToolbarThemeExample" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">#fff</item>
+    </style>
+
 </resources>
