@@ -141,6 +141,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/BottomAppBar.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/BottomAppBar.xml)
       .case (.name "Toolbar") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/Toolbar.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/Toolbar.xml)
       .case (.name "TabLayout") $ .pair
       .case (.name "TabItem") $ .pair
       .case (.name "FragmentContainer") $ .pair

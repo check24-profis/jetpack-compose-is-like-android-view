@@ -38,7 +38,6 @@ class ComposableToolbarActivity : ComponentActivity() {
 
 @Composable
 private fun ToolbarExample() {
-
     Scaffold(
         topBar = {
             TopAppBarDetails()
