@@ -351,6 +351,17 @@
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
+        <!-- Navigation -->
+
+        <activity
+            android:name=".features.navigation.AndroidUINavHostActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.navigation.ComposableNavHostActivity"
+            android:exported="false" />
+
         <!-- Google Maps -->
 
         <activity
