@@ -7,20 +7,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import de.check24.compose.demo.R
+import de.check24.compose.demo.databinding.NavigationPlainTextBinding
 
 class FragmentB : Fragment(R.layout.navigation_plain_text) {
+
+    private var binding: NavigationPlainTextBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.navigation_plain_text, container, false)
+        binding = NavigationPlainTextBinding.inflate(inflater, container, false)
 
-        val textView = view.findViewById<TextView>(R.id.plain_text)
+        binding?.plainText?.text = "B"
 
-        textView.text = "B"
-
-        return view
+        return binding?.root
     }
 }
