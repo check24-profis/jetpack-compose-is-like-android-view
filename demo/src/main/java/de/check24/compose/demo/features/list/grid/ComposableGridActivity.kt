@@ -35,7 +35,7 @@ class ComposableGridActivity : ComponentActivity() {
                     topBar = {
                         TopAppBar(
                             title = {
-                                Text(text = "Modifier")
+                                Text(text = "Grid")
                             })
                     }, content = {
                         Box(
@@ -86,25 +86,22 @@ private fun Grid(
         val widths = getWidths(columnCount, placeableWidths)
         val heights = getHeights(rowCount, placeableHeights)
 
+        val layoutWidth = widths.sum()
+        val layoutHeight = heights.sum()
+
         val xPositions = List(columnCount) {
-
-            var result = 0
-
+            var result = -layoutWidth/2
             for (i in 0..it) {
                 result += widths[i]
             }
-
             result
         }
 
         val yPositions = List(rowCount) {
-
-            var result = 0
-
+            var result = -layoutHeight/2
             for (i in 0..it) {
                 result += heights[i]
             }
-
             result
         }
 
@@ -118,8 +115,8 @@ private fun Grid(
         }
 
         layout(
-            width = widths.sum(),
-            height = heights.sum()
+            width = layoutWidth,
+            height = layoutHeight
         ) {
             placeables.forEach {
                 it.place(positions[it]!!)
@@ -135,9 +132,9 @@ private fun getWidths(
 
     val result = mutableListOf<Int>()
 
-    for (i in 0..columnCount-1) {
+    for (i in 0 until columnCount) {
         var max = 0
-        for (j in i..widths.size-1 step columnCount) {
+        for (j in i until widths.size step columnCount) {
             if (max < widths[j]) max = widths[j]
         }
         result.add(max)
@@ -153,9 +150,9 @@ private fun getHeights(
 
     val result = mutableListOf<Int>()
 
-    for (i in 0..heights.size-1 step rowCount) {
+    for (i in heights.indices step rowCount) {
         var max = 0
-        for (j in i..i+rowCount-1) {
+        for (j in i until i+rowCount) {
             if (max < heights[j]) max = heights[j]
         }
         result.add(max)
@@ -164,44 +161,10 @@ private fun getHeights(
     return result
 }
 
-@Composable
-private fun GridExample2() {
-    Column {
-        Row {
-
-            Card(
-                modifier = Modifier.size(100.dp),
-                backgroundColor = Color.Red,
-                content = {}
-            )
-            Card(
-                modifier = Modifier.size(100.dp),
-                backgroundColor = Color.Black,
-                content = {}
-            )
-        }
-
-        Row {
-
-            Card(
-                modifier = Modifier.size(100.dp),
-                backgroundColor = Color(0xFFBB86FC),
-                content = {}
-            )
-
-            Card(
-                modifier = Modifier.size(100.dp),
-                backgroundColor = Color(0xFF3700B3),
-                content = {}
-            )
-        }
-    }
-}
-
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
 private fun DefaultPreview() {
     DemoTheme {
-        GridExample2()
+        GridExample()
     }
 }
