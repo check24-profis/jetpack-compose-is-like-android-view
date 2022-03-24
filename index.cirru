@@ -174,6 +174,12 @@ html
 
     .section
       .title "Positioning"
+      .case (.name "ConstraintLayout") $ .pair
+      .case (.name "Flow") $ .pair
+      .case (.name "LinearLayout (Vertical)") $ .pair
+      .case (.name "LinearLayout (Horizontal)") $ .pair
+      .case (.name "GridLayout") $ .pair
+      .case (.name "FrameLayout") $ .pair
 
     .section
       .title "States"
