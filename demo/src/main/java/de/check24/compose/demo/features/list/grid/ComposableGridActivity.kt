@@ -133,18 +133,14 @@ private fun getWidths(
     widths: List<Int>,
 ): List<Int> {
 
-    val result = MutableList(columnCount) { 0 }
+    val result = mutableListOf<Int>()
 
-    for (i in 0 until columnCount) {
-
+    for (i in 0..columnCount-1) {
         var max = 0
-
-        for (j in widths.indices step columnCount) {
-
+        for (j in i..widths.size-1 step columnCount) {
             if (max < widths[j]) max = widths[j]
         }
-
-        result[i] = max
+        result.add(max)
     }
 
     return result
@@ -155,18 +151,14 @@ private fun getHeights(
     heights: List<Int>,
 ): List<Int> {
 
-    val result = MutableList(rowCount) { 0 }
+    val result = mutableListOf<Int>()
 
-    (0..heights.size-1 step rowCount).forEachIndexed { index, i ->
-
+    for (i in 0..heights.size-1 step rowCount) {
         var max = 0
-
-        for (j in 0..rowCount-1) {
-
+        for (j in i..i+rowCount-1) {
             if (max < heights[j]) max = heights[j]
         }
-
-        result[index] = max
+        result.add(max)
     }
 
     return result
