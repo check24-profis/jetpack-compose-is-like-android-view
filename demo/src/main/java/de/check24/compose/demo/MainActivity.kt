@@ -46,8 +46,6 @@ import de.check24.compose.demo.features.button.radio.AndroidUIRadioButtonActivit
 import de.check24.compose.demo.features.button.radio.AndroidUIRadioGroupActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioButtonActivity
 import de.check24.compose.demo.features.button.radio.ComposableRadioGroupActivity
-import de.check24.compose.demo.features.card.AndroidUICardActivity
-import de.check24.compose.demo.features.card.ComposableCardActivity
 import de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
@@ -56,8 +54,6 @@ import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHori
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
-import de.check24.compose.demo.features.picker.AndroidUIDateActivity
-import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
 import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
@@ -68,6 +64,8 @@ import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListAct
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
 import de.check24.compose.demo.features.modifier.ComposableModifierActivity
+import de.check24.compose.demo.features.navigation.AndroidUINavHostActivity
+import de.check24.compose.demo.features.navigation.ComposableNavHostActivity
 import de.check24.compose.demo.features.password.AndroidUIPasswordActivity
 import de.check24.compose.demo.features.password.ComposablePasswordActivity
 import de.check24.compose.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -76,7 +74,9 @@ import de.check24.compose.demo.features.password.visibility.AndroidUIPasswordVis
 import de.check24.compose.demo.features.password.visibility.ComposablePasswordVisibilityToggleActivity
 import de.check24.compose.demo.features.phone.AndroidUIPhoneTextActivity
 import de.check24.compose.demo.features.phone.ComposablePhoneTextActivity
+import de.check24.compose.demo.features.picker.AndroidUIDateActivity
 import de.check24.compose.demo.features.picker.AndroidUITimeActivity
+import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
@@ -323,6 +323,13 @@ class MainActivity : ComponentActivity() {
                 composeActivity = ComposableViewPagerActivity::class.java,
                 androidUIActivity = AndroidUIViewPagerActivity::class.java,
                 headline = "View Pager"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableNavHostActivity::class.java,
+                androidUIActivity = AndroidUINavHostActivity::class.java,
+                headline = "NavHost"
             )
         )
         compareItems.add(
