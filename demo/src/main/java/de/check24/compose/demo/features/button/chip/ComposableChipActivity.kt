@@ -30,6 +30,7 @@ import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -79,7 +81,7 @@ private fun ChipExample() {
         ActionChip()
         OutlinedActionChip()
         ChipWithIcon()
-        InputChip()
+        InputChip(iconEnabled = true)
         ChipWithToggleIcon()
     }
 }
@@ -157,6 +159,7 @@ private fun OutlinedActionChip(
 @Composable
 private fun ChipWithIcon(
     name: String = "Chip With Icon",
+    icon: ImageVector = Icons.Default.Circle
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -175,7 +178,7 @@ private fun ChipWithIcon(
                 )
         ) {
             Icon(
-                Icons.Default.Circle,
+                icon,
                 "",
                 tint = if (isSelected) colorResource(id = R.color.green) else Color.Red,
                 modifier = Modifier
@@ -198,7 +201,11 @@ private fun ChipWithIcon(
 }
 
 @Composable
-private fun InputChip(name: String = "Input Chip") {
+fun InputChip(
+    name: String = "Input Chip",
+    icon: ImageVector = Icons.Default.MyLocation,
+    iconEnabled: Boolean
+) {
 
     var isVisible by remember { mutableStateOf(true) }
 
@@ -217,14 +224,16 @@ private fun InputChip(name: String = "Input Chip") {
                         onValueChange = { }
                     )
             ) {
-                Icon(
-                    Icons.Default.LocationOn,
-                    "",
-                    tint = colorResource(id = R.color.gray_700),
-                    modifier = Modifier
-                        .padding(horizontal = 4.dp)
-                        .width(24.dp)
-                )
+                if (iconEnabled) {
+                    Icon(
+                        icon,
+                        "",
+                        tint = colorResource(id = R.color.gray_700),
+                        modifier = Modifier
+                            .padding(horizontal = 4.dp)
+                            .width(24.dp)
+                    )
+                }
                 Text(
                     text = name,
                     color = colorResource(id = R.color.gray_700),

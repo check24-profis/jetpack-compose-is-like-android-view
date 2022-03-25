@@ -115,38 +115,7 @@ private fun ChipGroupMultiSelectionExample(list: List<String> = listOf("I'm a li
             .height(50.dp)
     ) {
         items(list) {
-
-            var isSelected by remember { mutableStateOf(false) }
-
-            Surface(
-                modifier = Modifier.padding(4.dp),
-                shape = CircleShape,
-                color = if (isSelected) {
-                    colorResource(id = R.color.purple_100)
-                } else {
-                    colorResource(id = R.color.gray_300)
-                },
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .height(32.dp)
-                        .toggleable(
-                            value = isSelected,
-                            onValueChange = { isSelected = !isSelected }
-                        )
-                ) {
-                    Text(
-                        text = it,
-                        color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(
-                            id = R.color.gray_700
-                        ),
-                        fontSize = 14.sp,
-                        style = MaterialTheme.typography.body2,
-                        modifier = Modifier.padding(horizontal = 12.dp)
-                    )
-                }
-            }
+            ActionChip(it)
         }
     }
 }
@@ -219,51 +188,7 @@ private fun FilterChipGroup() {
             .height(50.dp)
     ) {
         items(currentList) {
-            Surface(
-                modifier = Modifier.padding(4.dp),
-                shape = CircleShape,
-                color = colorResource(id = R.color.gray_300),
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .height(32.dp)
-                        .toggleable(
-                            value = true,
-                            onValueChange = { }
-                        )
-                ) {
-                    Text(
-                        text = it,
-                        color = colorResource(id = R.color.gray_700),
-                        fontSize = 14.sp,
-                        style = MaterialTheme.typography.body2,
-                        modifier = Modifier.padding(
-                            end = 4.dp,
-                            start = 12.dp
-                        )
-                    )
-                    Icon(
-                        Icons.Filled.Cancel,
-                        "",
-                        tint = colorResource(id = R.color.gray_700),
-                        modifier = Modifier
-                            .clickable(
-                                // removes the ripple effect
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = null
-                            ) {
-
-                                currentList.remove(it)
-                            }
-                            .padding(
-                                start = 4.dp,
-                                end = 8.dp
-                            )
-                            .width(18.dp)
-                    )
-                }
-            }
+            InputChip(name = it,iconEnabled = false)
         }
     }
 }
