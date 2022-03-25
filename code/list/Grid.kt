@@ -2,10 +2,19 @@
 @Composable
 fun GridExample() {
 
-    val colorList = listOf(Color.Red, Color.Black, Color(0xFFBB86FC), Color(0xFF3700B3))
+    val colorList = listOf(
+        Color.Red,
+        Color.Black,
+        Color(0xFFBB86FC),
+        Color(0xFF3700B3),
+        Color.Cyan,
+        Color.Magenta,
+        Color.LightGray,
+        Color.Green
+    )
 
-    Grid(columnCount = 2, rowCount = 2) {
-        (0..3).forEach {
+    Grid(columnCount = 2, rowCount = 4) {
+        (0..7).forEach {
             Card(
                 modifier = Modifier.size(100.dp),
                 backgroundColor = colorList[it],
@@ -21,6 +30,7 @@ fun Grid(
     rowCount: Int,
     content: @Composable () -> Unit
 ) {
+
     Layout(content = content) { measurables, constraints ->
 
         val placeables = measurables.map { measurable ->
@@ -31,22 +41,22 @@ fun Grid(
         val placeableHeights = placeables.map { it.height }
 
         val widths = getWidths(columnCount, placeableWidths)
-        val heights = getHeights(rowCount, placeableHeights)
+        val heights = getHeights(columnCount, placeableHeights)
 
         val layoutWidth = widths.sum()
         val layoutHeight = heights.sum()
 
         val xPositions = List(columnCount) {
-            var result = -layoutWidth/2
-            for (i in 0..it) {
+            var result = 0
+            for (i in 0 until it) {
                 result += widths[i]
             }
             result
         }
 
         val yPositions = List(rowCount) {
-            var result = -layoutHeight/2
-            for (i in 0..it) {
+            var result = 0
+            for (i in 0 until it) {
                 result += heights[i]
             }
             result
@@ -56,8 +66,8 @@ fun Grid(
 
         placeables.forEachIndexed { index, placeable ->
             positions[placeable] = IntOffset(
-                xPositions[index % columnCount],
-                yPositions[index / rowCount]
+                x = xPositions[index % columnCount],
+                y = yPositions[index / columnCount]
             )
         }
 
@@ -72,7 +82,7 @@ fun Grid(
     }
 }
 
-private fun getWidths(
+fun getWidths(
     columnCount: Int,
     widths: List<Int>,
 ): List<Int> {
@@ -90,16 +100,16 @@ private fun getWidths(
     return result
 }
 
-private fun getHeights(
-    rowCount: Int,
+fun getHeights(
+    columnCount: Int,
     heights: List<Int>,
 ): List<Int> {
 
     val result = mutableListOf<Int>()
 
-    for (i in heights.indices step rowCount) {
+    for (i in heights.indices step columnCount) {
         var max = 0
-        for (j in i until i+rowCount) {
+        for (j in i until min(i + columnCount, heights.size)) {
             if (max < heights[j]) max = heights[j]
         }
         result.add(max)
