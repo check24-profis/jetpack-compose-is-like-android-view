@@ -182,7 +182,6 @@ private fun FilterChipGroup() {
 
     LazyRow(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxWidth()
             .height(50.dp)

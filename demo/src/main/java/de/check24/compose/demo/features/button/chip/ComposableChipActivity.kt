@@ -78,8 +78,6 @@ class ComposableChipActivity : ComponentActivity() {
     }
 }
 
-/* there is an official implementation of the chip in 1.2.0-alpha02 */
-
 @Composable
 private fun ChipExample() {
 
@@ -218,6 +216,9 @@ fun InputChip(
 ) {
 
     var isVisible by remember { mutableStateOf(true) }
+    val modifier =  if (iconEnabled) {
+        Modifier.padding(horizontal = 4.dp)
+    } else Modifier.padding(start = 12.dp, end = 4.dp)
 
     if (isVisible) {
         Surface(
@@ -249,7 +250,7 @@ fun InputChip(
                     color = Gray700,
                     fontSize = 14.sp,
                     style = MaterialTheme.typography.body2,
-                    modifier = Modifier.padding(horizontal = 4.dp)
+                    modifier = modifier
                 )
                 Icon(
                     Icons.Filled.Cancel,
