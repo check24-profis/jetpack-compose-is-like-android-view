@@ -1,7 +1,9 @@
 package de.check24.compose.demo
 
 import de.check24.compose.demo.features.bar.AndroidUIBottomAppBarActivity
+import de.check24.compose.demo.features.bar.AndroidUIToolbarActivity
 import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
+import de.check24.compose.demo.features.bar.ComposableToolbarActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
@@ -277,7 +279,13 @@ internal val compareItemList: List<CompareItem>
                 headline = "Spinner"
             )
         )
-
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableToolbarActivity::class.java,
+                androidUIActivity = AndroidUIToolbarActivity::class.java,
+                headline = "Toolbar"
+            )
+        )
         compareItems.add(
             CompareItem(
                 composeActivity = ComposableViewPagerActivity::class.java,
