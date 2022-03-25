@@ -373,6 +373,28 @@
             android:name="de.check24.compose.demo.features.custom.ComposableGoogleMapActivity"
             android:exported="false" />
 
+        <!-- Toolbar -->
+
+        <activity
+            android:name=".features.bar.AndroidUIToolbarActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.bar.ComposableToolbarActivity"
+            android:exported="false" />
+
+        <!-- Card -->
+
+        <activity
+            android:name=".features.card.AndroidUICardActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.card.ComposableCardActivity"
+            android:exported="false" />
+
         <!--  ConstraintLayout Positioning -->
 
         <activity
