@@ -59,7 +59,7 @@ private fun FrameLayoutExample() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun NavHostDemoPreview() {
+private fun FrameLayoutExamplePreview() {
     DemoTheme {
         FrameLayoutExample()
     }
