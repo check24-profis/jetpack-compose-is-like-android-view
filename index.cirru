@@ -98,6 +98,8 @@ html
       .case (.name "Grid") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/list/Grid.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/list/Grid.xml)
+      .case (.name "Custom Fixed Grid") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/list/CustomFixedGrid.kt)
       .case (.name "Staggered") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/list/StaggeredVerticalGrid.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/list/StaggeredVerticalGrid.xml)
