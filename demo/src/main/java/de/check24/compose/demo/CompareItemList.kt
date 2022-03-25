@@ -32,6 +32,8 @@ import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
+import de.check24.compose.demo.features.list.grid.AndroidUIGridActivity
+import de.check24.compose.demo.features.list.grid.ComposableGridActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
@@ -240,6 +242,13 @@ internal val compareItemList: List<CompareItem>
                 headline = "Guideline Horizontal"
             )
         )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGridActivity::class.java,
+                androidUIActivity = AndroidUIGridActivity::class.java,
+                headline = "Grid"
+            )
+        )
 
         // endregion
 
@@ -319,7 +328,7 @@ internal val compareItemList: List<CompareItem>
 
         // endregion
 
-        //region positioning
+        // region positioning
 
 
         // endregion
