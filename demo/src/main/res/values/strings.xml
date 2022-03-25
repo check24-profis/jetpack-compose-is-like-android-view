@@ -14,4 +14,5 @@
     <string name="sample_text_clickable">Clicked 0x</string>
     <string name="shadow">shadow</string>
     <string name="modifier_background">red background</string>
+    <string name="check24logo">Check24 Logo</string>
 </resources>
