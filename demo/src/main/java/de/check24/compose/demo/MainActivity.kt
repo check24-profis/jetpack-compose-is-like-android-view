@@ -35,11 +35,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val compareItems = compareItemList
-
         setContent {
             DemoTheme {
-                Menu(compareItems)
+                Menu(compareItemList)
             }
         }
     }
