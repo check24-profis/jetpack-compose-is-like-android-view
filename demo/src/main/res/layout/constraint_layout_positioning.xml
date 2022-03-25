@@ -38,30 +38,75 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
+        android:id="@+id/blue"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Chain B, and chained with chainStyle &quot;spread&quot; together "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@+id/green"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/green"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@color/green_200"
         android:gravity="center"
         android:padding="10dp"
-        app:layout_constraintHorizontal_chainStyle="spread"
         android:text="Chain A, both are bi-directional connected"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintRight_toLeftOf="@id/blue"
+        app:layout_constraintEnd_toStartOf="@+id/blue"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/left_textview"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="150dp"
+        android:background="@color/red_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="chained by 30 percent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/middle_textview"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="0.3"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/blue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/blue_200"
+        android:id="@+id/middle_textview"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="150dp"
+        android:background="@color/gray"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Chain B, "
+        android:text="chained by 40 percent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/green"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/right_textview"
+        app:layout_constraintHorizontal_weight="0.4"
+        app:layout_constraintStart_toEndOf="@+id/left_textview" />
+
+    <TextView
+        android:id="@+id/right_textview"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="150dp"
+        android:background="@color/teal_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="chained by 30 percent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintStart_toEndOf="@+id/middle_textview" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
