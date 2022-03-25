@@ -61,7 +61,7 @@ private fun GridExample() {
         Color(0xFF3700B3)
     )
 
-    Grid(columnCount = 2, rowCount = 3) {
+    Grid(columnCount = 2, rowCount = 2) {
         (0..3).forEach {
             Card(
                 modifier = Modifier.size(100.dp),
@@ -88,7 +88,9 @@ private fun Grid(
         val placeableWidths = placeables.map { it.width }
         val placeableHeights = placeables.map { it.height }
 
+        // get maximum widths of elements in each column
         val widths = getWidths(columnCount, placeableWidths)
+        // get maximum heights of elements in each row
         val heights = getHeights(columnCount, placeableHeights)
 
         val layoutWidth = widths.sum()
@@ -124,7 +126,11 @@ private fun Grid(
             height = layoutHeight
         ) {
             placeables.forEach {
-                it.place(positions[it]!!)
+                it.place(
+                    requireNotNull(
+                        positions[it]
+                    )
+                )
             }
         }
     }
@@ -138,11 +144,14 @@ private fun getWidths(
     val result = mutableListOf<Int>()
 
     for (i in 0 until columnCount) {
+
+        // specifies the width of the column by the widest element
         var max = 0
         for (j in i until widths.size step columnCount) {
             if (max < widths[j]) max = widths[j]
         }
         result.add(max)
+
     }
 
     return result
@@ -156,11 +165,14 @@ private fun getHeights(
     val result = mutableListOf<Int>()
 
     for (i in heights.indices step columnCount) {
+
+        // specifies the height of the row by the highest element
         var max = 0
         for (j in i until min(i + columnCount, heights.size)) {
             if (max < heights[j]) max = heights[j]
         }
         result.add(max)
+
     }
 
     return result
