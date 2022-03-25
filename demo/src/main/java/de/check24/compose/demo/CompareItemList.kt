@@ -54,6 +54,8 @@ import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
+import de.check24.compose.demo.features.tablayout.AndroidUITabLayoutActivity
+import de.check24.compose.demo.features.tablayout.ComposableTabLayoutActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
@@ -238,6 +240,13 @@ internal val compareItemList: List<CompareItem>
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
                 androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
                 headline = "Guideline Horizontal"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableTabLayoutActivity::class.java,
+                androidUIActivity = AndroidUITabLayoutActivity::class.java,
+                headline = "Tab Layout"
             )
         )
 
