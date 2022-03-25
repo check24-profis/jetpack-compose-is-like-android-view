@@ -242,13 +242,6 @@ internal val compareItemList: List<CompareItem>
                 headline = "Guideline Horizontal"
             )
         )
-        compareItems.add(
-            CompareItem(
-                composeActivity = ComposableGridActivity::class.java,
-                androidUIActivity = AndroidUIGridActivity::class.java,
-                headline = "Grid"
-            )
-        )
 
         // endregion
 
@@ -266,6 +259,13 @@ internal val compareItemList: List<CompareItem>
                 composeActivity = ComposableStaggeredListActivity::class.java,
                 androidUIActivity = AndroidUIStaggeredListActivity::class.java,
                 headline = "Staggered Grid"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGridActivity::class.java,
+                androidUIActivity = AndroidUIGridActivity::class.java,
+                headline = "Grid"
             )
         )
         // endregion
