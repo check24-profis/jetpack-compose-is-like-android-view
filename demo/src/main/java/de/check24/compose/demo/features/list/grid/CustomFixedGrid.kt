@@ -143,7 +143,7 @@ private fun getHeights(
 
 @Preview(showBackground = true)
 @Composable
-private fun GridExamplePreview() {
+private fun FixedGridExamplePreview() {
     DemoTheme {
         FixedGridExample()
     }
