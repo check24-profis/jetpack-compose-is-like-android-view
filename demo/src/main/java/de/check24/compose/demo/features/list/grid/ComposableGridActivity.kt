@@ -82,6 +82,7 @@ private fun Grid(
     rowCount: Int,
     content: @Composable () -> Unit
 ) {
+
     Layout(content = content) { measurables, constraints ->
 
         val placeables = measurables.map { measurable ->
@@ -92,22 +93,22 @@ private fun Grid(
         val placeableHeights = placeables.map { it.height }
 
         val widths = getWidths(columnCount, placeableWidths)
-        val heights = getHeights(columnCount, rowCount, placeableHeights)
+        val heights = getHeights(columnCount, placeableHeights)
 
         val layoutWidth = widths.sum()
         val layoutHeight = heights.sum()
 
         val xPositions = List(columnCount) {
-            var result = -layoutWidth / 2
-            for (i in 0..it) {
+            var result = 0
+            for (i in 0 until it) {
                 result += widths[i]
             }
             result
         }
 
         val yPositions = List(rowCount) {
-            var result = -layoutHeight / 2
-            for (i in 0..it) {
+            var result = 0
+            for (i in 0 until it) {
                 result += heights[i]
             }
             result
@@ -118,7 +119,7 @@ private fun Grid(
         placeables.forEachIndexed { index, placeable ->
             positions[placeable] = IntOffset(
                 x = xPositions[index % columnCount],
-                y = yPositions[index % rowCount]
+                y = yPositions[index / columnCount]
             )
         }
 
@@ -153,7 +154,6 @@ private fun getWidths(
 
 private fun getHeights(
     columnCount: Int,
-    rowCount: Int,
     heights: List<Int>,
 ): List<Int> {
 
@@ -161,7 +161,7 @@ private fun getHeights(
 
     for (i in heights.indices step columnCount) {
         var max = 0
-        for (j in i until min(i + rowCount, heights.size - 1)) {
+        for (j in i until min(i + columnCount, heights.size)) {
             if (max < heights[j]) max = heights[j]
         }
         result.add(max)
