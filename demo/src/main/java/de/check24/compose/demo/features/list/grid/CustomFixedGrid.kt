@@ -7,8 +7,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Placeable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import de.check24.compose.demo.theme.DemoTheme
 import kotlin.math.min
 
 @Composable
@@ -137,4 +139,12 @@ private fun getHeights(
     }
 
     return result
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun GridExamplePreview() {
+    DemoTheme {
+        FixedGridExample()
+    }
 }
