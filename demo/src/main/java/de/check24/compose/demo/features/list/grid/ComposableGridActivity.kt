@@ -58,15 +58,11 @@ private fun GridExample() {
         Color.Red,
         Color.Black,
         Color(0xFFBB86FC),
-        Color(0xFF3700B3),
-        Color.Cyan,
-        Color.Magenta,
-        Color.LightGray,
-        Color.Green
+        Color(0xFF3700B3)
     )
 
-    Grid(columnCount = 2, rowCount = 4) {
-        (0..7).forEach {
+    Grid(columnCount = 2, rowCount = 3) {
+        (0..3).forEach {
             Card(
                 modifier = Modifier.size(100.dp),
                 backgroundColor = colorList[it],

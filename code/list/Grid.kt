@@ -1,3 +1,55 @@
+package de.check24.compose.demo.features.list.grid
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.Card
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.Placeable
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
+import de.check24.compose.demo.theme.DemoTheme
+import kotlin.math.min
+
+class ComposableGridActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+            DemoTheme {
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(text = "Grid")
+                            })
+                    }, content = {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            GridExample()
+                        }
+                    }
+                )
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GridExample() {
@@ -6,15 +58,11 @@ fun GridExample() {
         Color.Red,
         Color.Black,
         Color(0xFFBB86FC),
-        Color(0xFF3700B3),
-        Color.Cyan,
-        Color.Magenta,
-        Color.LightGray,
-        Color.Green
+        Color(0xFF3700B3)
     )
 
-    Grid(columnCount = 2, rowCount = 4) {
-        (0..7).forEach {
+    Grid(columnCount = 2, rowCount = 3) {
+        (0..3).forEach {
             Card(
                 modifier = Modifier.size(100.dp),
                 backgroundColor = colorList[it],
@@ -116,4 +164,12 @@ fun getHeights(
     }
 
     return result
+}
+
+@Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
+@Composable
+fun GridExamplePreview() {
+    DemoTheme {
+        GridExample()
+    }
 }
