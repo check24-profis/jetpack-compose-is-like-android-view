@@ -76,6 +76,8 @@ import de.check24.compose.demo.features.picker.AndroidUIDateActivity
 import de.check24.compose.demo.features.picker.AndroidUITimeActivity
 import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.picker.ComposableTimeActivity
+import de.check24.compose.demo.features.positioning.AndroidUIConstraintLayoutPositioningActivity
+import de.check24.compose.demo.features.positioning.ComposableConstraintLayoutPositioningActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
@@ -360,6 +362,13 @@ class MainActivity : ComponentActivity() {
 
         //region positioning
 
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableConstraintLayoutPositioningActivity::class.java,
+                androidUIActivity = AndroidUIConstraintLayoutPositioningActivity::class.java,
+                headline = "ConstraintLayout Positioning"
+            )
+        )
 
         // endregion
 
