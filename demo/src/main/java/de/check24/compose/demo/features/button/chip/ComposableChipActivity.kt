@@ -47,6 +47,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.compose.demo.R
 import de.check24.compose.demo.theme.DemoTheme
+import de.check24.compose.demo.theme.Gray300
+import de.check24.compose.demo.theme.Gray400
+import de.check24.compose.demo.theme.Gray700
+import de.check24.compose.demo.theme.Gray800
+import de.check24.compose.demo.theme.Green
+import de.check24.compose.demo.theme.Purple100
+import de.check24.compose.demo.theme.Purple200
+import de.check24.compose.demo.theme.Purple500
+import de.check24.compose.demo.theme.Red
+import de.check24.compose.demo.theme.White
 
 class ComposableChipActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,7 +105,7 @@ fun ActionChip(
     Surface(
         modifier = Modifier.padding(4.dp),
         shape = CircleShape,
-        color = if (isSelected) colorResource(id = R.color.purple_100) else colorResource(id = R.color.gray_300),
+        color = if (isSelected) Purple100 else Gray300,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -108,7 +118,7 @@ fun ActionChip(
         ) {
             Text(
                 text = name,
-                color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(id = R.color.gray_700),
+                color = if (isSelected) Purple500 else Gray700,
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
@@ -129,10 +139,10 @@ private fun OutlinedActionChip(
             .padding(4.dp)
             .hoverable(interactionSource = MutableInteractionSource(), true),
         shape = CircleShape,
-        color = if (isSelected) colorResource(id = R.color.purple_100) else Color.White,
+        color = if (isSelected) Purple100 else White,
         border = if (isSelected)
-            BorderStroke(width = 1.dp, colorResource(id = R.color.purple_200)) else {
-            BorderStroke(width = 1.dp, colorResource(id = R.color.gray_400))
+            BorderStroke(width = 1.dp, Purple200) else {
+            BorderStroke(width = 1.dp, Gray400)
         }
     ) {
         Row(
@@ -146,7 +156,7 @@ private fun OutlinedActionChip(
         ) {
             Text(
                 text = name,
-                color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(id = R.color.gray_800),
+                color = if (isSelected) Purple500 else Gray800,
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
@@ -166,7 +176,7 @@ private fun ChipWithIcon(
     Surface(
         modifier = Modifier.padding(4.dp),
         shape = CircleShape,
-        color = if (isSelected) colorResource(id = R.color.purple_100) else colorResource(id = R.color.gray_300),
+        color = if (isSelected) Purple100 else Gray300,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -180,14 +190,14 @@ private fun ChipWithIcon(
             Icon(
                 icon,
                 "",
-                tint = if (isSelected) colorResource(id = R.color.green) else Color.Red,
+                tint = if (isSelected) Green else Red,
                 modifier = Modifier
                     .padding(horizontal = 4.dp)
                     .width(24.dp)
             )
             Text(
                 text = name,
-                color = if (isSelected) colorResource(id = R.color.purple_500) else colorResource(id = R.color.gray_700),
+                color = if (isSelected) Purple500 else Gray700,
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
@@ -213,7 +223,7 @@ fun InputChip(
         Surface(
             modifier = Modifier.padding(4.dp),
             shape = CircleShape,
-            color = colorResource(id = R.color.gray_300),
+            color = Gray300,
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -228,7 +238,7 @@ fun InputChip(
                     Icon(
                         icon,
                         "",
-                        tint = colorResource(id = R.color.gray_700),
+                        tint = Gray700,
                         modifier = Modifier
                             .padding(horizontal = 4.dp)
                             .width(24.dp)
@@ -236,7 +246,7 @@ fun InputChip(
                 }
                 Text(
                     text = name,
-                    color = colorResource(id = R.color.gray_700),
+                    color = Gray700,
                     fontSize = 14.sp,
                     style = MaterialTheme.typography.body2,
                     modifier = Modifier.padding(horizontal = 4.dp)
@@ -244,7 +254,7 @@ fun InputChip(
                 Icon(
                     Icons.Filled.Cancel,
                     "",
-                    tint = colorResource(id = R.color.gray_700),
+                    tint = Gray700,
                     modifier = Modifier
                         .clickable { isVisible = !isVisible }
                         .padding(
@@ -267,7 +277,7 @@ private fun ChipWithToggleIcon(
     Surface(
         modifier = Modifier.padding(4.dp),
         shape = CircleShape,
-        color = if (isSelected) colorResource(id = R.color.gray_400) else colorResource(id = R.color.gray_300),
+        color = if (isSelected) Gray400 else Gray300,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -293,7 +303,7 @@ private fun ChipWithToggleIcon(
             }
             Text(
                 text = name,
-                color = if (isSelected) colorResource(id = R.color.gray_800) else colorResource(id = R.color.gray_700),
+                color = if (isSelected) Gray800 else Gray700,
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
