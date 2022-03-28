@@ -142,6 +142,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/container/BottomAppBar.xml)
       .case (.name "Toolbar") $ .pair
       .case (.name "TabLayout") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/TabLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/TabLayout.xml)
       .case (.name "TabItem") $ .pair
       .case (.name "FragmentContainer") $ .pair
       .case (.name "NavHost") $ .pair
