@@ -4,19 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
 import de.check24.compose.demo.theme.DemoTheme
+import de.check24.compose.demo.theme.Orange200
 import de.check24.compose.demo.theme.Purple200
 
 class ComposableConstraintLayoutPositioningActivity : ComponentActivity() {
@@ -24,7 +28,17 @@ class ComposableConstraintLayoutPositioningActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DemoTheme {
-
+                Scaffold(
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Text(text = "ConstraintLayout Positioning")
+                            }
+                        )
+                    }
+                ) {
+                    ConstraintLayoutPositioningExample()
+                }
             }
         }
     }
@@ -32,8 +46,11 @@ class ComposableConstraintLayoutPositioningActivity : ComponentActivity() {
 
 @Composable
 private fun ConstraintLayoutPositioningExample() {
-    ConstraintLayout() {
+    ConstraintLayout(
+        modifier = Modifier.fillMaxSize()
+    ) {
         val (purple, orange, blue, green, leftView, middleView, rightView) = createRefs()
+        val chainRef = createHorizontalChain(blue, green, chainStyle = ChainStyle.Packed)
 
         Text(
             textAlign = TextAlign.Center,
@@ -52,30 +69,20 @@ private fun ConstraintLayoutPositioningExample() {
                 }
         )
 
+        // todo: circular doesn't work. I think the ConstrainedLayoutReference is the problem
         Text(
             textAlign = TextAlign.Center,
-            text = "circle constraint",
+            text = "constraint via circle radius(110dp) and angle(135) to purple",
             modifier = Modifier
                 .width(150.dp)
-                .background(Color.Yellow)
+                .background(Orange200)
                 .padding(10.dp)
                 .constrainAs(orange) {
-                    circular(ConstrainedLayoutReference(purple), 135F, 110.dp)
+                    circular(ConstrainedLayoutReference(purple), angle = 0.5F, distance = 50.dp)
                 }
         )
-
-        /*<TextView
-        android:id="@+id/orange"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@color/orange_200"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="constraint via circle radius(110dp) and angle(135) to purple"
-        app:layout_constraintCircle="@id/purple"
-        app:layout_constraintCircleAngle="135"
-        app:layout_constraintCircleRadius="110dp"
-        tools:ignore="MissingConstraints" />*/
+        
+        Text(text = "")
     }
 }
 

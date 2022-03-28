@@ -12,15 +12,16 @@
         android:id="@+id/purple"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:background="@color/purple_200"
         android:gravity="center"
         android:padding="10dp"
         android:text="constraint to start, top and end of parent with a horizontal bias of 30/70"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1">
 
     </TextView>
 
@@ -69,7 +70,6 @@
         android:id="@+id/left_textview"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="150dp"
         android:background="@color/red_200"
         android:gravity="center"
         android:padding="10dp"
@@ -84,7 +84,6 @@
         android:id="@+id/middle_textview"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="150dp"
         android:background="@color/gray"
         android:gravity="center"
         android:padding="10dp"
@@ -98,7 +97,6 @@
         android:id="@+id/right_textview"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="150dp"
         android:background="@color/teal_200"
         android:gravity="center"
         android:padding="10dp"
