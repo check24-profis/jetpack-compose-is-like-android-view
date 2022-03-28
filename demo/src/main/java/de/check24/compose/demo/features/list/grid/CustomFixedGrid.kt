@@ -19,10 +19,14 @@ internal fun FixedGridExample() {
         Color.Red,
         Color.Black,
         Color(0xFFBB86FC),
+        Color(0xFF3700B3),
+        Color.Red,
+        Color.Black,
+        Color(0xFFBB86FC),
         Color(0xFF3700B3)
     )
 
-    FixedGrid(2, 2) {
+    FixedGrid(2) {
 
         (0..3).forEach {
 
@@ -38,11 +42,12 @@ internal fun FixedGridExample() {
 @Composable
 internal fun FixedGrid(
     columnCount: Int,
-    rowCount: Int,
     content: @Composable () -> Unit
 ) {
 
     Layout(content = content) { measurables, constraints ->
+
+        val rowCount: Int = measurables.size / columnCount
 
         val placeables = measurables.map { measurable ->
             measurable.measure(constraints = constraints)

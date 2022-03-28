@@ -44,19 +44,18 @@ class ComposableGridActivity : ComponentActivity() {
                                 Text(text = "Grid")
                             })
                     }, content = {
-                        Box(
+                        Column(
                             modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
+                            horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            Column {
 
-                                GridExample()
+                            GridExample()
 
-                                Spacer(modifier = Modifier.size(100.dp))
+                            Spacer(modifier = Modifier.size(100.dp))
 
-                                FixedGridExample()
-                            }
+                            FixedGridExample()
                         }
+
                     }
                 )
             }
