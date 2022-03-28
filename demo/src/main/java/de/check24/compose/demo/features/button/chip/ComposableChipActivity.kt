@@ -84,7 +84,7 @@ private fun ChipExample() {
     ) {
         ActionChip()
         OutlinedActionChip()
-        ChipWithIcon()
+        ActionChip("Chip With Icon", iconEnabled = true)
         InputChip(iconEnabled = true)
         ChipWithToggleIcon()
     }
@@ -93,10 +93,15 @@ private fun ChipExample() {
 @Composable
 fun ActionChip(
     name: String = "Action Chip",
+    icon: ImageVector = Icons.Default.Circle,
+    iconEnabled: Boolean = false
 //    isSelected: Boolean = false,
 //    onToggle: () -> Unit = {}
 ) {
     var isSelected by remember { mutableStateOf(false) }
+    val modifier = if (iconEnabled) {
+        Modifier.padding(start = 4.dp, end = 12.dp)
+    } else Modifier.padding(horizontal = 12.dp)
 
     Surface(
         modifier = Modifier.padding(4.dp),
@@ -113,13 +118,23 @@ fun ActionChip(
                     onValueChange = { isSelected = !isSelected }
                 )
         ) {
+            if (iconEnabled) {
+                Icon(
+                    icon,
+                    "",
+                    tint = if (isSelected) Green else Red,
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .width(24.dp)
+                )
+            }
+
             Text(
                 text = name,
                 color = if (isSelected) Purple500 else Gray700,
                 fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
-                modifier = Modifier
-                    .padding(horizontal = 12.dp)
+                modifier = modifier
             )
         }
     }
@@ -158,50 +173,6 @@ private fun OutlinedActionChip(
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
                     .padding(horizontal = 12.dp)
-            )
-        }
-    }
-}
-
-@Composable
-private fun ChipWithIcon(
-    name: String = "Chip With Icon",
-    icon: ImageVector = Icons.Default.Circle
-) {
-    var isSelected by remember { mutableStateOf(false) }
-
-    Surface(
-        modifier = Modifier.padding(4.dp),
-        shape = CircleShape,
-        color = if (isSelected) Purple100 else Gray300,
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .height(32.dp)
-                .toggleable(
-                    value = isSelected,
-                    onValueChange = { isSelected = !isSelected }
-                )
-        ) {
-            Icon(
-                icon,
-                "",
-                tint = if (isSelected) Green else Red,
-                modifier = Modifier
-                    .padding(horizontal = 4.dp)
-                    .width(24.dp)
-            )
-            Text(
-                text = name,
-                color = if (isSelected) Purple500 else Gray700,
-                fontSize = 14.sp,
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier
-                    .padding(
-                        start = 4.dp,
-                        end = 12.dp
-                    )
             )
         }
     }
