@@ -288,11 +288,7 @@ private fun ChipWithToggleIcon(
                     onValueChange = { isSelected = !isSelected }
                 )
         ) {
-            AnimatedVisibility(
-                visible = isSelected,
-                enter = slideInHorizontally(),
-                exit = slideOutHorizontally()
-            ) {
+            if (isSelected) {
                 Icon(
                     Icons.Default.Check,
                     "",
