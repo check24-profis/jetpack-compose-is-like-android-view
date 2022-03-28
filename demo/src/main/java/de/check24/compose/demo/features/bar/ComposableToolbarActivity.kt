@@ -16,8 +16,10 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,7 +51,7 @@ private fun ToolbarExample() {
 private fun TopAppBarDetails() {
 
     val context = LocalContext.current
-    val expanded = remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
 
     TopAppBar(
         title = { Text(text = "Toolbar") },
@@ -62,27 +64,29 @@ private fun TopAppBarDetails() {
             IconButton(onClick = { }) {
                 Icon(Icons.Default.Search, "Search")
             }
-            IconButton(onClick = { expanded.value = !expanded.value }) {
+            IconButton(onClick = { expanded = !expanded }) {
                 Icon(Icons.Default.MoreVert, "Options")
             }
-            ShowOptionDropDown(expanded)
+            ShowOptionDropDown(expanded) {
+                onDismiss: Boolean -> expanded = onDismiss
+            }
         }
     )
 }
 
 @Composable
-private fun ShowOptionDropDown(expanded: MutableState<Boolean>) {
+private fun ShowOptionDropDown(expanded: Boolean, onDismiss: (Boolean) -> Unit) {
 
     val list = listOf("First Option", "Second Option", "Third Option")
     DropdownMenu(
-        expanded = expanded.value,
-        onDismissRequest = { expanded.value = false },
+        expanded = expanded,
+        onDismissRequest = { onDismiss(false) },
     ) {
         list.forEach { item ->
 
             DropdownMenuItem(
                 onClick = {
-                    expanded.value = false
+                    onDismiss(false)
                 }
             ) {
                 Text(text = item)
