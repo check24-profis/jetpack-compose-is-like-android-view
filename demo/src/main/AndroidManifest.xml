@@ -384,6 +384,17 @@
             android:name=".features.framelayout.ComposableFrameLayoutActivity"
             android:exported="false" />
 
+        <!-- App Bar Layout -->
+
+        <activity
+            android:name=".features.appbarlayout.AndroidUIAppBarLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.appbarlayout.ComposableAppBarLayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
