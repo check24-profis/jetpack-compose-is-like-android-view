@@ -373,6 +373,17 @@
             android:name="de.check24.compose.demo.features.custom.ComposableGoogleMapActivity"
             android:exported="false" />
 
+        <!-- Frame Layout -->
+
+        <activity
+            android:name=".features.framelayout.AndroidUIFrameLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.framelayout.ComposableFrameLayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
