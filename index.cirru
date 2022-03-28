@@ -122,6 +122,8 @@ html
       .case (.name "Helper (Flow)") $ .pair
       .case (.name "Helper (Layer)") $ .pair
       .case (.name "FrameLayout") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/FrameLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
 
     .section
       .title "Container"
