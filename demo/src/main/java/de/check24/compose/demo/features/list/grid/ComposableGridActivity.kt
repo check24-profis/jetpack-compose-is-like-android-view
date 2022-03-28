@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.Scaffold
@@ -70,20 +71,20 @@ private fun GridExample() {
         Color(0xFF3700B3)
     )
 
-    Box(Modifier.size(200.dp)) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(2),
+        modifier = Modifier.size(200.dp)
+    ) {
 
-        LazyVerticalGrid(cells = GridCells.Fixed(2)) {
+        (0..3).forEach {
 
-            (0..3).forEach {
+            item {
 
-                item {
-
-                    Box(
-                        modifier = Modifier
-                            .size(100.dp)
-                            .background(colorList[it])
-                    )
-                }
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(colorList[it])
+                )
             }
         }
     }
