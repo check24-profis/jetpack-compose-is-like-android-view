@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.check24.compose.demo.R
+import de.check24.compose.demo.compareItemList
 import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableChipGroupActivity : ComponentActivity() {
@@ -101,10 +102,6 @@ class ComposableChipGroupActivity : ComponentActivity() {
 @Composable
 private fun ChipGroupMultiSelectionExample(list: List<String> = listOf("I'm a list")) {
 
-    /*var isSelected by remember {
-        mutableStateOf(false)
-    }*/
-
     LazyRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
@@ -113,9 +110,6 @@ private fun ChipGroupMultiSelectionExample(list: List<String> = listOf("I'm a li
             .height(50.dp)
     ) {
         items(list) {
-            /*ActionChip(it, isSelected = isSelected) {
-                isSelected = !isSelected
-            }*/
             ActionChip(it)
         }
     }
@@ -133,31 +127,10 @@ private fun ChipGroupSingleSelectionExample(list: List<String> = listOf("I'm a l
             .fillMaxWidth()
             .height(50.dp)
     ) {
-        items(list) {
+        items(list) { item ->
 
-            Surface(
-                modifier = Modifier.padding(4.dp),
-                shape = CircleShape,
-                color = if (selectedChip == it) {
-                    colorResource(id = R.color.purple_100)
-                } else colorResource(id = R.color.gray_300)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .height(32.dp)
-                        .clickable { selectedChip = it }
-                ) {
-                    Text(
-                        text = it,
-                        color = if (selectedChip == it) colorResource(id = R.color.purple_500) else colorResource(
-                            id = R.color.gray_700
-                        ),
-                        fontSize = 14.sp,
-                        style = MaterialTheme.typography.body2,
-                        modifier = Modifier.padding(horizontal = 12.dp)
-                    )
-                }
+            ActionChipMultiSelection(selectedChip = selectedChip, currentItem = item) {
+                selectedChip = item
             }
         }
     }

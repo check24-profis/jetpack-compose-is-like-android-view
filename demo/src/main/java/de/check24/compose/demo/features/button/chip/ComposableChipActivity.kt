@@ -38,10 +38,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import de.check24.compose.demo.R
 import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Gray300
 import de.check24.compose.demo.theme.Gray400
@@ -95,8 +97,6 @@ fun ActionChip(
     name: String = "Action Chip",
     icon: ImageVector = Icons.Default.Circle,
     iconEnabled: Boolean = false
-//    isSelected: Boolean = false,
-//    onToggle: () -> Unit = {}
 ) {
     var isSelected by remember { mutableStateOf(false) }
     val modifier = if (iconEnabled) {
@@ -114,7 +114,6 @@ fun ActionChip(
                 .height(32.dp)
                 .toggleable(
                     value = isSelected,
-//                    onValueChange = { onToggle() }
                     onValueChange = { isSelected = !isSelected }
                 )
         ) {
@@ -278,6 +277,38 @@ private fun ChipWithToggleIcon(
                         start = 8.dp,
                         end = 12.dp
                     )
+            )
+        }
+    }
+}
+
+@Composable
+fun ActionChipMultiSelection(
+    selectedChip: String,
+    currentItem: String,
+    onToggle: () -> Unit
+) {
+    Surface(
+        modifier = Modifier.padding(4.dp),
+        shape = CircleShape,
+        color = if (selectedChip == currentItem) {
+            colorResource(id = R.color.purple_100)
+        } else colorResource(id = R.color.gray_300)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .height(32.dp)
+                .clickable { onToggle() }
+        ) {
+            Text(
+                text = currentItem,
+                color = if (selectedChip == currentItem) colorResource(id = R.color.purple_500) else colorResource(
+                    id = R.color.gray_700
+                ),
+                fontSize = 14.sp,
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(horizontal = 12.dp)
             )
         }
     }
