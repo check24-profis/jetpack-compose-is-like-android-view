@@ -51,6 +51,7 @@ private fun TopAppBarDetails() {
 
     val context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
+    var clickedItemText by remember { mutableStateOf("") }
 
     TopAppBar(
         title = { Text(text = "Toolbar") },
@@ -66,26 +67,33 @@ private fun TopAppBarDetails() {
             IconButton(onClick = { expanded = !expanded }) {
                 Icon(Icons.Default.MoreVert, "Options")
             }
-            OptionDropdownMenu(expanded) {
-                onDismiss: Boolean -> expanded = onDismiss
+            OptionDropdownMenu(expanded, onDismissMenu = { onDismissMenu: Boolean ->
+                expanded = onDismissMenu
+            }) {
+
             }
         }
     )
 }
 
 @Composable
-private fun OptionDropdownMenu(expanded: Boolean, onDismiss: (Boolean) -> Unit) {
+private fun OptionDropdownMenu(
+    expanded: Boolean,
+    list: List<String> = listOf("First Option", "Second Option", "Third Option"),
+    onDismissMenu: ((Boolean) -> Unit)? = null,
+    onClickItem: ((String) -> Unit)? = null
+    ) {
 
-    val list = listOf("First Option", "Second Option", "Third Option")
     DropdownMenu(
         expanded = expanded,
-        onDismissRequest = { onDismiss(false) },
+        onDismissRequest = { onDismissMenu?.invoke(false) },
     ) {
         list.forEach { item ->
 
             DropdownMenuItem(
                 onClick = {
-                    onDismiss(false)
+                    onClickItem?.invoke(item)
+                    onDismissMenu?.invoke(false)
                 }
             ) {
                 Text(text = item)
