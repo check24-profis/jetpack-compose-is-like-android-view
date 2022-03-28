@@ -15,7 +15,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -67,7 +66,7 @@ private fun TopAppBarDetails() {
             IconButton(onClick = { expanded = !expanded }) {
                 Icon(Icons.Default.MoreVert, "Options")
             }
-            ShowOptionDropDown(expanded) {
+            OptionDropdownMenu(expanded) {
                 onDismiss: Boolean -> expanded = onDismiss
             }
         }
@@ -75,7 +74,7 @@ private fun TopAppBarDetails() {
 }
 
 @Composable
-private fun ShowOptionDropDown(expanded: Boolean, onDismiss: (Boolean) -> Unit) {
+private fun OptionDropdownMenu(expanded: Boolean, onDismiss: (Boolean) -> Unit) {
 
     val list = listOf("First Option", "Second Option", "Third Option")
     DropdownMenu(

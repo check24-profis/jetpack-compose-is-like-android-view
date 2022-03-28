@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,19 +12,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -107,6 +101,10 @@ class ComposableChipGroupActivity : ComponentActivity() {
 @Composable
 private fun ChipGroupMultiSelectionExample(list: List<String> = listOf("I'm a list")) {
 
+    /*var isSelected by remember {
+        mutableStateOf(false)
+    }*/
+
     LazyRow(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
@@ -115,6 +113,9 @@ private fun ChipGroupMultiSelectionExample(list: List<String> = listOf("I'm a li
             .height(50.dp)
     ) {
         items(list) {
+            /*ActionChip(it, isSelected = isSelected) {
+                isSelected = !isSelected
+            }*/
             ActionChip(it)
         }
     }
@@ -187,7 +188,7 @@ private fun FilterChipGroup() {
             .height(50.dp)
     ) {
         items(currentList) {
-            InputChip(name = it,iconEnabled = false)
+            InputChip(name = it, iconEnabled = false)
         }
     }
 }

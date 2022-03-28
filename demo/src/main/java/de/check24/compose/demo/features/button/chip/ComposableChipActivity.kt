@@ -29,7 +29,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Circle
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -38,14 +37,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.check24.compose.demo.R
 import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Gray300
 import de.check24.compose.demo.theme.Gray400
@@ -97,6 +93,8 @@ private fun ChipExample() {
 @Composable
 fun ActionChip(
     name: String = "Action Chip",
+//    isSelected: Boolean = false,
+//    onToggle: () -> Unit = {}
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -111,6 +109,7 @@ fun ActionChip(
                 .height(32.dp)
                 .toggleable(
                     value = isSelected,
+//                    onValueChange = { onToggle() }
                     onValueChange = { isSelected = !isSelected }
                 )
         ) {
@@ -216,7 +215,7 @@ fun InputChip(
 ) {
 
     var isVisible by remember { mutableStateOf(true) }
-    val modifier =  if (iconEnabled) {
+    val modifier = if (iconEnabled) {
         Modifier.padding(horizontal = 4.dp)
     } else Modifier.padding(start = 12.dp, end = 4.dp)
 
