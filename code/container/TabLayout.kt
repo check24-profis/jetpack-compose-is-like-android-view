@@ -1,19 +1,19 @@
 @Composable
 fun TabLayoutExample() {
-    val selectedTabIndex = remember { mutableStateOf(0) }
+    var selectedTabIndex by remember { mutableStateOf(0) }
 
     val tabTexts = listOf("A", "B", "C")
 
     TabRow(
-        selectedTabIndex = selectedTabIndex.value,
+        selectedTabIndex = selectedTabIndex,
         backgroundColor = Color.White
     ) {
         tabTexts.forEachIndexed { index, text ->
             Tab(
-                selected = index == selectedTabIndex.value,
+                selected = index == selectedTabIndex,
                 modifier = Modifier.size(50.dp),
                 onClick = {
-                    selectedTabIndex.value = index
+                    selectedTabIndex = index
                 }
             ) {
                 Text(text = text)
