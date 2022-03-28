@@ -32,6 +32,8 @@ import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
 import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
+import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
+import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
@@ -240,6 +242,13 @@ internal val compareItemList: List<CompareItem>
                 composeActivity = ComposableHorizontalGuidelineActivity::class.java,
                 androidUIActivity = AndroidUIHorizontalGuidelineActivity::class.java,
                 headline = "Guideline Horizontal"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableFrameLayoutActivity::class.java,
+                androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
+                headline = "Frame Layout"
             )
         )
 
