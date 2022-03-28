@@ -35,22 +35,24 @@ private fun AppBarExample() {
     Scaffold(
         topBar = {
 
-            TopAppBar {
-
-                IconButton(onClick = { /* your code */ }) {
-
-                    Icon(
-                        imageVector = Icons.Rounded.Menu,
-                        contentDescription = "Menu",
-                        modifier = Modifier.padding(10.dp)
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "App Bar Layout",
+                        color = Color.White
                     )
+                },
+                navigationIcon = {
+                    IconButton(onClick = { /* your code */ }) {
+
+                        Icon(
+                            imageVector = Icons.Rounded.Menu,
+                            contentDescription = "Menu"
+                        )
+                    }
                 }
 
-                Text(
-                    text = "App Bar Layout",
-                    color = Color.White
-                )
-            }
+            )
         },
         content = {}
     )
