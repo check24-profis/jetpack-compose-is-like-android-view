@@ -1,5 +1,7 @@
 package de.check24.compose.demo.features.list.grid
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
@@ -30,10 +32,10 @@ internal fun FixedGridExample() {
 
         (0..3).forEach {
 
-            Card(
-                modifier = Modifier.size(100.dp),
-                backgroundColor = colorList[it],
-                content = {}
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .background(colorList[it])
             )
         }
     }

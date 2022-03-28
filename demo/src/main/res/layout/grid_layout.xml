@@ -14,25 +14,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
+        <View
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardBackgroundColor="@color/red" />
+            android:background="@color/red" />
 
-        <androidx.cardview.widget.CardView
+        <View
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardBackgroundColor="@color/black" />
+            android:background="@color/black" />
 
-        <androidx.cardview.widget.CardView
+        <View
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardBackgroundColor="@color/purple_200" />
+            android:background="@color/purple_200" />
 
-        <androidx.cardview.widget.CardView
+        <View
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardBackgroundColor="@color/purple_700" />
+            android:background="@color/purple_700" />
 
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
