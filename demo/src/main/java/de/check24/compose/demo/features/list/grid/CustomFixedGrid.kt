@@ -21,10 +21,6 @@ internal fun FixedGridExample() {
         Color.Red,
         Color.Black,
         Color(0xFFBB86FC),
-        Color(0xFF3700B3),
-        Color.Red,
-        Color.Black,
-        Color(0xFFBB86FC),
         Color(0xFF3700B3)
     )
 

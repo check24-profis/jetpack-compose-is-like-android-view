@@ -1,4 +1,26 @@
 @Composable
+fun FixedGridExample() {
+    val colorList = listOf(
+        Color.Red,
+        Color.Black,
+        Color(0xFFBB86FC),
+        Color(0xFF3700B3)
+    )
+
+    FixedGrid(2) {
+
+        (0..3).forEach {
+
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .background(colorList[it])
+            )
+        }
+    }
+}
+
+@Composable
 fun FixedGrid(
     columnCount: Int,
     content: @Composable () -> Unit

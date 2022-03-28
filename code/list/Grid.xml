@@ -2,30 +2,26 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:columnCount="2"
-    android:rowCount="2"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"&gt;
+    android:rowCount="2"&gt;
 
-    &lt;androidx.cardview.widget.CardView
+    &lt;View
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cardBackgroundColor="@color/red" /&gt;
+        android:background="@color/red" /&gt;
 
-    &lt;androidx.cardview.widget.CardView
+    &lt;View
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cardBackgroundColor="@color/black" /&gt;
+        android:background="@color/black" /&gt;
 
-    &lt;androidx.cardview.widget.CardView
+    &lt;View
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cardBackgroundColor="@color/purple_200" /&gt;
+        android:background="@color/purple_200" /&gt;
 
-    &lt;androidx.cardview.widget.CardView
+    &lt;View
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cardBackgroundColor="@color/purple_700" /&gt;
+        android:background="@color/purple_700" /&gt;
 
 &lt;/GridLayout&gt;

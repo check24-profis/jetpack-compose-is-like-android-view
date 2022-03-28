@@ -17,14 +17,11 @@ fun GridExample() {
 
                 item {
 
-                    Box(Modifier.fillMaxSize()) {
-
-                        Card(
-                            modifier = Modifier.size(100.dp),
-                            backgroundColor = colorList[it],
-                            content = {}
-                        )
-                    }
+                    Box(
+                        modifier = Modifier
+                            .size(100.dp)
+                            .background(colorList[it])
+                    )
                 }
             }
         }
