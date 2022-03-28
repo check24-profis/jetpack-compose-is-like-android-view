@@ -310,6 +310,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             headline = "App Bar Layout"
         )
     )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableToolbarActivity::class.java,
+            androidUIActivity = AndroidUIToolbarActivity::class.java,
+            headline = "Toolbar"
+        )
+    )
 
     // endregion
 
