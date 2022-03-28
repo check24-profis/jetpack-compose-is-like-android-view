@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -31,19 +32,28 @@ class ComposableAppBarLayoutActivity : ComponentActivity() {
 
 @Composable
 private fun AppBarExample() {
-    TopAppBar {
-        IconButton(onClick = { /* your code */ }) {
-            Icon(
-                imageVector = Icons.Rounded.Menu,
-                contentDescription = "Menu",
-                modifier = Modifier.padding(10.dp)
-            )
-        }
-        Text(
-            text = "App Bar Layout",
-            color = Color.White
-        )
-    }
+    Scaffold(
+        topBar = {
+
+            TopAppBar {
+
+                IconButton(onClick = { /* your code */ }) {
+
+                    Icon(
+                        imageVector = Icons.Rounded.Menu,
+                        contentDescription = "Menu",
+                        modifier = Modifier.padding(10.dp)
+                    )
+                }
+
+                Text(
+                    text = "App Bar Layout",
+                    color = Color.White
+                )
+            }
+        },
+        content = {}
+    )
 }
 
 @Preview(showBackground = true)
