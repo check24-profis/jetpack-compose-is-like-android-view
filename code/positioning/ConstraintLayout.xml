@@ -1,0 +1,96 @@
+&lt;TextView
+    android:id="@+id/purple"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="constraint to start, top and end of parent with a horizontal bias of 30/70"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.3"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.1"&gt;
+
+&lt;/TextView&gt;
+
+&lt;TextView
+    android:id="@+id/orange"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="@color/orange_200"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="constraint via circle radius(110dp) and angle(135) to purple"
+    app:layout_constraintCircle="@id/purple"
+    app:layout_constraintCircleAngle="135"
+    app:layout_constraintCircleRadius="110dp" /&gt;
+
+&lt;TextView
+    android:id="@+id/blue"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:background="@color/blue_200"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="Chain B, and chained with chainStyle &quot;spread&quot; together "
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    app:layout_constraintStart_toEndOf="@+id/green"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;TextView
+    android:id="@+id/green"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:background="@color/green_200"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="Chain A, both are bi-directional connected"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/blue"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;TextView
+    android:id="@+id/left_textview"
+    android:layout_width="0dp"
+    android:layout_height="60dp"
+    android:background="@color/red_200"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="chained with 30 percent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/middle_textview"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    app:layout_constraintHorizontal_weight="0.3"
+    app:layout_constraintStart_toStartOf="parent" /&gt;
+
+&lt;TextView
+    android:id="@+id/middle_textview"
+    android:layout_width="0dp"
+    android:layout_height="60dp"
+    android:background="@color/gray"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="chained with 40 percent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/right_textview"
+    app:layout_constraintHorizontal_weight="0.4"
+    app:layout_constraintStart_toEndOf="@+id/left_textview" /&gt;
+
+&lt;TextView
+    android:id="@+id/right_textview"
+    android:layout_width="0dp"
+    android:layout_height="60dp"
+    android:background="@color/teal_200"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="chained with 30 percent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_weight="0.3"
+    app:layout_constraintStart_toEndOf="@+id/middle_textview" /&gt;

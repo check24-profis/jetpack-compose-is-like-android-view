@@ -5,9 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Constrains allow you to position a given widget relative to another one.
-           You ca constrain horizontal and vertical -->
-
     <TextView
         android:id="@+id/purple"
         android:layout_width="150dp"
@@ -73,7 +70,7 @@
         android:background="@color/red_200"
         android:gravity="center"
         android:padding="10dp"
-        android:text="chained by 30 percent"
+        android:text="chained with 30 percent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/middle_textview"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -87,7 +84,7 @@
         android:background="@color/gray"
         android:gravity="center"
         android:padding="10dp"
-        android:text="chained by 40 percent"
+        android:text="chained with 40 percent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/right_textview"
         app:layout_constraintHorizontal_weight="0.4"
@@ -100,11 +97,10 @@
         android:background="@color/teal_200"
         android:gravity="center"
         android:padding="10dp"
-        android:text="chained by 30 percent"
+        android:text="chained with 30 percent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="0.3"
         app:layout_constraintStart_toEndOf="@+id/middle_textview" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
