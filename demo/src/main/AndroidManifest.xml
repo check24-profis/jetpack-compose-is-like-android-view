@@ -384,6 +384,17 @@
             android:name=".features.tablayout.ComposableTabLayoutActivity"
             android:exported="false" />
 
+        <!-- Frame Layout -->
+
+        <activity
+            android:name=".features.framelayout.AndroidUIFrameLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.framelayout.ComposableFrameLayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
