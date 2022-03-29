@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="h1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">28sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_3</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="h2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_6</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="h3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">22sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_3</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="h4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_6</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="h5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_9</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="h6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_3</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="s1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">18sp</item>
+        <item name="lineHeight">22sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_3</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="s2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_6</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="b1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_6</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="b2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_9</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">18sp</item>
+        <item name="android:textColor">@color/shared_white</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_3</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">16sp</item>
+        <item name="android:textColor">@color/shared_cool_grey_6</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+
+    <color name="shared_cool_grey_6">#666666</color>
+    <color name="shared_cool_grey_9">#999999</color>
+    <color name="shared_white">#FFFFFF</color>
+    <color name="shared_cool_grey_3">#333333</color>
+</resources>

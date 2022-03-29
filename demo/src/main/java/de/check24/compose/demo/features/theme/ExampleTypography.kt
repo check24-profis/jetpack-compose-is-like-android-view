@@ -81,5 +81,11 @@ internal val exampleTypography: Typography
             lineHeight = 16.sp,
             color = Grey3,
             letterSpacing = 0.sp
+        ),
+        overline = TextStyle(
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            color = Grey6,
+            letterSpacing = 0.sp
         )
     )
