@@ -38,6 +38,8 @@ import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
+import de.check24.compose.demo.features.list.grid.AndroidUIGridActivity
+import de.check24.compose.demo.features.list.grid.ComposableGridActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
@@ -64,6 +66,8 @@ import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
+import de.check24.compose.demo.features.tablayout.AndroidUITabLayoutActivity
+import de.check24.compose.demo.features.tablayout.ComposableTabLayoutActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
@@ -250,7 +254,14 @@ internal val compareItemList: List<CompareItem> by lazy {
     )
     compareItems.add(
         CompareItem(
-            composeActivity = ComposableFrameLayoutActivity::class.java,
+            composeActivity = ComposableTabLayoutActivity::class.java,
+                androidUIActivity = AndroidUITabLayoutActivity::class.java,
+                headline = "Tab Layout"
+            )
+        )
+        compareItems.add(
+            CompareItem(
+                composeActivity = ComposableFrameLayoutActivity::class.java,
             androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
             headline = "Frame Layout"
         )
@@ -274,7 +285,14 @@ internal val compareItemList: List<CompareItem> by lazy {
             headline = "Staggered Grid"
         )
     )
-    // endregion
+    compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGridActivity::class.java,
+                androidUIActivity = AndroidUIGridActivity::class.java,
+                headline = "Grid"
+            )
+        )
+        // endregion
 
     // region container
 
@@ -348,7 +366,7 @@ internal val compareItemList: List<CompareItem> by lazy {
 
     // endregion
 
-    //region positioning
+    // region positioning
 
     compareItems.add(
         CompareItem(
