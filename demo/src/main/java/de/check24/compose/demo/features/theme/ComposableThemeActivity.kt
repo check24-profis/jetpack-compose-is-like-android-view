@@ -35,7 +35,7 @@ class ComposableThemeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            ExampleComposable()
+            ExampleThemeDemo()
         }
     }
 }
@@ -52,7 +52,7 @@ private fun ExampleTheme(content: @Composable () -> Unit) {
 }
 
 @Composable
-private fun ExampleComposable() {
+private fun ExampleThemeDemo() {
 
     ExampleTheme {
 
@@ -116,8 +116,8 @@ private fun ExampleComposable() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun ThemePreview() {
+private fun ExampleThemeDemoPreview() {
     DemoTheme {
-        ExampleComposable()
+        ExampleThemeDemo()
     }
 }
