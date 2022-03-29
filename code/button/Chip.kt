@@ -4,14 +4,13 @@
 @Composable
 fun ActionChip(
     name: String = "Action Chip",
-    icon: ImageVector = Icons.Default.Circle,
-    iconEnabled: Boolean = false,
-    value : ((String) -> String)? = null
+    icon: ImageVector? = null,
+    value: ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
-    val modifier = if (iconEnabled) {
-        Modifier.padding(start = 4.dp, end = 12.dp)
-    } else Modifier.padding(horizontal = 12.dp)
+    val modifier = if (icon == null) {
+        Modifier.padding(horizontal = 12.dp)
+    } else Modifier.padding(start = 4.dp, end = 12.dp)
 
     Surface(
         modifier = Modifier.padding(4.dp),
@@ -26,11 +25,11 @@ fun ActionChip(
                     value = isSelected,
                     onValueChange = {
                         isSelected = !isSelected
-                        if  (isSelected) value?.invoke(name)
+                        if (isSelected) value?.invoke(name)
                     }
                 )
         ) {
-            if (iconEnabled) {
+            if (icon != null) {
                 Icon(
                     icon,
                     "",
