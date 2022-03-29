@@ -36,6 +36,8 @@ import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
+import de.check24.compose.demo.features.list.grid.AndroidUIGridActivity
+import de.check24.compose.demo.features.list.grid.ComposableGridActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
 import de.check24.compose.demo.features.list.staggered.ComposableStaggeredListActivity
 import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
@@ -279,7 +281,14 @@ internal val compareItemList: List<CompareItem> by lazy {
             headline = "Staggered Grid"
         )
     )
-    // endregion
+    compareItems.add(
+            CompareItem(
+                composeActivity = ComposableGridActivity::class.java,
+                androidUIActivity = AndroidUIGridActivity::class.java,
+                headline = "Grid"
+            )
+        )
+        // endregion
 
     // region container
 
@@ -346,7 +355,7 @@ internal val compareItemList: List<CompareItem> by lazy {
 
     // endregion
 
-    //region positioning
+    // region positioning
 
     compareItems.add(
         CompareItem(

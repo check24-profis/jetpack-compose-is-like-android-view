@@ -395,6 +395,17 @@
             android:name=".features.framelayout.ComposableFrameLayoutActivity"
             android:exported="false" />
 
+        <!-- Grid -->
+
+        <activity
+            android:name=".features.list.grid.AndroidUIGridActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.list.grid.ComposableGridActivity"
+            android:exported="false" />
+
         <!-- App Bar Layout -->
 
         <activity
