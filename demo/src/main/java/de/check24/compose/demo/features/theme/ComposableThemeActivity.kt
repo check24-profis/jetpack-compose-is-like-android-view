@@ -16,6 +16,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.sharp.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -45,6 +46,7 @@ private fun ExampleTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colors = exampleColors,
         typography = exampleTypography,
+        shapes = exampleShapes,
         content = content
     )
 }
@@ -95,8 +97,14 @@ private fun ExampleComposable() {
                             Text(text = "caption", style = MaterialTheme.typography.caption)
                             Text(text = "overline", style = MaterialTheme.typography.overline)
 
-                            Button(onClick = {}) {
-                                Icon(Icons.Sharp.Menu, contentDescription = "theme demo button")
+                            Button(onClick = {}, shape = MaterialTheme.shapes.small) {
+                                Icon(Icons.Sharp.Menu, contentDescription = "theme demo button1")
+                            }
+                            Button(onClick = {}, shape = MaterialTheme.shapes.medium) {
+                                Icon(Icons.Rounded.Menu, contentDescription = "theme demo button2")
+                            }
+                            Button(onClick = {}, shape = MaterialTheme.shapes.large) {
+                                Icon(Icons.Rounded.Menu, contentDescription = "theme demo button3")
                             }
                         }
                     }
