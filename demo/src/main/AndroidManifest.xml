@@ -428,6 +428,8 @@
             android:name=".features.card.ComposableCardActivity"
             android:exported="false" />
 
+        <!-- Horizontal LinearLayout Positioning -->
+
     </application>
 
 </manifest>
