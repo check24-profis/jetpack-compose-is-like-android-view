@@ -69,7 +69,7 @@ private fun TabLayoutExample() {
 
 @Preview(showBackground = true, device = Devices.NEXUS_6, showSystemUi = true)
 @Composable
-private fun SwitchPreview() {
+private fun TabLayoutExamplePreview() {
     DemoTheme {
         TabLayoutExample()
     }
