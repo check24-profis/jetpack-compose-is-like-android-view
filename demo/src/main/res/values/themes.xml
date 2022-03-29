@@ -2,6 +2,36 @@
 <resources>
 
     <style name="ExampleTheme" parent="Theme.AppCompat">
+        <item name="colorPrimary">#862A8A</item>
+        <item name="colorPrimaryVariant">#C280D5</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">#FF30FC</item>
+        <item name="colorSecondaryVariant">#EAF7FB</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorError">#C82D70</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">#333333</item>
+
+        <item name="android:colorBackground">#EFEFF3</item>
+        <item name="android:windowBackground">@color/white</item>
+
+<!--        <item name="textAppearanceHeadline1">@style/Shared.TextAppearance.Profis.Headline1</item>-->
+<!--        <item name="textAppearanceHeadline2">@style/Shared.TextAppearance.Profis.Headline2</item>-->
+<!--        <item name="textAppearanceHeadline3">@style/Shared.TextAppearance.Profis.Headline3</item>-->
+<!--        <item name="textAppearanceHeadline4">@style/Shared.TextAppearance.Profis.Headline4</item>-->
+<!--        <item name="textAppearanceHeadline5">@style/Shared.TextAppearance.Profis.Headline5</item>-->
+<!--        <item name="textAppearanceHeadline6">@style/Shared.TextAppearance.Profis.Headline6</item>-->
+<!--        <item name="textAppearanceSubtitle1">@style/Shared.TextAppearance.Profis.Subtitle1</item>-->
+<!--        <item name="textAppearanceSubtitle2">@style/Shared.TextAppearance.Profis.Subtitle2</item>-->
+<!--        <item name="textAppearanceBody1">@style/Shared.TextAppearance.Profis.Body1</item>-->
+<!--        <item name="textAppearanceBody2">@style/Shared.TextAppearance.Profis.Body2</item>-->
+<!--        <item name="textAppearanceButton">@style/Shared.TextAppearance.Profis.Button</item>-->
+<!--        <item name="textAppearanceCaption">@style/Shared.TextAppearance.Profis.Caption</item>-->
+<!--        <item name="textAppearanceOverline">@style/Shared.TextAppearance.Profis.Overline</item>-->
 
     </style>
 
