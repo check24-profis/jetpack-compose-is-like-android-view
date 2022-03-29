@@ -2,8 +2,6 @@ package de.check24.compose.demo.features.appbarlayout
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.graphics.Color
-import de.check24.compose.demo.R
 import de.check24.compose.demo.databinding.AppBarLayoutBinding
 
 class AndroidUIAppBarLayoutActivity : AppCompatActivity() {
