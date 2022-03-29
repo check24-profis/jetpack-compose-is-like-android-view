@@ -78,7 +78,6 @@ private fun ConstraintLayoutPositioningExample() {
                 }
         )
 
-        // todo: circular doesn't work. Any suggestions?
         Text(
             textAlign = TextAlign.Center,
             text = "constraint via circle radius(110dp) and angle(135) to purple (doesn't work)",
@@ -87,7 +86,7 @@ private fun ConstraintLayoutPositioningExample() {
                 .background(Orange200)
                 .padding(10.dp)
                 .constrainAs(orange) {
-                    circular(ConstrainedLayoutReference(purple), angle = 0.2F, distance = 110.dp)
+                    circular(ConstrainedLayoutReference(purple), angle = 135F, distance = 110.dp)
                 }
         )
 
