@@ -10,7 +10,7 @@ val Purple50 = Color(0xFFF3E5F5)
 val Purple100 = Color(0xFFD4BFF9)
 val Purple200 = Color(0xFFBB86FC)
 val Purple300 = Color(0xFF9965F4)
-val purple_400 = Color(0xFF7e3ff2)
+val purple400 = Color(0xFF7e3ff2)
 val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 
