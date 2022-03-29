@@ -61,24 +61,14 @@ fun FixedGrid(
             result
         }
 
-        val positions: MutableMap<Placeable, IntOffset> = mutableMapOf()
-
-        placeables.forEachIndexed { index, placeable ->
-            positions[placeable] = IntOffset(
-                x = xPositions[index % columnCount],
-                y = yPositions[index / columnCount]
-            )
-        }
-
         layout(
             width = layoutWidth,
             height = layoutHeight
         ) {
-            placeables.forEach {
-                it.place(
-                    requireNotNull(
-                        positions[it]
-                    )
+            placeables.forEachIndexed { index, placeable ->
+                placeable.place(
+                    x = xPositions[index % columnCount],
+                    y = yPositions[index / columnCount]
                 )
             }
         }
