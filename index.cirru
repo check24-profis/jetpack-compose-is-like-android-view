@@ -189,6 +189,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/positioning/ConstraintLayout.xml)
       .case (.name "Flow") $ .pair
       .case (.name "LinearLayout (Vertical)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.xml)
       .case (.name "LinearLayout (Horizontal)") $ .pair
       .case (.name "GridLayout") $ .pair
       .case (.name "FrameLayout") $ .pair
