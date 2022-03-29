@@ -86,8 +86,8 @@ private fun ChipExample() {
     ) {
         ActionChip()
         OutlinedActionChip()
-        ActionChip("Chip With Icon", iconEnabled = true)
-        InputChip(iconEnabled = true)
+        ActionChip("Chip With Icon", iconEnabled = true, icon = Icons.Default.Circle)
+        InputChip(iconEnabled = true, icon = Icons.Default.MyLocation)
         ChipWithToggleIcon()
     }
 }
@@ -95,7 +95,7 @@ private fun ChipExample() {
 @Composable
 fun ActionChip(
     name: String = "Action Chip",
-    icon: ImageVector = Icons.Default.Circle,
+    icon: ImageVector? = null,
     iconEnabled: Boolean = false,
     value : ((String) -> String)? = null
 ) {
@@ -121,7 +121,7 @@ fun ActionChip(
                     }
                 )
         ) {
-            if (iconEnabled) {
+            if (iconEnabled && icon != null) {
                 Icon(
                     icon,
                     "",
@@ -188,7 +188,7 @@ private fun OutlinedActionChip(
 @Composable
 fun InputChip(
     name: String = "Input Chip",
-    icon: ImageVector = Icons.Default.MyLocation,
+    icon: ImageVector? = null,
     iconEnabled: Boolean
 ) {
 
@@ -212,7 +212,7 @@ fun InputChip(
                         onValueChange = { }
                     )
             ) {
-                if (iconEnabled) {
+                if (iconEnabled && icon != null) {
                     Icon(
                         icon,
                         "",
@@ -249,6 +249,7 @@ fun InputChip(
 @Composable
 private fun ChipWithToggleIcon(
     name: String = "Chip With toggleable Icon",
+    icon: ImageVector = Icons.Default.Check,
     value : ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
@@ -272,7 +273,7 @@ private fun ChipWithToggleIcon(
         ) {
             if (isSelected) {
                 Icon(
-                    Icons.Default.Check,
+                    icon,
                     "",
                     modifier = Modifier
                         .padding(start = 4.dp)
