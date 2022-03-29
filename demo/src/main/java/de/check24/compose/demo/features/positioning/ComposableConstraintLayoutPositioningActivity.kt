@@ -80,13 +80,13 @@ private fun ConstraintLayoutPositioningExample() {
 
         Text(
             textAlign = TextAlign.Center,
-            text = "constraint via circle radius(110dp) and angle(135) to purple (doesn't work)",
+            text = "constraint via circle radius(170dp) and angle(135) to purple",
             modifier = Modifier
-                .width(300.dp)
+                .width(180.dp)
                 .background(Orange200)
                 .padding(10.dp)
                 .constrainAs(orange) {
-                    circular(ConstrainedLayoutReference(purple), angle = 135F, distance = 110.dp)
+                    circular(purple, angle = 135F, distance = 170.dp)
                 }
         )
 
