@@ -18,8 +18,10 @@ import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,7 +63,7 @@ private fun BottomAppBarExample() {
         BottomBarScreen.Download
     )
 
-    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
+    var currentScreen by remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
 
     Scaffold(
         topBar = {
@@ -72,7 +74,10 @@ private fun BottomAppBarExample() {
             )
         },
         bottomBar = {
-            BottomAppBarDetails(screens, currentScreen)
+            BottomAppBarDetails(screens, currentScreen) {
+                screen ->
+                currentScreen = screen
+            }
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
@@ -80,7 +85,7 @@ private fun BottomAppBarExample() {
             FloatingActionButtonDetails()
         },
     ) {
-        when (currentScreen.value) {
+        when (currentScreen) {
             BottomBarScreen.Favorite -> FavoriteScreen()
             BottomBarScreen.Download -> DownloadScreen()
         }
@@ -90,7 +95,8 @@ private fun BottomAppBarExample() {
 @Composable
 private fun BottomAppBarDetails(
     screens: List<BottomBarScreen>,
-    currentScreen: MutableState<BottomBarScreen>
+    currentScreen: BottomBarScreen,
+    newScreen : (BottomBarScreen) -> Unit
 ) {
     BottomAppBar(cutoutShape = CircleShape) {
         screens.forEach { screen ->
@@ -102,9 +108,9 @@ private fun BottomAppBarDetails(
                         contentDescription = "Navigation Icon"
                     )
                 },
-                selected = screen == currentScreen.value,
+                selected = screen == currentScreen,
                 onClick = {
-                    currentScreen.value = screen
+                    newScreen(screen)
                 },
                 alwaysShowLabel = false
             )
