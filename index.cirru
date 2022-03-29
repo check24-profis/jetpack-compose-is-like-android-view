@@ -192,6 +192,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.xml)
       .case (.name "LinearLayout (Horizontal)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.xml)
       .case (.name "GridLayout") $ .pair
       .case (.name "FrameLayout") $ .pair
 
