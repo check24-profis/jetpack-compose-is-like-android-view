@@ -404,7 +404,8 @@
 
         <activity
             android:name=".features.theme.ComposableThemeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/ExampleTheme" />
 
     </application>
 

@@ -40,7 +40,6 @@ class ComposableThemeActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 private fun ExampleTheme(content: @Composable () -> Unit) {
     MaterialTheme(
@@ -75,38 +74,29 @@ private fun ExampleThemeDemo() {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
+                    Column(
+                        modifier = Modifier.padding(50.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
 
-                    Card {
-                        Column(
-                            modifier = Modifier.padding(50.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
+                        Text(text = "h1", style = MaterialTheme.typography.h1)
+                        Text(text = "h2", style = MaterialTheme.typography.h1)
+                        Text(text = "h3", style = MaterialTheme.typography.h1)
+                        Text(text = "h4", style = MaterialTheme.typography.h1)
+                        Text(text = "h5", style = MaterialTheme.typography.h1)
+                        Text(text = "h6", style = MaterialTheme.typography.h1)
+                        Text(text = "s1", style = MaterialTheme.typography.subtitle1)
+                        Text(text = "s2", style = MaterialTheme.typography.subtitle2)
+                        Text(text = "b1", style = MaterialTheme.typography.body1)
+                        Text(text = "b2", style = MaterialTheme.typography.body2)
 
-                            Text(text = "h1", style = MaterialTheme.typography.h1)
-                            Text(text = "h2", style = MaterialTheme.typography.h1)
-                            Text(text = "h3", style = MaterialTheme.typography.h1)
-                            Text(text = "h4", style = MaterialTheme.typography.h1)
-                            Text(text = "h5", style = MaterialTheme.typography.h1)
-                            Text(text = "h6", style = MaterialTheme.typography.h1)
-                            Text(text = "s1", style = MaterialTheme.typography.subtitle1)
-                            Text(text = "s2", style = MaterialTheme.typography.subtitle2)
-                            Text(text = "b1", style = MaterialTheme.typography.body1)
-                            Text(text = "b2", style = MaterialTheme.typography.body2)
+                        Button(onClick = {}, shape = MaterialTheme.shapes.small) {
                             Text(text = "button", style = MaterialTheme.typography.button)
-                            Text(text = "caption", style = MaterialTheme.typography.caption)
-                            Text(text = "overline", style = MaterialTheme.typography.overline)
-
-                            Button(onClick = {}, shape = MaterialTheme.shapes.small) {
-                                Icon(Icons.Sharp.Menu, contentDescription = "theme demo button1")
-                            }
-                            Button(onClick = {}, shape = MaterialTheme.shapes.medium) {
-                                Icon(Icons.Rounded.Menu, contentDescription = "theme demo button2")
-                            }
-                            Button(onClick = {}, shape = MaterialTheme.shapes.large) {
-                                Icon(Icons.Rounded.Menu, contentDescription = "theme demo button3")
-                            }
                         }
+
+                        Text(text = "caption", style = MaterialTheme.typography.caption)
+                        Text(text = "overline", style = MaterialTheme.typography.overline)
                     }
                 }
             }
