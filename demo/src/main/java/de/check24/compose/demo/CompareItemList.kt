@@ -59,9 +59,7 @@ import de.check24.compose.demo.features.picker.AndroidUITimeActivity
 import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.positioning.AndroidUIConstraintLayoutPositioningActivity
-import de.check24.compose.demo.features.positioning.AndroidUIHorizontalLinearLayoutPositioningActivity
 import de.check24.compose.demo.features.positioning.ComposableConstraintLayoutPositioningActivity
-import de.check24.compose.demo.features.positioning.ComposableHorizontalLinearLayoutPositioningActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
@@ -373,13 +371,6 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableConstraintLayoutPositioningActivity::class.java,
             androidUIActivity = AndroidUIConstraintLayoutPositioningActivity::class.java,
             headline = "ConstraintLayout Positioning"
-        )
-    )
-    compareItems.add(
-        CompareItem(
-            composeActivity = ComposableHorizontalLinearLayoutPositioningActivity::class.java,
-            androidUIActivity = AndroidUIHorizontalLinearLayoutPositioningActivity::class.java,
-            headline = "Horizontal LinearLayout"
         )
     )
 
