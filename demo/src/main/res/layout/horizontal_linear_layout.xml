@@ -6,7 +6,7 @@
     android:paddingHorizontal="20dp"
     android:paddingVertical="50dp">
 
-    <TextView
+    <View
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
@@ -14,7 +14,7 @@
         android:padding="10dp"
         android:textAlignment="center" />
 
-    <TextView
+    <View
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
@@ -22,7 +22,7 @@
         android:padding="10dp"
         android:textAlignment="center" />
 
-    <TextView
+    <View
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
@@ -30,7 +30,7 @@
         android:padding="10dp"
         android:textAlignment="center" />
 
-    <TextView
+    <View
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
