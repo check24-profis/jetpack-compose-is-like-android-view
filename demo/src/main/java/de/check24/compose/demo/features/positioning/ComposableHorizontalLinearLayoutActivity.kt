@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -51,8 +52,7 @@ private fun HorizontalLinearLayoutExample() {
             .fillMaxSize()
             .padding(vertical = 50.dp, horizontal = 20.dp)
     ) {
-        Text(
-            text = "",
+        Box(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .width(50.dp)
@@ -60,8 +60,7 @@ private fun HorizontalLinearLayoutExample() {
                 .background(Orange200)
                 .padding(10.dp)
         )
-        Text(
-            text = "",
+        Box(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .width(50.dp)
@@ -69,8 +68,7 @@ private fun HorizontalLinearLayoutExample() {
                 .background(Red200)
                 .padding(10.dp)
         )
-        Text(
-            text = "",
+        Box(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .width(50.dp)
@@ -78,8 +76,7 @@ private fun HorizontalLinearLayoutExample() {
                 .background(Blue200)
                 .padding(10.dp)
         )
-        Text(
-            text = "",
+        Box(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .width(50.dp)
