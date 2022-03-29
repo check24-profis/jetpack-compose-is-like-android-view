@@ -3,16 +3,16 @@ package de.check24.compose.demo.features.list.grid
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
+import de.check24.compose.demo.theme.Purple200
+import de.check24.compose.demo.theme.Purple700
+import kotlin.math.ceil
 import kotlin.math.min
 
 @Composable
@@ -20,8 +20,8 @@ internal fun FixedGridExample() {
     val colorList = listOf(
         Color.Red,
         Color.Black,
-        Color(0xFFBB86FC),
-        Color(0xFF3700B3)
+        Purple200,
+        Purple700
     )
 
     FixedGrid(2) {
@@ -31,7 +31,7 @@ internal fun FixedGridExample() {
             Box(
                 modifier = Modifier
                     .size(100.dp)
-                    .background(colorList[it])
+                    .background(colorList[it % 4])
             )
         }
     }
@@ -45,7 +45,8 @@ internal fun FixedGrid(
 
     Layout(content = content) { measurables, constraints ->
 
-        val rowCount: Int = measurables.size / columnCount
+        val rowCount: Int =
+            ceil(measurables.size.toDouble() / columnCount.toDouble()).toInt()
 
         val placeables = measurables.map { measurable ->
             measurable.measure(constraints = constraints)

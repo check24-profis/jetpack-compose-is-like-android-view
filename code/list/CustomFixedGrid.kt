@@ -3,8 +3,8 @@ fun FixedGridExample() {
     val colorList = listOf(
         Color.Red,
         Color.Black,
-        Color(0xFFBB86FC),
-        Color(0xFF3700B3)
+        Purple200,
+        Purple700
     )
 
     FixedGrid(2) {
@@ -14,7 +14,7 @@ fun FixedGridExample() {
             Box(
                 modifier = Modifier
                     .size(100.dp)
-                    .background(colorList[it])
+                    .background(colorList[it % 4])
             )
         }
     }
@@ -28,7 +28,8 @@ fun FixedGrid(
 
     Layout(content = content) { measurables, constraints ->
 
-        val rowCount: Int = measurables.size / columnCount
+        val rowCount: Int =
+            ceil(measurables.size.toDouble() / columnCount.toDouble()).toInt()
 
         val placeables = measurables.map { measurable ->
             measurable.measure(constraints = constraints)

@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.Scaffold
@@ -25,6 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
+import de.check24.compose.demo.theme.Purple200
+import de.check24.compose.demo.theme.Purple700
 
 class ComposableGridActivity : ComponentActivity() {
 
@@ -67,8 +68,8 @@ private fun GridExample() {
     val colorList = listOf(
         Color.Red,
         Color.Black,
-        Color(0xFFBB86FC),
-        Color(0xFF3700B3)
+        Purple200,
+        Purple700
     )
 
     LazyVerticalGrid(
