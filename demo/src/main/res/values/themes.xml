@@ -33,6 +33,10 @@
         <item name="textAppearanceCaption">@style/caption</item>
         <item name="textAppearanceOverline">@style/overline</item>
 
+        <item name="shapeAppearanceSmallComponent">@style/small</item>
+        <item name="shapeAppearanceMediumComponent">@style/medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/large</item>
+
     </style>
 
     <style name="Theme.Demo" parent="android:Theme.Material.Light.NoActionBar">
