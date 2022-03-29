@@ -3,8 +3,7 @@ Row(
         .fillMaxSize()
         .padding(vertical = 50.dp, horizontal = 20.dp)
 ) {
-    Text(
-        text = "",
+    Box(
         modifier = Modifier
             .padding(horizontal = 20.dp)
             .width(50.dp)

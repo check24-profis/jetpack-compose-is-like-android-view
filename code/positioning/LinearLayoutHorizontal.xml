@@ -6,7 +6,7 @@
     android:paddingHorizontal="20dp"
     android:paddingVertical="50dp"&gt;
 
-    &lt;TextView
+    &lt;View
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
