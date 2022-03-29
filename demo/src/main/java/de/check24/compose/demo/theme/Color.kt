@@ -22,3 +22,8 @@ val Gray700 = Color(0xFF616161)
 val Gray800 = Color(0xFF424242)
 
 val Teal200 = Color(0xFF03DAC5)
+
+val Orange200 = Color(0xFFFFCC80)
+val Green200 = Color(0xFFA5D6A7)
+val Blue200 = Color(0xFF90CAF9)
+val Red200 = Color(0xFFEF9A9A)

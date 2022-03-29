@@ -181,6 +181,8 @@ html
     .section
       .title "Positioning"
       .case (.name "ConstraintLayout") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/ConstraintLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/ConstraintLayout.xml)
       .case (.name "Flow") $ .pair
       .case (.name "LinearLayout (Vertical)") $ .pair
       .case (.name "LinearLayout (Horizontal)") $ .pair

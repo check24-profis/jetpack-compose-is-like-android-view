@@ -395,6 +395,17 @@
             android:name=".features.appbarlayout.ComposableAppBarLayoutActivity"
             android:exported="false" />
 
+        <!-- ConstraintLayout Positioning-->
+
+        <activity
+            android:name=".features.positioning.AndroidUIConstraintLayoutPositioningActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableConstraintLayoutPositioningActivity"
+            android:exported="false" />
+
         <!-- Toolbar -->
 
         <activity

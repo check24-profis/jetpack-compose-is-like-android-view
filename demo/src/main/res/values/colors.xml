@@ -24,4 +24,9 @@
     <color name="red">#FFFF0000</color>
     <color name="blue">#FF0000FF</color>
     <color name="light_gray">#FFAAAAAA</color>
+
+    <color name="orange_200">#FFCC80</color>
+    <color name="blue_200">#90CAF9</color>
+    <color name="green_200">#A5D6A7</color>
+    <color name="red_200">#EF9A9A</color>
 </resources>
