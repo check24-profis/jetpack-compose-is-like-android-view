@@ -15,6 +15,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -179,7 +181,7 @@ private fun FilterChipGroup() {
             .height(50.dp)
     ) {
         items(currentList) {
-            InputChip(name = it, iconEnabled = false)
+            InputChip(name = it, icon = Icons.Default.MyLocation)
         }
     }
 }

@@ -3,9 +3,6 @@ package de.check24.compose.demo.features.button.chip
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.hoverable
@@ -86,8 +83,8 @@ private fun ChipExample() {
     ) {
         ActionChip()
         OutlinedActionChip()
-        ActionChip("Chip With Icon", iconEnabled = true, icon = Icons.Default.Circle)
-        InputChip(iconEnabled = true, icon = Icons.Default.MyLocation)
+        ActionChip("Chip With Icon", icon = Icons.Default.Circle)
+        InputChip(icon = Icons.Default.MyLocation)
         ChipWithToggleIcon()
     }
 }
@@ -96,13 +93,12 @@ private fun ChipExample() {
 fun ActionChip(
     name: String = "Action Chip",
     icon: ImageVector? = null,
-    iconEnabled: Boolean = false,
-    value : ((String) -> String)? = null
+    value: ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
-    val modifier = if (iconEnabled) {
-        Modifier.padding(start = 4.dp, end = 12.dp)
-    } else Modifier.padding(horizontal = 12.dp)
+    val modifier = if (icon == null) {
+        Modifier.padding(horizontal = 12.dp)
+    } else Modifier.padding(start = 4.dp, end = 12.dp)
 
     Surface(
         modifier = Modifier.padding(4.dp),
@@ -117,11 +113,11 @@ fun ActionChip(
                     value = isSelected,
                     onValueChange = {
                         isSelected = !isSelected
-                        if  (isSelected) value?.invoke(name)
+                        if (isSelected) value?.invoke(name)
                     }
                 )
         ) {
-            if (iconEnabled && icon != null) {
+            if (icon != null) {
                 Icon(
                     icon,
                     "",
@@ -146,7 +142,7 @@ fun ActionChip(
 @Composable
 private fun OutlinedActionChip(
     name: String = "Outlined Chip",
-    value : ((String) -> String)? = null
+    value: ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -189,13 +185,12 @@ private fun OutlinedActionChip(
 fun InputChip(
     name: String = "Input Chip",
     icon: ImageVector? = null,
-    iconEnabled: Boolean
 ) {
 
     var isVisible by remember { mutableStateOf(true) }
-    val modifier = if (iconEnabled) {
-        Modifier.padding(horizontal = 4.dp)
-    } else Modifier.padding(start = 12.dp, end = 4.dp)
+    val modifier = if (icon == null) {
+        Modifier.padding(start = 12.dp, end = 4.dp)
+    } else Modifier.padding(horizontal = 4.dp)
 
     if (isVisible) {
         Surface(
@@ -212,7 +207,7 @@ fun InputChip(
                         onValueChange = { }
                     )
             ) {
-                if (iconEnabled && icon != null) {
+                if (icon != null) {
                     Icon(
                         icon,
                         "",
@@ -250,7 +245,7 @@ fun InputChip(
 private fun ChipWithToggleIcon(
     name: String = "Chip With toggleable Icon",
     icon: ImageVector = Icons.Default.Check,
-    value : ((String) -> String)? = null
+    value: ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -300,7 +295,7 @@ fun ActionChipSingleSelection(
     selectedChip: String,
     currentItem: String,
     onToggle: () -> Unit,
-    value : ((String) -> String)? = null
+    value: ((String) -> String)? = null
 ) {
     Surface(
         modifier = Modifier.padding(4.dp),
