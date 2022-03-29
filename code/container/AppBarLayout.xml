@@ -1,0 +1,14 @@
+&lt;com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"&gt;
+
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/app_bar_layout"
+        app:navigationIcon="@drawable/ic_baseline_menu_24"
+        app:titleTextColor="@color/white" /&gt;
+
+&lt;/com.google.android.material.appbar.AppBarLayout&gt;
