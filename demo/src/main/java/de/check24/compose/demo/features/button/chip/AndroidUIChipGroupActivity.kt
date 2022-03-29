@@ -15,44 +15,37 @@ class AndroidUIChipGroupActivity : AppCompatActivity() {
         setContentView(binding?.root)
         supportActionBar?.title = "Chip Group"
 
-        binding?.filterChipOne?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipTwo?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipThree?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipFour?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipFive?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipSix?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipSeven?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipEight?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipNine?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
-        }
-
-        binding?.filterChipTen?.setOnCloseIconClickListener {
-            binding?.chipGroupFilterSelection?.removeView(it)
+        binding?.apply {
+            filterChipOne.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipTwo.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipThree.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipFour.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipFive.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipSix.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipSeven.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipEight.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipNine.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
+            filterChipTen.setOnCloseIconClickListener {
+                binding?.chipGroupFilterSelection?.removeView(it)
+            }
         }
     }
 }
