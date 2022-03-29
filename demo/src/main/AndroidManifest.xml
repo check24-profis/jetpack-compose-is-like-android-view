@@ -439,6 +439,17 @@
             android:name=".features.positioning.ComposableVerticalLinearLayoutActivity"
             android:exported="false" />
 
+        <!-- LinearLayout Horizontal -->
+
+        <activity
+            android:name=".features.positioning.AndroidUIHorizontalLinearLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableHorizontalLinearLayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

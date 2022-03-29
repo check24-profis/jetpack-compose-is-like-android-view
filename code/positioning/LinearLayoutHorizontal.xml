@@ -1,0 +1,19 @@
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="50dp"&gt;
+
+    &lt;View
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:textAlignment="center" /&gt;
+
+    [...]
+
+&lt;/LinearLayout&gt;
