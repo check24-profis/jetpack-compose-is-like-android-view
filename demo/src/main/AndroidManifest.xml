@@ -428,6 +428,17 @@
             android:name=".features.positioning.ComposableConstraintLayoutPositioningActivity"
             android:exported="false" />
 
+        <!-- LinearLayout Vertical -->
+
+        <activity
+            android:name=".features.positioning.AndroidUIVerticalLinearLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableVerticalLinearLayoutActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
