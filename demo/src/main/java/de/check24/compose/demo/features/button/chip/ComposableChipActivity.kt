@@ -96,7 +96,8 @@ private fun ChipExample() {
 fun ActionChip(
     name: String = "Action Chip",
     icon: ImageVector = Icons.Default.Circle,
-    iconEnabled: Boolean = false
+    iconEnabled: Boolean = false,
+    value : ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
     val modifier = if (iconEnabled) {
@@ -114,7 +115,10 @@ fun ActionChip(
                 .height(32.dp)
                 .toggleable(
                     value = isSelected,
-                    onValueChange = { isSelected = !isSelected }
+                    onValueChange = {
+                        isSelected = !isSelected
+                        if  (isSelected) value?.invoke(name)
+                    }
                 )
         ) {
             if (iconEnabled) {
@@ -142,6 +146,7 @@ fun ActionChip(
 @Composable
 private fun OutlinedActionChip(
     name: String = "Outlined Chip",
+    value : ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -162,7 +167,10 @@ private fun OutlinedActionChip(
                 .height(32.dp)
                 .toggleable(
                     value = isSelected,
-                    onValueChange = { isSelected = !isSelected }
+                    onValueChange = {
+                        isSelected = !isSelected
+                        if (isSelected) value?.invoke(name)
+                    }
                 )
         ) {
             Text(
@@ -241,6 +249,7 @@ fun InputChip(
 @Composable
 private fun ChipWithToggleIcon(
     name: String = "Chip With toggleable Icon",
+    value : ((String) -> String)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -255,7 +264,10 @@ private fun ChipWithToggleIcon(
                 .height(32.dp)
                 .toggleable(
                     value = isSelected,
-                    onValueChange = { isSelected = !isSelected }
+                    onValueChange = {
+                        isSelected = !isSelected
+                        value?.invoke(name)
+                    }
                 )
         ) {
             if (isSelected) {
@@ -283,10 +295,11 @@ private fun ChipWithToggleIcon(
 }
 
 @Composable
-fun ActionChipMultiSelection(
+fun ActionChipSingleSelection(
     selectedChip: String,
     currentItem: String,
-    onToggle: () -> Unit
+    onToggle: () -> Unit,
+    value : ((String) -> String)? = null
 ) {
     Surface(
         modifier = Modifier.padding(4.dp),
@@ -299,7 +312,10 @@ fun ActionChipMultiSelection(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .height(32.dp)
-                .clickable { onToggle() }
+                .clickable {
+                    onToggle()
+                    value?.invoke(selectedChip)
+                }
         ) {
             Text(
                 text = currentItem,
