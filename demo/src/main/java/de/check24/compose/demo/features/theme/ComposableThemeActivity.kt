@@ -60,7 +60,7 @@ private fun ExampleThemeDemo() {
                 TopAppBar(
                     title = {
                         Text(
-                            text = "Text View",
+                            text = "Theme",
                             style = TextStyle(
                                 color = Color.White,
                                 fontSize = 20.sp

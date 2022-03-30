@@ -1,4 +1,4 @@
-    &lt;!-- allocation of colour and style and shape --&gt;
+    &lt;!-- allocation of colour, style and shape --&gt;
 
 &lt;style name="ExampleTheme" parent="Theme.AppCompat"&gt;
     &lt;item name="colorPrimary"&gt;#862A8A&lt;/item&gt;
