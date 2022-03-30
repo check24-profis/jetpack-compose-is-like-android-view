@@ -1,0 +1,166 @@
+    &lt;!-- allocation of colour, style and shape --&gt;
+
+&lt;style name="ExampleTheme" parent="Theme.AppCompat"&gt;
+    &lt;item name="colorPrimary"&gt;#862A8A&lt;/item&gt;
+    &lt;item name="colorPrimaryVariant"&gt;#C280D5&lt;/item&gt;
+    &lt;item name="colorOnPrimary"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="colorSecondary"&gt;#FF30FC&lt;/item&gt;
+    &lt;item name="colorSecondaryVariant"&gt;#EAF7FB&lt;/item&gt;
+    &lt;item name="colorOnSecondary"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="colorError"&gt;#C82D70&lt;/item&gt;
+    &lt;item name="colorOnError"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="colorSurface"&gt;@color/white&lt;/item&gt;
+    &lt;item name="colorOnSurface"&gt;#333333&lt;/item&gt;
+
+    &lt;item name="android:colorBackground"&gt;#EFEFF3&lt;/item&gt;
+    &lt;item name="android:windowBackground"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="textAppearanceHeadline1"&gt;@style/h1&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline2"&gt;@style/h2&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline3"&gt;@style/h3&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline4"&gt;@style/h4&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline5"&gt;@style/h5&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline6"&gt;@style/h6&lt;/item&gt;
+    &lt;item name="textAppearanceSubtitle1"&gt;@style/s1&lt;/item&gt;
+    &lt;item name="textAppearanceSubtitle2"&gt;@style/s2&lt;/item&gt;
+    &lt;item name="textAppearanceBody1"&gt;@style/b1&lt;/item&gt;
+    &lt;item name="textAppearanceBody2"&gt;@style/b2&lt;/item&gt;
+    &lt;item name="textAppearanceButton"&gt;@style/button&lt;/item&gt;
+    &lt;item name="textAppearanceCaption"&gt;@style/caption&lt;/item&gt;
+    &lt;item name="textAppearanceOverline"&gt;@style/overline&lt;/item&gt;
+
+    &lt;item name="shapeAppearanceSmallComponent"&gt;@style/small&lt;/item&gt;
+    &lt;item name="shapeAppearanceMediumComponent"&gt;@style/medium&lt;/item&gt;
+    &lt;item name="shapeAppearanceLargeComponent"&gt;@style/large&lt;/item&gt;
+
+&lt;/style&gt;
+
+    &lt;!-- font style --&gt;
+
+&lt;resources&gt;
+    &lt;style name="h1" parent="TextAppearance.MaterialComponents.Headline1"&gt;
+        &lt;item name="android:textSize"&gt;24sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;28sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h2" parent="TextAppearance.MaterialComponents.Headline2"&gt;
+        &lt;item name="android:textSize"&gt;20sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;24sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h3" parent="TextAppearance.MaterialComponents.Headline3"&gt;
+        &lt;item name="android:textSize"&gt;18sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;22sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h4" parent="TextAppearance.MaterialComponents.Headline4"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;20sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h5" parent="TextAppearance.MaterialComponents.Headline5"&gt;
+        &lt;item name="android:textSize"&gt;14sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;18sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_9&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h6" parent="TextAppearance.MaterialComponents.Headline6"&gt;
+        &lt;item name="android:textSize"&gt;12sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;16sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="s1" parent="TextAppearance.MaterialComponents.Subtitle1"&gt;
+        &lt;item name="android:textSize"&gt;18sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;22sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="s2" parent="TextAppearance.MaterialComponents.Subtitle2"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;20sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="b1" parent="TextAppearance.MaterialComponents.Body1"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;20sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="b2" parent="TextAppearance.MaterialComponents.Body2"&gt;
+        &lt;item name="android:textSize"&gt;14sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;18sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_9&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="button" parent="TextAppearance.MaterialComponents.Button"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;18sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_white&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="caption" parent="TextAppearance.MaterialComponents.Caption"&gt;
+        &lt;item name="android:textSize"&gt;12sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;16sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="overline" parent="TextAppearance.MaterialComponents.Overline"&gt;
+        &lt;item name="android:textSize"&gt;12sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;16sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+
+    &lt;color name="shared_cool_grey_6"&gt;#666666&lt;/color&gt;
+    &lt;color name="shared_cool_grey_9"&gt;#999999&lt;/color&gt;
+    &lt;color name="shared_white"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="shared_cool_grey_3"&gt;#333333&lt;/color&gt;
+&lt;/resources&gt;
+
+    &lt;!-- shape styles --&gt;
+
+&lt;resources&gt;
+&lt;style name="small" parent="ShapeAppearance.MaterialComponents.SmallComponent"&gt;
+    &lt;item name="cornerFamily"&gt;rounded&lt;/item&gt;
+    &lt;item name="cornerSize"&gt;0%&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;style name="medium" parent="ShapeAppearance.MaterialComponents.MediumComponent"&gt;
+    &lt;item name="cornerFamily"&gt;rounded&lt;/item&gt;
+    &lt;item name="cornerSize"&gt;5%&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;style name="large" parent="ShapeAppearance.MaterialComponents.LargeComponent"&gt;
+    &lt;item name="cornerFamily"&gt;rounded&lt;/item&gt;
+    &lt;item name="cornerSize"&gt;10%&lt;/item&gt;
+&lt;/style&gt;
+&lt;/resources&gt;
+
+    &lt;!-- in manifest --&gt;
+
+&lt;activity
+    android:name=".features.theme.AndroidUIThemeActivity"
+    android:exported="false"
+    android:theme="@style/ExampleTheme" /&gt;

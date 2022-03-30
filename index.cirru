@@ -205,3 +205,6 @@ html
 
     .section
       .title "Material Theme"
+      .case (.name "Theme") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/theme/theme.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/theme/theme.xml)
