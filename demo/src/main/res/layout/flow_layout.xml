@@ -1,6 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red_200"
+        android:padding="10dp"
+        android:text="One"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="Two"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/green_200"
+        android:padding="10dp"
+        android:text="Three"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:padding="10dp"
+        android:text="Four"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red_200"
+        android:padding="10dp"
+        android:text="Five"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="Six"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/green_200"
+        android:padding="10dp"
+        android:text="Seven"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:padding="10dp"
+        android:text="Eight"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red_200"
+        android:padding="10dp"
+        android:text="Nine"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="Ten"
+        android:textAlignment="center" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow_horizontal_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="textview1,textview2,textview3,textview4,textview5,textview6,textview7,textview8,textview9,textview10"
+        app:flow_horizontalGap="16dp"
+        app:flow_maxElementsWrap="5"
+        app:flow_verticalGap="16dp"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flow_vertical_example" />
+
+    <TextView
+        android:id="@+id/textview11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red_200"
+        android:padding="10dp"
+        android:text="One"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="Two"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/green_200"
+        android:padding="10dp"
+        android:text="Three"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:padding="10dp"
+        android:text="Four"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red_200"
+        android:padding="10dp"
+        android:text="Five"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="Six"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/green_200"
+        android:padding="10dp"
+        android:text="Seven"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:padding="10dp"
+        android:text="Eight"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red_200"
+        android:padding="10dp"
+        android:text="Nine"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/textview20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="Ten"
+        android:textAlignment="center" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow_vertical_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="textview11,textview12,textview13,textview14,textview15,textview16,textview17,textview18,textview19,textview20"
+        app:flow_maxElementsWrap="5"
+        app:flow_verticalGap="16dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintBottom_toTopOf="@+id/flow_horizontal_example"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
