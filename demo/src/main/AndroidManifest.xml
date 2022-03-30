@@ -450,6 +450,18 @@
             android:name=".features.positioning.ComposableHorizontalLinearLayoutActivity"
             android:exported="false" />
 
+        <!-- Theme -->
+
+        <activity
+            android:name=".features.theme.AndroidUIThemeActivity"
+            android:exported="false"
+            android:theme="@style/ExampleTheme" />
+
+        <activity
+            android:name=".features.theme.ComposableThemeActivity"
+            android:exported="false"
+            android:theme="@style/ExampleTheme" />
+
         <!-- Toolbar -->
 
         <activity

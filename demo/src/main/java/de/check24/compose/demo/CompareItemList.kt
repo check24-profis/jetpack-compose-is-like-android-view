@@ -76,6 +76,8 @@ import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
+import de.check24.compose.demo.features.theme.AndroidUIThemeActivity
+import de.check24.compose.demo.features.theme.ComposableThemeActivity
 import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
 import de.check24.compose.demo.features.viewpager.ComposableViewPagerActivity
 
@@ -389,6 +391,18 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableHorizontalLinearLayoutActivity::class.java,
             androidUIActivity = AndroidUIHorizontalLinearLayoutActivity::class.java,
             headline = "LinearLayout (Horizontal)"
+        )
+    )
+
+    // endregion
+
+    // region theme
+
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableThemeActivity::class.java,
+            androidUIActivity = AndroidUIThemeActivity::class.java,
+            headline = "Theme"
         )
     )
 
