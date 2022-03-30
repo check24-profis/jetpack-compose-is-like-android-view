@@ -1,3 +1,5 @@
+// colour
+
 val exampleColors: Colors
     get() = lightColors(
         primary = Color(0xFF862A8A),
@@ -17,6 +19,8 @@ val exampleColors: Colors
         background = Color(0xFCEFEFF3),
         onBackground = Color(0xFFFFFFFF)
     )
+
+// font style
 
 val exampleTypography: Typography
     get() = Typography(
@@ -100,6 +104,8 @@ val exampleTypography: Typography
         )
     )
 
+// shapes
+
 val exampleShapes: Shapes
     get() = Shapes(
         small = RoundedCornerShape(0.dp),
@@ -126,7 +132,7 @@ fun ExampleThemeDemo() {
     }
 }
 
-// also can add to manifest
+// also addable to manifest
 
 &lt;activity
     android:name=".features.theme.ComposableThemeActivity"

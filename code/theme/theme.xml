@@ -1,3 +1,5 @@
+    &lt;!-- allocation of colour and style and shape --&gt;
+
 &lt;style name="ExampleTheme" parent="Theme.AppCompat"&gt;
     &lt;item name="colorPrimary"&gt;#862A8A&lt;/item&gt;
     &lt;item name="colorPrimaryVariant"&gt;#C280D5&lt;/item&gt;
@@ -36,7 +38,7 @@
 
 &lt;/style&gt;
 
-// fontstyles
+    &lt;!-- font style --&gt;
 
 &lt;resources&gt;
     &lt;style name="h1" parent="TextAppearance.MaterialComponents.Headline1"&gt;
@@ -137,7 +139,7 @@
     &lt;color name="shared_cool_grey_3"&gt;#333333&lt;/color&gt;
 &lt;/resources&gt;
 
-// shape styles
+    &lt;!-- shape styles --&gt;
 
 &lt;resources&gt;
 &lt;style name="small" parent="ShapeAppearance.MaterialComponents.SmallComponent"&gt;
@@ -156,7 +158,7 @@
 &lt;/style&gt;
 &lt;/resources&gt;
 
-// in manifest
+    &lt;!-- in manifest --&gt;
 
 &lt;activity
     android:name=".features.theme.AndroidUIThemeActivity"
