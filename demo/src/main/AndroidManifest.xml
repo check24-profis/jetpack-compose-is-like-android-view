@@ -462,6 +462,17 @@
             android:exported="false"
             android:theme="@style/ExampleTheme" />
 
+        <!-- Flow -->
+
+        <activity
+            android:name=".features.positioning.AndroidUIFlowActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableFlowActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
