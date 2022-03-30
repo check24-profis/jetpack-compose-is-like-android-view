@@ -96,6 +96,10 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/list/ListWithDifferentViews.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/list/ListWithDifferentViews.xml)
       .case (.name "Grid") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/list/Grid.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/list/Grid.xml)
+      .case (.name "Custom Fixed Grid") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/list/CustomFixedGrid.kt)
       .case (.name "Staggered") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/list/StaggeredVerticalGrid.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/list/StaggeredVerticalGrid.xml)
@@ -146,6 +150,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/container/BottomAppBar.xml)
       .case (.name "Toolbar") $ .pair
       .case (.name "TabLayout") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/TabLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/TabLayout.xml)
       .case (.name "TabItem") $ .pair
       .case (.name "FragmentContainer") $ .pair
       .case (.name "NavHost") $ .pair
@@ -179,9 +185,15 @@ html
     .section
       .title "Positioning"
       .case (.name "ConstraintLayout") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/ConstraintLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/ConstraintLayout.xml)
       .case (.name "Flow") $ .pair
       .case (.name "LinearLayout (Vertical)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.xml)
       .case (.name "LinearLayout (Horizontal)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.xml)
       .case (.name "GridLayout") $ .pair
       .case (.name "FrameLayout") $ .pair
 

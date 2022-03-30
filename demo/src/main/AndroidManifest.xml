@@ -373,6 +373,17 @@
             android:name="de.check24.compose.demo.features.custom.ComposableGoogleMapActivity"
             android:exported="false" />
 
+        <!-- Tab Layout -->
+
+        <activity
+            android:name=".features.tablayout.AndroidUITabLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.tablayout.ComposableTabLayoutActivity"
+            android:exported="false" />
+
         <!-- Frame Layout -->
 
         <activity
@@ -384,6 +395,17 @@
             android:name=".features.framelayout.ComposableFrameLayoutActivity"
             android:exported="false" />
 
+        <!-- Grid -->
+
+        <activity
+            android:name=".features.list.grid.AndroidUIGridActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.list.grid.ComposableGridActivity"
+            android:exported="false" />
+
         <!-- App Bar Layout -->
 
         <activity
@@ -393,6 +415,39 @@
 
         <activity
             android:name=".features.appbarlayout.ComposableAppBarLayoutActivity"
+            android:exported="false" />
+
+        <!-- ConstraintLayout Positioning-->
+
+        <activity
+            android:name=".features.positioning.AndroidUIConstraintLayoutPositioningActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableConstraintLayoutPositioningActivity"
+            android:exported="false" />
+
+        <!-- LinearLayout Vertical -->
+
+        <activity
+            android:name=".features.positioning.AndroidUIVerticalLinearLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableVerticalLinearLayoutActivity"
+            android:exported="false" />
+
+        <!-- LinearLayout Horizontal -->
+
+        <activity
+            android:name=".features.positioning.AndroidUIHorizontalLinearLayoutActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableHorizontalLinearLayoutActivity"
             android:exported="false" />
 
         <!-- Theme -->

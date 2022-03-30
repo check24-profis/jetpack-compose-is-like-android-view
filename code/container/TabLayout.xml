@@ -1,0 +1,14 @@
+&lt;com.google.android.material.tabs.TabLayout
+    android:id="@+id/tab_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" /&gt;
+
+// in activity
+
+var binding: TabLayoutBinding? = TabLayoutBinding.inflate(layoutInflater)
+
+binding?.tabLayout?.apply {
+    addTab(newTab().setText("A"))
+    addTab(newTab().setText("B"))
+    addTab(newTab().setText("C"))
+}
