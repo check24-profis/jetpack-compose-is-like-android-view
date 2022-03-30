@@ -11,6 +11,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
+import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -25,9 +26,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
+import de.check24.compose.demo.theme.Purple500
 
 class ComposableTabItemActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,7 +89,10 @@ private fun IconTabs() {
         Icons.Filled.AccountBox,
         Icons.Filled.Settings,
     )
-    TabRow(selectedTabIndex = tabIndex) {
+    TabRow(
+        selectedTabIndex = tabIndex,
+        backgroundColor = Color.White
+    ) {
         tabData.forEachIndexed { index, icon ->
             Tab(selected = tabIndex == index, onClick = {
                 tabIndex = index
@@ -105,7 +112,10 @@ private fun TextTabs() {
         "FILMS",
         "BOOKS",
     )
-    TabRow(selectedTabIndex = tabIndex) {
+    TabRow(
+        selectedTabIndex = tabIndex,
+        backgroundColor = Color.White
+    ) {
         tabData.forEachIndexed { index, text ->
             Tab(selected = tabIndex == index, onClick = {
                 tabIndex = index
@@ -125,7 +135,10 @@ private fun IconAndTextTabs() {
         "FILMS" to Icons.Filled.AccountBox,
         "BOOKS" to Icons.Filled.Settings,
     )
-    TabRow(selectedTabIndex = tabIndex) {
+    TabRow(
+        selectedTabIndex = tabIndex,
+        backgroundColor = Color.White,
+    ) {
         tabData.forEachIndexed { index, pair ->
             Tab(selected = tabIndex == index, onClick = {
                 tabIndex = index
