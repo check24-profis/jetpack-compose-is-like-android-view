@@ -29,7 +29,6 @@ import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Green200
 import de.check24.compose.demo.theme.Orange200
 import de.check24.compose.demo.theme.Red200
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class ComposableFlowActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,7 +122,6 @@ private fun TextViews() {
     var colorIterator = 0
 
     for (i in 0..9) {
-
         Text(
             modifier = Modifier
                 .background(colorList[colorIterator])
@@ -134,8 +132,6 @@ private fun TextViews() {
         colorIterator++
         if (colorIterator >= 4) colorIterator = 0
     }
-
-
 }
 
 @Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
