@@ -1,0 +1,28 @@
+    &lt;!-- XML Code --&gt;
+    &lt;com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_item_icons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;!-- Code --&gt;
+
+    binding.tabItemText.apply {
+        addTab(newTab().setText("MUSIC"))
+        addTab(newTab().setText("MARKET"))
+        addTab(newTab().setText("FILMS"))
+        addTab(newTab().setText("BOOKS"))
+    }
+
+    binding.tabItemIcons.apply {
+        addTab(newTab().setIcon(R.drawable.ic_baseline_save_24))
+        addTab(newTab().setIcon(R.drawable.ic_baseline_date_range))
+        addTab(newTab().setIcon(R.drawable.ic_baseline_favorite_24))
+        addTab(newTab().setIcon(R.drawable.ic_baseline_cloud_download_24))
+    }
+
+    binding.tabItemTextAndIcons.apply {
+        addTab(newTab().setText("MUSIC").setIcon(R.drawable.ic_baseline_save_24))
+        addTab(newTab().setText("MARKET").setIcon(R.drawable.ic_baseline_date_range))
+        addTab(newTab().setText("FILMS").setIcon(R.drawable.ic_baseline_favorite_24))
+        addTab(newTab().setText("BOOKS").setIcon(R.drawable.ic_baseline_cloud_download_24))
+    }

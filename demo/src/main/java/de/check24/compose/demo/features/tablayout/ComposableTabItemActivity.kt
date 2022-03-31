@@ -11,7 +11,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Tab
 import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -27,11 +26,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
-import de.check24.compose.demo.theme.Purple500
 
 class ComposableTabItemActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,31 +62,36 @@ private fun TabItemExample() {
         Row(
             verticalAlignment = Alignment.CenterVertically,
 
-        ) {
-            TextTabs()
+            ) {
+            TextTabs(listOf("MUSIC", "MARKET", "FILMS", "BOOKS"))
         }
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconTabs()
+            IconTabs(listOf(
+                Icons.Filled.Home,
+                Icons.Filled.ShoppingCart,
+                Icons.Filled.AccountBox,
+                Icons.Filled.Settings,
+            ))
         }
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconAndTextTabs()
+            IconAndTextTabs(listOf(
+                "MUSIC" to Icons.Filled.Home,
+                "MARKET" to Icons.Filled.ShoppingCart,
+                "FILMS" to Icons.Filled.AccountBox,
+                "BOOKS" to Icons.Filled.Settings,
+            ))
         }
     }
 }
 
 @Composable
-private fun IconTabs() {
+private fun IconTabs(tabData: List<ImageVector>) {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabData = listOf(
-        Icons.Filled.Home,
-        Icons.Filled.ShoppingCart,
-        Icons.Filled.AccountBox,
-        Icons.Filled.Settings,
-    )
+
     TabRow(
         selectedTabIndex = tabIndex,
         backgroundColor = Color.White
@@ -104,14 +107,9 @@ private fun IconTabs() {
 }
 
 @Composable
-private fun TextTabs() {
+private fun TextTabs(tabData: List<String>) {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabData = listOf(
-        "MUSIC",
-        "MARKET",
-        "FILMS",
-        "BOOKS",
-    )
+
     TabRow(
         selectedTabIndex = tabIndex,
         backgroundColor = Color.White
@@ -127,14 +125,9 @@ private fun TextTabs() {
 }
 
 @Composable
-private fun IconAndTextTabs() {
+private fun IconAndTextTabs(tabData: List<Pair<String, ImageVector>>) {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabData = listOf(
-        "MUSIC" to Icons.Filled.Home,
-        "MARKET" to Icons.Filled.ShoppingCart,
-        "FILMS" to Icons.Filled.AccountBox,
-        "BOOKS" to Icons.Filled.Settings,
-    )
+
     TabRow(
         selectedTabIndex = tabIndex,
         backgroundColor = Color.White,
