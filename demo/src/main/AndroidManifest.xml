@@ -462,6 +462,17 @@
             android:exported="false"
             android:theme="@style/ExampleTheme" />
 
+        <!-- TabItem -->
+
+        <activity
+            android:name=".features.tablayout.AndroidUITabItemActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.tablayout.ComposableTabItemActivity"
+            android:exported="false" />
+
         <!-- Flow -->
 
         <activity
