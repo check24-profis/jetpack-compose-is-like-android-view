@@ -6,7 +6,7 @@ fun BottomAppBarExample() {
         BottomBarScreen.Download
     )
 
-    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
+    var currentScreen by remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
 
     Scaffold(
         topBar = {
@@ -17,7 +17,10 @@ fun BottomAppBarExample() {
             )
         },
         bottomBar = {
-            BottomAppBarDetails(screens, currentScreen)
+            BottomAppBarDetails(screens, currentScreen) {
+                    screen ->
+                currentScreen = screen
+            }
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
@@ -25,7 +28,7 @@ fun BottomAppBarExample() {
             FloatingActionButtonDetails()
         },
     ) {
-        when (currentScreen.value) {
+        when (currentScreen) {
             BottomBarScreen.Favorite -> FavoriteScreen()
             BottomBarScreen.Download -> DownloadScreen()
         }
@@ -33,9 +36,10 @@ fun BottomAppBarExample() {
 }
 
 @Composable
-fun BottomAppBarDetails(
+private fun BottomAppBarDetails(
     screens: List<BottomBarScreen>,
-    currentScreen: MutableState<BottomBarScreen>
+    currentScreen: BottomBarScreen,
+    onClick : (BottomBarScreen) -> Unit
 ) {
     BottomAppBar(cutoutShape = CircleShape) {
         screens.forEach { screen ->
@@ -47,9 +51,9 @@ fun BottomAppBarDetails(
                         contentDescription = "Navigation Icon"
                     )
                 },
-                selected = screen == currentScreen.value,
+                selected = screen == currentScreen,
                 onClick = {
-                    currentScreen.value = screen
+                    onClick(screen)
                 },
                 alwaysShowLabel = false
             )
@@ -58,7 +62,7 @@ fun BottomAppBarDetails(
 }
 
 @Composable
-fun FloatingActionButtonDetails() {
+private fun FloatingActionButtonDetails() {
     FloatingActionButton(
         shape = CircleShape,
         onClick = { /* your code */ }

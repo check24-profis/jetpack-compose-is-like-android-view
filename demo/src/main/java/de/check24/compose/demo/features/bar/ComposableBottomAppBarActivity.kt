@@ -17,7 +17,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -96,7 +95,7 @@ private fun BottomAppBarExample() {
 private fun BottomAppBarDetails(
     screens: List<BottomBarScreen>,
     currentScreen: BottomBarScreen,
-    newScreen : (BottomBarScreen) -> Unit
+    onClick : (BottomBarScreen) -> Unit
 ) {
     BottomAppBar(cutoutShape = CircleShape) {
         screens.forEach { screen ->
@@ -110,7 +109,7 @@ private fun BottomAppBarDetails(
                 },
                 selected = screen == currentScreen,
                 onClick = {
-                    newScreen(screen)
+                    onClick(screen)
                 },
                 alwaysShowLabel = false
             )
