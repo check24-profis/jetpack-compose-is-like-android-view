@@ -68,7 +68,9 @@ import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
+import de.check24.compose.demo.features.tablayout.AndroidUITabItemActivity
 import de.check24.compose.demo.features.tablayout.AndroidUITabLayoutActivity
+import de.check24.compose.demo.features.tablayout.ComposableTabItemActivity
 import de.check24.compose.demo.features.tablayout.ComposableTabLayoutActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
@@ -338,6 +340,13 @@ internal val compareItemList: List<CompareItem> by lazy {
     )
     compareItems.add(
         CompareItem(
+            composeActivity = ComposableTabItemActivity::class.java,
+            androidUIActivity = AndroidUITabItemActivity::class.java,
+            headline = "TabItem"
+        )
+    )
+    compareItems.add(
+        CompareItem(
             composeActivity = ComposableToolbarActivity::class.java,
             androidUIActivity = AndroidUIToolbarActivity::class.java,
             headline = "Toolbar"
@@ -391,6 +400,20 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableHorizontalLinearLayoutActivity::class.java,
             androidUIActivity = AndroidUIHorizontalLinearLayoutActivity::class.java,
             headline = "LinearLayout (Horizontal)"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableGridActivity::class.java,
+            androidUIActivity = AndroidUIGridActivity::class.java,
+            headline = "GridLayout"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableFrameLayoutActivity::class.java,
+            androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
+            headline = "FrameLayout Positioning"
         )
     )
 
