@@ -8,7 +8,7 @@
         android:id="@+id/textview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/red_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="One"
         android:textAlignment="center" />
@@ -17,7 +17,7 @@
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Two"
         android:textAlignment="center" />
@@ -26,7 +26,7 @@
         android:id="@+id/textview3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/green_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Three"
         android:textAlignment="center" />
@@ -35,7 +35,7 @@
         android:id="@+id/textview4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/blue_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Four"
         android:textAlignment="center" />
@@ -44,7 +44,7 @@
         android:id="@+id/textview5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/red_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Five"
         android:textAlignment="center" />
@@ -53,7 +53,7 @@
         android:id="@+id/textview6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Six"
         android:textAlignment="center" />
@@ -62,7 +62,7 @@
         android:id="@+id/textview7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/green_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Seven"
         android:textAlignment="center" />
@@ -71,7 +71,7 @@
         android:id="@+id/textview8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/blue_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Eight"
         android:textAlignment="center" />
@@ -80,7 +80,7 @@
         android:id="@+id/textview9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/red_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Nine"
         android:textAlignment="center" />
@@ -89,7 +89,7 @@
         android:id="@+id/textview10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Ten"
         android:textAlignment="center" />
@@ -115,7 +115,7 @@
         android:id="@+id/textview11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/red_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="One"
         android:textAlignment="center" />
@@ -124,7 +124,7 @@
         android:id="@+id/textview12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Two"
         android:textAlignment="center" />
@@ -133,7 +133,7 @@
         android:id="@+id/textview13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/green_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Three"
         android:textAlignment="center" />
@@ -142,7 +142,7 @@
         android:id="@+id/textview14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/blue_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Four"
         android:textAlignment="center" />
@@ -151,7 +151,7 @@
         android:id="@+id/textview15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/red_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Five"
         android:textAlignment="center" />
@@ -160,7 +160,7 @@
         android:id="@+id/textview16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Six"
         android:textAlignment="center" />
@@ -169,7 +169,7 @@
         android:id="@+id/textview17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/green_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Seven"
         android:textAlignment="center" />
@@ -178,7 +178,7 @@
         android:id="@+id/textview18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/blue_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Eight"
         android:textAlignment="center" />
@@ -187,7 +187,7 @@
         android:id="@+id/textview19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/red_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Nine"
         android:textAlignment="center" />
@@ -196,7 +196,7 @@
         android:id="@+id/textview20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange_200"
+        android:background="@color/purple_200"
         android:padding="10dp"
         android:text="Ten"
         android:textAlignment="center" />
