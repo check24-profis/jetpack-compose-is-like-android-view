@@ -5,7 +5,7 @@
 fun ActionChip(
     name: String = "Action Chip",
     icon: ImageVector? = null,
-    value: ((String) -> String)? = null
+    onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
     val modifier = if (icon == null) {
@@ -25,14 +25,14 @@ fun ActionChip(
                     value = isSelected,
                     onValueChange = {
                         isSelected = !isSelected
-                        if (isSelected) value?.invoke(name)
+                        onToggle?.invoke(name)
                     }
                 )
         ) {
             if (icon != null) {
                 Icon(
                     icon,
-                    "",
+                    "Icon",
                     tint = if (isSelected) Green else Red,
                     modifier = Modifier
                         .padding(horizontal = 4.dp)
@@ -43,7 +43,6 @@ fun ActionChip(
             Text(
                 text = name,
                 color = if (isSelected) Purple500 else Gray700,
-                fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = modifier
             )
