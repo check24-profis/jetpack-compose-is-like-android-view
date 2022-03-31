@@ -473,6 +473,17 @@
             android:name=".features.tablayout.ComposableTabItemActivity"
             android:exported="false" />
 
+        <!-- Input Text -->
+
+        <activity
+            android:name=".features.text.AndroidUITextInputActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableTextInputActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
