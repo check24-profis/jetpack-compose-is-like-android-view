@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Colors
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -27,6 +28,7 @@ import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.MyLocation
+import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
@@ -93,7 +96,8 @@ private fun ChipExample() {
 fun ActionChip(
     name: String = "Action Chip",
     icon: ImageVector? = null,
-    value: ((String) -> String)? = null
+
+    onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
     val modifier = if (icon == null) {
@@ -113,7 +117,7 @@ fun ActionChip(
                     value = isSelected,
                     onValueChange = {
                         isSelected = !isSelected
-                        if (isSelected) value?.invoke(name)
+                        if (isSelected) onToggle?.invoke(name)
                     }
                 )
         ) {
@@ -131,7 +135,6 @@ fun ActionChip(
             Text(
                 text = name,
                 color = if (isSelected) Purple500 else Gray700,
-                fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = modifier
             )
@@ -142,7 +145,7 @@ fun ActionChip(
 @Composable
 private fun OutlinedActionChip(
     name: String = "Outlined Chip",
-    value: ((String) -> String)? = null
+    onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -165,14 +168,13 @@ private fun OutlinedActionChip(
                     value = isSelected,
                     onValueChange = {
                         isSelected = !isSelected
-                        if (isSelected) value?.invoke(name)
+                        if (isSelected) onToggle?.invoke(name)
                     }
                 )
         ) {
             Text(
                 text = name,
                 color = if (isSelected) Purple500 else Gray800,
-                fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
                     .padding(horizontal = 12.dp)
@@ -220,7 +222,6 @@ fun InputChip(
                 Text(
                     text = name,
                     color = Gray700,
-                    fontSize = 14.sp,
                     style = MaterialTheme.typography.body2,
                     modifier = modifier
                 )
@@ -245,7 +246,7 @@ fun InputChip(
 private fun ChipWithToggleIcon(
     name: String = "Chip With toggleable Icon",
     icon: ImageVector = Icons.Default.Check,
-    value: ((String) -> String)? = null
+    onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -262,7 +263,7 @@ private fun ChipWithToggleIcon(
                     value = isSelected,
                     onValueChange = {
                         isSelected = !isSelected
-                        value?.invoke(name)
+                        onToggle?.invoke(name)
                     }
                 )
         ) {
@@ -278,7 +279,6 @@ private fun ChipWithToggleIcon(
             Text(
                 text = name,
                 color = if (isSelected) Gray800 else Gray700,
-                fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier
                     .padding(
@@ -295,7 +295,7 @@ fun ActionChipSingleSelection(
     selectedChip: String,
     currentItem: String,
     onToggle: () -> Unit,
-    value: ((String) -> String)? = null
+    value: ((String) -> Unit)? = null
 ) {
     Surface(
         modifier = Modifier.padding(4.dp),
@@ -318,7 +318,6 @@ fun ActionChipSingleSelection(
                 color = if (selectedChip == currentItem) colorResource(id = R.color.purple_500) else colorResource(
                     id = R.color.gray_700
                 ),
-                fontSize = 14.sp,
                 style = MaterialTheme.typography.body2,
                 modifier = Modifier.padding(horizontal = 12.dp)
             )
@@ -331,5 +330,37 @@ fun ActionChipSingleSelection(
 private fun ChipPreview() {
     DemoTheme {
         ChipExample()
+    }
+}
+
+@Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
+@Composable
+private fun ActionChipPreview() {
+    DemoTheme {
+        ActionChip()
+    }
+}
+
+@Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
+@Composable
+private fun InputChipPreview() {
+    DemoTheme {
+        InputChip()
+    }
+}
+
+@Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
+@Composable
+private fun OutlinedChipPreview() {
+    DemoTheme {
+        OutlinedActionChip()
+    }
+}
+
+@Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
+@Composable
+private fun ToggleChipPreview() {
+    DemoTheme {
+        ChipWithToggleIcon()
     }
 }
