@@ -462,6 +462,17 @@
             android:exported="false"
             android:theme="@style/ExampleTheme" />
 
+        <!-- Input Text -->
+
+        <activity
+            android:name=".features.text.AndroidUITextInputActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableTextInputActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
