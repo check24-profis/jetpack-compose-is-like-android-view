@@ -73,9 +73,11 @@ import de.check24.compose.demo.features.tablayout.ComposableTabLayoutActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
 import de.check24.compose.demo.features.text.AndroidUITextInputActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
+import de.check24.compose.demo.features.text.AndroidUINumberActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
+import de.check24.compose.demo.features.text.ComposableNumberActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.features.text.ComposableTextInputActivity
 import de.check24.compose.demo.features.theme.AndroidUIThemeActivity
@@ -163,6 +165,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableTextInputActivity::class.java,
             androidUIActivity = AndroidUITextInputActivity::class.java,
             headline = "Text Input"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableNumberActivity::class.java,
+            androidUIActivity = AndroidUINumberActivity::class.java,
+            headline = "Number"
         )
     )
 
