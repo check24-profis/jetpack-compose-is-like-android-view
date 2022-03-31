@@ -59,6 +59,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/AutoComplete.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/AutoComplete.xml)
       .case (.name "Text Input") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextInput.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextInput.xml)
 
     .section
       .title "Button"
