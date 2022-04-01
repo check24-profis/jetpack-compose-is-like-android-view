@@ -473,6 +473,50 @@
             android:name=".features.tablayout.ComposableTabItemActivity"
             android:exported="false" />
 
+        <!-- Input Text -->
+
+        <activity
+            android:name=".features.text.AndroidUITextInputActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableTextInputActivity"
+            android:exported="false" />
+
+        <!-- Number Decimal -->
+
+        <activity
+            android:name=".features.text.AndroidUINumberDecimalActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableNumberDecimalActivity"
+            android:exported="false" />
+
+        <!-- Number Signed -->
+
+        <activity
+            android:name=".features.text.AndroidUINumberSignedActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableNumberSignedActivity"
+            android:exported="false" />
+
+        <!-- Number -->
+
+        <activity
+            android:name=".features.text.AndroidUINumberActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableNumberActivity"
+            android:exported="false" />
+
         <!-- Flow -->
 
         <activity
