@@ -212,6 +212,12 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
     .section
       .title "States"
+      .case (.name "Observable types") $ .pair
+      .case (.name "Bundle objects") $ .pair
+      .case (.name "Stateful") $ .pair
+      .case (.name "Stateless with hoisting") $ .pair
+      .case (.name "State holder") $ .pair
+      .case (.name "ViewModel") $ .pair
 
     .section
       .title "Events"
