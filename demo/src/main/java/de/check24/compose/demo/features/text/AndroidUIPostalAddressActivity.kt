@@ -1,6 +1,7 @@
 package de.check24.compose.demo.features.text
 
 import android.os.Bundle
+import android.text.InputType
 import androidx.appcompat.app.AppCompatActivity
 import de.check24.compose.demo.R
 
