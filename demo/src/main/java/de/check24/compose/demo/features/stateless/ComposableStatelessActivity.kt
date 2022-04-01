@@ -3,6 +3,8 @@ package de.check24.compose.demo.features.stateless
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
@@ -12,6 +14,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import de.check24.compose.demo.theme.DemoTheme
@@ -34,18 +38,22 @@ class ComposableStatelessActivity : ComponentActivity() {
 }
 
 @Composable
-private fun StatelessExample(){
+private fun StatelessExample() {
 
-    var isClicked by remember{mutableStateOf(false)}
+    // the parent manages the state of the child
+    var isClicked by remember { mutableStateOf(false) }
 
-    MySwitch(isClicked = isClicked)
+    MySwitch(isClicked = isClicked) {
+        // StatelessExample manages the state of MySwitch through an event
+        isClicked = !isClicked
+    }
 }
 
 @Composable
-private fun MySwitch(isClicked: Boolean, onToggle : () -> Unit) {
+private fun MySwitch(isClicked: Boolean, onToggle: () -> Unit) {
     Switch(
         checked = isClicked,
-        onCheckedChange = {onToggle}
+        onCheckedChange = { onToggle() }
     )
 }
 
