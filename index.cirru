@@ -53,12 +53,20 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewDate.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewDate.xml)
       .case (.name "Number") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/Number.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/Number.xml)
       .case (.name "Number (Signed)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/NumberSigned.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/NumberSigned.xml)
       .case (.name "Number (Decimal)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/NumberDecimal.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/NumberDecimal.xml)
       .case (.name "Auto Complete") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/AutoComplete.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/AutoComplete.xml)
       .case (.name "Text Input") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextInput.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextInput.xml)
 
     .section
       .title "Button"

@@ -73,11 +73,19 @@ import de.check24.compose.demo.features.tablayout.AndroidUITabLayoutActivity
 import de.check24.compose.demo.features.tablayout.ComposableTabItemActivity
 import de.check24.compose.demo.features.tablayout.ComposableTabLayoutActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
+import de.check24.compose.demo.features.text.AndroidUITextInputActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
+import de.check24.compose.demo.features.text.AndroidUINumberDecimalActivity
+import de.check24.compose.demo.features.text.AndroidUINumberActivity
+import de.check24.compose.demo.features.text.AndroidUINumberSignedActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
+import de.check24.compose.demo.features.text.ComposableNumberDecimalActivity
+import de.check24.compose.demo.features.text.ComposableNumberActivity
+import de.check24.compose.demo.features.text.ComposableNumberSignedActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
+import de.check24.compose.demo.features.text.ComposableTextInputActivity
 import de.check24.compose.demo.features.theme.AndroidUIThemeActivity
 import de.check24.compose.demo.features.theme.ComposableThemeActivity
 import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
@@ -156,6 +164,34 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableTimeActivity::class.java,
             androidUIActivity = AndroidUITimeActivity::class.java,
             headline = "Time"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableTextInputActivity::class.java,
+            androidUIActivity = AndroidUITextInputActivity::class.java,
+            headline = "Text Input"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableNumberSignedActivity::class.java,
+            androidUIActivity = AndroidUINumberSignedActivity::class.java,
+            headline = "Number Signed"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableNumberActivity::class.java,
+            androidUIActivity = AndroidUINumberActivity::class.java,
+            headline = "Number"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableNumberDecimalActivity::class.java,
+            androidUIActivity = AndroidUINumberDecimalActivity::class.java,
+            headline = "Number Decimal"
         )
     )
 
