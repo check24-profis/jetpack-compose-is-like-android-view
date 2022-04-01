@@ -484,6 +484,17 @@
             android:name=".features.text.ComposableTextInputActivity"
             android:exported="false" />
 
+        <!-- Number Signed -->
+
+        <activity
+            android:name=".features.text.AndroidUINumberSignedActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableNumberSignedActivity"
+            android:exported="false" />
+
         <!-- Number -->
 
         <activity

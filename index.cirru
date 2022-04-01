@@ -56,6 +56,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/Number.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/Number.xml)
       .case (.name "Number (Signed)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/NumberSigned.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/text/NumberSigned.xml)
       .case (.name "Number (Decimal)") $ .pair
       .case (.name "Auto Complete") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/AutoComplete.kt)
