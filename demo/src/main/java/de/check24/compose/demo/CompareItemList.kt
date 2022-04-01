@@ -467,5 +467,10 @@ internal val compareItemList: List<CompareItem> by lazy {
 
     // endregion
 
+    // region states
+
+
+    // endregion
+
     compareItems
 }
