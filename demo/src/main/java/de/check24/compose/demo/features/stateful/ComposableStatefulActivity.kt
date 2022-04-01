@@ -66,5 +66,7 @@ private fun MySwitch() {
 @Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
 @Composable
 private fun StatefulExamplePreview() {
-
+    DemoTheme {
+        StatefulExample()
+    }
 }
