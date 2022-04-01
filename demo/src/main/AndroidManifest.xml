@@ -506,6 +506,17 @@
             android:name=".features.text.ComposableNumberSignedActivity"
             android:exported="false" />
 
+        <!-- Number -->
+
+        <activity
+            android:name=".features.text.AndroidUINumberActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableNumberActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
