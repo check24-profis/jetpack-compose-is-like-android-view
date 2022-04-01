@@ -484,6 +484,17 @@
             android:name=".features.text.ComposableTextInputActivity"
             android:exported="false" />
 
+        <!-- Number Decimal -->
+
+        <activity
+            android:name=".features.text.AndroidUINumberDecimalActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposableNumberDecimalActivity"
+            android:exported="false" />
+
         <!-- Number Signed -->
 
         <activity
