@@ -15,6 +15,13 @@ private fun MySwitch() {
     Switch(
         checked = isClicked,
         // the child manages its own state
-        onCheckedChange = { isClicked = !isClicked}
+        onCheckedChange = { isClicked = !isClicked }
+    )
+    Box(
+        modifier = Modifier
+            .size(150.dp)
+            .background(
+                if (isClicked) Green200 else Blue200
+            )
     )
 }
