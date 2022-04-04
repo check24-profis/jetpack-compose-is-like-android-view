@@ -23,6 +23,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Circle
@@ -34,7 +35,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -82,8 +85,8 @@ private fun ChipExample() {
     ) {
         ActionChip()
         OutlinedActionChip()
-        ActionChip("Chip With Icon", icon = Icons.Default.Circle)
-        InputChip(icon = Icons.Default.MyLocation)
+        ActionChip("Chip With Icon", icon = rememberVectorPainter(image = Icons.Default.Circle))
+        InputChip(icon = rememberVectorPainter(image = Icons.Default.MyLocation))
         ChipWithToggleIcon()
     }
 }
@@ -91,7 +94,7 @@ private fun ChipExample() {
 @Composable
 fun ActionChip(
     name: String = "Action Chip",
-    icon: ImageVector? = null,
+    icon: Painter? = null,
     onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
@@ -181,7 +184,7 @@ private fun OutlinedActionChip(
 @Composable
 fun InputChip(
     name: String = "Input Chip",
-    icon: ImageVector? = null,
+    icon: Painter? = null,
 ) {
 
     var isVisible by remember { mutableStateOf(true) }
@@ -240,7 +243,7 @@ fun InputChip(
 @Composable
 private fun ChipWithToggleIcon(
     name: String = "Chip With toggleable Icon",
-    icon: ImageVector = Icons.Default.Check,
+    icon: Painter = rememberVectorPainter(image = Icons.Default.Check),
     onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }

@@ -4,7 +4,7 @@
 @Composable
 fun ActionChip(
     name: String = "Action Chip",
-    icon: ImageVector? = null,
+    icon: Painter? = null,
     onToggle: ((String) -> Unit)? = null
 ) {
     var isSelected by remember { mutableStateOf(false) }
