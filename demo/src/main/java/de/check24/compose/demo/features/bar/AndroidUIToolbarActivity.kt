@@ -16,7 +16,6 @@ class AndroidUIToolbarActivity : AppCompatActivity() {
         setContentView(binding?.root)
         supportActionBar?.hide()
 
-
         binding?.toolbar?.setNavigationOnClickListener {
             onBackPressed()
         }
