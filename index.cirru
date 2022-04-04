@@ -157,6 +157,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/BottomAppBar.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/BottomAppBar.xml)
       .case (.name "Toolbar") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/Toolbar.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/Toolbar.xml)
       .case (.name "TabLayout") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/TabLayout.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/TabLayout.xml)
@@ -206,7 +208,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.xml)
       .case (.name "GridLayout") $ .pair
       .case (.name "FrameLayout") $ .pair
-
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/FrameLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
     .section
       .title "States"
       .case (.name "Observable types") $ .pair
