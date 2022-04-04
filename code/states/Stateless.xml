@@ -1,15 +1,15 @@
 &lt;!-- XML Code --&gt;
 
-&lt;Switch
-    android:id="@+id/switch_example"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/&gt;
+    &lt;Switch
+        android:id="@+id/switch_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/&gt;
 
-&lt;View
-    android:id="@+id/box"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:background="@color/blue_200"/&gt;
+    &lt;View
+        android:id="@+id/box"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/blue_200"/&gt;
 
     &lt;!-- Code--&gt;
 
