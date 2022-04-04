@@ -15,8 +15,10 @@ import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,7 +62,18 @@ class MyStateHolder() {
 }
 
 @Composable
-fun MyScreen(stateHolder: MyStateHolder) {
+private fun RememberMyStateHolder(
+    text: MutableState<String>,
+    isClicked: MutableState<Boolean>
+) {
+    // todo why don't we use just the function instead of creating another class which is given to the function? @Florian Taute
+}
+
+@Composable
+fun MyScreen() {
+
+    val stateHolder = RememberMyStateHolder()
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
