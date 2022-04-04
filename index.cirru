@@ -215,7 +215,11 @@ html
       .case (.name "Observable types") $ .pair
       .case (.name "Bundle objects") $ .pair
       .case (.name "Stateful") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateful.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateful.xml)
       .case (.name "Stateless with hoisting") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateless.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateless.xml)
       .case (.name "State holder") $ .pair
       .case (.name "ViewModel") $ .pair
 

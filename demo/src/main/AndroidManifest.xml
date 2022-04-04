@@ -550,6 +550,17 @@
             android:name=".features.card.ComposableCardActivity"
             android:exported="false" />
 
+        <!-- Stateless -->
+
+        <activity
+            android:name=".features.stateless.AndroidUIStatelessActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.stateless.ComposableStatelessActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
