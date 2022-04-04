@@ -517,6 +517,17 @@
             android:name=".features.text.ComposableNumberActivity"
             android:exported="false" />
 
+        <!-- Stateful -->
+
+        <activity
+            android:name=".features.stateful.AndroidUIStatefulActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.stateful.ComposableStatefulActivity"
+            android:exported="false" />
+
         <!-- Flow -->
 
         <activity
