@@ -292,8 +292,7 @@ private fun ChipWithToggleIcon(
 fun ActionChipSingleSelection(
     selectedChip: String,
     currentItem: String,
-    onToggle: () -> Unit,
-    value: ((String) -> Unit)? = null
+    onToggle: (String) -> Unit
 ) {
     Surface(
         modifier = Modifier.padding(4.dp),
@@ -307,8 +306,7 @@ fun ActionChipSingleSelection(
             modifier = Modifier
                 .height(32.dp)
                 .clickable {
-                    onToggle()
-                    value?.invoke(selectedChip)
+                    onToggle(currentItem)
                 }
         ) {
             Text(
