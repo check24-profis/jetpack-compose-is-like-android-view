@@ -539,6 +539,17 @@
             android:name=".features.stateless.ComposableStatelessActivity"
             android:exported="false" />
 
+        <!-- ViewModel -->
+
+        <activity
+            android:name=".features.viewmodel.AndroidUIViewModelActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.viewmodel.ComposableViewModelActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
