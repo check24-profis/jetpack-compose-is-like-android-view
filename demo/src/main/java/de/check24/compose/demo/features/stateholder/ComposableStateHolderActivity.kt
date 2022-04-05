@@ -62,11 +62,11 @@ class MyStateHolder() {
 }
 
 @Composable
-private fun RememberMyStateHolder(
-    text: MutableState<String>,
-    isClicked: MutableState<Boolean>
-) {
+private fun RememberMyStateHolder(){
     // todo why don't we use just the function instead of creating another class which is given to the function? @Florian Taute
+    val myStateHolder = MyStateHolder()
+    var text = myStateHolder.text
+    var isClicked = myStateHolder.isClicked
 }
 
 @Composable
