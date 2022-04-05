@@ -14,7 +14,7 @@ class MyViewModel : IMyViewModel {
     }
 }
 
-interface IMyViewModel {
+interface MyViewModelInterface {
     val number: MutableState<Int>
     val isClicked : MutableState<Boolean>
 
@@ -23,27 +23,27 @@ interface IMyViewModel {
 }
 
 @Composable
-fun MyScreen(myViewModel: IMyViewModel) {
+fun MyScreen(myViewModelInterface: MyViewModelInterface) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = myViewModel.number.toString(),
-            modifier = Modifier.clickable { myViewModel.onClick() }
+            text = myViewModelInterface.number.toString(),
+            modifier = Modifier.clickable { myViewModelInterface.onClick() }
         )
 
         Switch(
-            checked = myViewModel.isClicked.value,
-            onCheckedChange = { myViewModel.onToggle(it) }
+            checked = myViewModelInterface.isClicked.value,
+            onCheckedChange = { myViewModelInterface.onToggle(it) }
         )
 
         Box(
             modifier = Modifier
                 .size(100.dp)
                 .background(
-                    if (myViewModel.isClicked.value) Green200 else Blue200
+                    if (myViewModelInterface.isClicked.value) Green200 else Blue200
                 )
         )
     }
@@ -53,7 +53,7 @@ fun MyScreen(myViewModel: IMyViewModel) {
 @Composable
 private fun ViewModelExamplePreview() {
     DemoTheme {
-        val myViewModel = object:IMyViewModel{
+        val myViewModel = object:MyViewModelInterface{
             override val number: MutableState<Int>
                 get() = mutableStateOf(0)
             override val isClicked: MutableState<Boolean>
@@ -67,6 +67,6 @@ private fun ViewModelExamplePreview() {
                 isClicked.value = clicked
             }
         }
-        MyScreen(myViewModel = myViewModel)
+        MyScreen(myViewModelInterface = myViewModel)
     }
 }
