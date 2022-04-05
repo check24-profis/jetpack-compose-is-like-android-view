@@ -3,7 +3,9 @@ package de.check24.compose.demo
 import de.check24.compose.demo.features.appbarlayout.AndroidUIAppBarLayoutActivity
 import de.check24.compose.demo.features.appbarlayout.ComposableAppBarLayoutActivity
 import de.check24.compose.demo.features.bar.AndroidUIBottomAppBarActivity
+import de.check24.compose.demo.features.bar.AndroidUIToolbarActivity
 import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
+import de.check24.compose.demo.features.bar.ComposableToolbarActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
@@ -57,15 +59,19 @@ import de.check24.compose.demo.features.picker.AndroidUITimeActivity
 import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.positioning.AndroidUIConstraintLayoutPositioningActivity
+import de.check24.compose.demo.features.positioning.AndroidUIFlowActivity
 import de.check24.compose.demo.features.positioning.AndroidUIHorizontalLinearLayoutActivity
 import de.check24.compose.demo.features.positioning.AndroidUIVerticalLinearLayoutActivity
 import de.check24.compose.demo.features.positioning.ComposableConstraintLayoutPositioningActivity
+import de.check24.compose.demo.features.positioning.ComposableFlowActivity
 import de.check24.compose.demo.features.positioning.ComposableHorizontalLinearLayoutActivity
 import de.check24.compose.demo.features.positioning.ComposableVerticalLinearLayoutActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.stateful.AndroidUIStatefulActivity
 import de.check24.compose.demo.features.stateful.ComposableStatefulActivity
+import de.check24.compose.demo.features.stateless.AndroidUIStatelessActivity
+import de.check24.compose.demo.features.stateless.ComposableStatelessActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
 import de.check24.compose.demo.features.switch.ComposableSwitchActivity
 import de.check24.compose.demo.features.tablayout.AndroidUITabItemActivity
@@ -390,6 +396,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             headline = "TabItem"
         )
     )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableToolbarActivity::class.java,
+            androidUIActivity = AndroidUIToolbarActivity::class.java,
+            headline = "Toolbar"
+        )
+    )
 
     // endregion
 
@@ -454,6 +467,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             headline = "FrameLayout Positioning"
         )
     )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableFlowActivity::class.java,
+            androidUIActivity = AndroidUIFlowActivity::class.java,
+            headline = "Flow"
+        )
+    )
 
     // endregion
 
@@ -476,6 +496,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableStatefulActivity::class.java,
             androidUIActivity = AndroidUIStatefulActivity::class.java,
             headline = "Stateful"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableStatelessActivity::class.java,
+            androidUIActivity = AndroidUIStatelessActivity::class.java,
+            headline = "Stateless"
         )
     )
 

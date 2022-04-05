@@ -159,6 +159,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/BottomAppBar.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/BottomAppBar.xml)
       .case (.name "Toolbar") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/container/Toolbar.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/container/Toolbar.xml)
       .case (.name "TabLayout") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/TabLayout.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/TabLayout.xml)
@@ -200,6 +202,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/ConstraintLayout.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/positioning/ConstraintLayout.xml)
       .case (.name "Flow") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/Flow.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/positioning/Flow.xml)
       .case (.name "LinearLayout (Vertical)") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutVertical.xml)
@@ -207,14 +211,21 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/positioning/LinearLayoutHorizontal.xml)
       .case (.name "GridLayout") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/list/Grid.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/list/Grid.xml)
       .case (.name "FrameLayout") $ .pair
-
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/FrameLayout.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
     .section
       .title "States"
       .case (.name "Observable types") $ .pair
       .case (.name "Bundle objects") $ .pair
       .case (.name "Stateful") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateful.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateful.xml)
       .case (.name "Stateless with hoisting") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateless.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateless.xml)
       .case (.name "State holder") $ .pair
       .case (.name "ViewModel") $ .pair
 

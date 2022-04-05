@@ -528,6 +528,50 @@
             android:name=".features.stateful.ComposableStatefulActivity"
             android:exported="false" />
 
+        <!-- Toolbar -->
+
+        <activity
+            android:name=".features.bar.AndroidUIToolbarActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.bar.ComposableToolbarActivity"
+            android:exported="false" />
+
+        <!-- Card -->
+
+        <activity
+            android:name=".features.card.AndroidUICardActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.card.ComposableCardActivity"
+            android:exported="false" />
+
+        <!-- Stateless -->
+
+        <activity
+            android:name=".features.stateless.AndroidUIStatelessActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.stateless.ComposableStatelessActivity"
+            android:exported="false" />
+
+        <!-- Flow -->
+
+        <activity
+            android:name=".features.positioning.AndroidUIFlowActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.positioning.ComposableFlowActivity"
+            android:exported="false" />
+
         <activity
             android:name=".features.text.AndroidUIPostalAddressActivity"
             android:exported="false"

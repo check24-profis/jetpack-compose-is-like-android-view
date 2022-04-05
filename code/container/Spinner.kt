@@ -13,14 +13,12 @@ fun SpinnerExample() {
     var expanded by remember { mutableStateOf(false) }
     var cityname by remember { mutableStateOf("select a city") }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Row(
-        ) {
+        // The Row aligns text and icon
+        Row {
             Text(text = cityname, Modifier.clickable { expanded = !expanded })
             Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
             DropdownMenu(
