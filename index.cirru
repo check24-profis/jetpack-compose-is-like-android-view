@@ -227,6 +227,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateless.xml)
       .case (.name "State holder") $ .pair
       .case (.name "ViewModel") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/ViewModel.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/ViewModel.xml)
 
     .section
       .title "Events"

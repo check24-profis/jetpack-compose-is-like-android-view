@@ -1,0 +1,74 @@
+    &lt;!-- XML Code --&gt;
+&lt;TextView
+    android:id="@+id/textView"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@color/blue_200"
+    android:gravity="center"
+    android:clickable="true"
+    android:focusable="true" /&gt;
+
+&lt;Switch
+    android:id="@+id/viewModel_switch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;View
+    android:id="@+id/box_view"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/blue_200" /&gt;
+
+    &lt;!-- Code --&gt;
+
+class MyAndroidViewViewModel : ViewModel() {
+    var isClicked: Boolean = false
+    var number: Int = 0
+
+    fun onToggle() {
+        isClicked = !isClicked
+    }
+
+    fun onClick() {
+        number++
+    }
+}
+
+class AndroidUIViewModelActivity : AppCompatActivity() {
+
+    private var binding: ViewmodelBinding? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val viewModel: MyAndroidViewViewModel by viewModels()
+        super.onCreate(savedInstanceState)
+        binding = ViewmodelBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
+        supportActionBar?.title = "ViewModel"
+
+        setBackgroundColor(viewModel.isClicked, requireNotNull(binding?.boxView))
+        binding?.textView?.text = viewModel.number.toString()
+
+        binding?.viewModelSwitch?.setOnClickListener {
+            viewModel.onToggle()
+            setBackgroundColor(viewModel.isClicked, requireNotNull(binding?.boxView))
+        }
+
+        binding?.textView?.setOnClickListener {
+            viewModel.onClick()
+            binding?.textView?.text = viewModel.number.toString()
+        }
+    }
+
+    private fun setBackgroundColor(clicked: Boolean, boxView: View) {
+        if (clicked) {
+            boxView.setBackgroundResource(R.color.green_200)
+        } else {
+            boxView.setBackgroundResource(R.color.blue_200)
+        }
+    }
+}

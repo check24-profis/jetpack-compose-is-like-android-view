@@ -51,7 +51,7 @@ class ComposableViewModelActivity : ComponentActivity() {
         }
     }
 }
-/* the composable way */
+/* Google's composable way */
 
 // the ViewModel manages the states and the events
 // it also has access to the business logic and lives longer than the composable
@@ -105,7 +105,7 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
     }
 }
 
-/* with this way the preview works */
+/* the way how the preview works */
 interface IMyViewModel {
     val number: MutableState<Int>
     val isClicked : MutableState<Boolean>
