@@ -59,9 +59,11 @@ import de.check24.compose.demo.features.picker.AndroidUITimeActivity
 import de.check24.compose.demo.features.picker.ComposableDateActivity
 import de.check24.compose.demo.features.picker.ComposableTimeActivity
 import de.check24.compose.demo.features.positioning.AndroidUIConstraintLayoutPositioningActivity
+import de.check24.compose.demo.features.positioning.AndroidUIFlowActivity
 import de.check24.compose.demo.features.positioning.AndroidUIHorizontalLinearLayoutActivity
 import de.check24.compose.demo.features.positioning.AndroidUIVerticalLinearLayoutActivity
 import de.check24.compose.demo.features.positioning.ComposableConstraintLayoutPositioningActivity
+import de.check24.compose.demo.features.positioning.ComposableFlowActivity
 import de.check24.compose.demo.features.positioning.ComposableHorizontalLinearLayoutActivity
 import de.check24.compose.demo.features.positioning.ComposableVerticalLinearLayoutActivity
 import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
@@ -454,6 +456,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableFrameLayoutActivity::class.java,
             androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
             headline = "FrameLayout Positioning"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableFlowActivity::class.java,
+            androidUIActivity = AndroidUIFlowActivity::class.java,
+            headline = "Flow"
         )
     )
 
