@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,11 +18,11 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,12 +57,12 @@ class ComposableViewModelActivity : ComponentActivity() {
 // it also has access to the business logic and lives longer than the composable
 class MyViewModel : ViewModel(), IMyViewModel {
     // states
-    override var text = mutableStateOf("")
+    override var number = mutableStateOf(0)
     override var isClicked = mutableStateOf(false)
 
     // events
-    override fun onTextChanged(newText: String) {
-        text.value = newText
+    override fun onClick() {
+        number.value = number.value + 1
     }
     override fun onToggle(clicked: Boolean) {
         isClicked.value = clicked
@@ -75,10 +76,19 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        OutlinedTextField(
-            value = myViewModel.text.value,
-            onValueChange = { myViewModel.onTextChanged(it) },
-        )
+        Box(
+            modifier = Modifier
+            .background(Blue200)
+            .size(50.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                modifier = Modifier
+                    .clickable { myViewModel.onClick() },
+                textAlign = TextAlign.Center,
+                text = myViewModel.number.value.toString()
+            )
+        }
 
         Switch(
             checked = myViewModel.isClicked.value,
@@ -97,24 +107,23 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
 
 /* with this way the preview works */
 interface IMyViewModel {
-    val text: MutableState<String>
+    val number: MutableState<Int>
     val isClicked : MutableState<Boolean>
 
-    fun onTextChanged(newText: String)
+    fun onClick()
     fun onToggle(clicked: Boolean)
 }
 
 @Composable
-//fun MyScreen(myViewModel: MyViewModel = viewModel()) {
 fun MyScreen(myViewModel: IMyViewModel) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        OutlinedTextField(
-            value = myViewModel.text.value,
-            onValueChange = { myViewModel.onTextChanged(it) },
+        Text(
+            text = myViewModel.number.toString(),
+            modifier = Modifier.clickable { myViewModel.onClick() }
         )
 
         Switch(
@@ -137,13 +146,13 @@ fun MyScreen(myViewModel: IMyViewModel) {
 private fun ViewModelExamplePreview() {
     DemoTheme {
         val myViewModel = object:IMyViewModel{
-            override val text: MutableState<String>
-                get() = mutableStateOf("Hello World")
+            override val number: MutableState<Int>
+                get() = mutableStateOf(0)
             override val isClicked: MutableState<Boolean>
                 get() = mutableStateOf(false)
 
-            override fun onTextChanged(newText: String) {
-                text.value = newText
+            override fun onClick() {
+                number.value = number.value + 1
             }
 
             override fun onToggle(clicked: Boolean) {
