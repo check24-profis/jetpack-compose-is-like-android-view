@@ -1,0 +1,47 @@
+&lt;com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/top_app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"&gt;
+
+    &lt;com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarThemeExample"
+        app:menu="@menu/tool_bar_menu"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:title="Toolbar"
+        app:titleTextColor="@color/white"&gt;
+
+    &lt;/com.google.android.material.appbar.MaterialToolbar&gt;
+
+&lt;/com.google.android.material.appbar.AppBarLayout&gt;
+
+&lt;!-- menu data --&gt;
+
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+    
+    &lt;item android:id="@+id/toolbar_search" android:icon="@drawable/ic_baseline_search_24"
+        android:iconTint="@color/white" android:title="Search" app:showAsAction="ifRoom" /&gt;
+    
+    &lt;item 
+        android:id="@+id/first_option"
+        android:title="First Option" /&gt;
+    
+    &lt;item android:id="@+id/second_options"
+        android:title="Second Option" /&gt;
+    
+    &lt;item android:id="@+id/third_options"
+        android:title="Third Option" /&gt;
+
+&lt;/menu&gt;
+
+&lt;!-- code --&gt;
+
+binding?.toolbar?.setNavigationOnClickListener {
+    onBackPressed()
+}

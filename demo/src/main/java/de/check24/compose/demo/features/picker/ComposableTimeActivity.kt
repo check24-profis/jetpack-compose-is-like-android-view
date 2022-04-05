@@ -56,12 +56,7 @@ private fun TimeExample() {
                 text = timePicked,
                 modifier = Modifier
                     .clickable {
-                        showTimePicker(
-                            { time: String ->
-                                timePicked = time
-                            },
-                            activity
-                        )
+                        showTimePicker(activity = activity) { time: String -> timePicked = time}
                     },
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
@@ -71,8 +66,8 @@ private fun TimeExample() {
 }
 
 private fun showTimePicker(
-    time: (String) -> Unit,
-    activity: AppCompatActivity
+    activity: AppCompatActivity,
+    time: (String) -> Unit
 ) {
     val picker = MaterialTimePicker.Builder()
         .setTimeFormat(TimeFormat.CLOCK_24H)
