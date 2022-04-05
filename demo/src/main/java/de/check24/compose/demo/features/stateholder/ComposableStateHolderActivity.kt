@@ -9,27 +9,26 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Switch
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Devices
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.Blue200
 import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Green200
 
 class ComposableStateHolderActivity : ComponentActivity() {
-
-    private var myStateHolder: MyStateHolder = MyStateHolder()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +39,7 @@ class ComposableStateHolderActivity : ComponentActivity() {
                         TopAppBar(title = { Text(text = "State Holder") })
                     }
                 ) {
-                    MyScreen(stateHolder = myStateHolder)
+                    MyScreen()
                 }
             }
         }
@@ -53,48 +52,51 @@ class MyStateHolder() {
     var isClicked by mutableStateOf(false)
 
     // events
-    fun onTextChanged(newText: String) {
-        text = newText
+    fun onTextChanged(input: String) {
+        text = input
     }
+
     fun onToggle(clicked: Boolean) {
         isClicked = clicked
     }
 }
 
 @Composable
-private fun RememberMyStateHolder(){
-    // todo why don't we use just the function instead of creating another class which is given to the function? @Florian Taute
-    val myStateHolder = MyStateHolder()
-    var text = myStateHolder.text
-    var isClicked = myStateHolder.isClicked
-}
+fun rememberStateHolder(): MyStateHolder =
+    remember { MyStateHolder() }
 
 @Composable
-fun MyScreen() {
-
-    val stateHolder = RememberMyStateHolder()
+fun MyScreen(state: MyStateHolder = rememberStateHolder()) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        OutlinedTextField(
-            value = stateHolder.text,
-            onValueChange = { stateHolder.onTextChanged(it) },
+        TextField(
+            value = state.text,
+            onValueChange = { state.onTextChanged(it) },
         )
 
         Switch(
-            checked = stateHolder.isClicked,
-            onCheckedChange = { stateHolder.onToggle(it) }
+            checked = state.isClicked,
+            onCheckedChange = { state.onToggle(it) }
         )
 
         Box(
             modifier = Modifier
                 .size(100.dp)
                 .background(
-                    if (stateHolder.isClicked) Green200 else Blue200
+                    if (state.isClicked) Green200 else Blue200
                 )
         )
+    }
+}
+
+@Preview(showSystemUi = true, showBackground = true, device = Devices.PIXEL_4)
+@Composable
+private fun StateHolderExamplePreview() {
+    DemoTheme {
+        MyScreen()
     }
 }
