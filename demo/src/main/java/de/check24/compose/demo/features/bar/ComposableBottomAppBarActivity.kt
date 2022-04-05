@@ -17,8 +17,10 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -60,7 +62,7 @@ private fun BottomAppBarExample() {
         BottomBarScreen.Download
     )
 
-    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
+    var currentScreen by remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
 
     Scaffold(
         topBar = {
@@ -71,43 +73,60 @@ private fun BottomAppBarExample() {
             )
         },
         bottomBar = {
-            BottomAppBar(cutoutShape = CircleShape) {
-                screens.forEach { screen ->
-                    BottomNavigationItem(
-                        label = { Text(text = screen.title) },
-                        icon = {
-                            Icon(
-                                imageVector = screen.icon,
-                                contentDescription = "Navigation Icon"
-                            )
-                        },
-                        selected = screen == currentScreen.value,
-                        onClick = {
-                            currentScreen.value = screen
-                        },
-                        alwaysShowLabel = false
-                    )
-                }
+            BottomAppBarDetails(screens, currentScreen) {
+                screen ->
+                currentScreen = screen
             }
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         floatingActionButton = {
-            FloatingActionButton(
-                shape = CircleShape,
-                onClick = { /* your code */ }
-            ) {
-                Icon(
-                    Icons.Filled.Add,
-                    "Floating Action Button"
-                )
-            }
+            FloatingActionButtonDetails()
         },
     ) {
-        when (currentScreen.value) {
+        when (currentScreen) {
             BottomBarScreen.Favorite -> FavoriteScreen()
             BottomBarScreen.Download -> DownloadScreen()
         }
+    }
+}
+
+@Composable
+private fun BottomAppBarDetails(
+    screens: List<BottomBarScreen>,
+    currentScreen: BottomBarScreen,
+    onClick : (BottomBarScreen) -> Unit
+) {
+    BottomAppBar(cutoutShape = CircleShape) {
+        screens.forEach { screen ->
+            BottomNavigationItem(
+                label = { Text(text = screen.title) },
+                icon = {
+                    Icon(
+                        imageVector = screen.icon,
+                        contentDescription = "Navigation Icon"
+                    )
+                },
+                selected = screen == currentScreen,
+                onClick = {
+                    onClick(screen)
+                },
+                alwaysShowLabel = false
+            )
+        }
+    }
+}
+
+@Composable
+private fun FloatingActionButtonDetails() {
+    FloatingActionButton(
+        shape = CircleShape,
+        onClick = { /* your code */ }
+    ) {
+        Icon(
+            Icons.Filled.Add,
+            "Floating Action Button"
+        )
     }
 }
 
