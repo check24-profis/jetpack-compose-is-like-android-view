@@ -44,7 +44,6 @@ private fun setBackgroundColor(viewBox: View?, clicked: MutableLiveData&lt;Boole
     }
 }   
 
-
 class ObservableViewModel: ViewModel() {
 
     val isClicked: MutableLiveData&lt;Boolean&gt; = MutableLiveData(false)
