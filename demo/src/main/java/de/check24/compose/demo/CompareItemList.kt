@@ -70,6 +70,8 @@ import de.check24.compose.demo.features.spinner.AndroidUISpinnerActivity
 import de.check24.compose.demo.features.spinner.ComposableSpinnerActivity
 import de.check24.compose.demo.features.stateful.AndroidUIStatefulActivity
 import de.check24.compose.demo.features.stateful.ComposableStatefulActivity
+import de.check24.compose.demo.features.stateholder.AndroidUIStateHolderActivity
+import de.check24.compose.demo.features.stateholder.ComposableStateHolderActivity
 import de.check24.compose.demo.features.stateless.AndroidUIStatelessActivity
 import de.check24.compose.demo.features.stateless.ComposableStatelessActivity
 import de.check24.compose.demo.features.switch.AndroidUISwitchActivity
@@ -503,6 +505,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableStatelessActivity::class.java,
             androidUIActivity = AndroidUIStatelessActivity::class.java,
             headline = "Stateless"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableStateHolderActivity::class.java,
+            androidUIActivity = AndroidUIStateHolderActivity::class.java,
+            headline = "State Holder"
         )
     )
 
