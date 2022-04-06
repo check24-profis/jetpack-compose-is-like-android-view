@@ -479,7 +479,73 @@ private fun showDatePicker(
          }
          materialDatePicker.show(supportFragmentManager, "TAG")
     }
-}</code></pre></div></div></div><div class="case"><div class="name">Number</div><div class="pair"></div></div><div class="case"><div class="name">Number (Signed)</div><div class="pair"></div></div><div class="case"><div class="name">Number (Decimal)</div><div class="pair"></div></div><div class="case"><div class="name">Auto Complete</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* This is NOT an official implementation!
+}</code></pre></div></div></div><div class="case"><div class="name">Number</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun NumberExample() {
+
+    var number by remember { mutableStateOf("") }
+
+    TextField(
+        value = number,
+        onValueChange = { input ->
+            number = input
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;EditText
+    android:id="@+id/editTextNumber"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="number" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Number (Signed)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun NumberSignedExample() {
+
+    var number by remember { mutableStateOf("") }
+
+    TextField(
+        value = number,
+        onValueChange = { input ->
+            number = validateInput(input)
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    )
+}
+
+private fun validateInput(input: String): String {
+    val filteredChars = input.filterIndexed { index, char ->
+        char in "0123456789" ||
+                (char == '-' && 0 == index)
+    }
+    return filteredChars
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;EditText
+    android:id="@+id/editTextNumberSigned"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="numberSigned" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Number (Decimal)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun NumberDecimalExample() {
+
+    var number by remember { mutableStateOf("") }
+
+    TextField(
+        value = number,
+        onValueChange = { input ->
+            number = validateInput(input)
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    )
+}
+
+private fun validateInput(input: String): String {
+    val filteredChars = input.filterIndexed { index, char ->
+        char in "0123456789" ||
+                (char == '.' && input.indexOf('.') == index)
+    }
+    return filteredChars
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;EditText
+    android:id="@+id/editTextNumberDecimal"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:inputType="numberDecimal" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Auto Complete</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* This is NOT an official implementation!
 * Look if there is an official implementaion already*/
 
 @Composable
@@ -603,7 +669,27 @@ override fun onCreate(savedInstanceState: Bundle?) {
         &lt;item&gt;France&lt;/item&gt;
         &lt;item&gt;Spain&lt;/item&gt;
     &lt;/string-array&gt;
-&lt;/resources&gt;</code></pre></div></div></div><div class="case"><div class="name">Text Input</div><div class="pair"></div></div></div><div class="section"><div class="title">Button</div><div class="case"><div class="name">Image Button</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/resources&gt;</code></pre></div></div></div><div class="case"><div class="name">Text Input</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun TextInputExample() {
+
+    var text by remember { mutableStateOf("") }
+
+    TextField(
+        value = text,
+        onValueChange = {
+            text = it
+        },
+        label = { Text("hint") }
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"&gt;
+
+    &lt;com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="hint" /&gt;
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div></div><div class="section"><div class="title">Button</div><div class="case"><div class="name">Image Button</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun ImageButton(image: Any?) {
     Button(
         onClick = {},
@@ -639,60 +725,20 @@ Glide
     .fitCenter()
     .into(imageView)
 
-</code></pre></div></div></div><div class="case"><div class="name">Chip Group</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* At the time of the implementation there were no official implementation!
-* Look if there is an official implementaion already */
+</code></pre></div></div></div><div class="case"><div class="name">Chip Group</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun ChipGroupSingleSelectionExample(list: List<String> = listOf("I'm a list")) {
 
-@Composable
-fun ChipGroupExample() {
+    var selectedChip by remember { mutableStateOf("") }
 
-    val list = listOf(
-        "Chip One",
-        [...]
-        "Chip Ten"
-    )
-
-    val selectedChip = remember {
-        mutableStateOf("")
-    }
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
+    LazyRow(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(50.dp)
     ) {
-        LazyRow(
-            modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ) {
-            items(list) {
-
-                val color by animateColorAsState(
-                    if (selectedChip.value == it) {
-                        colorResource(id = R.color.purple_200)
-                    } else Color.LightGray
-                )
-
-                // through row we get a riddle effect over the Text with padding
-                Row(
-                    modifier = Modifier
-                        .background(color)
-                        .toggleable(
-                            value = false,
-                            onValueChange = { }
-                        )
-                        .clickable {
-                            selectedChip.value = it
-                        }
-                ) {
-                    Text(
-                        text = it,
-                        modifier = Modifier
-                            .padding(10.dp),
-                    )
-                }
-                // through this statement there is no spacer after the last element
-                if (it != list[list.size - 1])
-                    Spacer(modifier = Modifier.padding(10.dp))
-            }
+        items(list) {
+            ActionChip(it)
         }
     }
 }</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;HorizontalScrollView
@@ -729,27 +775,61 @@ fun ChipGroupExample() {
 &lt;/HorizontalScrollView&gt;</code></pre></div></div></div><div class="case"><div class="name">Chip</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>/* At the time of the implementation there were no official implementation!
 * Look if there is an official implementaion already*/
 
-// through row we get a riddle effect over the Text with padding
-Row(
-    modifier = Modifier
-        .background(Color.LightGray)
-        .toggleable(
-            value = false,
-            onValueChange = { }
-        )
+@Composable
+fun ActionChip(
+    name: String = "Action Chip",
+    icon: Painter? = null,
+    onToggle: ((String) -> Unit)? = null
 ) {
-    Text(
-        text = "I'm a chip",
-        modifier = Modifier.padding(10.dp)
-    )
+    var isSelected by remember { mutableStateOf(false) }
+    val modifier = if (icon == null) {
+        Modifier.padding(horizontal = 12.dp)
+    } else Modifier.padding(start = 4.dp, end = 12.dp)
+
+    Surface(
+        modifier = Modifier.padding(4.dp),
+        shape = CircleShape,
+        color = if (isSelected) Purple100 else Gray300,
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .height(32.dp)
+                .toggleable(
+                    value = isSelected,
+                    onValueChange = {
+                        isSelected = !isSelected
+                        onToggle?.invoke(name)
+                    }
+                )
+        ) {
+            if (icon != null) {
+                Icon(
+                    icon,
+                    "Icon",
+                    tint = if (isSelected) Green else Red,
+                    modifier = Modifier
+                        .padding(horizontal = 4.dp)
+                        .width(24.dp)
+                )
+            }
+
+            Text(
+                text = name,
+                color = if (isSelected) Purple500 else Gray700,
+                style = MaterialTheme.typography.body2,
+                modifier = modifier
+            )
+        }
+    }
 }</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.chip.Chip
-    android:id="@+id/chip"
+    android:id="@+id/chip_with_icon"
+    style="@style/Widget.MaterialComponents.Chip.Choice"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="I'm a chip"
-    android:enabled="true"
-    android:clickable="true"
-    android:focusable="true" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Check Box</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+    android:text="Chip With Icon"
+    app:chipIconEnabled="true"
+    app:chipIcon="@drawable/ic_your_icon" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Check Box</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun CheckBox() {
     var checked by remember { mutableStateOf(true) }
     Checkbox(
@@ -1083,7 +1163,180 @@ class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
     }
 }
 
-</code></pre></div></div></div><div class="case"><div class="name">Grid</div><div class="pair"></div></div><div class="case"><div class="name">Staggered</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+</code></pre></div></div></div><div class="case"><div class="name">Grid</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun GridExample() {
+
+    val colorList = listOf(
+        Color.Red,
+        Color.Black,
+        Color(0xFFBB86FC),
+        Color(0xFF3700B3)
+    )
+
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(2),
+        modifier = Modifier.size(200.dp)
+    ) {
+
+        (0..3).forEach {
+
+            item {
+
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(colorList[it])
+                )
+            }
+        }
+    }
+}
+</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;GridLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:rowCount="2"&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/red" /&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/black" /&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/purple_200" /&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/purple_700" /&gt;
+
+&lt;/GridLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Custom Fixed Grid</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun FixedGridExample() {
+    val colorList = listOf(
+        Color.Red,
+        Color.Black,
+        Purple200,
+        Purple700
+    )
+
+    FixedGrid(2) {
+
+        (0..3).forEach {
+
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .background(colorList[it % 4])
+            )
+        }
+    }
+}
+
+@Composable
+fun FixedGrid(
+    columnCount: Int,
+    content: @Composable () -> Unit
+) {
+
+    Layout(content = content) { measurables, constraints ->
+
+        val rowCount: Int =
+            ceil(measurables.size.toDouble() / columnCount.toDouble()).toInt()
+
+        val placeables = measurables.map { measurable ->
+            measurable.measure(constraints = constraints)
+        }
+
+        val placeableWidths = placeables.map { it.width }
+        val placeableHeights = placeables.map { it.height }
+
+        // get maximum widths of elements in each column
+        val widths = getWidths(columnCount, placeableWidths)
+        // get maximum heights of elements in each row
+        val heights = getHeights(columnCount, placeableHeights)
+
+        val layoutWidth = widths.sum()
+        val layoutHeight = heights.sum()
+
+        val xPositions = List(columnCount) {
+            var result = 0
+            for (i in 0 until it) {
+                result += widths[i]
+            }
+            result
+        }
+
+        val yPositions = List(rowCount) {
+            var result = 0
+            for (i in 0 until it) {
+                result += heights[i]
+            }
+            result
+        }
+
+        layout(
+            width = layoutWidth,
+            height = layoutHeight
+        ) {
+            placeables.forEachIndexed { index, placeable ->
+                placeable.place(
+                    x = xPositions[index % columnCount],
+                    y = yPositions[index / columnCount]
+                )
+            }
+        }
+    }
+}
+
+fun getWidths(
+    columnCount: Int,
+    widths: List<Int>,
+): List<Int> {
+
+    val result = mutableListOf<Int>()
+
+    for (i in 0 until columnCount) {
+
+        // specifies the width of the column by the widest element
+        var max = 0
+        for (j in i until widths.size step columnCount) {
+            if (max < widths[j]) max = widths[j]
+        }
+        result.add(max)
+
+    }
+
+    return result
+}
+
+fun getHeights(
+    columnCount: Int,
+    heights: List<Int>,
+): List<Int> {
+
+    val result = mutableListOf<Int>()
+
+    for (i in heights.indices step columnCount) {
+
+        // specifies the height of the row by the highest element
+        var max = 0
+        for (j in i until min(i + columnCount, heights.size)) {
+            if (max < heights[j]) max = heights[j]
+        }
+        result.add(max)
+
+    }
+
+    return result
+}</code></pre></div></div></div><div class="case"><div class="name">Staggered</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 private fun StaggeredGrid() {
     LazyColumn {
         item {
@@ -1458,7 +1711,31 @@ fun ConstraintLayoutBarrier() {
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintTop_toBottomOf="@+id/barrier" /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"></div></div></div><div class="section"><div class="title">Container</div><div class="case"><div class="name">Spinner</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun FrameLayoutExample() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(R.drawable.c24logo),
+            contentDescription = "Check24 Logo",
+            modifier = Modifier.size(250.dp)
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt:FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt:
+
+    &lt:ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/check24logo"
+        android:src="@drawable/c24logo" /&gt:
+
+&lt:/FrameLayout&gt:
+</code></pre></div></div></div></div><div class="section"><div class="title">Container</div><div class="case"><div class="name">Spinner</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun SpinnerExample() {
 
     val itemList = listOf(
@@ -1473,14 +1750,12 @@ fun SpinnerExample() {
     var expanded by remember { mutableStateOf(false) }
     var cityname by remember { mutableStateOf("select a city") }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        Row(
-        ) {
+        // The Row aligns text and icon
+        Row {
             Text(text = cityname, Modifier.clickable { expanded = !expanded })
             Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
             DropdownMenu(
@@ -1802,15 +2077,54 @@ fun CardExample() {
     &lt;item name="cornerFamilyBottomLeft">rounded&lt;/item>
     &lt;item name="cornerSizeTopLeft">15dp&lt;/item>
     &lt;item name="cornerSizeBottomRight">15dp&lt;/item>
-&lt;/style></code></pre></div></div></div><div class="case"><div class="name">AppBarLayout</div><div class="pair"></div></div><div class="case"><div class="name">BottomAppBar</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
-private fun BottomAppBarExample() {
+&lt;/style></code></pre></div></div></div><div class="case"><div class="name">AppBarLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun AppBarExample() {
+    Scaffold(
+        topBar = {
+
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "App Bar Layout",
+                        color = Color.White
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = { /* your code */ }) {
+
+                        Icon(
+                            imageVector = Icons.Rounded.Menu,
+                            contentDescription = "Menu"
+                        )
+                    }
+                }
+
+            )
+        },
+        content = { [...] }
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"&gt;
+
+    &lt;androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/app_bar_layout"
+        app:navigationIcon="@drawable/ic_baseline_menu_24"
+        app:titleTextColor="@color/white" /&gt;
+
+&lt;/com.google.android.material.appbar.AppBarLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">BottomAppBar</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun BottomAppBarExample() {
 
     val screens = listOf(
         BottomBarScreen.Favorite,
         BottomBarScreen.Download
     )
 
-    val currentScreen = remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
+    var currentScreen by remember { mutableStateOf<BottomBarScreen>(BottomBarScreen.Favorite) }
 
     Scaffold(
         topBar = {
@@ -1821,43 +2135,60 @@ private fun BottomAppBarExample() {
             )
         },
         bottomBar = {
-            BottomAppBar(cutoutShape = CircleShape) {
-                screens.forEach { screen ->
-                    BottomNavigationItem(
-                        label = { Text(text = screen.title) },
-                        icon = {
-                            Icon(
-                                imageVector = screen.icon,
-                                contentDescription = "Navigation Icon"
-                            )
-                        },
-                        selected = screen == currentScreen.value,
-                        onClick = {
-                            currentScreen.value = screen
-                        },
-                        alwaysShowLabel = false
-                    )
-                }
+            BottomAppBarDetails(screens, currentScreen) {
+                    screen ->
+                currentScreen = screen
             }
         },
         floatingActionButtonPosition = FabPosition.Center,
         isFloatingActionButtonDocked = true,
         floatingActionButton = {
-            FloatingActionButton(
-                shape = CircleShape,
-                onClick = { /* your code */ }
-            ) {
-                Icon(
-                    Icons.Filled.Add,
-                    "Floating Action Button"
-                )
-            }
+            FloatingActionButtonDetails()
         },
     ) {
-        when (currentScreen.value) {
+        when (currentScreen) {
             BottomBarScreen.Favorite -> FavoriteScreen()
             BottomBarScreen.Download -> DownloadScreen()
         }
+    }
+}
+
+@Composable
+private fun BottomAppBarDetails(
+    screens: List<BottomBarScreen>,
+    currentScreen: BottomBarScreen,
+    onClick : (BottomBarScreen) -> Unit
+) {
+    BottomAppBar(cutoutShape = CircleShape) {
+        screens.forEach { screen ->
+            BottomNavigationItem(
+                label = { Text(text = screen.title) },
+                icon = {
+                    Icon(
+                        imageVector = screen.icon,
+                        contentDescription = "Navigation Icon"
+                    )
+                },
+                selected = screen == currentScreen,
+                onClick = {
+                    onClick(screen)
+                },
+                alwaysShowLabel = false
+            )
+        }
+    }
+}
+
+@Composable
+private fun FloatingActionButtonDetails() {
+    FloatingActionButton(
+        shape = CircleShape,
+        onClick = { /* your code */ }
+    ) {
+        Icon(
+            Icons.Filled.Add,
+            "Floating Action Button"
+        )
     }
 }</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -1924,7 +2255,390 @@ private fun BottomAppBarExample() {
         android:icon="@drawable/ic_baseline_cloud_download_24"
         android:title="Download" /&gt;
 
-&lt;/menu&gt;</code></pre></div></div></div><div class="case"><div class="name">Toolbar</div><div class="pair"></div></div><div class="case"><div class="name">TabLayout</div><div class="pair"></div></div><div class="case"><div class="name">TabItem</div><div class="pair"></div></div><div class="case"><div class="name">FragmentContainer</div><div class="pair"></div></div><div class="case"><div class="name">NavHost</div><div class="pair"></div></div></div><div class="section"><div class="title">Custom</div><div class="case"><div class="name">Map</div><div class="pair"></div></div></div><div class="section"><div class="title">Modifier</div><div class="case"><div class="name">Margin</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/menu&gt;</code></pre></div></div></div><div class="case"><div class="name">Toolbar</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun ToolbarExample() {
+    Scaffold(
+        topBar = {
+            TopAppBarDetails()
+        }
+    ) { }
+}
+
+@Composable
+private fun TopAppBarDetails() {
+
+    val context = LocalContext.current
+    var expanded by remember { mutableStateOf(false) }
+    var clickedItemText by remember { mutableStateOf("") }
+
+    TopAppBar(
+        title = { Text(text = "Toolbar") },
+        navigationIcon = {
+            IconButton(onClick = { context.findActivity()?.onBackPressed() }) {
+                Icon(Icons.Default.ArrowBack, "Back Button")
+            }
+        },
+        actions = {
+            IconButton(onClick = { }) {
+                Icon(Icons.Default.Search, "Search")
+            }
+            IconButton(onClick = { expanded = !expanded }) {
+                Icon(Icons.Default.MoreVert, "Options")
+            }
+            OptionDropdownMenu(expanded, onDismissMenu = { onDismissMenu: Boolean ->
+                expanded = onDismissMenu
+            }) {
+
+            }
+        }
+    )
+}
+
+@Composable
+private fun OptionDropdownMenu(
+    expanded: Boolean,
+    list: List<String> = listOf("First Option", "Second Option", "Third Option"),
+    onDismissMenu: ((Boolean) -> Unit)? = null,
+    onClickItem: ((String) -> Unit)? = null
+) {
+
+    DropdownMenu(
+        expanded = expanded,
+        onDismissRequest = { onDismissMenu?.invoke(false) },
+    ) {
+        list.forEach { item ->
+
+            DropdownMenuItem(
+                onClick = {
+                    onClickItem?.invoke(item)
+                    onDismissMenu?.invoke(false)
+                }
+            ) {
+                Text(text = item)
+            }
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/top_app_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"&gt;
+
+    &lt;com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ToolbarThemeExample"
+        app:menu="@menu/tool_bar_menu"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+        app:title="Toolbar"
+        app:titleTextColor="@color/white"&gt;
+
+    &lt;/com.google.android.material.appbar.MaterialToolbar&gt;
+
+&lt;/com.google.android.material.appbar.AppBarLayout&gt;
+
+&lt;!-- menu data --&gt;
+
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+    
+    &lt;item android:id="@+id/toolbar_search" android:icon="@drawable/ic_baseline_search_24"
+        android:iconTint="@color/white" android:title="Search" app:showAsAction="ifRoom" /&gt;
+    
+    &lt;item 
+        android:id="@+id/first_option"
+        android:title="First Option" /&gt;
+    
+    &lt;item android:id="@+id/second_options"
+        android:title="Second Option" /&gt;
+    
+    &lt;item android:id="@+id/third_options"
+        android:title="Third Option" /&gt;
+
+&lt;/menu&gt;
+
+&lt;!-- code --&gt;
+
+binding?.toolbar?.setNavigationOnClickListener {
+    onBackPressed()
+}</code></pre></div></div></div><div class="case"><div class="name">TabLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun TabLayoutExample() {
+    var selectedTabIndex by remember { mutableStateOf(0) }
+
+    val tabTexts = listOf("A", "B", "C")
+
+    TabRow(
+        selectedTabIndex = selectedTabIndex,
+        backgroundColor = Color.White
+    ) {
+        tabTexts.forEachIndexed { index, text ->
+            Tab(
+                selected = index == selectedTabIndex,
+                modifier = Modifier.size(50.dp),
+                onClick = {
+                    selectedTabIndex = index
+                }
+            ) {
+                Text(text = text)
+            }
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.tabs.TabLayout
+    android:id="@+id/tab_layout"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content" /&gt;
+
+// in activity
+
+var binding: TabLayoutBinding? = TabLayoutBinding.inflate(layoutInflater)
+
+binding?.tabLayout?.apply {
+    addTab(newTab().setText("A"))
+    addTab(newTab().setText("B"))
+    addTab(newTab().setText("C"))
+}</code></pre></div></div></div><div class="case"><div class="name">TabItem</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun IconTabs(tabData: List<ImageVector>) {
+    var tabIndex by remember { mutableStateOf(0) }
+
+    TabRow(
+        selectedTabIndex = tabIndex,
+        backgroundColor = Color.White
+    ) {
+        tabData.forEachIndexed { index, icon ->
+            Tab(selected = tabIndex == index, onClick = {
+                tabIndex = index
+            }, icon = {
+                Icon(imageVector = icon, contentDescription = null)
+            })
+        }
+    }
+}
+
+@Composable
+fun TextTabs(tabData: List<String>) {
+    var tabIndex by remember { mutableStateOf(0) }
+
+    TabRow(
+        selectedTabIndex = tabIndex,
+        backgroundColor = Color.White
+    ) {
+        tabData.forEachIndexed { index, text ->
+            Tab(selected = tabIndex == index, onClick = {
+                tabIndex = index
+            }, text = {
+                Text(text = text)
+            })
+        }
+    }
+}
+
+@Composable
+fun IconAndTextTabs(tabData: List<Pair<String, ImageVector>>) {
+    var tabIndex by remember { mutableStateOf(0) }
+
+    TabRow(
+        selectedTabIndex = tabIndex,
+        backgroundColor = Color.White,
+    ) {
+        tabData.forEachIndexed { index, pair ->
+            Tab(selected = tabIndex == index, onClick = {
+                tabIndex = index
+            }, text = {
+                Text(text = pair.first)
+            }, icon = {
+                Icon(imageVector = pair.second, contentDescription = null)
+            })
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;!-- XML Code --&gt;
+    &lt;com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_item_icons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;!-- Code --&gt;
+
+    binding.tabItemText.apply {
+        addTab(newTab().setText("MUSIC"))
+        addTab(newTab().setText("MARKET"))
+        addTab(newTab().setText("FILMS"))
+        addTab(newTab().setText("BOOKS"))
+    }
+
+    binding.tabItemIcons.apply {
+        addTab(newTab().setIcon(R.drawable.ic_baseline_save_24))
+        addTab(newTab().setIcon(R.drawable.ic_baseline_date_range))
+        addTab(newTab().setIcon(R.drawable.ic_baseline_favorite_24))
+        addTab(newTab().setIcon(R.drawable.ic_baseline_cloud_download_24))
+    }
+
+    binding.tabItemTextAndIcons.apply {
+        addTab(newTab().setText("MUSIC").setIcon(R.drawable.ic_baseline_save_24))
+        addTab(newTab().setText("MARKET").setIcon(R.drawable.ic_baseline_date_range))
+        addTab(newTab().setText("FILMS").setIcon(R.drawable.ic_baseline_favorite_24))
+        addTab(newTab().setText("BOOKS").setIcon(R.drawable.ic_baseline_cloud_download_24))
+    }</code></pre></div></div></div><div class="case"><div class="name">FragmentContainer</div><div class="pair"></div></div><div class="case"><div class="name">NavHost</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun NavHostDemo() {
+
+    val navController = rememberNavController()
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+
+        val abc = listOf("A", "B", "C")
+
+        NavHost(navController = navController, startDestination = "A") {
+
+            abc.forEach { letter ->
+
+                composable(letter) {
+                    Text(text = letter)
+                }
+            }
+        }
+
+        Row {
+
+            abc.forEach { letter ->
+                Button(onClick = { navController.navigate(letter) }) {
+                    Text(text = letter)
+                }
+            }
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;androidx.fragment.app.FragmentContainerView
+    android:id="@+id/nav_host_fragment"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:defaultNavHost="true"
+    app:layout_constraintBottom_toTopOf="@id/navigation_button_row"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:navGraph="@navigation/nav_host_navigation" /&gt;
+
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/navigation_button_row"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"&gt;
+
+    &lt;Button
+        android:id="@+id/button_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_b"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;Button
+        android:id="@+id/button_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/b"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_c"
+        app:layout_constraintStart_toEndOf="@+id/button_a"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;Button
+        android:id="@+id/button_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/c"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_b"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+
+// navigation Graph
+
+&lt;navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_navigation"
+    app:startDestination="@id/fragment_a"&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment_a"
+        android:name="de.check24.compose.demo.features.navigation.fragments.FragmentA"
+        tools:layout="@layout/navigation_plain_text" /&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment_b"
+        android:name="de.check24.compose.demo.features.navigation.fragments.FragmentB"
+        tools:layout="@layout/navigation_plain_text" /&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment_c"
+        android:name="de.check24.compose.demo.features.navigation.fragments.FragmentC"
+        tools:layout="@layout/navigation_plain_text" /&gt;
+
+&lt;/navigation&gt;
+
+// in activity
+
+val navHostFragment =
+    supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
+val navController = navHostFragment.navController
+
+val buttonA = findViewById&lt;Button&gt;(R.id.button_a)
+val buttonB = findViewById&lt;Button&gt;(R.id.button_b)
+val buttonC = findViewById&lt;Button&gt;(R.id.button_c)
+
+buttonA.setOnClickListener {
+    navController.navigate(R.id.fragment_a)
+}
+
+buttonB.setOnClickListener {
+    navController.navigate(R.id.fragment_b)
+}
+
+buttonC.setOnClickListener {
+    navController.navigate(R.id.fragment_c)
+}</code></pre></div></div></div></div><div class="section"><div class="title">Custom</div><div class="case"><div class="name">Map</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+private fun GoogleMapExample() {
+    val c24Berlin = LatLng(52.51119997328961, 13.404559796099809)
+    val zoom = 17F
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition(c24Berlin, zoom, 0F, 0F)
+    }
+
+    GoogleMap(
+        modifier = Modifier.fillMaxSize(),
+        cameraPositionState = cameraPositionState
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;fragment xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.custom.AndroidUIGoogleMapActivity" /&gt;
+
+// In activity
+val mapFragment: SupportMapFragment? = supportFragmentManager
+    .findFragmentById(R.id.map) as SupportMapFragment?
+
+ mapFragment?.getMapAsync {
+    val c24Berlin = LatLng(52.51119997328961, 13.404559796099809)
+    val zoom = 17F
+
+    it.moveCamera(CameraUpdateFactory.newLatLngZoom(c24Berlin, zoom))
+}</code></pre></div></div></div></div><div class="section"><div class="title">Modifier</div><div class="case"><div class="name">Margin</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun MarginDemo() {
 
     Card(backgroundColor = Color.Blue) {
@@ -2087,4 +2801,898 @@ fun BackgroundDemo() {
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/red"
-    android:text="@string/modifier_background" /&gt;</code></pre></div></div></div></div><div class="section"><div class="title">Positioning</div></div><div class="section"><div class="title">States</div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div></div></body></html>
+    android:text="@string/modifier_background" /&gt;</code></pre></div></div></div></div><div class="section"><div class="title">Positioning</div><div class="case"><div class="name">ConstraintLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>ConstraintLayout(
+modifier = Modifier.fillMaxSize()
+) {
+    val (purple, orange, blue, green, leftView, middleView, rightView) = createRefs()
+    val chainRefOne = createHorizontalChain(green, blue, chainStyle = ChainStyle.Spread)
+    val chainRefTwo =
+        createHorizontalChain(leftView, middleView, rightView, chainStyle = ChainStyle.Spread)
+
+    Text(
+        textAlign = TextAlign.Center,
+        text = "constraint to start, top and end of parent with a horizontal bias of 30/70",
+        modifier = Modifier
+            .padding(top = 80.dp)
+            .width(150.dp)
+            .background(Purple200)
+            .padding(10.dp)
+            .constrainAs(purple) {
+                linkTo(
+                    parent.start,
+                    parent.end,
+                    bias = 0.3F
+                )
+            }
+    )
+
+    Text(
+        textAlign = TextAlign.Center,
+        text = "constraint via circle radius(170dp) and angle(135) to purple",
+        modifier = Modifier
+            .width(180.dp)
+            .background(Orange200)
+            .padding(10.dp)
+            .constrainAs(orange) {
+                circular(purple, angle = 135F, distance = 170.dp)
+            }
+    )
+
+    Text(
+        textAlign = TextAlign.Center,
+        text = "Chain A, both are bi-directional connected",
+        modifier = Modifier
+            .width(120.dp)
+            .background(Green200)
+            .padding(10.dp)
+            .constrainAs(green) {
+                top.linkTo(parent.top)
+                bottom.linkTo(parent.bottom)
+            }
+    )
+
+    Text(
+        text = "Chain B, and chained with chainStyle \"Spread\"",
+        modifier = Modifier
+            .width(120.dp)
+            .background(Blue200)
+            .padding(10.dp)
+            .constrainAs(blue) {
+                top.linkTo(parent.top)
+                bottom.linkTo(parent.bottom)
+            },
+        textAlign = TextAlign.Center
+    )
+
+    Text(
+        text = "chained with 30 percent",
+        modifier = Modifier
+            .background(Red200)
+            .height(60.dp)
+            .padding(10.dp)
+            .constrainAs(leftView) {
+                bottom.linkTo(parent.bottom)
+                width = Dimension.percent(0.3F)
+            },
+        textAlign = TextAlign.Center
+    )
+
+    Text(
+        text = "chained with 40 percent",
+        modifier = Modifier
+            .background(Color.Gray)
+            .height(60.dp)
+            .padding(10.dp)
+            .constrainAs(middleView) {
+                bottom.linkTo(parent.bottom)
+                width = Dimension.percent(0.4F)
+            },
+        textAlign = TextAlign.Center
+    )
+
+    Text(
+        textAlign = TextAlign.Center,
+        text = "chained with 30 percent",
+        modifier = Modifier
+            .background(Color.Cyan)
+            .height(60.dp)
+            .padding(10.dp)
+            .constrainAs(rightView) {
+                bottom.linkTo(parent.bottom)
+                width = Dimension.percent(0.3F)
+            }
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;TextView
+        android:id="@+id/purple"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="constraint to start, top and end of parent with a horizontal bias of 30/70"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"/&gt;
+
+    &lt;TextView
+        android:id="@+id/orange"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="constraint via circle radius(110dp) and angle(135) to purple"
+        app:layout_constraintCircle="@id/purple"
+        app:layout_constraintCircleAngle="135"
+        app:layout_constraintCircleRadius="110dp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/blue"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Chain B, and chained with chainStyle &quot;spread&quot; together "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="@+id/green"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;TextView
+        android:id="@+id/green"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Chain A, both are bi-directional connected"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/blue"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" /&gt;
+
+    &lt;TextView
+        android:id="@+id/left_textview"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/red_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="chained with 30 percent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/middle_textview"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintStart_toStartOf="parent" /&gt;
+
+    &lt;TextView
+        android:id="@+id/middle_textview"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="chained with 40 percent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/right_textview"
+        app:layout_constraintHorizontal_weight="0.4"
+        app:layout_constraintStart_toEndOf="@+id/left_textview" /&gt;
+
+    &lt;TextView
+        android:id="@+id/right_textview"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@color/teal_200"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="chained with 30 percent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintStart_toEndOf="@+id/middle_textview" /&gt;
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Flow</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Vertical FlowLayout
+
+FlowColumn(
+    modifier = Modifier
+        .height(300.dp)
+        .wrapContentWidth(),
+    mainAxisAlignment = FlowMainAxisAlignment.Center,
+    mainAxisSpacing = 16.dp,
+    crossAxisSpacing = 50.dp,
+    crossAxisAlignment = FlowCrossAxisAlignment.Center,
+    ) {
+    // add here your view elements
+}
+
+// Horizontal FlowLayout
+
+FlowRow(
+    modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
+        .padding(20.dp),
+    mainAxisAlignment = FlowMainAxisAlignment.Center,
+    crossAxisSpacing = 16.dp,
+    mainAxisSpacing = 16.dp
+    ) {
+    // add here your code
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!-- Vertical FlowLayout --&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Flow
+    android:id="@+id/flow_vertical_example"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="vertical"
+    app:constraint_referenced_ids="id's of your elements"
+    app:flow_maxElementsWrap="5"
+    app:flow_verticalGap="16dp"
+    app:flow_wrapMode="aligned" /&gt;
+
+&lt;!-- Horizontal FlowLayout --&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Flow
+    android:id="@+id/flow_horizontal_example"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="horizontal"
+    app:constraint_referenced_ids="id's of your elements"
+    app:flow_horizontalGap="16dp"
+    app:flow_maxElementsWrap="5"
+    app:flow_verticalGap="16dp"
+    app:flow_wrapMode="chain"
+    app:layout_constraintHorizontal_chainStyle="spread" /&gt;</code></pre></div></div></div><div class="case"><div class="name">LinearLayout (Vertical)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>Column(
+    modifier = Modifier
+    .fillMaxSize()
+    .padding(50.dp)
+) {
+    Text(
+        text = "TextView One",
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+            .padding(vertical = 20.dp)
+            .background(Orange200)
+            .padding(10.dp)
+    )
+
+    [...]
+
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="50dp"
+    android:paddingVertical="50dp"&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:text="TextView One"
+        android:textAlignment="center" /&gt;
+
+        [...]
+
+&lt;/LinearLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">LinearLayout (Horizontal)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>Row(
+    modifier = Modifier
+        .fillMaxSize()
+        .padding(vertical = 50.dp, horizontal = 20.dp)
+) {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 20.dp)
+            .width(50.dp)
+            .fillMaxHeight()
+            .background(Orange200)
+            .padding(10.dp)
+    )
+
+    [...]
+
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingHorizontal="20dp"
+    android:paddingVertical="50dp"&gt;
+
+    &lt;View
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/orange_200"
+        android:padding="10dp"
+        android:textAlignment="center" /&gt;
+
+    [...]
+
+&lt;/LinearLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">GridLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun GridExample() {
+
+    val colorList = listOf(
+        Color.Red,
+        Color.Black,
+        Color(0xFFBB86FC),
+        Color(0xFF3700B3)
+    )
+
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(2),
+        modifier = Modifier.size(200.dp)
+    ) {
+
+        (0..3).forEach {
+
+            item {
+
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(colorList[it])
+                )
+            }
+        }
+    }
+}
+</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;GridLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:rowCount="2"&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/red" /&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/black" /&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/purple_200" /&gt;
+
+    &lt;View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/purple_700" /&gt;
+
+&lt;/GridLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun FrameLayoutExample() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(R.drawable.c24logo),
+            contentDescription = "Check24 Logo",
+            modifier = Modifier.size(250.dp)
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt:FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt:
+
+    &lt:ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/check24logo"
+        android:src="@drawable/c24logo" /&gt:
+
+&lt:/FrameLayout&gt:
+</code></pre></div></div></div></div><div class="section"><div class="title">States</div><div class="case"><div class="name">Observable types</div><div class="pair"></div></div><div class="case"><div class="name">Bundle objects</div><div class="pair"></div></div><div class="case"><div class="name">Stateful</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// stateful composables tend to be less reusable and harder to test
+
+@Composable
+private fun StatefulExample() {
+    // stateful means that the composable manages its own state
+    // no states are handled in the parent object.
+    MySwitch()
+}
+
+@Composable
+private fun MySwitch() {
+    // the state
+    var isClicked by remember { mutableStateOf(false) }
+
+    Switch(
+        checked = isClicked,
+        // the child manages its own state
+        onCheckedChange = { isClicked = !isClicked }
+    )
+    Box(
+        modifier = Modifier
+            .size(150.dp)
+            .background(
+                if (isClicked) Green200 else Blue200
+            )
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!-- XML Code --&gt;
+
+&lt;Switch
+    android:id="@+id/switch_example"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/&gt;
+
+&lt;View
+    android:id="@+id/box"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:background="@color/blue_200"/&gt;
+
+    &lt;!-- Code--&gt;
+
+    private var isClicked = false
+    binding?.switchExample?.setOnClickListener {
+        if (isClicked) {
+            binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
+        } else {
+            binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
+        }
+        isClicked = !isClicked
+    }</code></pre></div></div></div><div class="case"><div class="name">Stateless with hoisting</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun StatelessExample() {
+
+    // the parent manages the state of the child
+    var isClicked by remember { mutableStateOf(false) }
+
+    MySwitch(isClicked = isClicked) {
+        // the parent, in this case th StatelessExample manages the state of MySwitch through an event of the child
+        isClicked = !isClicked
+    }
+}
+
+@Composable
+fun MySwitch(isClicked: Boolean, onToggle: () -> Unit) {
+    // the child gives back an event to parent via lambda expression,
+    // so it can handle the state properly
+    Switch(
+        checked = isClicked,
+        onCheckedChange = { onToggle() }
+    )
+    Box(
+        modifier = Modifier
+            .size(150.dp)
+            .background(
+                if (isClicked) Green200 else Blue200
+            )
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!-- XML Code --&gt;
+
+    &lt;Switch
+        android:id="@+id/switch_example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/&gt;
+
+    &lt;View
+        android:id="@+id/box"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@color/blue_200"/&gt;
+
+    &lt;!-- Code--&gt;
+
+    private var isClicked = false
+    binding?.switchExample?.setOnClickListener {
+        if (isClicked) {
+            binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
+        } else {
+            binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
+        }
+        isClicked = !isClicked
+    }</code></pre></div></div></div><div class="case"><div class="name">State holder</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class MyStateHolder() {
+    // states
+    var text by mutableStateOf("")
+    var isClicked by mutableStateOf(false)
+
+    // events
+    fun onTextChanged(input: String) {
+        text = input
+    }
+
+    fun onToggle(clicked: Boolean) {
+        isClicked = clicked
+    }
+}
+
+// Through this implementation, the lifecycle corresponds to the composable that implemented it
+@Composable
+fun rememberStateHolder(): MyStateHolder =
+    remember { MyStateHolder() }
+
+@Composable
+fun MyScreen(state: MyStateHolder = rememberStateHolder()) {
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        TextField(
+            value = state.text,
+            onValueChange = { state.onTextChanged(it) },
+        )
+
+        Switch(
+            checked = state.isClicked,
+            onCheckedChange = { state.onToggle(it) }
+        )
+
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(
+                    if (state.isClicked) Green200 else Blue200
+                )
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;!-- XML Code --&gt;
+&lt;com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/text_layout"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"&gt;
+
+    &lt;com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" /&gt;
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;
+
+&lt;Switch
+    android:id="@+id/state_holder_switch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" /&gt;
+
+&lt;View
+    android:id="@+id/view_box"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/blue_200" /&gt;
+
+    &lt;!-- Code --&gt;
+
+binding?.stateHolderSwitch?.setOnClickListener {
+    setBackgroundColor(
+        binding?.viewBox,
+        requireNotNull(binding?.stateHolderSwitch?.isChecked)
+    )
+}
+
+private fun setBackgroundColor(viewBox: View?, clicked: Boolean) {
+    if (clicked) {
+        viewBox?.setBackgroundResource(R.color.green_200)
+    } else {
+        viewBox?.setBackgroundResource(R.color.blue_200)
+    }
+}</code></pre></div></div></div><div class="case"><div class="name">ViewModel</div><div class="pair"></div></div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div><div class="case"><div class="name">Theme</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// colour
+
+val exampleColors: Colors
+    get() = lightColors(
+        primary = Color(0xFF862A8A),
+        primaryVariant = Color(0xFFC280D5),
+        onPrimary = Color(0xFFFFFFFF),
+
+        secondary = Color(0xFFFF30FC),
+        secondaryVariant = Color(0xFAEAF7FB),
+        onSecondary = Color(0xFFFFFFFF),
+
+        error = Color(0xFFC82D70),
+        onError = Color(0xFFFFFFFF),
+
+        surface = Color(0xFFFFFFFF),
+        onSurface = Color(0xFF333333),
+
+        background = Color(0xFCEFEFF3),
+        onBackground = Color(0xFFFFFFFF)
+    )
+
+// font style
+
+val exampleTypography: Typography
+    get() = Typography(
+        h1 = TextStyle(
+            fontSize = 24.sp,
+            lineHeight = 28.sp,
+            color = Grey3,
+            letterSpacing = 0.sp
+        ),
+        h2 = TextStyle(
+            fontSize = 20.sp,
+            lineHeight = 24.sp,
+            color = Grey6,
+            letterSpacing = 0.sp
+        ),
+        h3 = TextStyle(
+            fontSize = 18.sp,
+            lineHeight = 22.sp,
+            color = Grey3,
+            letterSpacing = 0.sp
+        ),
+        h4 = TextStyle(
+            fontSize = 16.sp,
+            lineHeight = 20.sp,
+            color = Grey6,
+            letterSpacing = 0.sp
+        ),
+        h5 = TextStyle(
+            fontSize = 14.sp,
+            lineHeight = 18.sp,
+            color = Grey9,
+            letterSpacing = 0.sp
+        ),
+        h6 = TextStyle(
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            color = Grey3,
+            letterSpacing = 0.sp
+        ),
+        subtitle1 = TextStyle(
+            fontSize = 18.sp,
+            lineHeight = 22.sp,
+            color = Grey3,
+            letterSpacing = 0.sp
+        ),
+        subtitle2 = TextStyle(
+            fontSize = 16.sp,
+            lineHeight = 20.sp,
+            color = Grey6,
+            letterSpacing = 0.sp
+        ),
+        body1 = TextStyle(
+            fontSize = 16.sp,
+            lineHeight = 20.sp,
+            color = Grey6,
+            letterSpacing = 0.sp
+        ),
+        body2 = TextStyle(
+            fontSize = 14.sp,
+            lineHeight = 18.sp,
+            color = Grey9,
+            letterSpacing = 0.sp
+        ),
+        button = TextStyle(
+            fontSize = 16.sp,
+            lineHeight = 18.sp,
+            color = Color.White,
+            letterSpacing = 0.sp
+        ),
+        caption = TextStyle(
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            color = Grey3,
+            letterSpacing = 0.sp
+        ),
+        overline = TextStyle(
+            fontSize = 12.sp,
+            lineHeight = 16.sp,
+            color = Grey6,
+            letterSpacing = 0.sp
+        )
+    )
+
+// shapes
+
+val exampleShapes: Shapes
+    get() = Shapes(
+        small = RoundedCornerShape(0.dp),
+        medium = RoundedCornerShape(8.dp),
+        large = RoundedCornerShape(16.dp)
+    )
+
+@Composable
+fun ExampleTheme(content: @Composable () -&gt; Unit) {
+    MaterialTheme(
+        colors = exampleColors,
+        typography = exampleTypography,
+        shapes = exampleShapes,
+        content = content
+    )
+}
+
+// usable like this
+
+@Composable
+fun ExampleThemeDemo() {
+    ExampleTheme {
+        [...]
+    }
+}
+
+// also addable to manifest
+
+&lt;activity
+    android:name=".features.theme.ComposableThemeActivity"
+    android:exported="false"
+    android:theme="@style/ExampleTheme" /&gt;</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;!-- allocation of colour, style and shape --&gt;
+
+&lt;style name="ExampleTheme" parent="Theme.AppCompat"&gt;
+    &lt;item name="colorPrimary"&gt;#862A8A&lt;/item&gt;
+    &lt;item name="colorPrimaryVariant"&gt;#C280D5&lt;/item&gt;
+    &lt;item name="colorOnPrimary"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="colorSecondary"&gt;#FF30FC&lt;/item&gt;
+    &lt;item name="colorSecondaryVariant"&gt;#EAF7FB&lt;/item&gt;
+    &lt;item name="colorOnSecondary"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="colorError"&gt;#C82D70&lt;/item&gt;
+    &lt;item name="colorOnError"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="colorSurface"&gt;@color/white&lt;/item&gt;
+    &lt;item name="colorOnSurface"&gt;#333333&lt;/item&gt;
+
+    &lt;item name="android:colorBackground"&gt;#EFEFF3&lt;/item&gt;
+    &lt;item name="android:windowBackground"&gt;@color/white&lt;/item&gt;
+
+    &lt;item name="textAppearanceHeadline1"&gt;@style/h1&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline2"&gt;@style/h2&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline3"&gt;@style/h3&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline4"&gt;@style/h4&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline5"&gt;@style/h5&lt;/item&gt;
+    &lt;item name="textAppearanceHeadline6"&gt;@style/h6&lt;/item&gt;
+    &lt;item name="textAppearanceSubtitle1"&gt;@style/s1&lt;/item&gt;
+    &lt;item name="textAppearanceSubtitle2"&gt;@style/s2&lt;/item&gt;
+    &lt;item name="textAppearanceBody1"&gt;@style/b1&lt;/item&gt;
+    &lt;item name="textAppearanceBody2"&gt;@style/b2&lt;/item&gt;
+    &lt;item name="textAppearanceButton"&gt;@style/button&lt;/item&gt;
+    &lt;item name="textAppearanceCaption"&gt;@style/caption&lt;/item&gt;
+    &lt;item name="textAppearanceOverline"&gt;@style/overline&lt;/item&gt;
+
+    &lt;item name="shapeAppearanceSmallComponent"&gt;@style/small&lt;/item&gt;
+    &lt;item name="shapeAppearanceMediumComponent"&gt;@style/medium&lt;/item&gt;
+    &lt;item name="shapeAppearanceLargeComponent"&gt;@style/large&lt;/item&gt;
+
+&lt;/style&gt;
+
+    &lt;!-- font style --&gt;
+
+&lt;resources&gt;
+    &lt;style name="h1" parent="TextAppearance.MaterialComponents.Headline1"&gt;
+        &lt;item name="android:textSize"&gt;24sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;28sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h2" parent="TextAppearance.MaterialComponents.Headline2"&gt;
+        &lt;item name="android:textSize"&gt;20sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;24sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h3" parent="TextAppearance.MaterialComponents.Headline3"&gt;
+        &lt;item name="android:textSize"&gt;18sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;22sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h4" parent="TextAppearance.MaterialComponents.Headline4"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;20sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h5" parent="TextAppearance.MaterialComponents.Headline5"&gt;
+        &lt;item name="android:textSize"&gt;14sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;18sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_9&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="h6" parent="TextAppearance.MaterialComponents.Headline6"&gt;
+        &lt;item name="android:textSize"&gt;12sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;16sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="s1" parent="TextAppearance.MaterialComponents.Subtitle1"&gt;
+        &lt;item name="android:textSize"&gt;18sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;22sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="s2" parent="TextAppearance.MaterialComponents.Subtitle2"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;20sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="b1" parent="TextAppearance.MaterialComponents.Body1"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;20sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="b2" parent="TextAppearance.MaterialComponents.Body2"&gt;
+        &lt;item name="android:textSize"&gt;14sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;18sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_9&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="button" parent="TextAppearance.MaterialComponents.Button"&gt;
+        &lt;item name="android:textSize"&gt;16sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;18sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_white&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="caption" parent="TextAppearance.MaterialComponents.Caption"&gt;
+        &lt;item name="android:textSize"&gt;12sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;16sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_3&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+    &lt;style name="overline" parent="TextAppearance.MaterialComponents.Overline"&gt;
+        &lt;item name="android:textSize"&gt;12sp&lt;/item&gt;
+        &lt;item name="lineHeight"&gt;16sp&lt;/item&gt;
+        &lt;item name="android:textColor"&gt;@color/shared_cool_grey_6&lt;/item&gt;
+        &lt;item name="android:letterSpacing"&gt;0&lt;/item&gt;
+    &lt;/style&gt;
+
+
+    &lt;color name="shared_cool_grey_6"&gt;#666666&lt;/color&gt;
+    &lt;color name="shared_cool_grey_9"&gt;#999999&lt;/color&gt;
+    &lt;color name="shared_white"&gt;#FFFFFF&lt;/color&gt;
+    &lt;color name="shared_cool_grey_3"&gt;#333333&lt;/color&gt;
+&lt;/resources&gt;
+
+    &lt;!-- shape styles --&gt;
+
+&lt;resources&gt;
+&lt;style name="small" parent="ShapeAppearance.MaterialComponents.SmallComponent"&gt;
+    &lt;item name="cornerFamily"&gt;rounded&lt;/item&gt;
+    &lt;item name="cornerSize"&gt;0%&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;style name="medium" parent="ShapeAppearance.MaterialComponents.MediumComponent"&gt;
+    &lt;item name="cornerFamily"&gt;rounded&lt;/item&gt;
+    &lt;item name="cornerSize"&gt;5%&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;style name="large" parent="ShapeAppearance.MaterialComponents.LargeComponent"&gt;
+    &lt;item name="cornerFamily"&gt;rounded&lt;/item&gt;
+    &lt;item name="cornerSize"&gt;10%&lt;/item&gt;
+&lt;/style&gt;
+&lt;/resources&gt;
+
+    &lt;!-- in manifest --&gt;
+
+&lt;activity
+    android:name=".features.theme.AndroidUIThemeActivity"
+    android:exported="false"
+    android:theme="@style/ExampleTheme" /&gt;</code></pre></div></div></div></div></body></html>
