@@ -6,6 +6,8 @@ import de.check24.compose.demo.features.bar.AndroidUIBottomAppBarActivity
 import de.check24.compose.demo.features.bar.AndroidUIToolbarActivity
 import de.check24.compose.demo.features.bar.ComposableBottomAppBarActivity
 import de.check24.compose.demo.features.bar.ComposableToolbarActivity
+import de.check24.compose.demo.features.bundle.AndroidUIBundleObjectsActivity
+import de.check24.compose.demo.features.bundle.ComposableBundleObjectsActivity
 import de.check24.compose.demo.features.button.AndroidUICheckBoxActivity
 import de.check24.compose.demo.features.button.AndroidUIFloatingActionButtonActivity
 import de.check24.compose.demo.features.button.AndroidUIImageButtonActivity
@@ -494,6 +496,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableStatelessActivity::class.java,
             androidUIActivity = AndroidUIStatelessActivity::class.java,
             headline = "Stateless"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableBundleObjectsActivity::class.java,
+            androidUIActivity = AndroidUIBundleObjectsActivity::class.java,
+            headline = "Bundle Objects"
         )
     )
 

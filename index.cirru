@@ -218,6 +218,8 @@ html
       .title "States"
       .case (.name "Observable types") $ .pair
       .case (.name "Bundle objects") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/BundleObjects.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/BundleObjects.xml)
       .case (.name "Stateful") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateful.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateful.xml)

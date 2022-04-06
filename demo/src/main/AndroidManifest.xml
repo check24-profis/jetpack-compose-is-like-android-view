@@ -572,6 +572,17 @@
             android:name=".features.positioning.ComposableFlowActivity"
             android:exported="false" />
 
+        <!-- Bundle Objects -->
+
+        <activity
+            android:name=".features.bundle.AndroidUIBundleObjectsActivity"
+            android:exported="true"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.bundle.ComposableBundleObjectsActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
