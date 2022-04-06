@@ -1,0 +1,41 @@
+    &lt;!-- XML Code --&gt;
+&lt;com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/text_layout"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"&gt;
+
+    &lt;com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" /&gt;
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;
+
+&lt;Switch
+    android:id="@+id/state_holder_switch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" /&gt;
+
+&lt;View
+    android:id="@+id/view_box"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/blue_200" /&gt;
+
+    &lt;!-- Code --&gt;
+
+binding?.stateHolderSwitch?.setOnClickListener {
+    setBackgroundColor(
+        binding?.viewBox,
+        requireNotNull(binding?.stateHolderSwitch?.isChecked)
+    )
+}
+
+private fun setBackgroundColor(viewBox: View?, clicked: Boolean) {
+    if (clicked) {
+        viewBox?.setBackgroundResource(R.color.green_200)
+    } else {
+        viewBox?.setBackgroundResource(R.color.blue_200)
+    }
+}

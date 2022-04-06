@@ -572,6 +572,17 @@
             android:name=".features.positioning.ComposableFlowActivity"
             android:exported="false" />
 
+        <!-- State Holder -->
+
+        <activity
+            android:name=".features.stateholder.AndroidUIStateHolderActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.stateholder.ComposableStateHolderActivity"
+            android:exported="false" />
+
         <!-- ViewModel -->
 
         <activity
