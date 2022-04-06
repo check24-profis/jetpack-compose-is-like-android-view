@@ -26,6 +26,8 @@ import de.check24.compose.demo.features.constraintlayout.AndroidUIConstraintLayo
 import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLayoutActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.ComposableBarrierActivity
+import de.check24.compose.demo.features.constraintlayout.flow.AndroidUIHelperFlowActivity
+import de.check24.compose.demo.features.constraintlayout.flow.ComposableHelperFlowActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
@@ -308,12 +310,19 @@ internal val compareItemList: List<CompareItem> by lazy {
                 androidUIActivity = AndroidUITabLayoutActivity::class.java,
                 headline = "Tab Layout"
             )
-        )
-        compareItems.add(
-            CompareItem(
-                composeActivity = ComposableFrameLayoutActivity::class.java,
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableFrameLayoutActivity::class.java,
             androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
             headline = "Frame Layout"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableHelperFlowActivity::class.java,
+            androidUIActivity = AndroidUIHelperFlowActivity::class.java,
+            headline = "Helper (Flow)"
         )
     )
 
