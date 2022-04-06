@@ -225,6 +225,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateless.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateless.xml)
       .case (.name "State holder") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/StateHolder.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/StateHolder.xml)
       .case (.name "ViewModel") $ .pair
 
     .section
