@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import de.check24.compose.demo.R
 import de.check24.compose.demo.databinding.ObservableTypesBinding
 
@@ -19,9 +20,12 @@ class AndroidUIObservableTypesActivity:AppCompatActivity() {
         setContentView(binding?.root)
         supportActionBar?.title = "Observable types"
 
+        viewModel.isClicked.observe(this) {
+            setBackgroundColor(binding?.viewBox, viewModel.isClicked)
+        }
+
         binding?.observableSwitch?.setOnClickListener {
             viewModel.onClick()
-            setBackgroundColor(binding?.viewBox, viewModel.isClicked)
         }
     }
 
@@ -36,9 +40,9 @@ class AndroidUIObservableTypesActivity:AppCompatActivity() {
 
 class ObservableViewModel: ViewModel() {
 
-    val isClicked: MutableLiveData<Boolean> = MutableLiveData<Boolean>(false)
+    val isClicked: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun onClick() {
-        isClicked.value = !(requireNotNull(isClicked.value))
+        isClicked.value = !(isClicked.value ?: false)
     }
 }
