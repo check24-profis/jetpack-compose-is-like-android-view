@@ -28,9 +28,12 @@
 private var binding: ObservableTypesBinding? = null
 private var viewModel = ObservableViewModel()
 
+viewModel.isClicked.observe(this) {
+    setBackgroundColor(binding?.viewBox, viewModel.isClicked)
+}
+
 binding?.observableSwitch?.setOnClickListener {
     viewModel.onClick()
-    setBackgroundColor(binding?.viewBox, viewModel.isClicked)
 }
 
 private fun setBackgroundColor(viewBox: View?, clicked: MutableLiveData&lt;Boolean&gt;) {
@@ -39,14 +42,14 @@ private fun setBackgroundColor(viewBox: View?, clicked: MutableLiveData&lt;Boole
     } else {
         viewBox?.setBackgroundResource(R.color.blue_200)
     }
-}
+}   
 
 
 class ObservableViewModel: ViewModel() {
 
-    val isClicked: MutableLiveData&lt;Boolean&gt; = MutableLiveData&lt;Boolean&gt;(false)
+    val isClicked: MutableLiveData&lt;Boolean&gt; = MutableLiveData(false)
 
     fun onClick() {
-        isClicked.value = !(requireNotNull(isClicked.value))
-    } 
+        isClicked.value = !(isClicked.value ?: false)
+    }
 }
