@@ -1,6 +1,5 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
@@ -77,19 +76,20 @@
         android:layout_height="0dp"
         app:constraint_referenced_ids="textView1,textView2,textView3, textView4, textView5"
         app:flow_horizontalGap="10dp"
-        app:flow_horizontalStyle="spread"
+        app:flow_horizontalStyle="packed"
         app:flow_verticalGap="10dp"
-        app:flow_verticalStyle="spread"
-        app:flow_wrapMode="none"
-        app:layout_constraintBottom_toTopOf="@id/wrapModeText"
+        app:flow_verticalStyle="packed"
+        app:flow_wrapMode="chain"
+        app:layout_constraintBottom_toTopOf="@id/grid_flow_options"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/wrapModeText"
+    <GridLayout
+        android:id="@+id/grid_flow_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:columnCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -99,10 +99,12 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="verticalStyle"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@id/textview_horizontal_style"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner_vertical_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textview_horizontal_style"
@@ -110,25 +112,25 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="horizontalStyle"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@id/textview_wrap_mode"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner_horizontal_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textview_wrap_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="wrapMode"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <
+            android:textSize="18sp" />
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinner_wrap_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
