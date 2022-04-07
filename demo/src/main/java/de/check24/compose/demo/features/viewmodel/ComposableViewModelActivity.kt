@@ -120,7 +120,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = myViewModel.number.toString(),
+            text = myViewModel.number.value.toString(),
             modifier = Modifier.clickable { myViewModel.addNumber() }
         )
 
@@ -145,9 +145,9 @@ private fun MyScreenPreview() {
     DemoTheme {
         val myViewModel = object:MyViewModelInterface{
             override val number: MutableState<Int>
-                get() = mutableStateOf(0)
+                = mutableStateOf(0)
             override val isClicked: MutableState<Boolean>
-                get() = mutableStateOf(false)
+                = mutableStateOf(false)
 
             override fun addNumber() {
                 number.value = number.value + 1

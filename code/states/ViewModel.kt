@@ -30,7 +30,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = myViewModel.number.toString(),
+            text = myViewModel.number.value.toString(),
             modifier = Modifier.clickable { myViewModel.addNumber() }
         )
 
