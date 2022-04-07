@@ -36,6 +36,8 @@ import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
+import de.check24.compose.demo.features.helperlayout.AndroidUIHelperLayoutActivity
+import de.check24.compose.demo.features.helperlayout.ComposableHelperLayoutActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.grid.AndroidUIGridActivity
@@ -311,11 +313,18 @@ internal val compareItemList: List<CompareItem> by lazy {
                 headline = "Tab Layout"
             )
         )
-        compareItems.add(
-            CompareItem(
-                composeActivity = ComposableFrameLayoutActivity::class.java,
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableFrameLayoutActivity::class.java,
             androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
             headline = "Frame Layout"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableHelperLayoutActivity::class.java,
+            androidUIActivity = AndroidUIHelperLayoutActivity::class.java,
+            headline = "Helper (Layout)"
         )
     )
 
