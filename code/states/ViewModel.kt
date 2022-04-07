@@ -51,7 +51,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
 
 @Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
 @Composable
-private fun ViewModelExamplePreview() {
+private fun MyScreenPreview() {
     DemoTheme {
         val myViewModel = object:MyViewModelInterface{
             override val number: MutableState<Int>
