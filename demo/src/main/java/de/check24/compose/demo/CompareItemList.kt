@@ -48,6 +48,8 @@ import de.check24.compose.demo.features.modifier.AndroidUIModifierActivity
 import de.check24.compose.demo.features.modifier.ComposableModifierActivity
 import de.check24.compose.demo.features.navigation.AndroidUINavHostActivity
 import de.check24.compose.demo.features.navigation.ComposableNavHostActivity
+import de.check24.compose.demo.features.observables.AndroidUIObservableTypesActivity
+import de.check24.compose.demo.features.observables.ComposableObservableTypesActivity
 import de.check24.compose.demo.features.password.AndroidUIPasswordActivity
 import de.check24.compose.demo.features.password.ComposablePasswordActivity
 import de.check24.compose.demo.features.password.numeric.AndroidUINumericPasswordActivity
@@ -512,6 +514,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableStateHolderActivity::class.java,
             androidUIActivity = AndroidUIStateHolderActivity::class.java,
             headline = "State Holder"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableObservableTypesActivity::class.java,
+            androidUIActivity = AndroidUIObservableTypesActivity::class.java,
+            headline = "Observable types"
         )
     )
 
