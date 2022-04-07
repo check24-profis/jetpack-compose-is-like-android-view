@@ -13,7 +13,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.mapSaver
@@ -46,12 +45,16 @@ class ComposableBundleObjectsActivity : ComponentActivity() {
 }
 
 // bundle with Parcelize
+// here we bundle the full name of a person
 @Parcelize
 data class Person(val name: String, val lastname: String) : Parcelable
 
 // bundle with MapSaver
+// here we bundle the name of a river and the country where it's located
 data class River(val name: String, val country: String)
 
+// here we create the bundle with a MapSaver
+// and assign our river data class to it
 val RiverMapSaver = run {
     val nameKey = "River name"
     val countryKey = "Country"
@@ -61,7 +64,8 @@ val RiverMapSaver = run {
     )
 }
 
-// bundle with ListSaver
+// here we create the bundle with a ListSaver
+// and assign our river data class to it
 val RiverListSaver = listSaver<River, Any>(
     save = { listOf(it.name, it.country) },
     restore = { River(name = it[0] as String, country = it[1] as String) }
@@ -77,26 +81,26 @@ private fun BundleObjectsExample() {
 
         // Parcelable
         val person = Person(name = "John", lastname = "Cole")
-        NameText(person = person)
+        NameText(personPlaceable = person)
 
         // MapSaver
         val riverMapSaver = rememberSaveable(stateSaver = RiverMapSaver) {
             mutableStateOf(River(name = "Spree", country = "Germany"))
         }
-        RiverText(riverMapSaver)
+        RiverText(riverMapSaver.value)
 
         // ListSaver
         val riverListSaver = rememberSaveable(stateSaver = RiverListSaver) {
             mutableStateOf(River(name = "Ishikari", country = "Japan"))
         }
-        RiverText(river = riverListSaver)
+        RiverText(riverSaver = riverListSaver.value)
     }
 }
 
 @Composable
-private fun NameText(person: Person) {
+private fun NameText(personPlaceable: Person) {
     Text(
-        text = "My name is " + person.name + " " + person.lastname,
+        text = "My name is " + personPlaceable.name + " " + personPlaceable.lastname,
         modifier = Modifier
             .width(200.dp)
             .background(Purple200),
@@ -105,9 +109,9 @@ private fun NameText(person: Person) {
 }
 
 @Composable
-private fun RiverText(river: MutableState<River>) {
+private fun RiverText(riverSaver: River) {
     Text(
-        text = river.value.name + " is in " + river.value.country,
+        text = riverSaver.name + " is in " + riverSaver.country,
         modifier = Modifier
             .width(200.dp)
             .background(Purple200),
