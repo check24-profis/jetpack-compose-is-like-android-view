@@ -67,8 +67,26 @@ class ComposableHelperFlowActivity : ComponentActivity() {
     }
 }
 
+private class StateHolder {
+    var sizeMode by mutableStateOf(SizeMode.Wrap)
+    var mainAxisAlignment by mutableStateOf(FlowMainAxisAlignment.Center)
+    var crossAxisAlignment by mutableStateOf(FlowCrossAxisAlignment.Center)
+    var isSelectedVerticalChip by mutableStateOf(false)
+    var isSelectedHorizontalChip by mutableStateOf(false)
+    var mainAxisSpacing by mutableStateOf(0.dp)
+    var crossAxisSpacing by mutableStateOf(0.dp)
+
+    fun onToggleVertical() {
+        isSelectedVerticalChip = !isSelectedVerticalChip
+    }
+
+    fun onToggleHorizontal() {
+        isSelectedHorizontalChip = !isSelectedHorizontalChip
+    }
+}
+
 @Composable
-private fun HelperFlowExample() {
+private fun HelperFlowExample(stateHolder: StateHolder = StateHolder()) {
 
     ConstraintLayout(
         modifier = Modifier
@@ -77,32 +95,10 @@ private fun HelperFlowExample() {
     ) {
         val (flowView, flowOptions) = createRefs()
 
-        var sizeMode by remember {
-            mutableStateOf(SizeMode.Wrap)
-        }
-        var mainAxisAlignment by remember {
-            mutableStateOf(FlowMainAxisAlignment.Center)
-        }
-        var crossAxisAlignment by remember {
-            mutableStateOf(FlowCrossAxisAlignment.Center)
-        }
-        var isSelectedVerticalChip by remember {
-            mutableStateOf(false)
-        }
-        var isSelectedHorizontalChip by remember {
-            mutableStateOf(false)
-        }
-        var mainAxisSpacing by remember {
-            mutableStateOf(0.dp)
-        }
-        var crossAxisSpacing by remember {
-            mutableStateOf(0.dp)
-        }
-
         FlowRow(
-            mainAxisSize = sizeMode,
-            mainAxisAlignment = mainAxisAlignment,
-            crossAxisAlignment = crossAxisAlignment,
+            mainAxisSize = stateHolder.sizeMode,
+            mainAxisAlignment = stateHolder.mainAxisAlignment,
+            crossAxisAlignment = stateHolder.crossAxisAlignment,
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
@@ -112,8 +108,8 @@ private fun HelperFlowExample() {
                     end.linkTo(parent.end)
                     bottom.linkTo(flowOptions.top)
                 },
-            mainAxisSpacing = mainAxisSpacing,
-            crossAxisSpacing = crossAxisSpacing
+            mainAxisSpacing = stateHolder.mainAxisSpacing,
+            crossAxisSpacing = stateHolder.crossAxisSpacing
         ) {
             ColorBox(number = "1", Blue200)
             ColorBox(number = "2", Green200)
@@ -133,28 +129,28 @@ private fun HelperFlowExample() {
                 }
         ) {
             FlowStyleAndWrapMode("sizeMode", listOf("Wrap", "Expand")) {
-                sizeMode = getSizeMode(it)
+                stateHolder.sizeMode = getSizeMode(it)
             }
 
             FlowStyleAndWrapMode(
                 "mainAxisAlignment",
                 listOf("Center", "SpaceBetween", "End", "Start", "SpaceAround", "SpaceEvenly")
             ) {
-                mainAxisAlignment = getMainAxisAlignment(it)
+                stateHolder.mainAxisAlignment = getMainAxisAlignment(it)
             }
 
             FlowStyleAndWrapMode("crossAxisAlignment", listOf("Center", "End", "Start")) {
-                crossAxisAlignment = getCrossAxisAlignment(it)
+                stateHolder.crossAxisAlignment = getCrossAxisAlignment(it)
             }
 
             ItemSpacing(
                 onToggleHorizontalSpace = {
-                    isSelectedHorizontalChip = !isSelectedHorizontalChip
-                    mainAxisSpacing = (if (isSelectedHorizontalChip) 20.dp else 0.dp)
+                    stateHolder.onToggleHorizontal()
+                    stateHolder.mainAxisSpacing = (if (stateHolder.isSelectedHorizontalChip) 20.dp else 0.dp)
                 },
                 onToggleVerticalSpace = {
-                    isSelectedVerticalChip = !isSelectedVerticalChip
-                    crossAxisSpacing = (if (isSelectedVerticalChip) 20.dp else 0.dp)
+                    stateHolder.onToggleVertical()
+                    stateHolder.crossAxisSpacing = (if (stateHolder.isSelectedVerticalChip) 20.dp else 0.dp)
                 }
             )
         }
