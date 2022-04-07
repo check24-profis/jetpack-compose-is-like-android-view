@@ -1,6 +1,6 @@
 // the ViewModel manages the states and the events
 // it also has access to the business logic and has a longer lifecycle than the composable
-class MyViewModel : IMyViewModel {
+class MyViewModel : MyViewModelInterface {
     // states
     override var number = mutableStateOf(0)
     override var isClicked = mutableStateOf(false)
@@ -23,27 +23,27 @@ interface MyViewModelInterface {
 }
 
 @Composable
-fun MyScreen(myViewModelInterface: MyViewModelInterface) {
+fun MyScreen(myViewModel: MyViewModelInterface) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = myViewModelInterface.number.toString(),
-            modifier = Modifier.clickable { myViewModelInterface.addNumber() }
+            text = myViewModel.number.toString(),
+            modifier = Modifier.clickable { myViewModel.addNumber() }
         )
 
         Switch(
-            checked = myViewModelInterface.isClicked.value,
-            onCheckedChange = { myViewModelInterface.toggle(it) }
+            checked = myViewModel.isClicked.value,
+            onCheckedChange = { myViewModel.toggle(it) }
         )
 
         Box(
             modifier = Modifier
                 .size(100.dp)
                 .background(
-                    if (myViewModelInterface.isClicked.value) Green200 else Blue200
+                    if (myViewModel.isClicked.value) Green200 else Blue200
                 )
         )
     }
