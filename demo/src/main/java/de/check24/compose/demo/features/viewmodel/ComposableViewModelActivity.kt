@@ -62,6 +62,7 @@ class MyViewModel : ViewModel(), MyViewModelInterface {
     override fun addNumber() {
         number.value = number.value + 1
     }
+
     override fun toggle(clicked: Boolean) {
         isClicked.value = clicked
     }
@@ -76,8 +77,8 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
     ) {
         Box(
             modifier = Modifier
-            .background(Blue200)
-            .size(50.dp),
+                .background(Blue200)
+                .size(50.dp),
             contentAlignment = Alignment.Center
         ) {
             Text(
@@ -106,7 +107,7 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
 /* the way how the preview works */
 interface MyViewModelInterface {
     val number: MutableState<Int>
-    val isClicked : MutableState<Boolean>
+    val isClicked: MutableState<Boolean>
 
     fun addNumber()
     fun toggle(clicked: Boolean)
@@ -143,11 +144,9 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
 @Composable
 private fun MyScreenPreview() {
     DemoTheme {
-        val myViewModel = object:MyViewModelInterface{
-            override val number: MutableState<Int>
-                = mutableStateOf(0)
-            override val isClicked: MutableState<Boolean>
-                = mutableStateOf(false)
+        val myViewModel = object : MyViewModelInterface {
+            override val number: MutableState<Int> = mutableStateOf(0)
+            override val isClicked: MutableState<Boolean> = mutableStateOf(false)
 
             override fun addNumber() {
                 number.value = number.value + 1
