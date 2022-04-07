@@ -23,6 +23,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -86,7 +87,11 @@ private class StateHolder {
 }
 
 @Composable
-private fun HelperFlowExample(stateHolder: StateHolder = StateHolder()) {
+private fun rememberStateHolder() : StateHolder =
+    remember { StateHolder() }
+
+@Composable
+private fun HelperFlowExample(stateHolder: StateHolder = rememberStateHolder()) {
 
     ConstraintLayout(
         modifier = Modifier
