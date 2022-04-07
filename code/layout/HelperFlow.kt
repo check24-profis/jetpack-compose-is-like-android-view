@@ -18,7 +18,7 @@ FlowRow(
     modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
-    .padding(20.dp),
+        .padding(20.dp),
     mainAxisAlignment = FlowMainAxisAlignment.Center,
     crossAxisSpacing = 16.dp,
     mainAxisSpacing = 16.dp
