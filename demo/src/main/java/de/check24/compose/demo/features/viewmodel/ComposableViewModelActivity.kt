@@ -59,10 +59,10 @@ class MyViewModel : ViewModel(), MyViewModelInterface {
     override var isClicked = mutableStateOf(false)
 
     // events
-    override fun onClick() {
+    override fun addNumber() {
         number.value = number.value + 1
     }
-    override fun onToggle(clicked: Boolean) {
+    override fun toggle(clicked: Boolean) {
         isClicked.value = clicked
     }
 }
@@ -82,7 +82,7 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
         ) {
             Text(
                 modifier = Modifier
-                    .clickable { myViewModel.onClick() },
+                    .clickable { myViewModel.addNumber() },
                 textAlign = TextAlign.Center,
                 text = myViewModel.number.value.toString()
             )
@@ -90,7 +90,7 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
 
         Switch(
             checked = myViewModel.isClicked.value,
-            onCheckedChange = { myViewModel.onToggle(it) }
+            onCheckedChange = { myViewModel.toggle(it) }
         )
 
         Box(
@@ -108,8 +108,8 @@ interface MyViewModelInterface {
     val number: MutableState<Int>
     val isClicked : MutableState<Boolean>
 
-    fun onClick()
-    fun onToggle(clicked: Boolean)
+    fun addNumber()
+    fun toggle(clicked: Boolean)
 }
 
 @Composable
@@ -121,12 +121,12 @@ fun MyScreen(myViewModelInterface: MyViewModelInterface) {
     ) {
         Text(
             text = myViewModelInterface.number.toString(),
-            modifier = Modifier.clickable { myViewModelInterface.onClick() }
+            modifier = Modifier.clickable { myViewModelInterface.addNumber() }
         )
 
         Switch(
             checked = myViewModelInterface.isClicked.value,
-            onCheckedChange = { myViewModelInterface.onToggle(it) }
+            onCheckedChange = { myViewModelInterface.toggle(it) }
         )
 
         Box(
@@ -149,11 +149,11 @@ private fun ViewModelExamplePreview() {
             override val isClicked: MutableState<Boolean>
                 get() = mutableStateOf(false)
 
-            override fun onClick() {
+            override fun addNumber() {
                 number.value = number.value + 1
             }
 
-            override fun onToggle(clicked: Boolean) {
+            override fun toggle(clicked: Boolean) {
                 isClicked.value = clicked
             }
         }

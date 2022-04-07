@@ -6,10 +6,10 @@ class MyViewModel : IMyViewModel {
     override var isClicked = mutableStateOf(false)
 
     // events
-    override fun onClick() {
+    fun addNumber() {
         number.value = number.value + 1
     }
-    override fun onToggle(clicked: Boolean) {
+    fun toggle(clicked: Boolean) {
         isClicked.value = clicked
     }
 }
@@ -18,8 +18,8 @@ interface MyViewModelInterface {
     val number: MutableState<Int>
     val isClicked : MutableState<Boolean>
 
-    fun onClick()
-    fun onToggle(clicked: Boolean)
+    fun addNumber()
+    fun toggle(clicked: Boolean)
 }
 
 @Composable
@@ -31,12 +31,12 @@ fun MyScreen(myViewModelInterface: MyViewModelInterface) {
     ) {
         Text(
             text = myViewModelInterface.number.toString(),
-            modifier = Modifier.clickable { myViewModelInterface.onClick() }
+            modifier = Modifier.clickable { myViewModelInterface.addNumber() }
         )
 
         Switch(
             checked = myViewModelInterface.isClicked.value,
-            onCheckedChange = { myViewModelInterface.onToggle(it) }
+            onCheckedChange = { myViewModelInterface.toggle(it) }
         )
 
         Box(
