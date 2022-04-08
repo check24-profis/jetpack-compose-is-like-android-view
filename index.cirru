@@ -246,5 +246,6 @@ html
     .section
       .title "Side Effects"
       .case (.name "LaunchedEffect") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/sideeffects/LaunchedEffect.kt)
       .case (.name "DisposableEffect") $ .pair
       .case (.name "SideEffect") $ .pair

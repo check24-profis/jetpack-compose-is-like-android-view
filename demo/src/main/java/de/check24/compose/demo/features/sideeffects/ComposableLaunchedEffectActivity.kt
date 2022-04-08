@@ -70,7 +70,10 @@ private fun LaunchedEffectDemo() {
         ) {
 
             Button(onClick = { showSnackbar = !showSnackbar }) {
-                Text(text = if (showSnackbar) "Hide Snackbar" else "Show Snackbar")
+                Text(text =
+                    if (showSnackbar) "Hide Snackbar"
+                    else "Show Snackbar"
+                )
             }
         }
     }
