@@ -25,9 +25,34 @@
     android:layout_height="100dp"
     android:background="@color/blue_200" /&gt;
 
+    &lt;!-- onCreate --&gt;
+
+binding?.apply {
+    setBackgroundColor(viewModelUI.isClicked, boxView)
+    textView.text = viewModelUI.number.toString()
+
+    viewModelSwitch.setOnClickListener {
+        viewModelUI.onToggle()
+        setBackgroundColor(viewModelUI.isClicked, boxView)
+    }
+
+    textView.setOnClickListener {
+        viewModelUI.onClick()
+        textView.text = viewModelUI.number.toString()
+    }
+}
+
     &lt;!-- Code --&gt;
 
-class MyAndroidUIViewViewModel : ViewModel() {
+private fun setBackgroundColor(clicked: Boolean, boxView: View) {
+    if (clicked) {
+        boxView.setBackgroundResource(R.color.green_200)
+    } else {
+        boxView.setBackgroundResource(R.color.blue_200)
+    }
+}
+
+class MyAndroidUIViewModel : ViewModel() {
     var isClicked: Boolean = false
     var number: Int = 0
 
@@ -37,39 +62,5 @@ class MyAndroidUIViewViewModel : ViewModel() {
 
     fun onClick() {
         number++
-    }
-}
-
-class AndroidUIViewModelActivity : AppCompatActivity() {
-
-    private var binding: ViewmodelBinding? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel: MyAndroidUIViewViewModel by viewModels()
-        super.onCreate(savedInstanceState)
-        binding = ViewmodelBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
-        supportActionBar?.title = "ViewModel"
-
-        setBackgroundColor(viewModel.isClicked, requireNotNull(binding?.boxView))
-        binding?.textView?.text = viewModel.number.toString()
-
-        binding?.viewModelSwitch?.setOnClickListener {
-            viewModel.onToggle()
-            setBackgroundColor(viewModel.isClicked, requireNotNull(binding?.boxView))
-        }
-
-        binding?.textView?.setOnClickListener {
-            viewModel.onClick()
-            binding?.textView?.text = viewModel.number.toString()
-        }
-    }
-
-    private fun setBackgroundColor(clicked: Boolean, boxView: View) {
-        if (clicked) {
-            boxView.setBackgroundResource(R.color.green_200)
-        } else {
-            boxView.setBackgroundResource(R.color.blue_200)
-        }
     }
 }

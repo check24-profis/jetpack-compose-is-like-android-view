@@ -48,25 +48,3 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
         )
     }
 }
-
-@Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
-@Composable
-private fun MyScreenPreview() {
-    DemoTheme {
-        val myViewModel = object:MyViewModelInterface{
-            override val number: MutableState<Int>
-                get() = mutableStateOf(0)
-            override val isClicked: MutableState<Boolean>
-                get() = mutableStateOf(false)
-
-            override fun onClick() {
-                number.value = number.value + 1
-            }
-
-            override fun onToggle(clicked: Boolean) {
-                isClicked.value = clicked
-            }
-        }
-        MyScreen(myViewModelInterface = myViewModel)
-    }
-}

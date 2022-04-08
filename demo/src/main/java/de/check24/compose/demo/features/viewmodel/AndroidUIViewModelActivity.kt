@@ -13,7 +13,7 @@ class AndroidUIViewModelActivity : AppCompatActivity() {
     private var binding: ViewmodelBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModelUI: MyAndroidUIViewViewModel by viewModels()
+        val viewModelUI: MyAndroidUIViewModel by viewModels()
         super.onCreate(savedInstanceState)
         binding = ViewmodelBinding.inflate(layoutInflater)
         setContentView(binding?.root)
@@ -45,7 +45,7 @@ class AndroidUIViewModelActivity : AppCompatActivity() {
     }
 }
 
-class MyAndroidUIViewViewModel : ViewModel() {
+class MyAndroidUIViewModel : ViewModel() {
     var isClicked: Boolean = false
     var number: Int = 0
 
