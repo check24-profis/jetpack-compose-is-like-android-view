@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import de.check24.compose.demo.theme.DemoTheme
-import kotlin.math.exp
 
 class ComposableSpinnerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +71,10 @@ private fun SpinnerExample() {
         text = text,
         expanded = expanded,
         list = itemList,
-        onItemClick = { text = it },
+        onItemClick = {
+            text = it
+            expanded = false
+        },
         onClick = {
             expanded = it
         }
@@ -105,7 +107,6 @@ private fun Spinner(
                 DropdownMenuItem(
                     onClick = {
                         onItemClick?.invoke(item)
-                        onClick?.invoke(false)
                     }
                 ) {
                     Text(text = item)
