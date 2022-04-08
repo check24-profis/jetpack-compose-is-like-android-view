@@ -315,7 +315,22 @@ fun PhoneNumber() {
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:maxLines="1" /&gt;
-&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Postal Address</div><div class="pair"></div></div><div class="case"><div class="name">Multiline Text</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Postal Address</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// There is no difference between the Postal Address and the normal TextInput
+@Composable
+fun PostalAddressExample() {
+
+    var address by remember { mutableStateOf("") }
+
+    TextField(
+        value = address,
+        onValueChange = { address = it },
+    )
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;EditText
+    android:id="@+id/editTextTextPostalAddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="textPostalAddress" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Multiline Text</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun MultilineText() {
     val text = remember { mutableStateOf("") }
     TextField(
@@ -1747,37 +1762,57 @@ fun SpinnerExample() {
         "Osnabrück"
     )
 
+    var text by remember { mutableStateOf("Select a city!") }
     var expanded by remember { mutableStateOf(false) }
-    var cityname by remember { mutableStateOf("select a city") }
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    Spinner(
+        text = text,
+        expanded = expanded,
+        list = itemList,
+        onItemClick = {
+            text = it
+            expanded = false
+        },
+        onClick = {
+            expanded = !expanded
+        }
+    )
+}
+
+@Composable
+fun Spinner(
+    text: String = "Select something!",
+    expanded: Boolean = false,
+    list: List<String>,
+    onItemClick: ((String) -> Unit)? = null,
+    onClick: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.clickable(onClick = onClick)
     ) {
-        // The Row aligns text and icon
-        Row {
-            Text(text = cityname, Modifier.clickable { expanded = !expanded })
-            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                itemList.forEach { city ->
+        Text(text = text, )
+        Icon(
+            imageVector = Icons.Filled.ArrowDropDown,
+            contentDescription = "ArrowDropDown",
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = onClick
+        ) {
+            list.forEach { item ->
 
-                    DropdownMenuItem(
-                        onClick = {
-                            expanded = false
-                            cityname = city
-                        }
-                    ) {
-                        Text(text = city)
+                DropdownMenuItem(
+                    onClick = {
+                        onItemClick?.invoke(item)
                     }
+                ) {
+                    Text(text = item)
                 }
             }
         }
     }
-}
-</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;Spinner
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;Spinner
     android:id="@+id/spinner"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" /&gt;
@@ -3206,7 +3241,117 @@ fun FrameLayoutExample() {
         android:src="@drawable/c24logo" /&gt:
 
 &lt:/FrameLayout&gt:
-</code></pre></div></div></div></div><div class="section"><div class="title">States</div><div class="case"><div class="name">Observable types</div><div class="pair"></div></div><div class="case"><div class="name">Bundle objects</div><div class="pair"></div></div><div class="case"><div class="name">Stateful</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// stateful composables tend to be less reusable and harder to test
+</code></pre></div></div></div></div><div class="section"><div class="title">States</div><div class="case"><div class="name">Observable types</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>class MyViewModel : ViewModel() {
+    var isClicked = MutableStateFlow(false)
+    var text = MutableLiveData<String>()
+
+    fun onToggle() {
+        isClicked.value = !isClicked.value
+    }
+
+    fun onValueChanged(input: String) {
+        text.value = input
+    }
+}
+
+@Composable
+private fun ObservableTypeExample(model: MyViewModel) {
+    val text: String by model.text.observeAsState("")
+    val isClicked: Boolean by model.isClicked.collectAsState()
+
+    MyScreen(
+        text = text,
+        isClicked = isClicked,
+        onValueChanged = { model.onValueChanged(it) },
+        onToggle = { model.onToggle() }
+    )
+}
+
+@Composable
+fun MyScreen(
+    text: String,
+    isClicked: Boolean,
+    onValueChanged: (String) -> Unit,
+    onToggle: () -> Unit
+) {
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        TextField(
+            value = text,
+            onValueChange = { onValueChanged(it) },
+        )
+
+        Switch(
+            checked = isClicked,
+            onCheckedChange = { onToggle() }
+        )
+
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(
+                    if (isClicked) Green200 else Blue200
+                )
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;!-- XML Code --&gt;
+
+    &lt;com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"&gt;
+
+        &lt;com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /&gt;
+    &lt;/com.google.android.material.textfield.TextInputLayout&gt;
+
+    &lt;Switch
+        android:id="@+id/observable_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;View
+        android:id="@+id/view_box"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/blue_200" /&gt;
+
+    &lt;!-- Code --&gt;
+
+private var binding: ObservableTypesBinding? = null
+private var viewModel = ObservableViewModel()
+
+viewModel.isClicked.observe(this) {
+    setBackgroundColor(binding?.viewBox, viewModel.isClicked)
+}
+
+binding?.observableSwitch?.setOnClickListener {
+    viewModel.onClick()
+}
+
+private fun setBackgroundColor(viewBox: View?, clicked: MutableLiveData&lt;Boolean&gt;) {
+    if (clicked.value == true) {
+        viewBox?.setBackgroundResource(R.color.green_200)
+    } else {
+        viewBox?.setBackgroundResource(R.color.blue_200)
+    }
+}   
+
+class ObservableViewModel: ViewModel() {
+
+    val isClicked: MutableLiveData&lt;Boolean&gt; = MutableLiveData(false)
+
+    fun onClick() {
+        isClicked.value = !(isClicked.value ?: false)
+    }
+}</code></pre></div></div></div><div class="case"><div class="name">Stateful</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// stateful composables tend to be less reusable and harder to test
 
 @Composable
 private fun StatefulExample() {
@@ -3391,7 +3536,122 @@ private fun setBackgroundColor(viewBox: View?, clicked: Boolean) {
     } else {
         viewBox?.setBackgroundResource(R.color.blue_200)
     }
-}</code></pre></div></div></div><div class="case"><div class="name">ViewModel</div><div class="pair"></div></div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div><div class="case"><div class="name">Theme</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// colour
+}</code></pre></div></div></div><div class="case"><div class="name">ViewModel</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// the ViewModel manages the states and the events
+// it also has access to the business logic and has a longer lifecycle than the composable
+class MyViewModel : MyViewModelInterface {
+    // states
+    override var number = mutableStateOf(0)
+    override var isClicked = mutableStateOf(false)
+
+    // events
+    fun addNumber() {
+        number.value = number.value + 1
+    }
+    fun toggle(clicked: Boolean) {
+        isClicked.value = clicked
+    }
+}
+
+interface MyViewModelInterface {
+    val number: MutableState<Int>
+    val isClicked : MutableState<Boolean>
+
+    fun addNumber()
+    fun toggle(clicked: Boolean)
+}
+
+@Composable
+fun MyScreen(myViewModel: MyViewModelInterface) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = myViewModel.number.value.toString(),
+            modifier = Modifier.clickable { myViewModel.addNumber() }
+        )
+
+        Switch(
+            checked = myViewModel.isClicked.value,
+            onCheckedChange = { myViewModel.toggle(it) }
+        )
+
+        Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(
+                    if (myViewModel.isClicked.value) Green200 else Blue200
+                )
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;!-- XML Code --&gt;
+&lt;TextView
+    android:id="@+id/textView"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@color/blue_200"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center"
+    android:clickable="true"
+    android:focusable="true" /&gt;
+
+&lt;Switch
+    android:id="@+id/viewModel_switch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;View
+    android:id="@+id/box_view"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/blue_200" /&gt;
+
+    &lt;!-- onCreate --&gt;
+
+binding?.apply {
+    setBackgroundColor(viewModelUI.isClicked, boxView)
+    textView.text = viewModelUI.number.toString()
+
+    viewModelSwitch.setOnClickListener {
+        viewModelUI.onToggle()
+        setBackgroundColor(viewModelUI.isClicked, boxView)
+    }
+
+    textView.setOnClickListener {
+        viewModelUI.onClick()
+        textView.text = viewModelUI.number.toString()
+    }
+}
+
+    &lt;!-- Code --&gt;
+
+private fun setBackgroundColor(clicked: Boolean, boxView: View) {
+    if (clicked) {
+        boxView.setBackgroundResource(R.color.green_200)
+    } else {
+        boxView.setBackgroundResource(R.color.blue_200)
+    }
+}
+
+class MyAndroidUIViewModel : ViewModel() {
+    var isClicked: Boolean = false
+    var number: Int = 0
+
+    fun onToggle() {
+        isClicked = !isClicked
+    }
+
+    fun onClick() {
+        number++
+    }
+}
+</code></pre></div></div></div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div><div class="case"><div class="name">Theme</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// colour
 
 val exampleColors: Colors
     get() = lightColors(
