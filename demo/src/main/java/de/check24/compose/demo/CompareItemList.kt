@@ -36,7 +36,7 @@ import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
-import de.check24.compose.demo.features.helperlayout.AndroidUIHelperLayoutActivity
+import de.check24.compose.demo.features.helperlayout.AndroidUIHelperLayerActivity
 import de.check24.compose.demo.features.helperlayout.ComposableHelperLayoutActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
@@ -334,7 +334,7 @@ internal val compareItemList: List<CompareItem> by lazy {
     compareItems.add(
         CompareItem(
             composeActivity = ComposableHelperLayoutActivity::class.java,
-            androidUIActivity = AndroidUIHelperLayoutActivity::class.java,
+            androidUIActivity = AndroidUIHelperLayerActivity::class.java,
             headline = "Helper (Layout)"
         )
     )

@@ -617,7 +617,7 @@
         <!-- Helper (Layout) -->
 
         <activity
-            android:name=".features.helperlayout.AndroidUIHelperLayoutActivity"
+            android:name=".features.helperlayout.AndroidUIHelperLayerActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 

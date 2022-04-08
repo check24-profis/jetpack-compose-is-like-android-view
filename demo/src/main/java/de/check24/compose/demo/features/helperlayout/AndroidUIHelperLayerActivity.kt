@@ -3,15 +3,15 @@ package de.check24.compose.demo.features.helperlayout
 import android.animation.ValueAnimator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import de.check24.compose.demo.databinding.HelperLayoutBinding
+import de.check24.compose.demo.databinding.HelperLayerBinding
 
-class AndroidUIHelperLayoutActivity : AppCompatActivity() {
+class AndroidUIHelperLayerActivity : AppCompatActivity() {
 
-    private var binding: HelperLayoutBinding? = null
+    private var binding: HelperLayerBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = HelperLayoutBinding.inflate(layoutInflater)
+        binding = HelperLayerBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         supportActionBar?.title = "Helper (Layout)"
 
