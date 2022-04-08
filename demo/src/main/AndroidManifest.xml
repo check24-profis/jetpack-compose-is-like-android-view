@@ -594,6 +594,15 @@
             android:name=".features.observables.ComposableObservableTypesActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".features.text.AndroidUIPostalAddressActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposablePostalAddressActivity"
+            android:exported="false" />
+
         <!-- Helper (Flow) -->
 
         <activity
