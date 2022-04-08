@@ -167,7 +167,6 @@ html
       .case (.name "TabItem") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/TabItem.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/TabItem.xml)
-      .case (.name "FragmentContainer") $ .pair
       .case (.name "NavHost") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/container/NavHost.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/container/NavHost.xml)
@@ -219,6 +218,8 @@ html
     .section
       .title "States"
       .case (.name "Observable types") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/ObservableTypes.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/ObservableTypes.xml)
       .case (.name "Bundle objects") $ .pair
       .case (.name "Stateful") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateful.kt)

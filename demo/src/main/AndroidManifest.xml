@@ -583,6 +583,17 @@
             android:name=".features.stateholder.ComposableStateHolderActivity"
             android:exported="false" />
 
+        <!-- Observable types -->
+
+        <activity
+            android:name=".features.observables.AndroidUIObservableTypesActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.observables.ComposableObservableTypesActivity"
+            android:exported="false" />
+
         <activity
             android:name=".features.text.AndroidUIPostalAddressActivity"
             android:exported="false"
