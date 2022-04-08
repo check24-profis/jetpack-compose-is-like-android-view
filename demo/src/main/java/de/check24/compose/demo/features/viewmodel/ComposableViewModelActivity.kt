@@ -151,18 +151,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
 @Composable
 private fun MyScreenPreview() {
     DemoTheme {
-        val myViewModel = object : MyViewModelInterface {
-            override val number: MutableState<Int> = mutableStateOf(0)
-            override val isClicked: MutableState<Boolean> = mutableStateOf(false)
-
-            override fun addNumber() {
-                number.value = number.value + 1
-            }
-
-            override fun toggle(clicked: Boolean) {
-                isClicked.value = clicked
-            }
-        }
+        val myViewModel = MyViewModel()
         MyScreen(myViewModel = myViewModel)
     }
 }
