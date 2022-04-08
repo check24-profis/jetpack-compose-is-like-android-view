@@ -9,35 +9,48 @@ private fun SpinnerExample() {
         "Düsseldorf",
         "Osnabrück"
     )
-    Spinner(text = "Select a city!", itemList)
+
+    var text by remember { mutableStateOf("Select a city!") }
+    var expanded by remember { mutableStateOf(false) }
+
+    Spinner(
+        text = text,
+        expanded = expanded,
+        list = itemList,
+        onItemClick = { text = it },
+        onClick = {
+            expanded = it
+        }
+    )
 }
 
 @Composable
 private fun Spinner(
     text: String = "Select something!",
+    expanded: Boolean = false,
     list: List<String>,
-    onClick: ((String) -> Unit)? = null
+    onItemClick: ((String) -> Unit)? = null,
+    onClick: ((Boolean) -> Unit)? = null
 ) {
-    var shownText by remember { mutableStateOf(text) }
-    var expanded by remember { mutableStateOf(false) }
-
-    // The Row aligns text and icon
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = shownText, Modifier.clickable { expanded = !expanded })
-        Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
+        Text(text = text, Modifier.clickable { onClick?.invoke(!expanded) })
+        Icon(
+            imageVector = Icons.Filled.ArrowDropDown,
+            contentDescription = "",
+            modifier = Modifier.clickable { onClick?.invoke(!expanded) }
+        )
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { expanded = false }
+            onDismissRequest = { onClick?.invoke(false) }
         ) {
             list.forEach { item ->
 
                 DropdownMenuItem(
                     onClick = {
-                        expanded = false
-                        shownText = item
-                        onClick?.invoke(item)
+                        onItemClick?.invoke(item)
+                        onClick?.invoke(false)
                     }
                 ) {
                     Text(text = item)
