@@ -45,6 +45,7 @@ class ComposablePostalAddressActivity : ComponentActivity() {
     }
 }
 
+// There is no difference between the Postal Address and the normal TextInput
 @Composable
 private fun PostalAddressExample() {
 
