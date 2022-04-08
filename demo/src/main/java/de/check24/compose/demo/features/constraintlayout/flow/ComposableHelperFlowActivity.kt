@@ -98,29 +98,36 @@ private fun HelperFlowExample(stateHolder: StateHolder = rememberStateHolder()) 
             .fillMaxSize()
             .padding(20.dp)
     ) {
+
         val (flowView, flowOptions) = createRefs()
 
-        FlowRow(
-            mainAxisSize = stateHolder.sizeMode,
-            mainAxisAlignment = stateHolder.mainAxisAlignment,
-            crossAxisAlignment = stateHolder.crossAxisAlignment,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .constrainAs(flowView) {
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(flowOptions.top)
-                },
-            mainAxisSpacing = stateHolder.mainAxisSpacing,
-            crossAxisSpacing = stateHolder.crossAxisSpacing
+        Box(modifier = Modifier
+            .constrainAs(flowView) {
+                start.linkTo(parent.start)
+                top.linkTo(parent.top)
+                end.linkTo(parent.end)
+                bottom.linkTo(flowOptions.top)
+            }
         ) {
-            ColorBox(number = "1", Blue200)
-            ColorBox(number = "2", Green200)
-            ColorBox(number = "3", Orange200)
-            ColorBox(number = "4", Red200)
-            ColorBox(number = "5", Teal200)
+
+            FlowRow(
+                mainAxisSize = stateHolder.sizeMode,
+                mainAxisAlignment = stateHolder.mainAxisAlignment,
+                crossAxisAlignment = stateHolder.crossAxisAlignment,
+                mainAxisSpacing = stateHolder.mainAxisSpacing,
+                crossAxisSpacing = stateHolder.crossAxisSpacing
+            ) {
+
+                listOf(
+                    Blue200,
+                    Green200,
+                    Orange200,
+                    Red200,
+                    Teal200
+                ).forEachIndexed { index, color ->
+                    ColorBox(number = index + 1, color = color)
+                }
+            }
         }
 
         Column(
@@ -268,7 +275,7 @@ private fun Spinner(list: List<String>, onClick: (String) -> Unit) {
 }
 
 @Composable
-private fun ColorBox(number: String, color: Color) {
+private fun ColorBox(number: Int, color: Color) {
     Box(
         modifier = Modifier
             .size(100.dp)
@@ -277,7 +284,7 @@ private fun ColorBox(number: String, color: Color) {
 
         ) {
         Text(
-            text = number,
+            text = number.toString(),
             textAlign = TextAlign.Center,
             fontSize = 40.sp,
             color = Color.White
