@@ -1,0 +1,66 @@
+    &lt;!-- XML Code --&gt;
+&lt;TextView
+    android:id="@+id/textView"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@color/blue_200"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center"
+    android:clickable="true"
+    android:focusable="true" /&gt;
+
+&lt;Switch
+    android:id="@+id/viewModel_switch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;View
+    android:id="@+id/box_view"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/blue_200" /&gt;
+
+    &lt;!-- onCreate --&gt;
+
+binding?.apply {
+    setBackgroundColor(viewModelUI.isClicked, boxView)
+    textView.text = viewModelUI.number.toString()
+
+    viewModelSwitch.setOnClickListener {
+        viewModelUI.onToggle()
+        setBackgroundColor(viewModelUI.isClicked, boxView)
+    }
+
+    textView.setOnClickListener {
+        viewModelUI.onClick()
+        textView.text = viewModelUI.number.toString()
+    }
+}
+
+    &lt;!-- Code --&gt;
+
+private fun setBackgroundColor(clicked: Boolean, boxView: View) {
+    if (clicked) {
+        boxView.setBackgroundResource(R.color.green_200)
+    } else {
+        boxView.setBackgroundResource(R.color.blue_200)
+    }
+}
+
+class MyAndroidUIViewModel : ViewModel() {
+    var isClicked: Boolean = false
+    var number: Int = 0
+
+    fun onToggle() {
+        isClicked = !isClicked
+    }
+
+    fun onClick() {
+        number++
+    }
+}
