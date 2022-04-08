@@ -242,3 +242,9 @@ html
       .case (.name "Theme") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/theme/theme.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/theme/theme.xml)
+
+    .section
+      .title "Side Effects"
+      .case (.name "LaunchedEffect") $ .pair
+      .case (.name "DisposableEffect") $ .pair
+      .case (.name "SideEffect") $ .pair
