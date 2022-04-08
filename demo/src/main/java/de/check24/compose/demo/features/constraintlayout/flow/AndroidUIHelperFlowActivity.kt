@@ -4,119 +4,91 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.helper.widget.Flow
 import de.check24.compose.demo.R
 import de.check24.compose.demo.databinding.HelperFlowBinding
 
-class AndroidUIHelperFlowActivity: AppCompatActivity() {
+data class SpinnerAction(val spinner: Spinner, val action: (String) -> Unit)
 
-    private var binding : HelperFlowBinding? = null
+class AndroidUIHelperFlowActivity : AppCompatActivity() {
+
+    private lateinit var binding: HelperFlowBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = HelperFlowBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(binding.root)
         supportActionBar?.title = "Helper (Flow)"
 
-        val spinnerHorizontalStyle = binding?.spinnerHorizontalStyle
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.flow_style_array,
-            R.layout.support_simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-            spinnerHorizontalStyle?.adapter = adapter
-        }
-
-        spinnerHorizontalStyle?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
+        val spinnerActionList: List<SpinnerAction> = listOf(
+            SpinnerAction(
+                binding.spinnerHorizontalStyle
             ) {
-                val item = parent?.getItemAtPosition(position).toString()
-                setFlowStyleAndMode(item)
-            }
 
-            private fun setFlowStyleAndMode(item: String) {
-                when(item){
-                    "packed" -> binding?.flowView?.setHorizontalStyle(Flow.CHAIN_PACKED)
-                    "spread" -> binding?.flowView?.setHorizontalStyle(Flow.CHAIN_SPREAD)
-                    "spread_inline" -> binding?.flowView?.setHorizontalStyle(Flow.CHAIN_SPREAD_INSIDE)
+                binding.flowView.apply {
+
+                    when (it) {
+                        "packed" -> setHorizontalStyle(Flow.CHAIN_PACKED)
+                        "spread" -> setHorizontalStyle(Flow.CHAIN_SPREAD)
+                        "spread_inline" -> setHorizontalStyle(Flow.CHAIN_SPREAD_INSIDE)
+                    }
+                }
+            },
+            SpinnerAction(
+                binding.spinnerVerticalStyle
+            ) {
+
+                binding.flowView.apply {
+
+                    when (it) {
+                        "packed" -> setVerticalStyle(Flow.CHAIN_PACKED)
+                        "spread" -> setVerticalStyle(Flow.CHAIN_SPREAD)
+                        "spread_inline" -> setVerticalStyle(Flow.CHAIN_SPREAD_INSIDE)
+                    }
+                }
+            },
+            SpinnerAction(
+                binding.spinnerWrapMode,
+            ) {
+
+                binding.flowView.apply {
+
+                    when (it) {
+                        "chain" -> setWrapMode(Flow.WRAP_CHAIN)
+                        "aligned" -> setWrapMode(Flow.WRAP_ALIGNED)
+                        "none" -> setWrapMode(Flow.WRAP_NONE)
+                    }
                 }
             }
-        }
+        )
 
-        val spinnerVerticalStyle = binding?.spinnerVerticalStyle
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.flow_style_array,
-            R.layout.support_simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-            spinnerVerticalStyle?.adapter = adapter
-        }
-
-        spinnerVerticalStyle?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
+        spinnerActionList.forEach { spinnerAction ->
+            ArrayAdapter.createFromResource(
+                this,
+                R.array.flow_style_array,
+                R.layout.support_simple_spinner_dropdown_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+                spinnerAction.spinner.adapter = adapter
             }
 
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val item = parent?.getItemAtPosition(position).toString()
-                setFlowStyleAndMode(item)
-            }
+            spinnerAction.spinner.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {}
 
-            private fun setFlowStyleAndMode(item: String) {
-                when(item){
-                    "packed" -> binding?.flowView?.setVerticalStyle(Flow.CHAIN_PACKED)
-                    "spread" -> binding?.flowView?.setVerticalStyle(Flow.CHAIN_SPREAD)
-                    "spread_inline" -> binding?.flowView?.setVerticalStyle(Flow.CHAIN_SPREAD_INSIDE)
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val item = parent?.getItemAtPosition(position).toString()
+                        spinnerAction.action(item)
+                    }
                 }
-            }
-        }
-
-        val spinnerWrapMode = binding?.spinnerWrapMode
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.flow_wrap_mode,
-            R.layout.support_simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-            spinnerWrapMode?.adapter = adapter
-        }
-
-        spinnerWrapMode?.onItemSelectedListener = object :AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val item = parent?.getItemAtPosition(position).toString()
-                setFlowStyleAndMode(item)
-            }
-
-            private fun setFlowStyleAndMode(item: String) {
-                when(item) {
-                    "chain" -> binding?.flowView?.setWrapMode(Flow.WRAP_CHAIN)
-                    "aligned" -> binding?.flowView?.setWrapMode(Flow.WRAP_ALIGNED)
-                    "none" -> binding?.flowView?.setWrapMode(Flow.WRAP_NONE)
-                }
-            }
         }
     }
 }
