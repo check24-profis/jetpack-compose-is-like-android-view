@@ -69,7 +69,7 @@ class MyViewModel : ViewModel(), MyViewModelInterface {
 }
 
 @Composable
-fun MyScreen(myViewModel: MyViewModel = viewModel()) {
+fun MyScreen(myViewModel: MyViewModel) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -78,12 +78,11 @@ fun MyScreen(myViewModel: MyViewModel = viewModel()) {
         Box(
             modifier = Modifier
                 .background(Blue200)
-                .size(50.dp),
+                .size(50.dp)
+                .clickable { myViewModel.addNumber() },
             contentAlignment = Alignment.Center
         ) {
             Text(
-                modifier = Modifier
-                    .clickable { myViewModel.addNumber() },
                 textAlign = TextAlign.Center,
                 text = myViewModel.number.value.toString()
             )
@@ -120,10 +119,18 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = myViewModel.number.value.toString(),
-            modifier = Modifier.clickable { myViewModel.addNumber() }
-        )
+        Box(
+            modifier = Modifier
+                .background(Blue200)
+                .size(50.dp)
+                .clickable { myViewModel.addNumber() },
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                textAlign = TextAlign.Center,
+                text = myViewModel.number.value.toString()
+            )
+        }
 
         Switch(
             checked = myViewModel.isClicked.value,

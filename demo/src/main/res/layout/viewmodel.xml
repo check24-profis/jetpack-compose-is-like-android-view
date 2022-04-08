@@ -12,9 +12,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@color/blue_200"
-        android:gravity="center"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center" />
 
     <Switch
         android:id="@+id/viewModel_switch"

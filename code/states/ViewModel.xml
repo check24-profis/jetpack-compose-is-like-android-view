@@ -4,6 +4,7 @@
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:background="@color/blue_200"
+    android:foreground="?attr/selectableItemBackground"
     android:gravity="center"
     android:clickable="true"
     android:focusable="true" /&gt;
@@ -26,7 +27,7 @@
 
     &lt;!-- Code --&gt;
 
-class MyAndroidViewViewModel : ViewModel() {
+class MyAndroidUIViewViewModel : ViewModel() {
     var isClicked: Boolean = false
     var number: Int = 0
 
@@ -44,7 +45,7 @@ class AndroidUIViewModelActivity : AppCompatActivity() {
     private var binding: ViewmodelBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel: MyAndroidViewViewModel by viewModels()
+        val viewModel: MyAndroidUIViewViewModel by viewModels()
         super.onCreate(savedInstanceState)
         binding = ViewmodelBinding.inflate(layoutInflater)
         setContentView(binding?.root)

@@ -13,24 +13,27 @@ class AndroidUIViewModelActivity : AppCompatActivity() {
     private var binding: ViewmodelBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel: MyAndroidViewViewModel by viewModels()
+        val viewModelUI: MyAndroidUIViewViewModel by viewModels()
         super.onCreate(savedInstanceState)
         binding = ViewmodelBinding.inflate(layoutInflater)
         setContentView(binding?.root)
         supportActionBar?.title = "ViewModel"
 
-        setBackgroundColor(viewModel.isClicked, requireNotNull(binding?.boxView))
-        binding?.textView?.text = viewModel.number.toString()
+        binding?.apply {
+            setBackgroundColor(viewModelUI.isClicked, boxView)
+            textView.text = viewModelUI.number.toString()
 
-        binding?.viewModelSwitch?.setOnClickListener {
-            viewModel.onToggle()
-            setBackgroundColor(viewModel.isClicked, requireNotNull(binding?.boxView))
+            viewModelSwitch.setOnClickListener {
+                viewModelUI.onToggle()
+                setBackgroundColor(viewModelUI.isClicked, boxView)
+            }
+
+            textView.setOnClickListener {
+                viewModelUI.onClick()
+                textView.text = viewModelUI.number.toString()
+            }
         }
 
-        binding?.textView?.setOnClickListener {
-            viewModel.onClick()
-            binding?.textView?.text = viewModel.number.toString()
-        }
     }
 
     private fun setBackgroundColor(clicked: Boolean, boxView: View) {
@@ -42,7 +45,7 @@ class AndroidUIViewModelActivity : AppCompatActivity() {
     }
 }
 
-class MyAndroidViewViewModel : ViewModel() {
+class MyAndroidUIViewViewModel : ViewModel() {
     var isClicked: Boolean = false
     var number: Int = 0
 
