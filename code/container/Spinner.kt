@@ -17,7 +17,10 @@ private fun SpinnerExample() {
         text = text,
         expanded = expanded,
         list = itemList,
-        onItemClick = { text = it },
+        onItemClick = {
+            text = it
+            expanded = false
+        },
         onClick = {
             expanded = it
         }
@@ -50,7 +53,6 @@ private fun Spinner(
                 DropdownMenuItem(
                     onClick = {
                         onItemClick?.invoke(item)
-                        onClick?.invoke(false)
                     }
                 ) {
                     Text(text = item)
