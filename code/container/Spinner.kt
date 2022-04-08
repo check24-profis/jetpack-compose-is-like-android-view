@@ -22,7 +22,7 @@ private fun SpinnerExample() {
             expanded = false
         },
         onClick = {
-            expanded = it
+            expanded = !expanded
         }
     )
 }
@@ -33,20 +33,20 @@ private fun Spinner(
     expanded: Boolean = false,
     list: List<String>,
     onItemClick: ((String) -> Unit)? = null,
-    onClick: ((Boolean) -> Unit)? = null
+    onClick: () -> Unit
 ) {
     Row(
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.clickable { onClick() }
     ) {
-        Text(text = text, Modifier.clickable { onClick?.invoke(!expanded) })
+        Text(text = text, )
         Icon(
             imageVector = Icons.Filled.ArrowDropDown,
             contentDescription = "",
-            modifier = Modifier.clickable { onClick?.invoke(!expanded) }
         )
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { onClick?.invoke(false) }
+            onDismissRequest = { onClick() }
         ) {
             list.forEach { item ->
 
