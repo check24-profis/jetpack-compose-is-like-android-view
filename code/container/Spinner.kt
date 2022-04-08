@@ -1,5 +1,5 @@
 @Composable
-private fun SpinnerExample() {
+fun SpinnerExample() {
 
     val itemList = listOf(
         "Berlin",
@@ -28,7 +28,7 @@ private fun SpinnerExample() {
 }
 
 @Composable
-private fun Spinner(
+fun Spinner(
     text: String = "Select something!",
     expanded: Boolean = false,
     list: List<String>,
@@ -37,16 +37,16 @@ private fun Spinner(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clickable { onClick() }
+        modifier = Modifier.clickable(onClick = onClick)
     ) {
         Text(text = text, )
         Icon(
             imageVector = Icons.Filled.ArrowDropDown,
-            contentDescription = "",
+            contentDescription = "ArrowDropDown",
         )
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { onClick() }
+            onDismissRequest = onClick
         ) {
             list.forEach { item ->
 
