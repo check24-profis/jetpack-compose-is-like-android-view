@@ -40,7 +40,10 @@ private fun Menu() {
         }
 
         items(singleItemList) { item ->
-
+            SingleUIItem(
+                UIActivity = item.activity,
+                headline = item.headline
+            )
         }
     }
 }
