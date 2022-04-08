@@ -605,6 +605,15 @@
             android:name=".features.viewmodel.ComposableViewModelActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".features.text.AndroidUIPostalAddressActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.text.ComposablePostalAddressActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

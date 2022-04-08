@@ -88,12 +88,14 @@ import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
 import de.check24.compose.demo.features.text.AndroidUINumberDecimalActivity
 import de.check24.compose.demo.features.text.AndroidUINumberActivity
 import de.check24.compose.demo.features.text.AndroidUINumberSignedActivity
+import de.check24.compose.demo.features.text.AndroidUIPostalAddressActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
 import de.check24.compose.demo.features.text.ComposableNumberDecimalActivity
 import de.check24.compose.demo.features.text.ComposableNumberActivity
 import de.check24.compose.demo.features.text.ComposableNumberSignedActivity
+import de.check24.compose.demo.features.text.ComposablePostalAddressActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.features.text.ComposableTextInputActivity
 import de.check24.compose.demo.features.theme.AndroidUIThemeActivity
@@ -204,6 +206,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableNumberDecimalActivity::class.java,
             androidUIActivity = AndroidUINumberDecimalActivity::class.java,
             headline = "Number Decimal"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposablePostalAddressActivity::class.java,
+            androidUIActivity = AndroidUIPostalAddressActivity::class.java,
+            headline = "Postal Address"
         )
     )
 
