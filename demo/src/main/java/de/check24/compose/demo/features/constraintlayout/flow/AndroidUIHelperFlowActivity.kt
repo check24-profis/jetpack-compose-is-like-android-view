@@ -68,7 +68,8 @@ class AndroidUIHelperFlowActivity : AppCompatActivity() {
         spinnerActionList.forEach { spinnerAction ->
             ArrayAdapter.createFromResource(
                 this,
-                R.array.flow_style_array,
+                if (spinnerAction.spinner == binding.spinnerWrapMode) R.array.flow_wrap_mode
+                else R.array.flow_style_array,
                 R.layout.support_simple_spinner_dropdown_item
             ).also { adapter ->
                 adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
