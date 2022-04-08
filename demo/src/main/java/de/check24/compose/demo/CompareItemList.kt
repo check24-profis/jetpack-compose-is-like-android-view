@@ -335,7 +335,7 @@ internal val compareItemList: List<CompareItem> by lazy {
         CompareItem(
             composeActivity = ComposableHelperLayoutActivity::class.java,
             androidUIActivity = AndroidUIHelperLayerActivity::class.java,
-            headline = "Helper (Layout)"
+            headline = "Helper (Layer)"
         )
     )
 

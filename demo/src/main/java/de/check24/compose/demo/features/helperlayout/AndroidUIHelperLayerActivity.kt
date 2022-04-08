@@ -13,7 +13,7 @@ class AndroidUIHelperLayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HelperLayerBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        supportActionBar?.title = "Helper (Layout)"
+        supportActionBar?.title = "Helper (Layer)"
 
         binding?.rotateButton?.setOnClickListener {
             ValueAnimator.ofFloat(0F, 360F)
