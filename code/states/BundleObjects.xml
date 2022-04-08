@@ -1,0 +1,39 @@
+    &lt;!-- XML Code --&gt;
+
+&lt;TextView
+    android:id="@+id/textview1"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    android:textAlignment="center" /&gt;
+
+&lt;TextView
+    android:id="@+id/textview2"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    android:textAlignment="center" /&gt;
+
+&lt;TextView
+    android:id="@+id/textView3"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@color/purple_200"
+    android:textAlignment="center" /&gt;
+
+    &lt;!-- Code --&gt;
+
+    private var binding: BundleObjectsBinding? = null
+    private val person = "My name is John Cole"
+    private val river1 = "Spree is in Germany"
+    private val river2 = "Ishikari is in Japan"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = BundleObjectsBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
+
+        binding?.textview1?.text = person
+        binding?.textview2?.text = river1
+        binding?.textView3?.text = river2
+    }
