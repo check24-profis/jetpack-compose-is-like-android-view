@@ -129,6 +129,8 @@ html
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/Barrier.xml)
       .case (.name "Helper (Flow)") $ .pair
       .case (.name "Helper (Layer)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/HelperLayer.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/HelperLayer.xml)
       .case (.name "FrameLayout") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/FrameLayout.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
