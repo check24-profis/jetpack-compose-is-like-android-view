@@ -7,7 +7,7 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,12 +25,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import de.check24.compose.demo.theme.Blue200
 import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Green200
@@ -58,42 +58,75 @@ class ComposableHelperLayoutActivity : ComponentActivity() {
 @Composable
 private fun HelperLayerExample() {
 
-    var rotationZ:Float by remember { mutableStateOf(0f) }
-    val angle: Float by animateFloatAsState(
-        targetValue = rotationZ,
+    var rotationRGB: Float by remember { mutableStateOf(0f) }
+    val angleRGB: Float by animateFloatAsState(
+        targetValue = rotationRGB,
         animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
     )
 
-    /*var rotZ: Float by remember { mutableStateOf(0f) }
-    val angle: Float by animateFloatAsState(
-        targetValue = rotZ,
+    var rotationRG: Float by remember { mutableStateOf(0f) }
+    val angleRG: Float by animateFloatAsState(
+        targetValue = rotationRG,
         animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
-    )*/
+    )
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    ConstraintLayout(
+        modifier = Modifier.fillMaxSize()
     ) {
+        val (buttonRotateRGB, buttonRotateRG, colorBoxes) = createRefs()
+
         Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .constrainAs(colorBoxes) {
+                    start.linkTo(parent.start)
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                    bottom.linkTo(parent.bottom)
+                }
+                .graphicsLayer {
+                    rotationZ = angleRGB
+                }
+        ) {
+            Column(
+                modifier = Modifier.graphicsLayer {
+                    rotationZ = angleRG
+                }
+            ) {
+                ColorBox(color = Red200)
+                ColorBox(color = Green200)
+            }
+            ColorBox(color = Blue200)
+        }
+
+        Button(
+            onClick = { rotationRGB += 360f },
             modifier = Modifier
                 .wrapContentSize()
-//                .rotate(angle)
-                .graphicsLayer { rotationZ = angle }
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                .padding(bottom = 20.dp)
+                .constrainAs(buttonRotateRGB) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    bottom.linkTo(buttonRotateRG.top)
+                }
         ) {
-            listOf(Red200, Green200, Blue200).forEach {
-                ColorBox(color = it)
-            }
+            Text(text = "Rotate 360°")
         }
-    }
-    Button(
-        onClick = { rotationZ += 360f },
-        modifier = Modifier
-            .wrapContentSize()
-            .padding(20.dp)
-    ) {
-        Text(text = "Rotate 360°")
+
+        Button(
+            onClick = { rotationRG += 360f },
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(bottom = 20.dp)
+                .constrainAs(buttonRotateRG) {
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    bottom.linkTo(parent.bottom)
+                }
+        ) {
+            Text(text = "Rotate Red and Green°")
+        }
     }
 }
 
