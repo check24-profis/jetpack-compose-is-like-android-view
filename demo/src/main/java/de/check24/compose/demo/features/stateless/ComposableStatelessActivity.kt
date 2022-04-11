@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,8 +48,9 @@ class ComposableStatelessActivity : ComponentActivity() {
 @Composable
 private fun StatelessExample() {
 
-    // the parent manages the state of the child
-    var isClicked by remember { mutableStateOf(false) }
+    // here we use "rememberSaveable", so the state won't be lost even when it gets recomposed
+    // for example when you rotate your screen, the state will be remembered
+    var isClicked by rememberSaveable { mutableStateOf(false) }
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,

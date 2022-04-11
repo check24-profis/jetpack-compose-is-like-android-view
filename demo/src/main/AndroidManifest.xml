@@ -594,6 +594,17 @@
             android:name=".features.observables.ComposableObservableTypesActivity"
             android:exported="false" />
 
+        <!-- ViewModel -->
+
+        <activity
+            android:name=".features.viewmodel.AndroidUIViewModelActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.viewmodel.ComposableViewModelActivity"
+            android:exported="false" />
+
         <!-- Postal Address -->
 
         <activity

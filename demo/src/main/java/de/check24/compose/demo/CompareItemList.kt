@@ -102,6 +102,8 @@ import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.features.text.ComposableTextInputActivity
 import de.check24.compose.demo.features.theme.AndroidUIThemeActivity
 import de.check24.compose.demo.features.theme.ComposableThemeActivity
+import de.check24.compose.demo.features.viewmodel.AndroidUIViewModelActivity
+import de.check24.compose.demo.features.viewmodel.ComposableViewModelActivity
 import de.check24.compose.demo.features.viewpager.AndroidUIViewPagerActivity
 import de.check24.compose.demo.features.viewpager.ComposableViewPagerActivity
 
@@ -523,6 +525,13 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableObservableTypesActivity::class.java,
             androidUIActivity = AndroidUIObservableTypesActivity::class.java,
             headline = "Observable types"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableViewModelActivity::class.java,
+            androidUIActivity = AndroidUIViewModelActivity::class.java,
+            headline = "ViewModel"
         )
     )
 
