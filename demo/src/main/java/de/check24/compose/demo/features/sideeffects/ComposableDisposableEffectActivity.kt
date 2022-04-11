@@ -53,12 +53,13 @@ private fun DisposableEffectDemo() {
 
     var isEffectActive by remember { mutableStateOf(true) }
     var count by remember { mutableStateOf(0) }
+    var disposableEffectKey by remember { mutableStateOf(true) }
 
     if (isEffectActive) {
 
-        DisposableEffect(true) {
+        DisposableEffect(disposableEffectKey) {
 
-            //is called when DisposableEffect leaves composition
+            //is called when DisposableEffect leaves composition or key changed
             onDispose { count++ }
         }
     }
@@ -73,6 +74,11 @@ private fun DisposableEffectDemo() {
                 text = if (isEffectActive) "Deactivate"
                 else "Activate"
             )
+        }
+
+        Button(onClick = { disposableEffectKey = !disposableEffectKey }) {
+
+            Text(text = "Change key")
         }
     }
 }
