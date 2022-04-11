@@ -622,7 +622,7 @@
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.helperlayout.ComposableHelperLayoutActivity"
+            android:name=".features.helperlayout.ComposableHelperLayerActivity"
             android:exported="false" />
 
     </application>

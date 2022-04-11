@@ -36,7 +36,7 @@ import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Green200
 import de.check24.compose.demo.theme.Red200
 
-class ComposableHelperLayoutActivity : ComponentActivity() {
+class ComposableHelperLayerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
