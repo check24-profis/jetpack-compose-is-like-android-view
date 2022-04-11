@@ -605,6 +605,8 @@
             android:name=".features.viewmodel.ComposableViewModelActivity"
             android:exported="false" />
 
+        <!-- Postal address -->
+
         <activity
             android:name=".features.text.AndroidUIPostalAddressActivity"
             android:exported="false"
@@ -612,6 +614,12 @@
 
         <activity
             android:name=".features.text.ComposablePostalAddressActivity"
+            android:exported="false" />
+
+        <!-- Launched Effect -->
+
+        <activity
+            android:name=".features.sideeffects.ComposableLaunchedEffectActivity"
             android:exported="false" />
 
     </application>
