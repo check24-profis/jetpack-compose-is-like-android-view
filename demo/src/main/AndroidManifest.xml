@@ -622,6 +622,12 @@
             android:name=".features.sideeffects.ComposableLaunchedEffectActivity"
             android:exported="false" />
 
+        <!-- Disposable Effect -->
+
+        <activity
+            android:name=".features.sideeffects.ComposableDisposableEffectActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
