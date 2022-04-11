@@ -5,6 +5,10 @@ Github Page: https://kibotu.github.io/jetpack-compose-is-like-android-view/
 
 Inspired by [swift-is-like-kotlin](http://nilhcem.github.io/swift-is-like-kotlin/)
 
+Compose Documentation: https://developer.android.com/jetpack/compose
+
+Quick Equivalents: https://www.jetpackcompose.app/What-is-the-equivalent-of-FrameLayout-in-Jetpack-Compose
+
 ### How to build
 
 ```bash

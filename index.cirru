@@ -133,6 +133,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/HelperFlow.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/HelperFlow.xml)
       .case (.name "Helper (Layer)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/HelperLayer.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/HelperLayer.xml)
       .case (.name "FrameLayout") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/FrameLayout.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
@@ -217,12 +219,12 @@ html
       .case (.name "FrameLayout") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/FrameLayout.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/FrameLayout.xml)
+
     .section
       .title "States"
       .case (.name "Observable types") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/states/ObservableTypes.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/states/ObservableTypes.xml)
-      .case (.name "Bundle objects") $ .pair
       .case (.name "Stateful") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/states/Stateful.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/states/Stateful.xml)
@@ -233,6 +235,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/states/StateHolder.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/states/StateHolder.xml)
       .case (.name "ViewModel") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/states/ViewModel.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/states/ViewModel.xml)
 
     .section
       .title "Events"
@@ -242,3 +246,10 @@ html
       .case (.name "Theme") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/theme/theme.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/theme/theme.xml)
+
+    .section
+      .title "Side Effects"
+      .case (.name "LaunchedEffect") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/sideeffects/LaunchedEffect.kt)
+      .case (.name "DisposableEffect") $ .pair
+      .case (.name "SideEffect") $ .pair

@@ -10,31 +10,52 @@ fun SpinnerExample() {
         "Osnabrück"
     )
 
+    var text by remember { mutableStateOf("Select a city!") }
     var expanded by remember { mutableStateOf(false) }
-    var cityname by remember { mutableStateOf("select a city") }
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    Spinner(
+        text = text,
+        expanded = expanded,
+        list = itemList,
+        onItemClick = {
+            text = it
+            expanded = false
+        },
+        onClick = {
+            expanded = !expanded
+        }
+    )
+}
+
+@Composable
+fun Spinner(
+    text: String = "Select something!",
+    expanded: Boolean = false,
+    list: List<String>,
+    onItemClick: ((String) -> Unit)? = null,
+    onClick: () -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.clickable(onClick = onClick)
     ) {
-        // The Row aligns text and icon
-        Row {
-            Text(text = cityname, Modifier.clickable { expanded = !expanded })
-            Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                itemList.forEach { city ->
+        Text(text = text, )
+        Icon(
+            imageVector = Icons.Filled.ArrowDropDown,
+            contentDescription = "ArrowDropDown",
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = onClick
+        ) {
+            list.forEach { item ->
 
-                    DropdownMenuItem(
-                        onClick = {
-                            expanded = false
-                            cityname = city
-                        }
-                    ) {
-                        Text(text = city)
+                DropdownMenuItem(
+                    onClick = {
+                        onItemClick?.invoke(item)
                     }
+                ) {
+                    Text(text = item)
                 }
             }
         }
