@@ -4,15 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animate
-import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
@@ -22,10 +20,14 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,21 +58,37 @@ class ComposableHelperLayoutActivity : ComponentActivity() {
 @Composable
 private fun HelperLayerExample() {
 
-    val angle: Float by animateFloatAsState(targetValue = 360F,)
+    var rotationZ:Float by remember { mutableStateOf(0f) }
+    val angle: Float by animateFloatAsState(
+        targetValue = rotationZ,
+        animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
+    )
 
-    Column(
-        modifier = Modifier
-            .wrapContentSize()
-            .rotate(degrees = 360F),
-        horizontalAlignment = Alignment.CenterHorizontally,
+    /*var rotZ: Float by remember { mutableStateOf(0f) }
+    val angle: Float by animateFloatAsState(
+        targetValue = rotZ,
+        animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
+    )*/
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
     ) {
-        listOf(Red200, Green200, Blue200).forEach {
-            ColorBox(color = it)
+        Column(
+            modifier = Modifier
+                .wrapContentSize()
+//                .rotate(angle)
+                .graphicsLayer { rotationZ = angle }
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            listOf(Red200, Green200, Blue200).forEach {
+                ColorBox(color = it)
+            }
         }
-
     }
     Button(
-        onClick = {},
+        onClick = { rotationZ += 360f },
         modifier = Modifier
             .wrapContentSize()
             .padding(20.dp)
