@@ -1,7 +1,6 @@
 package de.check24.compose.demo.features.sideeffects
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -20,7 +19,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.check24.compose.demo.theme.DemoTheme
-import kotlinx.coroutines.channels.actor
 
 class ComposableLaunchedEffectActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +34,10 @@ class ComposableLaunchedEffectActivity : ComponentActivity() {
 
 @Composable
 private fun LaunchedEffectDemo() {
-    var showSnackbar by remember { mutableStateOf(false) }
+    var isSnackbarVisible by remember { mutableStateOf(false) }
     val scaffoldState = rememberScaffoldState()
 
-    if (showSnackbar) {
+    if (isSnackbarVisible) {
 
         //LaunchedEffect Safely executes suspends funs
         LaunchedEffect(scaffoldState.snackbarHostState) {
@@ -50,7 +48,7 @@ private fun LaunchedEffectDemo() {
                 actionLabel = "hide"
             )
 
-            showSnackbar = scaffoldState.snackbarHostState.currentSnackbarData != null
+            isSnackbarVisible = scaffoldState.snackbarHostState.currentSnackbarData != null
         }
     }
 
@@ -69,9 +67,9 @@ private fun LaunchedEffectDemo() {
             contentAlignment = Alignment.Center
         ) {
 
-            Button(onClick = { showSnackbar = !showSnackbar }) {
+            Button(onClick = { isSnackbarVisible = !isSnackbarVisible }) {
                 Text(text =
-                    if (showSnackbar) "Hide Snackbar"
+                    if (isSnackbarVisible) "Hide Snackbar"
                     else "Show Snackbar"
                 )
             }

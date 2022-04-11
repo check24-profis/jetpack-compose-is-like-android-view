@@ -1,9 +1,9 @@
 @Composable
 fun LaunchedEffectDemo() {
-    var showSnackbar by remember { mutableStateOf(false) }
+    var isSnackbarVisible by remember { mutableStateOf(false) }
     val scaffoldState = rememberScaffoldState()
 
-    if (showSnackbar) {
+    if (isSnackbarVisible) {
 
         //LaunchedEffect Safely executes suspends funs
         LaunchedEffect(scaffoldState.snackbarHostState) {
@@ -14,7 +14,7 @@ fun LaunchedEffectDemo() {
                 actionLabel = "hide"
             )
 
-            showSnackbar = scaffoldState.snackbarHostState.currentSnackbarData != null
+            isSnackbarVisible = scaffoldState.snackbarHostState.currentSnackbarData != null
         }
     }
 
@@ -33,10 +33,10 @@ fun LaunchedEffectDemo() {
             contentAlignment = Alignment.Center
         ) {
 
-            Button(onClick = { showSnackbar = !showSnackbar }) {
+            Button(onClick = { isSnackbarVisible = !isSnackbarVisible }) {
                 Text(text =
-                    if (showSnackbar) "Hide Snackbar"
-                    else "Show Snackbar"
+                if (isSnackbarVisible) "Hide Snackbar"
+                else "Show Snackbar"
                 )
             }
         }
