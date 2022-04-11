@@ -3,6 +3,7 @@ package de.check24.compose.demo.features.events
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -29,6 +30,20 @@ class ComposableEventsActivity : ComponentActivity() {
 
 @Composable
 private fun EventsExample() {
+
+}
+
+
+
+@Composable
+private fun AddButton() {
+    Button(onClick = {  }) {
+        
+    }
+}
+
+@Composable
+private fun SubtractButton() {
 
 }
 
