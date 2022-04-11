@@ -32,3 +32,14 @@ binding?.rotateButton?.setOnClickListener {
             start()
         }
 }
+
+binding?.rotateRedAndGreenButton?.setOnClickListener {
+    ValueAnimator.ofFloat(0F, 360F)
+        .apply {
+            addUpdateListener { animator ->
+                binding?.viewRedAndGreen?.rotation = animator.animatedValue as Float
+            }
+            duration = 2000
+            start()
+        }
+}
