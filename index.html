@@ -1726,7 +1726,105 @@ fun ConstraintLayoutBarrier() {
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintTop_toBottomOf="@+id/barrier" /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// At the time of the implementation there was no official compose equivalent
+// This is an attempt to create a helperlayer
+
+@Composable
+private fun HelperLayerExample() {
+
+    var rotationRGB: Float by remember { mutableStateOf(0f) }
+    val angleRGB: Float by animateFloatAsState(
+        targetValue = rotationRGB,
+        animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
+    )
+
+    var rotationRG: Float by remember { mutableStateOf(0f) }
+    val angleRG: Float by animateFloatAsState(
+        targetValue = rotationRG,
+        animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
+    )
+
+    ConstraintLayout(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        // first layer
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .graphicsLayer {
+                    rotationZ = angleRGB
+                }
+        ) {
+            // second layer within the first layer
+            Column(
+                modifier = Modifier.graphicsLayer {
+                    rotationZ = angleRG
+                }
+            ) {
+                ColorBox(color = Red200)
+                ColorBox(color = Green200)
+            }
+            ColorBox(color = Blue200)
+        }
+
+        Button(
+            onClick = { rotationRGB += 360f }
+        ) {
+            Text(text = "Rotate 360°")
+        }
+
+        Button(
+            onClick = { rotationRG += 360f }
+        ) {
+            Text(text = "Rotate Red and Green°")
+        }
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!-- XML Code --&gt;
+&lt;View
+    android:id="@+id/view_red"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/red_200" /&gt;
+
+    [...]
+
+&lt;Button
+    android:id="@+id/rotate_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Rotate 360ª" /&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Layer
+    android:id="@+id/all_views"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:constraint_referenced_ids="view_red,view_green,view_blue"
+    tools:ignore="MissingConstraints"/&gt;
+
+&lt;!-- Code --&gt;
+
+binding?.rotateButton?.setOnClickListener {
+    ValueAnimator.ofFloat(0F, 360F)
+        .apply {
+            addUpdateListener { animator -&gt;
+                binding?.allViews?.rotation = animator.animatedValue as Float
+            }
+            duration = 2000
+            start()
+        }
+}
+
+binding?.rotateRedAndGreenButton?.setOnClickListener {
+    ValueAnimator.ofFloat(0F, 360F)
+        .apply {
+            addUpdateListener { animator ->
+                binding?.viewRedAndGreen?.rotation = animator.animatedValue as Float
+            }
+            duration = 2000
+            start()
+        }
+}</code></pre></div></div></div><div class="case"><div class="name">FrameLayout</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun FrameLayoutExample() {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -3998,4 +4096,37 @@ fun LaunchedEffectDemo() {
             }
         }
     }
-}</code></pre></div></div></div><div class="case"><div class="name">DisposableEffect</div><div class="pair"></div></div><div class="case"><div class="name">SideEffect</div><div class="pair"></div></div></div></body></html>
+}</code></pre></div></div></div><div class="case"><div class="name">DisposableEffect</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun DisposableEffectDemo() {
+
+    var isEffectActive by remember { mutableStateOf(true) }
+    var count by remember { mutableStateOf(0) }
+    var disposableEffectKey by remember { mutableStateOf(true) }
+
+    if (isEffectActive) {
+
+        DisposableEffect(disposableEffectKey) {
+
+            //is called when DisposableEffect leaves composition or key changed
+            onDispose { count++ }
+        }
+    }
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+
+        Text(text = "Disposed $count times")
+
+        Button(onClick = { isEffectActive = !isEffectActive }) {
+
+            Text(
+                text = if (isEffectActive) "Deactivate"
+                else "Activate"
+            )
+        }
+
+        Button(onClick = { disposableEffectKey = !disposableEffectKey }) {
+
+            Text(text = "Change key")
+        }
+    }
+}</code></pre></div></div></div><div class="case"><div class="name">SideEffect</div><div class="pair"></div></div></div></body></html>
