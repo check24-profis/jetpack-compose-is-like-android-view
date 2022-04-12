@@ -67,6 +67,7 @@ class ComposableHelperFlowVerticalActivity : ComponentActivity() {
     }
 }
 
+// important to note, the crossAxisAlignment doesn't work properly
 private class VerticalFlowStateHolder {
     var sizeMode by mutableStateOf(SizeMode.Wrap)
     var mainAxisAlignment by mutableStateOf(FlowMainAxisAlignment.Center)

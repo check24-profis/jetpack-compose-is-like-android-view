@@ -1,4 +1,5 @@
 // Vertical FlowLayout
+// the crossAxisAlignment doesn't work properly
 
 FlowColumn(
     modifier = Modifier
@@ -13,6 +14,7 @@ FlowColumn(
 }
 
 // Horizontal FlowLayout
+// the crossAxisAlignment doesn't work properly
 
 FlowRow(
     modifier = Modifier
