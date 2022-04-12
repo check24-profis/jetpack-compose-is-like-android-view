@@ -1,5 +1,6 @@
 package de.check24.compose.demo
 
+import de.check24.compose.demo.features.sideeffects.ComposableDisposableEffectActivity
 import de.check24.compose.demo.features.sideeffects.ComposableLaunchedEffectActivity
 
 internal val singleItemList: List<SingleItem> by lazy {
@@ -9,6 +10,12 @@ internal val singleItemList: List<SingleItem> by lazy {
         SingleItem(
             activity = ComposableLaunchedEffectActivity::class.java,
             headline = "Launched Effect"
+        )
+    )
+    singleItems.add(
+        SingleItem(
+            activity = ComposableDisposableEffectActivity::class.java,
+            headline = "Disposable Effect"
         )
     )
 
