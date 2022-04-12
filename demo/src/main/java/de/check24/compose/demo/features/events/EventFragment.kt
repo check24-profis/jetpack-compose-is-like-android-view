@@ -10,10 +10,6 @@ import de.check24.compose.demo.databinding.EventLayoutBinding
 
 class EventFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EventFragment()
-    }
-
     private lateinit var viewModel: EventViewModel
     private var binding: EventLayoutBinding? = null
 
