@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -18,6 +19,7 @@ import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -45,6 +47,7 @@ import de.check24.compose.demo.theme.Blue200
 import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Green200
 import de.check24.compose.demo.theme.Orange200
+import de.check24.compose.demo.theme.Purple200
 import de.check24.compose.demo.theme.Red200
 import de.check24.compose.demo.theme.Teal200
 
@@ -57,10 +60,9 @@ class ComposableHelperFlowVerticalActivity : ComponentActivity() {
                     TopAppBar(
                         title = { Text(text = "Helper (Flow Vertical)") }
                     )
-                }
-            ) {
-                HelperFlowVerticalExample()
-            }
+                },
+                content = { HelperFlowVerticalExample() }
+            )
         }
     }
 }
@@ -68,7 +70,7 @@ class ComposableHelperFlowVerticalActivity : ComponentActivity() {
 private class VerticalFlowStateHolder {
     var sizeMode by mutableStateOf(SizeMode.Wrap)
     var mainAxisAlignment by mutableStateOf(FlowMainAxisAlignment.Center)
-    var crossAxisAlignment by mutableStateOf(FlowCrossAxisAlignment.Center)
+    var crossAxisAlignment by mutableStateOf(FlowCrossAxisAlignment.End)
     var isSelectedVerticalChip by mutableStateOf(false)
     var isSelectedHorizontalChip by mutableStateOf(false)
     var mainAxisSpacing by mutableStateOf(0.dp)
@@ -97,21 +99,20 @@ private fun HelperFlowVerticalExample(verticalFlowStateHolder: VerticalFlowState
 
         val (flowView, flowOptions) = createRefs()
 
-        Box(modifier = Modifier
-            .constrainAs(flowView) {
-                start.linkTo(parent.start)
-                top.linkTo(parent.top)
-                end.linkTo(parent.end)
-                bottom.linkTo(flowOptions.top)
-            }
-        ) {
-
             FlowColumn(
                 mainAxisSize = verticalFlowStateHolder.sizeMode,
                 mainAxisAlignment = verticalFlowStateHolder.mainAxisAlignment,
                 crossAxisAlignment = verticalFlowStateHolder.crossAxisAlignment,
                 mainAxisSpacing = verticalFlowStateHolder.mainAxisSpacing,
-                crossAxisSpacing = verticalFlowStateHolder.crossAxisSpacing
+                crossAxisSpacing = verticalFlowStateHolder.crossAxisSpacing,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .constrainAs(flowView) {
+                        start.linkTo(parent.start)
+                        top.linkTo(parent.top)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(flowOptions.top)
+                    }
             ) {
 
                 listOf(
@@ -122,12 +123,18 @@ private fun HelperFlowVerticalExample(verticalFlowStateHolder: VerticalFlowState
                     Teal200,
                     Blue200,
                     Green200,
-                    Orange200
+                    Orange200,
+                    Blue200,
+                    Green200,
+                    Orange200,
+                    Red200,
+                    Teal200,
+                    Blue200,
+                    Green200,
                 ).forEachIndexed { index, color ->
                     ColorBox(number = index + 1, color = color)
                 }
             }
-        }
 
         Column(
             modifier = Modifier
@@ -137,6 +144,7 @@ private fun HelperFlowVerticalExample(verticalFlowStateHolder: VerticalFlowState
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     bottom.linkTo(parent.bottom)
+                    top.linkTo(flowView.bottom)
                 }
         ) {
             FlowStyleAndWrapMode("sizeMode", listOf("Wrap", "Expand")) {
@@ -157,12 +165,12 @@ private fun HelperFlowVerticalExample(verticalFlowStateHolder: VerticalFlowState
             ItemSpacing(
                 onToggleHorizontalSpace = {
                     verticalFlowStateHolder.onToggleHorizontal()
-                    verticalFlowStateHolder.mainAxisSpacing =
+                    verticalFlowStateHolder.crossAxisSpacing =
                         (if (verticalFlowStateHolder.isSelectedHorizontalChip) 20.dp else 0.dp)
                 },
                 onToggleVerticalSpace = {
                     verticalFlowStateHolder.onToggleVertical()
-                    verticalFlowStateHolder.crossAxisSpacing =
+                    verticalFlowStateHolder.mainAxisSpacing =
                         (if (verticalFlowStateHolder.isSelectedVerticalChip) 20.dp else 0.dp)
                 }
             )
