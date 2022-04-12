@@ -1,14 +1,12 @@
 package de.check24.compose.demo.features.events
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.viewmodel.compose.viewModel
-import de.check24.compose.demo.R
-import de.check24.compose.demo.databinding.EventFragmentBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import de.check24.compose.demo.databinding.EventLayoutBinding
 
 class EventFragment : Fragment() {
 
@@ -17,14 +15,14 @@ class EventFragment : Fragment() {
     }
 
     private lateinit var viewModel: EventViewModel
-    private var binding: EventFragmentBinding? = null
+    private var binding: EventLayoutBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = EventFragmentBinding.inflate(inflater, container, false)
+        binding = EventLayoutBinding.inflate(inflater, container, false)
         return binding?.root
     }
 
