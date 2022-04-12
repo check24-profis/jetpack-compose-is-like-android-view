@@ -7,20 +7,28 @@
 --&gt;
 
 &lt;!-- Fragment --&gt;
-override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProvider(this)[EventViewModel::class.java]
-    
-    binding?.apply {
-    
-        addButton.setOnClickListener {
-            viewModel.plusOne()
-            textView.text = viewModel.number.toString()
-        }
-        
-        subtractButton.setOnClickListener {
-            viewModel.minusOne()
-            textView.text = viewModel.number.toString()
+class Activity: AppCompatActivity() {
+
+    lateinit var binding: EventLayoutBinding
+    private val viewModel: EventViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = EventLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.title = "Events"
+
+        binding.apply {
+
+            addButton.setOnClickListener {
+                viewModel.plusOne()
+                textView.text = viewModel.number.toString()
+            }
+
+            subtractButton.setOnClickListener {
+                viewModel.minusOne()
+                textView.text = viewModel.number.toString()
+            }
         }
     }
 }
