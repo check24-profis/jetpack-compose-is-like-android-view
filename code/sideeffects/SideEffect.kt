@@ -1,6 +1,6 @@
 /*
-    the SideEffect is used when you only want to run code if the composable is successfully recomposed
-    this is useful if you want e.g. the correct input, because only then will the code be executed that you really want to execute.
+    the SideEffect is used when you only want to run code if the composable is successfully recomposed.
+    After the recomposition the codeblock within the SideEffect gets executed.
 */
 
 @Composable
@@ -21,6 +21,10 @@ fun WithoutSideEffect() {
         )
     }
 
+    /*
+        through the Sleep, the timer gets changed when the composables recomposes itself.
+        Therefore it does not call the recomposition.
+    */
     Thread.sleep(1000)
     timer++
 }
@@ -43,6 +47,11 @@ fun WithSideEffect() {
         )
     }
 
+    /*
+        Through SideEffect timer gets called after the composable got recomposed.
+        So the composable gets recomposed and afterwards it increases timer.
+        In this case we created a loop
+    */
     SideEffect {
         Thread.sleep(1000)
         timer++
