@@ -238,6 +238,9 @@ html
 
     .section
       .title "Events"
+      .case (.name "Event Flow") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/events/Events.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/events/Events.xml)
 
     .section
       .title "Material Theme"
