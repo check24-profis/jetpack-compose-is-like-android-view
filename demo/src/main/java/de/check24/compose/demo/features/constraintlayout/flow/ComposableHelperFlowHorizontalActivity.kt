@@ -23,7 +23,6 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,7 +48,7 @@ import de.check24.compose.demo.theme.Orange200
 import de.check24.compose.demo.theme.Red200
 import de.check24.compose.demo.theme.Teal200
 
-class ComposableHelperFlowActivity : ComponentActivity() {
+class ComposableHelperFlowHorizontalActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -57,7 +56,7 @@ class ComposableHelperFlowActivity : ComponentActivity() {
                 Scaffold(
                     topBar = {
                         TopAppBar(
-                            title = { Text(text = "Helper (Flow)") }
+                            title = { Text(text = "Helper (Flow Horizontal)") }
                         )
                     }
                 ) {
@@ -68,7 +67,7 @@ class ComposableHelperFlowActivity : ComponentActivity() {
     }
 }
 
-private class StateHolder {
+private class HorizontalFlowStateHolder {
     var sizeMode by mutableStateOf(SizeMode.Wrap)
     var mainAxisAlignment by mutableStateOf(FlowMainAxisAlignment.Center)
     var crossAxisAlignment by mutableStateOf(FlowCrossAxisAlignment.Center)
@@ -87,11 +86,11 @@ private class StateHolder {
 }
 
 @Composable
-private fun rememberStateHolder() : StateHolder =
-    remember { StateHolder() }
+private fun rememberStateHolder() : HorizontalFlowStateHolder =
+    remember { HorizontalFlowStateHolder() }
 
 @Composable
-private fun HelperFlowExample(stateHolder: StateHolder = rememberStateHolder()) {
+private fun HelperFlowExample(stateHolder: HorizontalFlowStateHolder = rememberStateHolder()) {
 
     ConstraintLayout(
         modifier = Modifier

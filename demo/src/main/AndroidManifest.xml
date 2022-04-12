@@ -622,7 +622,7 @@
             android:name=".features.sideeffects.ComposableLaunchedEffectActivity"
             android:exported="false" />
 
-        <!-- Helper (Layout) -->
+        <!-- Helper (Layer) -->
 
         <activity
             android:name=".features.helperlayout.AndroidUIHelperLayerActivity"
@@ -633,7 +633,7 @@
             android:name=".features.helperlayout.ComposableHelperLayerActivity"
             android:exported="false" />
 
-        <!-- Helper (Flow) -->
+        <!-- Helper (Flow Horizontal) -->
 
         <activity
             android:name=".features.constraintlayout.flow.AndroidUIHelperFlowActivity"
@@ -641,7 +641,18 @@
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.constraintlayout.flow.ComposableHelperFlowActivity"
+            android:name=".features.constraintlayout.flow.ComposableHelperFlowHorizontalActivity"
+            android:exported="false" />
+
+        <!-- Helper (Flow Vertical) -->
+
+        <activity
+            android:name=".features.constraintlayout.flow.AndroidUIHelperFlowVerticalActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.flow.ComposableHelperFlowVerticalActivity"
             android:exported="false" />
 
     </application>

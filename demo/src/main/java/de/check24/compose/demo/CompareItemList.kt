@@ -27,7 +27,9 @@ import de.check24.compose.demo.features.constraintlayout.ComposableConstraintLay
 import de.check24.compose.demo.features.constraintlayout.barrier.AndroidUIBarrierActivity
 import de.check24.compose.demo.features.constraintlayout.barrier.ComposableBarrierActivity
 import de.check24.compose.demo.features.constraintlayout.flow.AndroidUIHelperFlowActivity
-import de.check24.compose.demo.features.constraintlayout.flow.ComposableHelperFlowActivity
+import de.check24.compose.demo.features.constraintlayout.flow.AndroidUIHelperFlowVerticalActivity
+import de.check24.compose.demo.features.constraintlayout.flow.ComposableHelperFlowHorizontalActivity
+import de.check24.compose.demo.features.constraintlayout.flow.ComposableHelperFlowVerticalActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIHorizontalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.AndroidUIVerticalGuidelineActivity
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHorizontalGuidelineActivity
@@ -342,9 +344,16 @@ internal val compareItemList: List<CompareItem> by lazy {
     )
     compareItems.add(
         CompareItem(
-            composeActivity = ComposableHelperFlowActivity::class.java,
+            composeActivity = ComposableHelperFlowHorizontalActivity::class.java,
             androidUIActivity = AndroidUIHelperFlowActivity::class.java,
-            headline = "Helper (Flow)"
+            headline = "Helper (Flow Horizontal)"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableHelperFlowVerticalActivity::class.java,
+            androidUIActivity = AndroidUIHelperFlowVerticalActivity::class.java,
+            headline = "Helper (Flow Vertical)"
         )
     )
 

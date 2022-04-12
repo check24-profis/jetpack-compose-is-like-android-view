@@ -4,24 +4,20 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.helper.widget.Flow
 import de.check24.compose.demo.R
-import de.check24.compose.demo.databinding.HelperFlowBinding
+import de.check24.compose.demo.databinding.HelperFlowVerticalBinding
 
-data class SpinnerAction(val spinner: Spinner, val action: (String) -> Unit)
+class AndroidUIHelperFlowVerticalActivity:AppCompatActivity() {
 
-class AndroidUIHelperFlowActivity : AppCompatActivity() {
-
-    private lateinit var binding: HelperFlowBinding
+    private lateinit var binding: HelperFlowVerticalBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = HelperFlowBinding.inflate(layoutInflater)
+        binding = HelperFlowVerticalBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.title = "Helper (Flow)"
+        supportActionBar?.title = "Helper (Flow Vertical)"
 
         val spinnerActionList: List<SpinnerAction> = listOf(
             SpinnerAction(
