@@ -62,7 +62,7 @@ private fun EventsExample() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // here it gives the states to the child
-        EventText(number = number.toString())
+        NumberText(number = number.toString())
 
         // between the curly brackets, the parent can decide what should happen when an event occurs.
         AddButton {
@@ -77,7 +77,7 @@ private fun EventsExample() {
 }
 
 @Composable
-private fun EventText(number: String) {
+private fun NumberText(number: String) {
     // the child can't change the state, in this case number.
     Box(
         modifier = Modifier
