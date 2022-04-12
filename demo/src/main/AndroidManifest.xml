@@ -622,15 +622,15 @@
             android:name=".features.sideeffects.ComposableLaunchedEffectActivity"
             android:exported="false" />
 
-        <!-- Helper (Layout) -->
+        <!-- Helper (Layer) -->
 
         <activity
-            android:name=".features.helperlayout.AndroidUIHelperLayerActivity"
+            android:name=".features.helperlayer.AndroidUIHelperLayerActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.helperlayout.ComposableHelperLayerActivity"
+            android:name=".features.helperlayer.ComposableHelperLayerActivity"
             android:exported="false" />
 
     </application>
