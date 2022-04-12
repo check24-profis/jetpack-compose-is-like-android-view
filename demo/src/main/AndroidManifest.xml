@@ -639,6 +639,10 @@
             android:name=".features.helperlayer.ComposableHelperLayerActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".features.sideeffects.ComposableSideEffectActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

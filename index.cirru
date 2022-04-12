@@ -252,3 +252,4 @@ html
       .case (.name "DisposableEffect") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/sideeffects/DisposableEffect.kt)
       .case (.name "SideEffect") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/sideeffects/SideEffect.kt)
