@@ -38,6 +38,8 @@ import de.check24.compose.demo.features.events.AndroidUIEventsActivity
 import de.check24.compose.demo.features.events.ComposableEventsActivity
 import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
+import de.check24.compose.demo.features.helperlayout.AndroidUIHelperLayerActivity
+import de.check24.compose.demo.features.helperlayout.ComposableHelperLayerActivity
 import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.grid.AndroidUIGridActivity
@@ -85,17 +87,17 @@ import de.check24.compose.demo.features.tablayout.AndroidUITabLayoutActivity
 import de.check24.compose.demo.features.tablayout.ComposableTabItemActivity
 import de.check24.compose.demo.features.tablayout.ComposableTabLayoutActivity
 import de.check24.compose.demo.features.text.AndroidUIAutoCompleteActivity
-import de.check24.compose.demo.features.text.AndroidUITextInputActivity
 import de.check24.compose.demo.features.text.AndroidUIMultilineTextActivity
-import de.check24.compose.demo.features.text.AndroidUINumberDecimalActivity
 import de.check24.compose.demo.features.text.AndroidUINumberActivity
+import de.check24.compose.demo.features.text.AndroidUINumberDecimalActivity
 import de.check24.compose.demo.features.text.AndroidUINumberSignedActivity
 import de.check24.compose.demo.features.text.AndroidUIPostalAddressActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
+import de.check24.compose.demo.features.text.AndroidUITextInputActivity
 import de.check24.compose.demo.features.text.ComposableAutoCompleteActivity
 import de.check24.compose.demo.features.text.ComposableMultilineTextActivity
-import de.check24.compose.demo.features.text.ComposableNumberDecimalActivity
 import de.check24.compose.demo.features.text.ComposableNumberActivity
+import de.check24.compose.demo.features.text.ComposableNumberDecimalActivity
 import de.check24.compose.demo.features.text.ComposableNumberSignedActivity
 import de.check24.compose.demo.features.text.ComposablePostalAddressActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
@@ -320,15 +322,22 @@ internal val compareItemList: List<CompareItem> by lazy {
     compareItems.add(
         CompareItem(
             composeActivity = ComposableTabLayoutActivity::class.java,
-                androidUIActivity = AndroidUITabLayoutActivity::class.java,
-                headline = "Tab Layout"
-            )
+            androidUIActivity = AndroidUITabLayoutActivity::class.java,
+            headline = "Tab Layout"
         )
-        compareItems.add(
-            CompareItem(
-                composeActivity = ComposableFrameLayoutActivity::class.java,
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableFrameLayoutActivity::class.java,
             androidUIActivity = AndroidUIFrameLayoutActivity::class.java,
             headline = "Frame Layout"
+        )
+    )
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableHelperLayerActivity::class.java,
+            androidUIActivity = AndroidUIHelperLayerActivity::class.java,
+            headline = "Helper (Layer)"
         )
     )
 
@@ -351,13 +360,13 @@ internal val compareItemList: List<CompareItem> by lazy {
         )
     )
     compareItems.add(
-            CompareItem(
-                composeActivity = ComposableGridActivity::class.java,
-                androidUIActivity = AndroidUIGridActivity::class.java,
-                headline = "Grid"
-            )
+        CompareItem(
+            composeActivity = ComposableGridActivity::class.java,
+            androidUIActivity = AndroidUIGridActivity::class.java,
+            headline = "Grid"
         )
-        // endregion
+    )
+    // endregion
 
     // region container
 

@@ -605,7 +605,7 @@
             android:name=".features.viewmodel.ComposableViewModelActivity"
             android:exported="false" />
 
-        <!-- Postal Address -->
+        <!-- Postal address -->
 
         <activity
             android:name=".features.text.AndroidUIPostalAddressActivity"
@@ -614,6 +614,29 @@
 
         <activity
             android:name=".features.text.ComposablePostalAddressActivity"
+            android:exported="false" />
+
+        <!-- Launched Effect -->
+
+        <activity
+            android:name=".features.sideeffects.ComposableLaunchedEffectActivity"
+            android:exported="false" />
+
+        <!-- Disposable Effect -->
+
+        <activity
+            android:name=".features.sideeffects.ComposableDisposableEffectActivity"
+            android:exported="false" />
+
+        <!-- Helper (Layout) -->
+
+        <activity
+            android:name=".features.helperlayout.AndroidUIHelperLayerActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.helperlayout.ComposableHelperLayerActivity"
             android:exported="false" />
 
         <!-- Events -->
