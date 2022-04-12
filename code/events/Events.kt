@@ -51,7 +51,7 @@ fun EventText(number: String) {
 fun AddButton(onClick: () -> Unit) {
     // if the child is clicked, an event is sent to the parents.
     Button(
-        onClick = { onClick() },
+        onClick = onClick,
         modifier = Modifier.padding(10.dp)
     ) {
         Text(text = "ADD +1")
@@ -61,7 +61,7 @@ fun AddButton(onClick: () -> Unit) {
 @Composable
 fun SubtractButton(onClick: () -> Unit) {
     Button(
-        onClick = { onClick() }
+        onClick = onClick
     ) {
         Text(text = "ADD -1")
     }
