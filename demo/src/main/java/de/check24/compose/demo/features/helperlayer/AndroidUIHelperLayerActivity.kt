@@ -1,4 +1,4 @@
-package de.check24.compose.demo.features.helperlayout
+package de.check24.compose.demo.features.helperlayer
 
 import android.animation.ValueAnimator
 import android.os.Bundle
