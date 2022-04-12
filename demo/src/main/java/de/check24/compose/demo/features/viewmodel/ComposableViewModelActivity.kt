@@ -25,7 +25,6 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import de.check24.compose.demo.theme.Blue200
 import de.check24.compose.demo.theme.DemoTheme
 import de.check24.compose.demo.theme.Green200
@@ -56,7 +55,7 @@ class ComposableViewModelActivity : ComponentActivity() {
 class MyViewModel : ViewModel(), MyViewModelInterface {
     // states
     override var number = mutableStateOf(0)
-    override var isClicked = mutableStateOf(false)
+    override var isSelected = mutableStateOf(false)
 
     // events
     override fun addNumber() {
@@ -64,7 +63,7 @@ class MyViewModel : ViewModel(), MyViewModelInterface {
     }
 
     override fun toggle(clicked: Boolean) {
-        isClicked.value = clicked
+        isSelected.value = clicked
     }
 }
 
@@ -89,7 +88,7 @@ fun MyScreen(myViewModel: MyViewModel) {
         }
 
         Switch(
-            checked = myViewModel.isClicked.value,
+            checked = myViewModel.isSelected.value,
             onCheckedChange = { myViewModel.toggle(it) }
         )
 
@@ -97,7 +96,7 @@ fun MyScreen(myViewModel: MyViewModel) {
             modifier = Modifier
                 .size(100.dp)
                 .background(
-                    if (myViewModel.isClicked.value) Green200 else Blue200
+                    if (myViewModel.isSelected.value) Green200 else Blue200
                 )
         )
     }
@@ -106,7 +105,7 @@ fun MyScreen(myViewModel: MyViewModel) {
 /* the way how the preview works */
 interface MyViewModelInterface {
     val number: MutableState<Int>
-    val isClicked: MutableState<Boolean>
+    val isSelected: MutableState<Boolean>
 
     fun addNumber()
     fun toggle(clicked: Boolean)
@@ -133,7 +132,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
         }
 
         Switch(
-            checked = myViewModel.isClicked.value,
+            checked = myViewModel.isSelected.value,
             onCheckedChange = { myViewModel.toggle(it) }
         )
 
@@ -141,7 +140,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
             modifier = Modifier
                 .size(100.dp)
                 .background(
-                    if (myViewModel.isClicked.value) Green200 else Blue200
+                    if (myViewModel.isSelected.value) Green200 else Blue200
                 )
         )
     }

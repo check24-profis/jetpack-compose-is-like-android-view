@@ -1,4 +1,4 @@
-package de.check24.compose.demo.features.helperlayout
+package de.check24.compose.demo.features.helperlayer
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -59,7 +59,7 @@ class ComposableHelperLayerActivity : ComponentActivity() {
 private fun HelperLayerExample() {
 
     var rotationRGB: Float by remember { mutableStateOf(0f) }
-    val angleRGB: Float by animateFloatAsState(
+    val angleDegreeRGB: Float by animateFloatAsState(
         targetValue = rotationRGB,
         animationSpec = tween(durationMillis = 2000, easing = LinearEasing)
     )
@@ -86,7 +86,7 @@ private fun HelperLayerExample() {
                     bottom.linkTo(parent.bottom)
                 }
                 .graphicsLayer {
-                    rotationZ = angleRGB
+                    rotationZ = angleDegreeRGB
                 }
         ) {
             Column(
@@ -141,7 +141,7 @@ private fun ColorBox(color: Color) {
 
 @Preview(showBackground = true, showSystemUi = true, device = Devices.PIXEL_4)
 @Composable
-private fun HelperLayoutExamplePreview() {
+private fun HelperLayerExamplePreview() {
     DemoTheme {
         HelperLayerExample()
     }

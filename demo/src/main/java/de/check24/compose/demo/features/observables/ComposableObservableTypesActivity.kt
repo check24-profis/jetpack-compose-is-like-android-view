@@ -51,11 +51,11 @@ class ComposableObservableTypesActivity : ComponentActivity() {
 }
 
 class MyViewModel : ViewModel() {
-    var isClicked = MutableStateFlow(false)
+    var isSelected = MutableStateFlow(false)
     var text = MutableLiveData<String>()
 
     fun onToggle() {
-        isClicked.value = !isClicked.value
+        isSelected.value = !isSelected.value
     }
 
     fun onValueChanged(input: String) {
@@ -66,7 +66,7 @@ class MyViewModel : ViewModel() {
 @Composable
 private fun ObservableTypeExample(model: MyViewModel) {
     val text: String by model.text.observeAsState("")
-    val isClicked: Boolean by model.isClicked.collectAsState()
+    val isClicked: Boolean by model.isSelected.collectAsState()
 
     MyScreen(
         text = text,
