@@ -584,7 +584,7 @@ internal val compareItemList: List<CompareItem> by lazy {
         CompareItem(
             composeActivity = ComposableAlertDialogActivity::class.java,
             androidUIActivity = AndroidUIAlertDialogActivity::class.java,
-            headline = "dialog"
+            headline = "AlertDialog"
         )
     )
 
