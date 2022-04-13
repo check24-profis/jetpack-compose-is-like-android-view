@@ -1,4 +1,4 @@
-<!-- XML Code -->
+&lt;!-- XML Code --&gt;
 
 &lt;Button
     android:id="@+id/showDialogButton"
@@ -10,7 +10,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" /&gt;
 
-<!-- Code -->
+&lt;!-- Code --&gt;
 
 lateinit var binding: AlertDialogLayoutBinding
 

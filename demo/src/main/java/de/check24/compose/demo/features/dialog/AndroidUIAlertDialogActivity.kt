@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import de.check24.compose.demo.databinding.AlertDialogLayoutBinding
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class AndroidUIAlertDialogActivity : AppCompatActivity() {
@@ -24,20 +25,16 @@ class AndroidUIAlertDialogActivity : AppCompatActivity() {
             .setMessage("Scias me hoc mane canem meum mulsisse. Numquam satus dies sine me calidum pug lac")
             .setCancelable(true)
             .setPositiveButton("ACCEPT") { _, _ ->
-                finishActivity()
+
             }
             .setNegativeButton("DECLINE") { _, _ ->
-                finishActivity()
+
             }
             .create()
 
-        binding.showDialogButton.setOnClickListener {
-            dialog?.show()
-        }
-    }
-
-    private fun finishActivity() {
+        dialog?.show()
         lifecycleScope.launch {
+            delay(2000)
             finish()
         }
     }
