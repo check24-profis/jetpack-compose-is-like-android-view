@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import de.check24.compose.demo.theme.DemoTheme
 
 class ComposableMultilineTextActivity : ComponentActivity() {
@@ -61,7 +63,9 @@ private fun MultilineText() {
         },
         placeholder = {
             Text(text = "Your Placeholder/Hint")
-        }
+        },
+        maxLines = 3,
+        modifier = Modifier.width(250.dp)
     )
 }
 
