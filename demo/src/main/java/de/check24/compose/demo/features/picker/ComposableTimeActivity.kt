@@ -73,6 +73,7 @@ private fun showTimePicker(
         .setTimeFormat(TimeFormat.CLOCK_24H)
         .build()
 
+    // be careful with the timepicker, because you need to manage the dispose!
     picker.show(activity.supportFragmentManager, picker.toString())
 
     picker.addOnPositiveButtonClickListener {
