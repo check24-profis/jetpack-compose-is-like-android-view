@@ -667,6 +667,28 @@
             android:name=".features.dialog.ComposableDialogActivity"
             android:exported="false" />
 
+        <!-- Helper (Flow Horizontal) -->
+
+        <activity
+            android:name=".features.constraintlayout.flow.AndroidUIHelperFlowActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.flow.ComposableHelperFlowHorizontalActivity"
+            android:exported="false" />
+
+        <!-- Helper (Flow Vertical) -->
+
+        <activity
+            android:name=".features.constraintlayout.flow.AndroidUIHelperFlowVerticalActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.constraintlayout.flow.ComposableHelperFlowVerticalActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
