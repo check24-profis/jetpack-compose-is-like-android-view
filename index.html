@@ -364,142 +364,7 @@ fun MultilineText() {
         android:layout_height="wrap_content"
         android:maxLines="3" /&gt;
 
-&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Time</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
-fun TimeExample() {
-
-    var timePicked: String by remember {
-        mutableStateOf("Pick a Time")
-    }
-
-    val activity = LocalContext.current as AppCompatActivity
-
-    Text(
-        text = timePicked,
-        modifier = Modifier
-            .clickable {
-                showTimePicker(
-                    { time: String ->
-                        timePicked = time
-                    },
-                    activity
-                )
-            }
-    )
-}
-
-private fun showTimePicker(
-    time: (String) -> Unit,
-    activity: AppCompatActivity
-) {
-    val picker = MaterialTimePicker.Builder()
-        .setTimeFormat(TimeFormat.CLOCK_24H)
-        .build()
-
-    // be careful with the timepicker, because you need to manage the dispose!
-    picker.show(activity.supportFragmentManager, picker.toString())
-
-    picker.addOnPositiveButtonClickListener {
-        time(
-            formatTime(
-                picker.hour,
-                picker.minute
-            )
-        )
-    }
-}
-
-private fun formatTime(hour: Int, minute: Int): String {
-    var stringHour = hour.toString()
-    var stringMinute = minute.toString()
-
-    if (hour < 10) stringHour = "0$stringHour"
-    if (minute < 10) stringMinute = "0$stringMinute"
-    return "Time: $stringHour:$stringMinute"
-}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
-    android:id="@+id/time_picker_text_view"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:hint="Pick a time" /&gt;
-
-    &lt;!-- code implementation --&gt;
-
-private fun showTimePicker() {
-
-    val materialTimePicker = MaterialTimePicker
-        .Builder()
-        .setTimeFormat(TimeFormat.CLOCK_24H)
-        .build()
-
-    materialTimePicker.addOnPositiveButtonClickListener {
-        binding.timePickerTextView.text =
-        formatTime(materialTimePicker.hour, materialTimePicker.minute)
-    }
-        materialTimePicker.show(supportFragmentManager, "TAG")
-}
-
-private fun formatTime(hour : Int, minute: Int) : String {
-        var stringHour = hour.toString()
-        var stringMinute = minute.toString()
-
-        if (hour < 10) stringHour = "0$stringHour"
-        if (minute < 10) stringMinute = "0$stringMinute"
-        return "Time: $stringHour:$stringMinute"
-}</code></pre></div></div></div><div class="case"><div class="name">Date</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
-fun Date() {
-
-    var datePicked: String by remember {
-        mutableStateOf("Date")}
-
-    val updatedDate = { date: String ->
-        datePicked = date
-    }
-
-    val activity = LocalContext.current as AppCompatActivity
-
-    Text(
-        text = datePicked,
-        color = MaterialTheme.colors.onSurface,
-        modifier = Modifier
-            .wrapContentSize()
-            .clickable { showDatePicker(activity, updatedDate) }
-    )
-}
-
-private fun showDatePicker(
-    activity: AppCompatActivity,
-    updatedDate: (String) -> Unit
-) {
-    val picker = MaterialDatePicker.Builder.datePicker().build()
-
-    // be careful with the datepicker, because you need to manage the dispose!
-    picker.show(activity.supportFragmentManager, picker.toString())
-    picker.addOnPositiveButtonClickListener {
-        updatedDate(picker.headerText)
-    }
-}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
-    android:id="@+id/TextViewDate"
-    android:text="Date"
-    app:drawableEndCompat="@drawable/ic_baseline_date_range" /&gt;
-
-//In Activity or Fragment
-
-    textViewDate = findViewById(R.id.TextViewDate)
-    textViewDate.setOnClickListener {
-      showDatePicker()
-    }
-
-    private fun showDatePicker() {
-         val materialDatePicker = MaterialDatePicker
-                                  .Builder
-                                  .datePicker()
-                                  .build()
-
-         materialDatePicker.addOnPositiveButtonClickListener {
-            textViewDate.text = materialDatePicker.headerText
-         }
-         materialDatePicker.show(supportFragmentManager, "TAG")
-    }
-}</code></pre></div></div></div><div class="case"><div class="name">Number</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Number</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun NumberExample() {
 
     var number by remember { mutableStateOf("") }
@@ -4377,4 +4242,259 @@ fun WithSideEffect() {
         Thread.sleep(1000)
         timer++
     }
+}</code></pre></div></div></div></div><div class="section"><div class="title">Dialog</div><div class="case"><div class="name">Time</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun TimeExample() {
+
+    var timePicked: String by remember {
+        mutableStateOf("Pick a Time")
+    }
+
+    val activity = LocalContext.current as AppCompatActivity
+
+    Text(
+        text = timePicked,
+        modifier = Modifier
+            .clickable {
+                showTimePicker(
+                    { time: String ->
+                        timePicked = time
+                    },
+                    activity
+                )
+            }
+    )
+}
+
+private fun showTimePicker(
+    time: (String) -> Unit,
+    activity: AppCompatActivity
+) {
+    val picker = MaterialTimePicker.Builder()
+        .setTimeFormat(TimeFormat.CLOCK_24H)
+        .build()
+
+    // be careful with the timepicker, because you need to manage the dispose!
+    picker.show(activity.supportFragmentManager, picker.toString())
+
+    picker.addOnPositiveButtonClickListener {
+        time(
+            formatTime(
+                picker.hour,
+                picker.minute
+            )
+        )
+    }
+}
+
+private fun formatTime(hour: Int, minute: Int): String {
+    var stringHour = hour.toString()
+    var stringMinute = minute.toString()
+
+    if (hour < 10) stringHour = "0$stringHour"
+    if (minute < 10) stringMinute = "0$stringMinute"
+    return "Time: $stringHour:$stringMinute"
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
+    android:id="@+id/time_picker_text_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Pick a time" /&gt;
+
+    &lt;!-- code implementation --&gt;
+
+private fun showTimePicker() {
+
+    val materialTimePicker = MaterialTimePicker
+        .Builder()
+        .setTimeFormat(TimeFormat.CLOCK_24H)
+        .build()
+
+    materialTimePicker.addOnPositiveButtonClickListener {
+        binding.timePickerTextView.text =
+        formatTime(materialTimePicker.hour, materialTimePicker.minute)
+    }
+        materialTimePicker.show(supportFragmentManager, "TAG")
+}
+
+private fun formatTime(hour : Int, minute: Int) : String {
+        var stringHour = hour.toString()
+        var stringMinute = minute.toString()
+
+        if (hour < 10) stringHour = "0$stringHour"
+        if (minute < 10) stringMinute = "0$stringMinute"
+        return "Time: $stringHour:$stringMinute"
+}</code></pre></div></div></div><div class="case"><div class="name">Date</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun Date() {
+
+    var datePicked: String by remember {
+        mutableStateOf("Date")}
+
+    val updatedDate = { date: String ->
+        datePicked = date
+    }
+
+    val activity = LocalContext.current as AppCompatActivity
+
+    Text(
+        text = datePicked,
+        color = MaterialTheme.colors.onSurface,
+        modifier = Modifier
+            .wrapContentSize()
+            .clickable { showDatePicker(activity, updatedDate) }
+    )
+}
+
+private fun showDatePicker(
+    activity: AppCompatActivity,
+    updatedDate: (String) -> Unit
+) {
+    val picker = MaterialDatePicker.Builder.datePicker().build()
+
+    // be careful with the datepicker, because you need to manage the dispose!
+    picker.show(activity.supportFragmentManager, picker.toString())
+    picker.addOnPositiveButtonClickListener {
+        updatedDate(picker.headerText)
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;TextView
+    android:id="@+id/TextViewDate"
+    android:text="Date"
+    app:drawableEndCompat="@drawable/ic_baseline_date_range" /&gt;
+
+//In Activity or Fragment
+
+    textViewDate = findViewById(R.id.TextViewDate)
+    textViewDate.setOnClickListener {
+      showDatePicker()
+    }
+
+    private fun showDatePicker() {
+         val materialDatePicker = MaterialDatePicker
+                                  .Builder
+                                  .datePicker()
+                                  .build()
+
+         materialDatePicker.addOnPositiveButtonClickListener {
+            textViewDate.text = materialDatePicker.headerText
+         }
+         materialDatePicker.show(supportFragmentManager, "TAG")
+    }
+}</code></pre></div></div></div><div class="case"><div class="name">AlertDialog</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+fun AlertDialogExample() {
+    var isVisible by remember { mutableStateOf(false) }
+
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Button(onClick = { isVisible = true }
+        ) {
+            Text(text = "SHOW DIALOG")
+        }
+    }
+
+    ShowDialog(isVisible) {
+        isVisible = !isVisible
+    }
+}
+
+@Composable
+fun ShowDialog(isVisible: Boolean, onClick: () -> Unit) {
+
+    if (isVisible) {
+        AlertDialog(
+            onDismissRequest = { onClick() },
+            title = {
+                Text(
+                    text = "Title",
+                    style = MaterialTheme.typography.h6
+                )
+            },
+            confirmButton = {
+                Text(
+                    text = "ACCEPT",
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.primary,
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable(
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() }
+                        ) {
+                            onClick()
+                        }
+                )
+            },
+            dismissButton = {
+                Text(
+                    text = "DECLINE",
+                    style = MaterialTheme.typography.button,
+                    color = MaterialTheme.colors.primary,
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable(
+                            indication = null,
+                            interactionSource = remember { MutableInteractionSource() }
+                        ) {
+                            onClick()
+                        }
+                )
+            },
+            text = {
+                Text(
+                    text = "Scias me hoc mane canem meum mulsisse. Numquam satus dies sine me calidum pug lac",
+                    style = MaterialTheme.typography.body1
+                )
+            }
+        )
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!-- XML Code --&gt;
+
+&lt;Button
+    android:id="@+id/showDialogButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="show Dialog"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;!-- Code --&gt;
+
+lateinit var binding: AlertDialogLayoutBinding
+
+private var dialog: AlertDialog? = null
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = AlertDialogLayoutBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    supportActionBar?.title = "AlertDialog"
+
+    dialog = AlertDialog.Builder(this)
+        .setTitle("Title")
+        .setMessage("Scias me hoc mane canem meum mulsisse. Numquam satus dies sine me calidum pug lac")
+        .setCancelable(true)
+        .setPositiveButton("ACCEPT") { _, _ ->
+            finishActivity()
+        }
+        .setNegativeButton("DECLINE") { _, _ ->
+            finishActivity()
+        }
+        .create()
+
+    binding.showDialogButton.setOnClickListener {
+        dialog?.show()
+    }
+}
+
+private fun finishActivity() {
+    lifecycleScope.launch {
+        finish()
+    }
+}
+
+override fun onDestroy() {
+    dialog?.dismiss()
+    dialog = null
+    super.onDestroy()
 }</code></pre></div></div></div></div></body></html>
