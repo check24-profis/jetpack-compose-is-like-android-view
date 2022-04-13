@@ -656,15 +656,15 @@
             android:name=".features.sideeffects.ComposableSideEffectActivity"
             android:exported="false" />
 
-        <!-- Dialog -->
+        <!-- AlertDialog -->
 
         <activity
-            android:name=".features.dialog.AndroidUIDialogActivity"
+            android:name=".features.dialog.AndroidUIAlertDialogActivity"
             android:exported="false"
             android:theme="@style/DemoMaterial" />
 
         <activity
-            android:name=".features.dialog.ComposableDialogActivity"
+            android:name=".features.dialog.ComposableAlertDialogActivity"
             android:exported="false" />
 
         <!-- Helper (Flow Horizontal) -->

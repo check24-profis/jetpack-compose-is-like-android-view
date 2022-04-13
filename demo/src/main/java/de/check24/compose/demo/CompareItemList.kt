@@ -36,6 +36,8 @@ import de.check24.compose.demo.features.constraintlayout.guideline.ComposableHor
 import de.check24.compose.demo.features.constraintlayout.guideline.ComposableVerticalGuidelineActivity
 import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
 import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
+import de.check24.compose.demo.features.dialog.AndroidUIAlertDialogActivity
+import de.check24.compose.demo.features.dialog.ComposableAlertDialogActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
 import de.check24.compose.demo.features.events.AndroidUIEventsActivity
@@ -575,6 +577,16 @@ internal val compareItemList: List<CompareItem> by lazy {
     )
 
     // endregion
+
+    //region dialogs
+
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableAlertDialogActivity::class.java,
+            androidUIActivity = AndroidUIAlertDialogActivity::class.java,
+            headline = "dialog"
+        )
+    )
 
     compareItems
 }
