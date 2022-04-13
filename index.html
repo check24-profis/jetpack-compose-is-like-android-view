@@ -315,8 +315,7 @@ fun PhoneNumber() {
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:maxLines="1" /&gt;
-&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Postal Address</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// There is no difference between the Postal Address and the normal TextInput
-@Composable
+&lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Postal Address</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun PostalAddressExample() {
 
     var address by remember { mutableStateOf("") }
@@ -346,7 +345,9 @@ fun MultilineText() {
         },
         placeholder = {
             Text(text = "Your Placeholder/Hint")
-        }
+        },
+        maxLines = 3,
+        modifier = Modifier.width(250.dp)
     )
 }</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;com.google.android.material.textfield.TextInputLayout
     android:id="@+id/editTextTextMultiLine"
@@ -360,7 +361,8 @@ fun MultilineText() {
 
     &lt;com.google.android.material.textfield.TextInputEditText
         android:layout_width="250dp"
-        android:layout_height="wrap_content" /&gt;
+        android:layout_height="wrap_content"
+        android:maxLines="3" /&gt;
 
 &lt;/com.google.android.material.textfield.TextInputLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Time</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun TimeExample() {
@@ -393,6 +395,7 @@ private fun showTimePicker(
         .setTimeFormat(TimeFormat.CLOCK_24H)
         .build()
 
+    // be careful with the timepicker, because you need to manage the dispose!
     picker.show(activity.supportFragmentManager, picker.toString())
 
     picker.addOnPositiveButtonClickListener {
@@ -467,6 +470,8 @@ private fun showDatePicker(
     updatedDate: (String) -> Unit
 ) {
     val picker = MaterialDatePicker.Builder.datePicker().build()
+
+    // be careful with the datepicker, because you need to manage the dispose!
     picker.show(activity.supportFragmentManager, picker.toString())
     picker.addOnPositiveButtonClickListener {
         updatedDate(picker.headerText)
