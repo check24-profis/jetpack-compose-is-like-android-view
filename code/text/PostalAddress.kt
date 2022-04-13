@@ -1,4 +1,3 @@
-// There is no difference between the Postal Address and the normal TextInput
 @Composable
 fun PostalAddressExample() {
 

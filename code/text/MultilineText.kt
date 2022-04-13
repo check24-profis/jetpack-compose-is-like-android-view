@@ -14,6 +14,8 @@ fun MultilineText() {
         },
         placeholder = {
             Text(text = "Your Placeholder/Hint")
-        }
+        },
+        maxLines = 3,
+        modifier = Modifier.width(250.dp)
     )
 }
