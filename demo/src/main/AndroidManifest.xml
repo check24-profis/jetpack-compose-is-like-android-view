@@ -639,6 +639,17 @@
             android:name=".features.helperlayer.ComposableHelperLayerActivity"
             android:exported="false" />
 
+        <!-- Events -->
+
+        <activity
+            android:name=".features.events.AndroidUIEventsActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.events.ComposableEventsActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

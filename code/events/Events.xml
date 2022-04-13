@@ -1,0 +1,72 @@
+&lt;!--
+ brief explanation, the viewModel holds the data and modifies it.
+ It gives the states/data to the fragment.
+ The fragment modifies the UI.
+ The UI sends events to the ViewModel for example, that it got clicked.
+ The event flow starts all over again
+--&gt;
+
+&lt;!-- Fragment --&gt;
+class Activity: AppCompatActivity() {
+
+    lateinit var binding: EventLayoutBinding
+    private val viewModel: EventViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = EventLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.title = "Events"
+
+        binding.apply {
+
+            addButton.setOnClickListener {
+                viewModel.plusOne()
+                textView.text = viewModel.number.toString()
+            }
+
+            subtractButton.setOnClickListener {
+                viewModel.minusOne()
+                textView.text = viewModel.number.toString()
+            }
+        }
+    }
+}
+
+&lt;!-- ViewModel --&gt;
+class EventViewModel : ViewModel() {
+    var number = 0
+
+    fun plusOne() {
+        number++
+    }
+    
+    fun minusOne(){
+        number--
+    }
+}
+
+&lt;!-- XML Code --&gt;
+
+&lt;TextView
+    android:id="@+id/textView"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/green_200"
+    android:textColor="@color/white"
+    android:textSize="24sp"
+    android:gravity="center"/&gt;
+
+&lt;Button
+    android:id="@+id/add_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="Add +1" /&gt;
+
+&lt;Button
+    android:id="@+id/subtract_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="Add -1" /&gt;
