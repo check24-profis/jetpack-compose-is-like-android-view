@@ -48,12 +48,6 @@ html
       .case (.name "Multiline Text") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/MultilineText.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/MultilineText.xml)
-      .case (.name "Time") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/Time.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/text/Time.xml)
-      .case (.name "Date") $ .pair
-        .card (.lang Kotlin) $ pre.code $ code (@insert code/text/TextViewDate.kt)
-        .card (.lang Xml) $ pre.code $ code (@insert code/text/TextViewDate.xml)
       .case (.name "Number") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/text/Number.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/text/Number.xml)
@@ -258,3 +252,15 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/sideeffects/DisposableEffect.kt)
       .case (.name "SideEffect") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/sideeffects/SideEffect.kt)
+
+    .section
+      .title "Dialog"
+      .case (.name "Time") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/dialog/Time.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/dialog/Time.xml)
+      .case (.name "Date") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/dialog/Date.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/dialog/Date.xml)
+      .case (.name "AlertDialog") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/dialog/AlertDialog.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/dialog/AlertDialog.xml)
