@@ -38,6 +38,8 @@ import de.check24.compose.demo.features.custom.AndroidUIGoogleMapActivity
 import de.check24.compose.demo.features.custom.ComposableGoogleMapActivity
 import de.check24.compose.demo.features.email.AndroidUIEmailActivity
 import de.check24.compose.demo.features.email.ComposableEmailActivity
+import de.check24.compose.demo.features.events.AndroidUIEventsActivity
+import de.check24.compose.demo.features.events.ComposableEventsActivity
 import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
 import de.check24.compose.demo.features.helperlayer.AndroidUIHelperLayerActivity
@@ -557,6 +559,18 @@ internal val compareItemList: List<CompareItem> by lazy {
             composeActivity = ComposableViewModelActivity::class.java,
             androidUIActivity = AndroidUIViewModelActivity::class.java,
             headline = "ViewModel"
+        )
+    )
+
+    // endregion
+
+    // region events
+
+    compareItems.add(
+        CompareItem(
+            composeActivity = ComposableEventsActivity::class.java,
+            androidUIActivity = AndroidUIEventsActivity::class.java,
+            headline = "Events"
         )
     )
 
