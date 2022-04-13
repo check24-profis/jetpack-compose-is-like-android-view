@@ -1,0 +1,52 @@
+&lt;!-- XML Code --&gt;
+
+&lt;Button
+    android:id="@+id/showDialogButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="show Dialog"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" /&gt;
+
+&lt;!-- Code --&gt;
+
+lateinit var binding: AlertDialogLayoutBinding
+
+private var dialog: AlertDialog? = null
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = AlertDialogLayoutBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+    supportActionBar?.title = "AlertDialog"
+
+    dialog = AlertDialog.Builder(this)
+        .setTitle("Title")
+        .setMessage("Scias me hoc mane canem meum mulsisse. Numquam satus dies sine me calidum pug lac")
+        .setCancelable(true)
+        .setPositiveButton("ACCEPT") { _, _ ->
+            finishActivity()
+        }
+        .setNegativeButton("DECLINE") { _, _ ->
+            finishActivity()
+        }
+        .create()
+
+    binding.showDialogButton.setOnClickListener {
+        dialog?.show()
+    }
+}
+
+private fun finishActivity() {
+    lifecycleScope.launch {
+        finish()
+    }
+}
+
+override fun onDestroy() {
+    dialog?.dismiss()
+    dialog = null
+    super.onDestroy()
+}
