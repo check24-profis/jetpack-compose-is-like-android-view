@@ -130,6 +130,8 @@ html
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/ConstraintLayoutBarrier.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/Barrier.xml)
       .case (.name "Helper (Flow)") $ .pair
+        .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/HelperFlow.kt)
+        .card (.lang Xml) $ pre.code $ code (@insert code/layout/HelperFlow.xml)
       .case (.name "Helper (Layer)") $ .pair
         .card (.lang Kotlin) $ pre.code $ code (@insert code/layout/HelperLayer.kt)
         .card (.lang Xml) $ pre.code $ code (@insert code/layout/HelperLayer.xml)

@@ -1,0 +1,27 @@
+&lt;!-- Vertical FlowLayout --&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Flow
+    android:id="@+id/flow_vertical_example"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="vertical"
+    app:constraint_referenced_ids="id's of your elements"
+    app:flow_maxElementsWrap="5"
+    app:flow_verticalGap="16dp"
+    app:flow_wrapMode="aligned" /&gt;
+
+&lt;!-- Horizontal FlowLayout --&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Flow
+    android:id="@+id/flow_horizontal_example"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="horizontal"  &lt;--
+    app:constraint_referenced_ids="id's of your elements"
+    app:flow_horizontalGap="16dp"
+    app:flow_maxElementsWrap="5"
+    app:flow_verticalGap="16dp"
+    app:flow_wrapMode="chain"
+    app:layout_constraintHorizontal_chainStyle="spread" /&gt;

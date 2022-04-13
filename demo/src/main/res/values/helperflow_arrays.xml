@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="flow_style_array">
+        <item>packed</item>
+        <item>spread</item>
+        <item>spread_inline</item>
+    </string-array>
+
+    <string-array name="flow_wrap_mode">
+        <item>chain</item>
+        <item>aligned</item>
+        <item>none</item>
+    </string-array>
+</resources>
+
+
