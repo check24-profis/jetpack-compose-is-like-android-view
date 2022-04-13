@@ -10,7 +10,6 @@ import de.check24.compose.demo.databinding.StatefulBinding
 class AndroidUIStatelessActivity : AppCompatActivity() {
 
     private lateinit var binding: StatefulBinding
-    private var isChecked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,29 +18,27 @@ class AndroidUIStatelessActivity : AppCompatActivity() {
         supportActionBar?.title = "Stateless"
 
         binding.switchExample.setOnClickListener {
-            setColorOnValueChanged()
+            setColorOnValueChanged(binding.switchExample.isChecked)
         }
     }
 
-    private fun setColorOnValueChanged() {
+    private fun setColorOnValueChanged(isChecked: Boolean) {
         if (isChecked) {
             binding.box.setBackgroundColor(resources.getColor(R.color.blue_200))
         } else {
             binding.box.setBackgroundColor(resources.getColor(R.color.green_200))
         }
-        isChecked = !isChecked
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.i(TAG, "onSaveInstanceState")
-        outState.putBoolean("state", true)
+        outState.putBoolean("state", binding.switchExample.isChecked)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        isChecked = savedInstanceState.getBoolean("state")
-        setColorOnValueChanged()
+        setColorOnValueChanged(savedInstanceState.getBoolean("state"))
     }
 }
 

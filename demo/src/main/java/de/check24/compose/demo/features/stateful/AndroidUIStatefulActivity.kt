@@ -8,7 +8,6 @@ import de.check24.compose.demo.databinding.StatefulBinding
 class AndroidUIStatefulActivity : AppCompatActivity() {
 
     private var binding: StatefulBinding? = null
-    private var isChecked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,12 +16,11 @@ class AndroidUIStatefulActivity : AppCompatActivity() {
         supportActionBar?.title = "Stateful"
 
         binding?.switchExample?.setOnClickListener {
-            if (isChecked) {
+            if (binding?.switchExample?.isChecked == true) {
                 binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
             } else {
                 binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
             }
-            isChecked = !isChecked
         }
     }
 }
