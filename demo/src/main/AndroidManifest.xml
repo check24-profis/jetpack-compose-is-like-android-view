@@ -650,8 +650,21 @@
             android:name=".features.events.ComposableEventsActivity"
             android:exported="false" />
 
+        <!-- SideEffect -->
+
         <activity
             android:name=".features.sideeffects.ComposableSideEffectActivity"
+            android:exported="false" />
+
+        <!-- Dialog -->
+
+        <activity
+            android:name=".features.dialog.AndroidUIDialogActivity"
+            android:exported="false"
+            android:theme="@style/DemoMaterial" />
+
+        <activity
+            android:name=".features.dialog.ComposableDialogActivity"
             android:exported="false" />
 
     </application>
