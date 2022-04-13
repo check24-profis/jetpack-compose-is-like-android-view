@@ -3749,7 +3749,138 @@ class MyAndroidUIViewModel : ViewModel() {
         number++
     }
 }
-</code></pre></div></div></div></div><div class="section"><div class="title">Events</div></div><div class="section"><div class="title">Material Theme</div><div class="case"><div class="name">Theme</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// colour
+</code></pre></div></div></div></div><div class="section"><div class="title">Events</div><div class="case"><div class="name">Event Flow</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// brief explanation, states are given by the parents to the children.
+// The children, on the other hand, only give events to the parents.
+// Thus we have a unidirectional flow.
+
+@Composable
+fun EventsExample() {
+    // this is the parent class
+    // it contains the child and gives down the states
+    // ideally only the parent changes the states
+    var number by remember { mutableStateOf(0) }
+
+    Column(
+        Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // here it gives the states to the child
+        NumberText(number = number.toString())
+
+        // between the curly brackets, the parent can decide what should happen when an event occurs.
+        AddButton {
+            number++
+        }
+
+        SubtractButton {
+            number--
+        }
+    }
+
+}
+
+@Composable
+fun NumberText(number: String) {
+    // the child can't change the state, in this case number.
+    Text(
+        // the number displayed depends on the state
+        text = number,
+        fontSize = 24.sp,
+        color = White
+    )
+}
+
+@Composable
+fun AddButton(onClick: () -> Unit) {
+    // if the child is clicked, an event is sent to the parents.
+    Button(
+        onClick = onClick,
+        modifier = Modifier.padding(10.dp)
+    ) {
+        Text(text = "ADD +1")
+    }
+}
+
+@Composable
+fun SubtractButton(onClick: () -> Unit) {
+    Button(
+        onClick = onClick
+    ) {
+        Text(text = "ADD -1")
+    }
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!--
+ brief explanation, the viewModel holds the data and modifies it.
+ It gives the states/data to the fragment.
+ The fragment modifies the UI.
+ The UI sends events to the ViewModel for example, that it got clicked.
+ The event flow starts all over again
+--&gt;
+
+&lt;!-- Fragment --&gt;
+class Activity: AppCompatActivity() {
+
+    lateinit var binding: EventLayoutBinding
+    private val viewModel: EventViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = EventLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.title = "Events"
+
+        binding.apply {
+
+            addButton.setOnClickListener {
+                viewModel.plusOne()
+                textView.text = viewModel.number.toString()
+            }
+
+            subtractButton.setOnClickListener {
+                viewModel.minusOne()
+                textView.text = viewModel.number.toString()
+            }
+        }
+    }
+}
+
+&lt;!-- ViewModel --&gt;
+class EventViewModel : ViewModel() {
+    var number = 0
+
+    fun plusOne() {
+        number++
+    }
+    
+    fun minusOne(){
+        number--
+    }
+}
+
+&lt;!-- XML Code --&gt;
+
+&lt;TextView
+    android:id="@+id/textView"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:background="@color/green_200"
+    android:textColor="@color/white"
+    android:textSize="24sp"
+    android:gravity="center"/&gt;
+
+&lt;Button
+    android:id="@+id/add_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="Add +1" /&gt;
+
+&lt;Button
+    android:id="@+id/subtract_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:text="Add -1" /&gt;</code></pre></div></div></div></div><div class="section"><div class="title">Material Theme</div><div class="case"><div class="name">Theme</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// colour
 
 val exampleColors: Colors
     get() = lightColors(
