@@ -1726,7 +1726,61 @@ fun ConstraintLayoutBarrier() {
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintTop_toBottomOf="@+id/barrier" /&gt;
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// At the time of the implementation there was no official compose equivalent
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Flow)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// Vertical FlowLayout
+// the crossAxisAlignment doesn't work properly
+
+FlowColumn(
+    modifier = Modifier
+        .height(300.dp)
+        .wrapContentWidth(),
+    mainAxisAlignment = FlowMainAxisAlignment.Center,
+    mainAxisSpacing = 16.dp,
+    crossAxisSpacing = 50.dp,
+    crossAxisAlignment = FlowCrossAxisAlignment.Center,
+) {
+    // add here your view elements
+}
+
+// Horizontal FlowLayout
+// the crossAxisAlignment doesn't work properly
+
+FlowRow(
+    modifier = Modifier
+        .fillMaxWidth()
+        .wrapContentHeight()
+        .padding(20.dp),
+    mainAxisAlignment = FlowMainAxisAlignment.Center,
+    crossAxisSpacing = 16.dp,
+    mainAxisSpacing = 16.dp
+) {
+    // add here your code
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;!-- Vertical FlowLayout --&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Flow
+    android:id="@+id/flow_vertical_example"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="vertical"
+    app:constraint_referenced_ids="id's of your elements"
+    app:flow_maxElementsWrap="5"
+    app:flow_verticalGap="16dp"
+    app:flow_wrapMode="aligned" /&gt;
+
+&lt;!-- Horizontal FlowLayout --&gt;
+
+&lt;androidx.constraintlayout.helper.widget.Flow
+    android:id="@+id/flow_horizontal_example"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:orientation="horizontal"  &lt;--
+    app:constraint_referenced_ids="id's of your elements"
+    app:flow_horizontalGap="16dp"
+    app:flow_maxElementsWrap="5"
+    app:flow_verticalGap="16dp"
+    app:flow_wrapMode="chain"
+    app:layout_constraintHorizontal_chainStyle="spread" /&gt;</code></pre></div></div></div><div class="case"><div class="name">Helper (Layer)</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>// At the time of the implementation there was no official compose equivalent
 // This is an attempt to create a helperlayer
 
 @Composable
