@@ -16,7 +16,6 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -50,16 +49,16 @@ private fun StatelessExample() {
 
     // here we use "rememberSaveable", so the state won't be lost even when it gets recomposed
     // for example when you rotate your screen, the state will be remembered
-    var isClicked by rememberSaveable { mutableStateOf(false) }
+    var isChecked by rememberSaveable { mutableStateOf(false) }
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        MySwitch(isClicked = isClicked) {
+        MySwitch(isClicked = isChecked) {
             // the parent, in this case th StatelessExample manages the state of MySwitch through an event
-            isClicked = !isClicked
+            isChecked = !isChecked
         }
     }
 }
