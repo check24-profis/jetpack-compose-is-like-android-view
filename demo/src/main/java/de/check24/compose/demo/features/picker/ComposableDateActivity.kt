@@ -81,6 +81,8 @@ private fun showDatePicker(
     updatedDate: (String) -> Unit
 ) {
     val picker = MaterialDatePicker.Builder.datePicker().build()
+
+    // be careful with the datepicker, because you need to manage the dispose!
     picker.show(activity.supportFragmentManager, picker.toString())
     picker.addOnPositiveButtonClickListener {
         updatedDate(picker.headerText)

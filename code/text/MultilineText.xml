@@ -10,6 +10,7 @@
 
     &lt;com.google.android.material.textfield.TextInputEditText
         android:layout_width="250dp"
-        android:layout_height="wrap_content" /&gt;
+        android:layout_height="wrap_content"
+        android:maxLines="3" /&gt;
 
 &lt;/com.google.android.material.textfield.TextInputLayout&gt;
