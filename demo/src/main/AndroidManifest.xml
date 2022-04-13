@@ -650,6 +650,10 @@
             android:name=".features.events.ComposableEventsActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".features.sideeffects.ComposableSideEffectActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
