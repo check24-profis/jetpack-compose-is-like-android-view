@@ -17,9 +17,9 @@ class AndroidUIStatefulActivity : AppCompatActivity() {
 
         binding?.switchExample?.setOnClickListener {
             if (binding?.switchExample?.isChecked == true) {
-                binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
-            } else {
                 binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
+            } else {
+                binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
             }
         }
     }
