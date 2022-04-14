@@ -13,12 +13,12 @@
 
     &lt;!-- Code--&gt;
 
-    private var isClicked = false
-    binding?.switchExample?.setOnClickListener {
-        if (isClicked) {
-            binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
-        } else {
-            binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
-        }
-        isClicked = !isClicked
+private var isClicked = false
+binding?.switchExample?.setOnClickListener {
+    if (isClicked) {
+        binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
+    } else {
+        binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
     }
+    isClicked = !isClicked
+}

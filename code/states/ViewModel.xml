@@ -1,4 +1,5 @@
     &lt;!-- XML Code --&gt;
+
 &lt;TextView
     android:id="@+id/textView"
     android:layout_width="50dp"
