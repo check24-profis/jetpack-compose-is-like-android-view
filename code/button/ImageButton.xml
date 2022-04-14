@@ -8,7 +8,7 @@
 
 
 // In activity
-val imageView = findViewById<android.widget.ImageButton>(R.id.imageButton)
+val imageView = findViewById&lt;android.widget.ImageButton&gt;(R.id.imageButton)
 
 Glide
     .with(this)

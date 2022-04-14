@@ -15,11 +15,11 @@
 // Write Custom List Adapter
 
 class DifferentViewAdapter :
-    ListAdapter<ExampleListItems, RecyclerView.ViewHolder>(DifferentViewDiffCallback) {
+    ListAdapter&lt;ExampleListItems, RecyclerView.ViewHolder&gt;(DifferentViewDiffCallback) {
 
     // Handle the Animations of deleted, changed items
 
-    object DifferentViewDiffCallback : DiffUtil.ItemCallback<ExampleListItems>() {
+    object DifferentViewDiffCallback : DiffUtil.ItemCallback&lt;ExampleListItems&gt;() {
 
         override fun areItemsTheSame(
             oldItem: ExampleListItems,
@@ -108,4 +108,3 @@ class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
         adapter?.submitList(exampleList)
     }
 }
-
