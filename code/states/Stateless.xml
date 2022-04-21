@@ -11,7 +11,7 @@
         android:layout_height="150dp"
         android:background="@color/blue_200"/&gt;
 
-    &lt;!-- Code--&gt;
+&lt;!-- Code--&gt;
 
     private var isClicked = false
     binding?.switchExample?.setOnClickListener {

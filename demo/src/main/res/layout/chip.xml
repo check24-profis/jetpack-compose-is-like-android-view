@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.google.android.material.chip.Chip
         android:id="@+id/action_chip"
         style="@style/Widget.MaterialComponents.Chip.Choice"
         android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/outlined_chip"
         android:layout_height="wrap_content"
         android:text="Action Chip" />
 
@@ -19,6 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Outlined Chip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/chip_with_icon"
         app:chipBackgroundColor="@color/white"
         app:chipIconEnabled="false"
         app:chipStrokeWidth="1dp" />
@@ -29,10 +34,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chip With Icon"
+        app:chipIcon="@drawable/ic_baseline_save_24"
         app:chipIconEnabled="true"
-        app:chipIcon="@drawable/ic_baseline_save_24" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.chip.Chip
+        app:layout_constraintTop_toBottomOf="@id/chip_with_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/input_chip"
         android:layout_width="wrap_content"
         app:chipIconEnabled="true"
@@ -46,6 +58,9 @@
         style="@style/Widget.MaterialComponents.Chip.Filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chip With toggleable Icon" />
+        android:text="Chip With toggleable Icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_chip" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
