@@ -602,7 +602,7 @@ fun ImageButton(image: Any?) {
 
 
 // In activity
-val imageView = findViewById<android.widget.ImageButton>(R.id.imageButton)
+val imageView = findViewById&lt;android.widget.ImageButton&gt;(R.id.imageButton)
 
 Glide
     .with(this)
@@ -954,11 +954,11 @@ fun ContentItemView(item: ExampleListItems.ContentItem) {
 // Write Custom List Adapter
 
 class DifferentViewAdapter :
-    ListAdapter<ExampleListItems, RecyclerView.ViewHolder>(DifferentViewDiffCallback) {
+    ListAdapter&lt;ExampleListItems, RecyclerView.ViewHolder&gt;(DifferentViewDiffCallback) {
 
     // Handle the Animations of deleted, changed items
 
-    object DifferentViewDiffCallback : DiffUtil.ItemCallback<ExampleListItems>() {
+    object DifferentViewDiffCallback : DiffUtil.ItemCallback&lt;ExampleListItems&gt;() {
 
         override fun areItemsTheSame(
             oldItem: ExampleListItems,
@@ -1046,9 +1046,7 @@ class AndroidUIListWithDifferentViewsActivity : AppCompatActivity() {
 
         adapter?.submitList(exampleList)
     }
-}
-
-</code></pre></div></div></div><div class="case"><div class="name">Grid</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@OptIn(ExperimentalFoundationApi::class)
+}</code></pre></div></div></div><div class="case"><div class="name">Grid</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun GridExample() {
 
@@ -2760,42 +2758,31 @@ fun SizeDemo() {
             )
         }
     }
-}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"&gt;
+}</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>&lt;androidx.cardview.widget.CardView
+    android:layout_width="70dp"
+    android:layout_height="70dp"
+    app:cardBackgroundColor="@color/light_gray"
+    app:cardCornerRadius="5dp"&gt;
 
-    &lt;androidx.cardview.widget.CardView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"&gt;
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/modifier2text1" /&gt;
 
-        &lt;TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/modifier2text1" /&gt;
+&lt;/androidx.cardview.widget.CardView&gt;
 
-    &lt;/androidx.cardview.widget.CardView&gt;
+&lt;androidx.cardview.widget.CardView
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    app:cardBackgroundColor="@color/light_gray"
+    app:cardCornerRadius="5dp"&gt;
 
-    &lt;Space
-        android:layout_width="20dp"
-        android:layout_height="20dp" /&gt;
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/modifier2text2" /&gt;
 
-    &lt;androidx.cardview.widget.CardView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:cardBackgroundColor="@color/light_gray"
-        app:cardCornerRadius="5dp"&gt;
-
-        &lt;TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/modifier2text2" /&gt;
-
-    &lt;/androidx.cardview.widget.CardView&gt;
-&lt;/LinearLayout&gt;</code></pre></div></div></div><div class="case"><div class="name">Clickable</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+&lt;/androidx.cardview.widget.CardView&gt;</code></pre></div></div></div><div class="case"><div class="name">Clickable</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun ClickableDemo() {
 
     var count by remember { mutableStateOf(0) }
@@ -3414,15 +3401,15 @@ private fun MySwitch() {
 
     &lt;!-- Code--&gt;
 
-    private var isClicked = false
-    binding?.switchExample?.setOnClickListener {
-        if (isClicked) {
-            binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
-        } else {
-            binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
-        }
-        isClicked = !isClicked
-    }</code></pre></div></div></div><div class="case"><div class="name">Stateless with hoisting</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
+private var isClicked = false
+binding?.switchExample?.setOnClickListener {
+    if (isClicked) {
+        binding?.box?.setBackgroundColor(resources.getColor(R.color.blue_200))
+    } else {
+        binding?.box?.setBackgroundColor(resources.getColor(R.color.green_200))
+    }
+    isClicked = !isClicked
+}</code></pre></div></div></div><div class="case"><div class="name">Stateless with hoisting</div><div class="pair"><div class="card"><div class="lang">Kotlin</div><pre class="code"><code>@Composable
 fun StatelessExample() {
 
     // the parent manages the state of the child
@@ -3462,7 +3449,7 @@ fun MySwitch(isClicked: Boolean, onToggle: () -> Unit) {
         android:layout_height="150dp"
         android:background="@color/blue_200"/&gt;
 
-    &lt;!-- Code--&gt;
+&lt;!-- Code--&gt;
 
     private var isClicked = false
     binding?.switchExample?.setOnClickListener {
@@ -3608,6 +3595,7 @@ fun MyScreen(myViewModel: MyViewModelInterface) {
         )
     }
 }</code></pre></div><div class="card"><div class="lang">Xml</div><pre class="code"><code>    &lt;!-- XML Code --&gt;
+
 &lt;TextView
     android:id="@+id/textView"
     android:layout_width="50dp"
