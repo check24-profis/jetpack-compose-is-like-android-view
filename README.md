@@ -1,6 +1,6 @@
 # Jetpack Compose is like Android XML
 
-Github Page: https://kibotu.github.io/jetpack-compose-is-like-android-view/
+Github Page: https://check24-profis.github.io/jetpack-compose-is-like-android-view/
 
 
 Inspired by [swift-is-like-kotlin](http://nilhcem.github.io/swift-is-like-kotlin/)
