@@ -38,7 +38,21 @@ ext {
 ```
    
 4. Add google-services.json to demo.
-5. You should select the release build variant. 
+5. You should select the release build variant.
+
+```
+### Articles and Documentation
+
+Text in Compose     https://developer.android.com/jetpack/compose/text
+Keyboard Handling   https://dev.to/tkuenneth/keyboard-handling-in-jetpack-compose-2593
+Constraint Layout   https://howtodoandroid.com/jetpack-compose-constraintlayout/
+                    https://engineering.zalando.com/posts/2021/03/flexbox-layout-behavior-in-jetpack-compose.html
+App Bars            https://www.jetpackcompose.net/scaffold
+Modifiers           https://developer.android.com/jetpack/compose/modifiers
+Lists               https://developer.android.com/jetpack/compose/lists
+StaggeredGrid       https://medium.com/mobile-app-development-publication/staggeredverticalgrid-of-android-jetpack-compose-fa565e5363e1
+Nice Tutorial App   https://github.com/SmartToolFactory/Jetpack-Compose-Tutorials
+
 
 ### License
 <pre>
