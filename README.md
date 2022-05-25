@@ -28,20 +28,20 @@ For the following steps the files should already be entered to gitignore. But it
 2. Add your keystore (add to gitignore).
 3. Add following to secrets.gradle (project scope):
 
-   groovy
+``` groovy
 ext {
    STORE_FILE = "Your keystore path"
    STORE_PASSWORD = "Your password"
    KEY_ALIAS = "Your key alias"
    KEY_PASSWORD = "Your password"
 }
-
+```
    
 4. Add google-services.json to demo.
 5. You should select the release build variant.
 
 ### Articles and Documentation
-
+```
 Text in Compose     https://developer.android.com/jetpack/compose/text
 Keyboard Handling   https://dev.to/tkuenneth/keyboard-handling-in-jetpack-compose-2593
 Constraint Layout   https://howtodoandroid.com/jetpack-compose-constraintlayout/
@@ -77,8 +77,7 @@ Alert Dialog        https://foso.github.io/Jetpack-Compose-Playground/material/a
 Side-Effects        https://developer.android.com/jetpack/compose/side-effects
 
 Cheat Sheet         https://victorbrandalise.com/roadmap-for-jetpack-compose/
-
-
+```
 ### License
 <pre>
 Copyright 2022 CHECK24 Profis
