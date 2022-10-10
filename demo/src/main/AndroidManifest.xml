@@ -689,6 +689,10 @@
             android:name=".features.constraintlayout.flow.ComposableHelperFlowVerticalActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".features.list.lazyperformance.LazyColumnPerformanceActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
