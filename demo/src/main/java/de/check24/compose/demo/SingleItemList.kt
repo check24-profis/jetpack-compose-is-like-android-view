@@ -1,5 +1,6 @@
 package de.check24.compose.demo
 
+import de.check24.compose.demo.features.list.lazyperformance.LazyColumnPerformanceActivity
 import de.check24.compose.demo.features.sideeffects.ComposableDisposableEffectActivity
 import de.check24.compose.demo.features.sideeffects.ComposableLaunchedEffectActivity
 import de.check24.compose.demo.features.sideeffects.ComposableSideEffectActivity
@@ -23,6 +24,13 @@ internal val singleItemList: List<SingleItem> by lazy {
         SingleItem(
             activity = ComposableSideEffectActivity::class.java,
             headline = "Side Effect"
+        )
+    )
+
+    singleItems.add(
+        SingleItem(
+            activity = LazyColumnPerformanceActivity::class.java,
+            headline = "LazyColumn Performance"
         )
     )
 

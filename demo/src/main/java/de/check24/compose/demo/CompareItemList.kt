@@ -46,8 +46,6 @@ import de.check24.compose.demo.features.framelayout.AndroidUIFrameLayoutActivity
 import de.check24.compose.demo.features.framelayout.ComposableFrameLayoutActivity
 import de.check24.compose.demo.features.helperlayer.AndroidUIHelperLayerActivity
 import de.check24.compose.demo.features.helperlayer.ComposableHelperLayerActivity
-import de.check24.compose.demo.features.list.differentviews.AndroidUIListWithDifferentViewsActivity
-import de.check24.compose.demo.features.list.differentviews.ComposableListWithDifferentViewsActivity
 import de.check24.compose.demo.features.list.grid.AndroidUIGridActivity
 import de.check24.compose.demo.features.list.grid.ComposableGridActivity
 import de.check24.compose.demo.features.list.staggered.AndroidUIStaggeredListActivity
@@ -364,14 +362,6 @@ internal val compareItemList: List<CompareItem> by lazy {
     // endregion
 
     // region List
-
-    compareItems.add(
-        CompareItem(
-            composeActivity = ComposableListWithDifferentViewsActivity::class.java,
-            androidUIActivity = AndroidUIListWithDifferentViewsActivity::class.java,
-            headline = "List with different Views"
-        )
-    )
     compareItems.add(
         CompareItem(
             composeActivity = ComposableStaggeredListActivity::class.java,
@@ -587,6 +577,8 @@ internal val compareItemList: List<CompareItem> by lazy {
             headline = "AlertDialog"
         )
     )
+
+    // endregion
 
     compareItems
 }
