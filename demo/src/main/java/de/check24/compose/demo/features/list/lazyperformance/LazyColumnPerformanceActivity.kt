@@ -3,38 +3,20 @@ package de.check24.compose.demo.features.list.lazyperformance
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Card
-import androidx.compose.material.DismissDirection
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.SwipeToDismiss
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberDismissState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,13 +46,15 @@ import kotlinx.coroutines.launch
 
 class LazyColumnPerformanceActivity : ComponentActivity() {
 
+    data class StateHolder(val items: MutableState<List<ConversationItem>>)
+
+    val stateHolder: StateHolder = StateHolder(mutableStateOf(emptyList()))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val exampleList = mutableListOf<ConversationItem>()
-
-        for (i in 0..400) {
-            exampleList.add(ConversationItem(i, "Title $i"))
+        stateHolder.items.value = List(400) {
+            ConversationItem(it, "Title $it")
         }
 
         setContent {
@@ -86,7 +70,7 @@ class LazyColumnPerformanceActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            ExampleItemsListView(listOfExampleItems = exampleList)
+                            ExampleItemsListView(stateHolder)
                         }
                     }
                 )
@@ -97,8 +81,10 @@ class LazyColumnPerformanceActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun ExampleItemsListView(listOfExampleItems: List<ConversationItem>) {
+private fun ExampleItemsListView(state: LazyColumnPerformanceActivity.StateHolder) {
+
     val isLoading = remember { mutableStateOf(false) }
+
     SwipeRefresh(
         modifier = Modifier.fillMaxSize(),
         state = rememberSwipeRefreshState(isRefreshing = isLoading.value),
@@ -111,45 +97,57 @@ private fun ExampleItemsListView(listOfExampleItems: List<ConversationItem>) {
         },
     ) {
         LazyColumn(
-            modifier =
-            Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+                    state = rememberLazyListState()
         ) {
+
             items(
-                items = listOfExampleItems,
+                items = state.items.value,
                 key = { it.id }
             ) { item ->
-                @OptIn(ExperimentalFoundationApi::class)
-                SwipeToDismiss(
-                    state = rememberDismissState(),
-                    modifier = Modifier
-                        .padding(vertical = 1.dp)
-                        .animateItemPlacement(),
-                    directions = setOf(DismissDirection.EndToStart),
-                    background = {
-                        Box(
-                            Modifier
-                                .fillMaxSize()
-                                .background(Color.Yellow)
-                                .padding(horizontal = 20.dp),
-                            contentAlignment = Alignment.CenterEnd
-                        ) {
-                            Text(
-                                text = "HIDE",
-                                color = Color.White,
-                                style = MaterialTheme.typography.h3,
-                            )
-                        }
-                    },
-                    dismissContent = {
-                        ConversationItem(
-                            modifier = Modifier.background(Color.White),
-                            text = item.title
-                        )
-                    }
-                )
+
+                MyCoolItem(item)
+
             }
         }
     }
+}
+
+@Composable
+@OptIn(ExperimentalMaterialApi::class)
+private fun LazyItemScope.MyCoolItem(item: ConversationItem) {
+
+    @OptIn(ExperimentalFoundationApi::class)
+    SwipeToDismiss(
+        state = remember {
+            DismissState(DismissValue.Default) { true }
+        },
+        modifier = Modifier
+            .padding(vertical = 1.dp)
+            .animateItemPlacement(),
+        directions = setOf(DismissDirection.EndToStart),
+        background = {
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(Color.Yellow)
+                    .padding(horizontal = 20.dp),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Text(
+                    text = "HIDE",
+                    color = Color.White,
+                    style = MaterialTheme.typography.h3,
+                )
+            }
+        },
+        dismissContent = {
+            ConversationItem(
+                modifier = Modifier.background(Color.White),
+                text = item.title
+            )
+        }
+    )
 }
 
 
@@ -158,6 +156,8 @@ fun ConversationItem(
     text: String,
     modifier: Modifier = Modifier
 ) {
+    Log.v("COMPOSE" , "composing ConversationItem $text")
+
     Row(
         modifier = modifier
             .height(140.dp)
@@ -391,7 +391,8 @@ class ProfisGlideCustomTarget<V : Any>(
     override fun onLoadCleared(placeholder: Drawable?) = onCleared(placeholder)
     override fun onLoadStarted(placeholder: Drawable?) = onStarted(placeholder)
     override fun onLoadFailed(errorDrawable: Drawable?) = onFailed(errorDrawable)
-    override fun onResourceReady(resource: V, transition: Transition<in V>?) = onReady(resource, transition)
+    override fun onResourceReady(resource: V, transition: Transition<in V>?) =
+        onReady(resource, transition)
 }
 
 @Preview(showSystemUi = true)

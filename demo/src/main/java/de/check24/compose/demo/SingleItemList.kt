@@ -34,5 +34,5 @@ internal val singleItemList: List<SingleItem> by lazy {
         )
     )
 
-    singleItems
+    singleItems.reversed()
 }

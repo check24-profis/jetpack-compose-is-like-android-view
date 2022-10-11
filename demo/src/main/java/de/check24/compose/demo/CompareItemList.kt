@@ -580,5 +580,5 @@ internal val compareItemList: List<CompareItem> by lazy {
 
     // endregion
 
-    compareItems
+    compareItems.reversed()
 }

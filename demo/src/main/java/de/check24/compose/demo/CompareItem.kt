@@ -2,6 +2,7 @@ package de.check24.compose.demo
 
 import android.app.Activity
 import android.content.Intent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,11 +25,17 @@ import de.check24.compose.demo.extensions.findActivity
 import de.check24.compose.demo.features.text.AndroidUITextActivity
 import de.check24.compose.demo.features.text.ComposableTextActivity
 import de.check24.compose.demo.theme.DemoTheme
+import java.util.UUID
+
+private val generator by lazy {
+    UIDGenerator
+}
 
 internal data class CompareItem(
     val composeActivity: Class<out Activity>,
     val androidUIActivity: Class<out Activity>,
-    val headline: String
+    val headline: String,
+    val uuid: String = generator.newUID().toString()
 )
 
 /**
